@@ -1,0 +1,11 @@
+.banner{
+    &__left{
+        @apply bg-gray-600;
+        &--button{
+            @apply bg-red-600 px-6 inline-block uppercase text-8xl;
+        }
+    }
+    &__right {
+        @apply bg-yellow-500
+    }
+}

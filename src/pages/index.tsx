@@ -1,10 +1,15 @@
+import Banner from 'components/Home/Banner';
 import type { NextPage } from 'next';
+import Image from 'next/image';
+import Logo from '../assets/images/academist.svg';
 import Layout from '../components/Layout';
 
 const HomePage: NextPage = () => {
   return (
     <Layout>
+      <Banner/>
       <div className="container">
+      <Image src={Logo}/>
       <h1>Heading one</h1>
       <h2>Heading two</h2>
       <h3>Heading three</h3>
