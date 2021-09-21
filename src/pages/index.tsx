@@ -12,6 +12,7 @@ const HomePage: NextPage = () => {
       <h5>Heading five</h5>
       <h6>Heading six</h6>
       <p>Lorem <a href="#">ipsum dolor sit amet</a> consectetur adipisicing elit. Pariatur quasi distinctio nobis labore sapiente officiis culpa ratione, unde qui alias impedit ullam deleniti magnam voluptate porro debitis facere in quis.</p>
+      <p>Probir from Bhola</p>
       </div>
     </Layout>
   )
