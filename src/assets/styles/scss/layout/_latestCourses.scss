@@ -1,0 +1,49 @@
+.latest__courses {
+  background-color: #efeff6;
+
+  &--top {
+    @apply flex py-5;
+
+    button {
+      @apply flex mx-auto  text-white 
+      bg-red-500 border-0 py-2 
+      px-8 focus:outline-none hover:text-red-900 rounded text-lg;
+    }
+  }
+}
+
+.card {
+  @apply my-2;
+
+  &__container--main {
+    @apply container px-5 py-24 mx-auto;
+
+    &--section {
+      @apply flex flex-wrap -m-4;
+
+      &--contextBX {
+        background-color: #fff;
+        @apply h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden;
+
+        img {
+          @apply lg:h-48 md:h-36 w-full object-cover object-center;
+        }
+        h5 {
+          @apply text-lg font-medium text-gray-900 mb-3;
+        }
+      }
+    }
+  }
+}
+
+.icon {
+  &__spanOne {
+    color: #F56962;  
+    @apply  mr-3 inline-flex items-center leading-none text-sm pr-3 py-1 border-r-2 border-yellow-400
+  }
+
+  &__spanTwo{
+      color:#F56962;
+      @apply inline-flex items-center leading-none text-sm
+  }
+}

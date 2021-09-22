@@ -1,5 +1,4 @@
 import Head from 'next/head'
-
 import Header from './Header'
 
 
@@ -16,7 +15,8 @@ export default function Layout({ title, keywords, description, children }) {
       </Head>
 
       {children}
-      
+
+    
     </>
   )
 }
