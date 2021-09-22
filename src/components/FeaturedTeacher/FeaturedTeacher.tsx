@@ -1,9 +1,9 @@
+import im1 from 'assets/images/01.jpg'
+import im2 from 'assets/images/02.jpg'
+import im3 from 'assets/images/03.jpg'
+import im4 from 'assets/images/04.jpg'
 import Image from 'next/image'
-import im1 from './../../../public/01.jpg'
-import im2 from './../../../public/02.jpg'
-import im3 from './../../../public/03.jpg'
-import im4 from './../../../public/04.jpg'
-import { FaBook, FaUsers, FaStar } from 'react-icons/fa';
+import { FaBook, FaStar, FaUsers } from 'react-icons/fa'
 
 const FeaturedTeacher = () => {
     return (

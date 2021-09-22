@@ -1,5 +1,5 @@
 .latest__courses {
-  background-color: #efeff6;
+  @apply bg-chateau-green-50;
 
   &--top {
     @apply flex py-5;
@@ -16,7 +16,7 @@
   @apply my-2;
 
   &__container--main {
-    @apply container px-5 py-24 mx-auto;
+    @apply container;
 
     &--section {
       @apply flex flex-wrap -m-4;

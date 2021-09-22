@@ -1,9 +1,9 @@
 import React from 'react';
+import Title from '../utilities/Title';
 import TestimonialCart from './TestimonialCart';
-import fakeData from './TestimonialData'
+import fakeData from './TestimonialData';
 // import ITestimonial from '../../types'
 const Testimonial = () => {
-    console.log(fakeData)
     interface ITestimonial {
         id: number;
         name: string;
@@ -15,14 +15,16 @@ const Testimonial = () => {
 
     return (
         <>
-        <div className="testimonial">
-            <div className="testimonial__title">
-                 <h3 >Our Cours Creater says</h3>
-            </div>
-            <div className="testimonial__cart ">
+        <div className="testimonial section-padding">
+
+          <div className="container">
+            <Title subtitle="LEARNS THOUGHTS" title="Testimonials" description=""/>
+
+          <div className="flex flex-wrap -m-4">
             {
               fakeData?.map((fd:ITestimonial)=> <TestimonialCart fd={fd} /> )
            } 
+            </div>
             </div>
          </div>
         </>
