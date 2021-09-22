@@ -1,0 +1,35 @@
+.latest__courses {
+  &--top {
+    @apply bg-yellow-400
+        flex 
+        py-5;
+
+    & button {
+      @apply py-5 
+            bg-green-500 
+            px-5 border-r-2
+             hover:bg-purple-800 
+             hover:text-gray-300
+             outline-none
+             text-3xl
+             rounded-lg;
+    }
+  }
+}
+
+.card__container {
+  @apply flex
+     my-8;
+
+  &--section {
+   
+    @apply px-5 py-5  rounded-xl shadow-xl w-1/3;
+
+    &--imgBX {
+     
+    }
+    &--content {
+     
+    }
+  }
+}

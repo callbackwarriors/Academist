@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Footer from './Footer'
 import Header from './Header'
+import LatestCourses from './LatestCourses'
 
 export default function Layout({ title, keywords, description, children }) {
 
@@ -13,6 +14,7 @@ export default function Layout({ title, keywords, description, children }) {
       </Head>
       <Header/>
       {children}
+      <LatestCourses/>
       <Footer/>
     </>
   )
