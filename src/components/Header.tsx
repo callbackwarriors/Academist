@@ -1,7 +1,7 @@
 const Header = () => {
     return (
         <div>
-            <h2>This is safa fom branch safa</h2>
+            <h2>Header</h2>
         </div>
     )
 }

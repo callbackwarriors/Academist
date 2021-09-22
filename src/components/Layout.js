@@ -1,5 +1,11 @@
 import Head from 'next/head'
+<<<<<<< HEAD
 import Header from './Header'
+=======
+import Footer from './Footer'
+
+
+>>>>>>> develop
 
 export default function Layout({ title, keywords, description, children }) {
 
@@ -10,7 +16,7 @@ export default function Layout({ title, keywords, description, children }) {
         <meta name='description' content={description} />
         <meta name='keywords' content={keywords} />
       </Head>
-      <Header/>
+
       {children}
       
     </>
