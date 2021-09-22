@@ -1,3 +1,5 @@
+import Footer from 'components/Footer/Footer';
+import Partner from 'components/Partner/Partner';
 import type { NextPage } from 'next';
 import Layout from '../components/Layout';
 
@@ -13,6 +15,8 @@ const HomePage: NextPage = () => {
       <h6>Heading six</h6>
       <p>Lorem <a href="#">ipsum dolor sit amet</a> consectetur adipisicing elit. Pariatur quasi distinctio nobis labore sapiente officiis culpa ratione, unde qui alias impedit ullam deleniti magnam voluptate porro debitis facere in quis.</p>
       </div>
+      <Partner/>
+      <Footer/>
     </Layout>
   )
 }
