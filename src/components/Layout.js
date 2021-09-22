@@ -1,11 +1,9 @@
 import Head from 'next/head'
-<<<<<<< HEAD
+
 import Header from './Header'
-=======
-import Footer from './Footer'
 
 
->>>>>>> develop
+
 
 export default function Layout({ title, keywords, description, children }) {
 
