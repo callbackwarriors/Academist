@@ -1,3 +1,4 @@
+import FeaturedTeacher from 'components/FeaturedTeacher/FeaturedTeacher';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import Logo from '../assets/images/academist.svg';
@@ -19,6 +20,7 @@ const HomePage: NextPage = () => {
       <p>Lorem <a href="#">ipsum dolor sit amet</a> consectetur adipisicing elit. Pariatur quasi distinctio nobis labore sapiente officiis culpa ratione, unde qui alias impedit ullam deleniti magnam voluptate porro debitis facere in quis.</p>
       <p>Probir from Bhola</p>
       </div>
+      <FeaturedTeacher></FeaturedTeacher>
     </Layout>
   )
 }
