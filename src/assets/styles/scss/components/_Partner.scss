@@ -1,0 +1,36 @@
+.partner{
+    @apply py-12;
+
+    &__header{
+        @apply flex justify-between mx-5 mb-10;
+
+        h3{
+            @apply flex items-center;
+        }
+
+        &--button{
+            button{
+                @apply  p-3 bg-gray-100 m-2 rounded-sm hover:text-green-600;
+            }
+        }
+        
+    }
+    &__content{
+            
+        &--item{
+            @apply flex justify-around;
+
+            &--logo{
+                @apply  p-1 sm:px-10 sm:pb-10 md:p-10;
+
+                picture{
+
+                    img{
+                        @apply  mx-2;
+                    }
+                }
+            }
+        }
+
+    }
+}
