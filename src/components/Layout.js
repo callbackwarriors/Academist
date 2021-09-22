@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Footer from './Footer'
 
 
+
 export default function Layout({ title, keywords, description, children }) {
 
   return (
@@ -11,7 +12,7 @@ export default function Layout({ title, keywords, description, children }) {
         <meta name='description' content={description} />
         <meta name='keywords' content={keywords} />
       </Head>
-     
+
       {children}
       <Footer/>
     </>
