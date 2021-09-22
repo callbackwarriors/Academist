@@ -1,10 +1,13 @@
 .latest__courses {
+
+   
+
   &--top {
     @apply bg-yellow-400
         flex 
         py-5;
 
-    & button {
+    button {
       @apply py-5 
             bg-green-500 
             px-5 border-r-2
@@ -17,19 +20,32 @@
   }
 }
 
-.card__container {
-  @apply flex
-     my-8;
+.card{
+  @apply text-gray-600 my-8;
 
-  &--section {
+  &__container--main{
+    
+    @apply container px-5 py-24 mx-auto;
+
+
+    &--section {
    
-    @apply px-5 py-5  rounded-xl shadow-xl w-1/3;
+        @apply flex flex-wrap -m-4;
+    
+        &--contextBX {
+         @apply h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden;
+        
+         img {
+             @apply lg:h-48 md:h-36 w-full object-cover object-center;
+         }
+         h5{
+             @apply text-lg font-medium text-gray-900 mb-3;
+         }
+        }
+      
+      }
 
-    &--imgBX {
-     
-    }
-    &--content {
-     
-    }
   }
+
+
 }
