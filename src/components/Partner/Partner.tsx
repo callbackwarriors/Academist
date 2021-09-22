@@ -1,4 +1,3 @@
-import React from 'react';
 
 const Partner = () => {
     return (
@@ -8,7 +7,7 @@ const Partner = () => {
                    <div className="partner__header--title">
                         <h3> Trusted by our awesome partners</h3>
                    </div>
-                   <div className="partner__header--button">
+                   <div className="partner__header--button lg:block md:block hidden">
                        <button>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -22,28 +21,28 @@ const Partner = () => {
                     </div>
                 </div>
                 <div className="partner__content">
-                    <div className="partner__content--item">
-                         <div className="partner__content--item--logo">  
+                    <div className="partner__content--item flex flex-wrap">
+                         <div className="partner__content--item--logo xl:w-1/5 md:w-1/4 p-4">  
                             <picture> 
                                 <img src="http://skilify.theuxuidesigner.com/images/img/partner1.png" alt="Image Description"/>
                             </picture>
                         </div>
-                        <div className="partner__content--item--logo">  
+                        <div className="partner__content--item--logo xl:w-1/5 md:w-1/4 p-4">  
                             <picture> 
                                 <img src="http://skilify.theuxuidesigner.com/images/webp/partner2.webp" alt="Image Description"/>
                             </picture>
                         </div>
-                        <div className="partner__content--item--logo">  
+                        <div className="partner__content--item--logo xl:w-1/5 md:w-1/4 p-4">  
                             <picture> 
                                 <img src="http://skilify.theuxuidesigner.com/images/webp/partner3.webp" alt="Image Description"/>
                             </picture>
                         </div>
-                        <div className="partner__content--item--logo">  
+                        <div className="partner__content--item--logo xl:w-1/5 md:w-1/4 p-4">  
                             <picture> 
                                 <img src="http://skilify.theuxuidesigner.com/images/webp/partner4.webp" alt="Image Description"/>
                             </picture>
                         </div>
-                        <div className="partner__content--item--logo">  
+                        <div className="partner__content--item--logo xl:w-1/5 md:w-1/4 p-4">  
                             <picture> 
                                 <img src="http://skilify.theuxuidesigner.com/images/img/partner.png" alt="Image Description"/>
                             </picture>

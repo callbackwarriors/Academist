@@ -2,22 +2,23 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div className="footer">
-             <footer>
-            <div className="news-wrap ">
-            <div className="news-wrap__news-letter ">
+        <footer className="footer relative">
+            <div className="news-wrap">
+                <div className="news-wrap__news-letter ">
                     <div className="container">
                         <div className="news-wrap__news-letter--section-wrapper">
                             <div className="news-wrap__news-letter--section-wrapper--news-title ">
                                 <h3>Want Us To Email You About Special Offers And Updates?</h3>
                             </div>
                             <div className="news-wrap__news-letter--section-wrapper--news-form">
-                                <form action="/" >
-                                <div className="news-wrap__news-letter--section-wrapper--news-form--nf-list ">
-                                        <input className=" news-wrap__news-letter--section-wrapper--news-form--nf-list--email " type="email" name="email" placeholder="Enter Your Email"/>
-                                        <input className="news-wrap__news-letter--section-wrapper--news-form--nf-list--submit " type="button" name="submit" value="Subscribe Now"/>
-                                    </div>
-                                </form>
+                            <div className="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+      
+      <div className="relative flex-grow w-full">
+        <label for="email" className="leading-7 text-sm text-gray-600">Email</label>
+        <input type="email" id="email" name="email" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+      </div>
+      <button className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
+    </div>
                             </div>
                         </div>
                     </div>
@@ -41,9 +42,7 @@ const Footer = () => {
                                 </ul>
                             </div>
                         </div>
-                                                                            
-                      
-                            
+
                         <div className="footer-inner">
                             <div className="footer-content">
                                 <div className="footer-top__section--title ">
@@ -101,7 +100,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="footer-bottom ">
+            <div className="footer__bottom ">
                 <div className="container">
                     <div className="footer-bottom__section-wrapper ">
                         <p >&copy; 2021 <a href="index.html">EAcademist</a> Designed by CallBack warriors </p>
@@ -110,8 +109,8 @@ const Footer = () => {
             </div>
         </div>
         
+
         </footer>
-        </div>
     );
 };
 
