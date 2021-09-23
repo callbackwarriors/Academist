@@ -1,4 +1,9 @@
-const Title = ({ subtitle, title, description, children }) => {
+interface ITitle {
+  subtitle: String;
+  title: String;
+  description?: String;
+}
+const Title = ({ subtitle, title, description }: ITitle) => {
     return (
     <div className="title">
       <h2 className="title__subtitle">{subtitle}</h2>
