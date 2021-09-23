@@ -2,9 +2,9 @@ import Head from 'next/head'
 import Header from './Header'
 
 interface ILayout {
-  title: String;
-  keywords: String;
-  description:String;
+  title: string;
+  keywords: string;
+  description:string;
   children: any,
 }
 
