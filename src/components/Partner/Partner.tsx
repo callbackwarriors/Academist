@@ -1,4 +1,9 @@
-
+import Partner1 from 'assets/images/partner1.png';
+import Partner2 from 'assets/images/partner2.png';
+import Partner3 from 'assets/images/partner3.webp';
+import Partner4 from 'assets/images/partner4.webp';
+import Partner5 from 'assets/images/partner5.webp';
+import Image from 'next/image';
 const Partner = () => {
     return (
         <div className="partner">
@@ -23,28 +28,28 @@ const Partner = () => {
                 <div className="partner__content">
                     <div className="partner__content--item flex flex-wrap">
                          <div className="partner__content--item--logo xl:w-1/5 md:w-1/4 p-4">  
-                            <picture> 
-                                <img src="http://skilify.theuxuidesigner.com/images/img/partner1.png" alt="Image Description"/>
+                            <picture>
+                            <Image src={Partner1}/>
                             </picture>
                         </div>
                         <div className="partner__content--item--logo xl:w-1/5 md:w-1/4 p-4">  
                             <picture> 
-                                <img src="http://skilify.theuxuidesigner.com/images/webp/partner2.webp" alt="Image Description"/>
+                            <Image src={Partner2}/>
                             </picture>
                         </div>
                         <div className="partner__content--item--logo xl:w-1/5 md:w-1/4 p-4">  
                             <picture> 
-                                <img src="http://skilify.theuxuidesigner.com/images/webp/partner3.webp" alt="Image Description"/>
+                            <Image src={Partner3}/>
                             </picture>
                         </div>
                         <div className="partner__content--item--logo xl:w-1/5 md:w-1/4 p-4">  
                             <picture> 
-                                <img src="http://skilify.theuxuidesigner.com/images/webp/partner4.webp" alt="Image Description"/>
+                            <Image src={Partner4}/>
                             </picture>
                         </div>
                         <div className="partner__content--item--logo xl:w-1/5 md:w-1/4 p-4">  
                             <picture> 
-                                <img src="http://skilify.theuxuidesigner.com/images/img/partner.png" alt="Image Description"/>
+                            <Image src={Partner5}/>
                             </picture>
                         </div>
                         
