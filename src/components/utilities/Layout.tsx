@@ -1,7 +1,14 @@
 import Head from 'next/head'
 import Header from './Header'
 
-export default function Layout({ title, keywords, description, children }) {
+interface ILayout {
+  title: string;
+  keywords: string;
+  description:string;
+  children: any,
+}
+
+export default function Layout({ title, keywords, description, children }:ILayout) {
 
   return (
     <>
