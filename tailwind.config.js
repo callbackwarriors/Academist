@@ -82,7 +82,17 @@ module.exports = {
           '800': '#84A5D2',
           '900': '#5E8AC5'
         },
+       
+        "theme-yellow":'#ffc727',
+        "theme-yellow-dark":'#e6b323',
+        "theme-dark":'#37474f'
+      },
+
+      height:{
+        'screen-75':'90vh',
+        'screen-50':'50vh'
       }
+
     },
   },
   variants: {
