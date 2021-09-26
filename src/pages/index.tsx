@@ -1,5 +1,6 @@
 import FeaturedTeacher from 'components/FeaturedTeacher/FeaturedTeacher';
 import LatestCourses from 'components/LatestCourses/LatestCourses';
+import LargestCourse from 'components/LargestCourse/LargestCourse';
 import Partner from 'components/Partner/Partner';
 import Testimonial from 'components/Testimonial/Testimonial';
 import Footer from 'components/utilities/Footer';
@@ -14,6 +15,7 @@ const HomePage: NextPage = () => {
       <LatestCourses/>
       <Testimonial />
       <FeaturedTeacher></FeaturedTeacher>
+      <LargestCourse/>
       <Partner/>
       <Footer/>
     </Layout>
