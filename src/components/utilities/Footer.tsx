@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Footer = () => {
+const Footer = () =>  {
     return (
         <footer className="footer relative">
             <div className="news-wrap">
@@ -103,7 +103,7 @@ const Footer = () => {
             <div className="footer__bottom ">
                 <div className="container">
                     <div className="footer-bottom__section-wrapper ">
-                        <p >&copy; 2021 <a href="index.html">EAcademist</a> Designed by CallBack warriors </p>
+                        <p >&copy; 2021 <a href="index.html">Academist</a> Designed by CallBack warriors </p>
                     </div>
                 </div>
             </div>

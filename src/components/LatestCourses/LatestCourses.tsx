@@ -1,5 +1,5 @@
 import { AiFillEye, AiFillVideoCamera, AiOutlineHeart, AiOutlineStar } from 'react-icons/ai';
-import Title from "./utilities/Title";
+import Title from "../utilities/Title";
 
 const LatestCourses = () => {
   return (
