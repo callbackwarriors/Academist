@@ -1,0 +1,96 @@
+.allCourses{
+    h2{
+
+    }
+
+    &__page-sidebar{
+
+        &--findBox{
+
+            &--find{
+
+            }
+        }
+
+        &--catagory{
+
+        }
+
+        &--checklist{
+            @apply mt-3;
+            h6{
+                
+            }
+
+            ul li {
+                .checkbox-container{
+                    
+                        display: block;
+                        position: relative;
+                        padding-left: 23px;
+                        @apply pb-1;
+                        
+                        cursor: pointer;
+                        font-size: 16px;
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        user-select: none;
+
+                        input {
+                            position: absolute;
+                            opacity: 0;
+                            cursor: pointer;
+                            height: 0;
+                            width: 0;
+                          }
+
+                          .checkmark {
+                            position: absolute;
+                            top: 3px;
+                            left: 0;
+                            height: 20px;
+                            width: 20px;
+                            @apply bg-gray-300 rounded-sm;
+
+                          }
+
+                          input:checked ~ .checkmark {
+                            @apply bg-red-400;
+                          }
+
+                          .checkmark:after {
+                            content: "";
+                            position: absolute;
+                            display: none;
+                          }
+
+                          input:checked ~ .checkmark:after {
+                            display: block;
+                          }
+                          .checkmark:after {
+                            left: 9px;
+                            top: 5px;
+                            width: 5px;
+                            height: 10px;
+                            border: solid white;
+                            border-width: 0 3px 3px 0;
+                            -webkit-transform: rotate(45deg);
+                            -ms-transform: rotate(45deg);
+                            transform: rotate(45deg);
+                          }
+                      
+                }
+              
+                @apply flex justify-between mt-1;
+
+                    .count{
+                        span{
+                        @apply text-red-400;
+                    }
+                }
+            }
+            
+        }
+    }
+}
