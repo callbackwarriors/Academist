@@ -1,0 +1,21 @@
+.hero{
+    background: $light-color;
+    @apply py-28;
+
+    &:before, &:after{
+        content: "";
+        position: absolute;
+        background: url(../../../images/dots-pattern.svg) no-repeat;
+        height: 250px;
+        width: 110px;
+    }
+
+    &:before {
+        top: 10%;
+        right: 0;
+    }
+    &:after {
+        bottom: 10%;
+        left: 0;
+    }
+}

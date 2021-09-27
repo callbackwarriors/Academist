@@ -1,10 +1,23 @@
+import FeaturedTeacher from 'components/FeaturedTeacher/FeaturedTeacher';
+import LargestCourse from 'components/LargestCourse/LargestCourse';
+import LatestCourses from 'components/LatestCourses';
+import Partner from 'components/Partner/Partner';
+import Testimonial from 'components/Testimonial/Testimonial';
+import Footer from 'components/utilities/Footer';
 import type { NextPage } from 'next';
-import Layout from '../components/Layout';
+import Hero from '../components/Home/Hero';
+import Layout from '../components/utilities/Layout';
 
 const HomePage: NextPage = () => {
   return (
     <Layout>
-      <h1 className="text-3xl text-yellow-600 font-mono font-bold bg-gray-600">Hello world</h1>
+      <Hero/>
+      <LatestCourses/>
+      <Testimonial />
+      <FeaturedTeacher></FeaturedTeacher>
+      <LargestCourse/>
+      <Partner/>
+      <Footer/>
     </Layout>
   )
 }

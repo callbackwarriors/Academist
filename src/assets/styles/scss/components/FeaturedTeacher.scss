@@ -1,0 +1,63 @@
+
+.FeaturedTeacher{
+    background-color: #FFF9F1;
+    @apply  py-16 text-center;
+    .brown{
+        color: #f16126;
+    }
+    p{
+        color: #555555;
+    }
+    h2{
+        @apply pb-16 text-4xl;
+    }
+    h4{
+        @apply text-xl tracking-widest;
+        color: #f16126;
+    }
+    &__card{
+        background-color: #fff;
+        @apply shadow pt-6 rounded  text-center;
+        transition-duration: 0.3s;
+        transition-timing-function: ease-in-out;
+   
+        h5{
+            @apply  pt-6;
+            color: #101115;
+        }
+        p{
+            color: #555555;
+            font-size: 17px;
+            font-weight: 600;
+        }
+        h6{
+            font-size: small;
+        }
+
+
+        &--star{
+            @apply flex justify-center;
+           p{
+            color: #f16126;
+            font-size: 24px;
+           @apply my-5;
+           }
+        }
+        &--cardFooter{
+            @apply flex ;
+            align-items: center;
+            justify-content: space-around;
+            border-top: 1px solid #dddd;
+            height: 50px;
+        }
+    }
+
+    &__card:hover{
+        transform: translateY(-8px);
+    }
+
+    &__card:hover h5{
+        color: #f16126;
+    }
+
+}
