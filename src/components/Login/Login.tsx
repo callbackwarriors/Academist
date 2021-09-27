@@ -7,13 +7,6 @@ import { useRouter } from 'next/router'
 
 const Login = () => {
   
-  // const history = useHistory();
-  // const location = useLocation();
-  // let { from } = location.state || { from: { pathname: "/" } };
-
-  // const {setLoggedInUser} = useContext(UserContext)
-
-
 
   const [newUser, setNewUser] = useState(false);
 
@@ -31,204 +24,10 @@ const Login = () => {
     success: false,
   });
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (newUser && user.password1 === user.password2) {
-  //     const newUserInfo = { ...user };
-  //     newUserInfo.error = "";
-  //     newUserInfo.password = user.password1;
-  //     setUser(newUserInfo);
-  //   } else if (newUser && user.password1 !== user.password2) {
-  //     const newUserInfo = { ...user };
-  //     newUserInfo.password = "";
-  //     newUserInfo.error = "Password don't match";
-  //     newUserInfo.success = false;
-  //     setUser(newUserInfo);
-  //   } else if (!newUser) {
-  //     const newUserInfo = { ...user };
-  //     newUserInfo.error = "";
-  //     newUserInfo.password = user.password1;
-  //     newUserInfo.success = false;
-  //     setUser(newUserInfo);
-  //   }
-  //   if (!user.email) {
-  //     const newUserInfo = { ...user };
-  //     newUserInfo.error = "Please Enter a valid Email";
-  //     setUser(newUserInfo);
-  //   } else if (!user.password1) {
-  //     const newUserInfo = { ...user };
-  //     newUserInfo.error =
-  //       "Please Enter a valid Password (minimum 5 characters)";
-  //     setUser(newUserInfo);
-  //   }
-
-  //   if (
-  //     newUser &&
-  //     user.name &&
-  //     user.email &&
-  //     user.password === user.password2
-  //   ) {
-  //     firebase
-  //       .auth()
-  //       .createUserWithEmailAndPassword(user.email, user.password)
-  //       .then((res) => {
-  //         updateUserName(user.name);
-  //         console.log(res);
-  //         const newUserInfo = { ...user };
-  //         newUserInfo.error = "";
-  //         newUserInfo.success = true;
-  //         newUserInfo.name = user.name;
-  //         setUser(newUserInfo);
-  //       })
-  //       .catch((error) => {
-  //         const errorMessage = error.message;
-  //         const newUserInfo = { ...user };
-  //         newUserInfo.success = false;
-  //         newUserInfo.error = errorMessage;
-  //         setUser(newUserInfo);
-  //       });
-  //   }
-
-  //   if (!newUser && user.email && user.password1) {
-  //     firebase
-  //       .auth()
-  //       .signInWithEmailAndPassword(user.email, user.password1)
-  //       .then((res) => {
-  //         console.log(res);
-  //         const { email, displayName } = res.user;
-  //         const newUserInfo = { ...user };
-  //         newUserInfo.isLoggedIn = true;
-  //         newUserInfo.name = displayName;
-  //         newUserInfo.error = "";
-  //         newUserInfo.success = false;
-  //         setUser(newUserInfo);
-  //         setLoggedInUser({
-  //           email: email,
-  //           name: displayName,
-  //           isLoggedIn: true,
-  //         });
-  //         history.replace(from);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error.message);
-  //         const errorMessage = error.message;
-  //         const newUserInfo = { ...user };
-  //         newUserInfo.error = errorMessage;
-  //         newUserInfo.success = false;
-  //         setUser(newUserInfo);
-  //       });
-  //   }
-  //   console.log(user);
-  // };
-
-  // const updateUserName = (name) => {
-  //   const user = firebase.auth().currentUser;
-
-  //   user
-  //     .updateProfile({
-  //       displayName: name,
-  //     })
-  //     .then((res) => {
-  //       // Update successful.
-  //     })
-  //     .catch((error) => {
-  //       // An error happened.
-  //     });
-  // };
-
-  // const handleBlur = (e) => {
-  //   const newUserInfo = { ...user };
-  //   newUserInfo.error = "";
-  //   setUser(newUserInfo);
-  //   console.log(e.target.value);
-  //   let isFormValid = true;
-  //   if (e.target.name === "email") {
-  //     isFormValid = /\S+@\S+\.\S+/.test(e.target.value);
-  //     if (isFormValid) {
-  //       const newUserInfo = { ...user };
-  //       newUserInfo.error = "";
-  //       setUser(newUserInfo);
-  //     }
-  //   }
-  //   if (e.target.name === "password1") {
-  //     isFormValid = e.target.value.length > 4;
-  //   }
-  //   if (e.target.name === "password2") {
-  //     isFormValid = e.target.value.length > 4;
-  //   }
-  //   if (isFormValid) {
-  //     const newUserInfo = { ...user };
-  //     newUserInfo[e.target.name] = e.target.value;
-  //     setUser(newUserInfo);
-  //   } else {
-  //     const newUserInfo = { ...user };
-  //     newUserInfo[e.target.name] = "";
-  //     setUser(newUserInfo);
-  //   }
-  // };
-
-  // const handleGooglSignIn = () => {
-  //   const googleProvider = new firebase.auth.GoogleAuthProvider();
-
-  //   firebase
-  //     .auth()
-  //     .signInWithPopup(googleProvider)
-  //     .then((res) => {
-  //       console.log(res);
-  //       const { displayName, email } = res.user;
-  //       const newUserInfo = { ...user };
-  //       newUserInfo.name = displayName;
-  //       newUserInfo.email = email;
-  //       newUserInfo.isLoggedIn = true;
-  //       setUser(newUserInfo);
-  //       setLoggedInUser({
-  //         email: email,
-  //         name: displayName,
-  //         isLoggedIn: true,
-  //       });
-  //       history.replace(from);
-  //     })
-  //     .catch((error) => {
-  //       const errorMessage = error.message;
-  //       const newUserInfo = { ...user };
-  //       newUserInfo.error = errorMessage;
-  //       setUser(newUserInfo);
-  //     });
-  // };
-
-  // const handleFbSignIn = () => {
-  //   const fbProvider = new firebase.auth.FacebookAuthProvider();
-  //   firebase
-  //     .auth()
-  //     .signInWithPopup(fbProvider)
-  //     .then((res) => {
-  //       const { displayName, email } = res.user;
-  //       console.log(res);
-  //       setUser({
-  //         isLoggedIn: true,
-  //         name: displayName,
-  //         email,
-  //       });
-  //       setLoggedInUser({
-  //         email: email,
-  //         name: displayName,
-  //         isLoggedIn: true,
-  //       });
-  //       history.replace(from);
-  //     })
-  //     .catch((error) => {
-  //       const errorMessage = error.message;
-  //       const newUserInfo = { ...user };
-  //       newUserInfo.error = errorMessage;
-  //       setUser(newUserInfo);
-  //     });
-  // };
-
-
   return (
     <div>
-      <div className="bg-yellow-100 overflow-x-hidden lg:overflow-x-auto lg:overflow-hidden flex items-center justify-center lg:h-screen">
-        <div className="login-container w-full lg:w-4/5 lg:bg-white h-screen lg:h-screen lg:border border-gray-300 rounded-lg flex flex-wrap lg:flex-nowrap flex-col lg:flex-row justify-between group">
+      <div className="bg-yellow-100 overflow-x-hidden lg:overflow-x-auto lg:overflow-hidden flex items-center justify-center py-40">
+        <div className="login-container w-full  lg:w-4/5 lg:bg-white lg:h-screen lg:border border-gray-300 rounded-lg flex flex-wrap lg:flex-nowrap flex-col lg:flex-row justify-between group">
           <div className="w-full lg:w-1/2 h-28 lg:h-full mt-32 lg:mt-0 lg:bg-theme-yellow-dark flex relative order-2 lg:order-1">
             <div className="text-center hidden lg:flex items-center justify-start h-full w-full select-none">
               <span className="transform block whitespace-nowrap h-full -rotate-90 text-[55px] 2xl:text-[70px] font-black uppercase text-yellow-300 opacity-0 transition-all group-hover:opacity-100 ml-10 2xl:ml-12 group-hover:-ml-20 2xl:group-hover:ml-26 lg:group-hover:ml-20 duration-1000 lg:duration-700 ease-in-out">
@@ -373,7 +172,7 @@ const Login = () => {
                           newUserInfo.error = "";
                           setUser(newUserInfo);
                         }}
-                        className="mini-btn"
+                        
                       >
                         Create an account
                       </button>
@@ -381,15 +180,16 @@ const Login = () => {
                   </p>
                 )}
                 <p className="d-block text-center">or</p>
-                <button  className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                  <FcGoogle />
-                  Continue with Google
-                </button>
-                <br />
-                <button  className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                  <FaFacebook />
+                <div className="flex flex-col justify-center">
+                <button  className="flex w-full lg:w-4/5 mx-auto py-3 text-white bg-indigo-500 border-0 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                  <FcGoogle className="mt-1.5 mr-1 " />Continue with Google
+                </button> <br />
+                <button  className="flex w-full lg:w-4/5 md:mx-auto py-3 text-white bg-indigo-500 border-0 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                  <FaFacebook className="mt-1.5 mr-1 " />
                    Continue with Facebook
                 </button>
+                </div>
+
               </div>
             </div>
           </div>
