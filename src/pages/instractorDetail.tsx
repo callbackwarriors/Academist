@@ -4,7 +4,7 @@ import Footer from 'components/utilities/Footer';
 import Header from 'components/utilities/Header';
 import React from 'react';
 
-const instractorDetailPage = () => {
+const instractorDetail = () => {
     return (
         <div>
             <Header/>
@@ -15,4 +15,4 @@ const instractorDetailPage = () => {
     );
 };
 
-export default instractorDetailPage;
+export default instractorDetail;

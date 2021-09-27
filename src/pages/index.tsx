@@ -1,6 +1,6 @@
 import FeaturedTeacher from 'components/FeaturedTeacher/FeaturedTeacher';
+import LatestCourses from 'components/LatestCourses/LatestCourses';
 import LargestCourse from 'components/LargestCourse/LargestCourse';
-import LatestCourses from 'components/LatestCourses';
 import Partner from 'components/Partner/Partner';
 import Testimonial from 'components/Testimonial/Testimonial';
 import Footer from 'components/utilities/Footer';
