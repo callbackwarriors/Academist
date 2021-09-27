@@ -38,8 +38,8 @@ const courseCard = () => {
                     </div>
                 </div>
 
-                <button> Get Membership  >> </button><br />
-                <button> Enroll Now >> </button>
+                <button> Get Membership  </button><br />
+                <button> Enroll Now  </button>
 
             </div>
         </div>
