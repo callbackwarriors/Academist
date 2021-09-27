@@ -16,5 +16,5 @@
     "baseUrl": "./src",
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "custom.d.ts", "src/**/*.ts", "src/**/*.tsx", "src/components/utilities/Title.js"]
+  "include": ["next-env.d.ts", "custom.d.ts", "src/**/*.ts", "src/**/*.tsx", "src/components/utilities/Title.js", "src/components/CourseDetails"]
 }

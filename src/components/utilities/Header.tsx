@@ -18,6 +18,7 @@ const Header = () => {
             <a className="mr-5 hover:text-gray-900">Teachers</a>
             <a className="mr-5 hover:text-gray-900">Offers</a>
             <a className="mr-5 hover:text-gray-900">Review</a>
+            <Link href="/courseDetails"><a className="mr-5 hover:text-gray-900">Course Details</a></Link>
           </nav>
           <Link href="/login">
             <a>
