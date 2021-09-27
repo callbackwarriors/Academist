@@ -4,7 +4,7 @@ const CategoryCart = ({fd}:any) => {
   return (
     <div>
       <div className="p-2 container w-full">
-        <div className="h-full bg-white-100 shadow-lg p-8 rounded hover:bg-green-500 ">
+        <div className="h-full bg-white-100 shadow-lg p-8 rounded hover:bg-green-500 hover:text-white ">
           <h6>{fd.title}</h6>  
           <p className="mb-6">{fd.description}</p>
 
