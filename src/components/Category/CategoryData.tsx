@@ -3,7 +3,7 @@ const CategoryData = [
 
     {
         id:1,
-        title:"Development",
+        title:"Web Development",
         description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, voluptate!",
         logo:"view Courses",
         courseDetails:"view Courses"
