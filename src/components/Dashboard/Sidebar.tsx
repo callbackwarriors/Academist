@@ -26,7 +26,7 @@ const Sidebar = () => {
             items={[
               {
                 title: 'Dashboard',
-                itemId: '/dashboard',
+                itemId: '/courseDetails',
                 // you can use your own custom Icon component as well
                 // icon is optional
                 elemBefore: () => <BsFillInboxesFill name="inbox" />,
@@ -56,12 +56,16 @@ const Sidebar = () => {
                 ],
               },
               {
-                title: 'Another Item',
-                itemId: '/',
+                title: 'Courses',
+                itemId: '',
                 subNav: [
                   {
-                    title: 'Teams',
-                    itemId: '/',
+                    title: 'Manage Courses',
+                    itemId: '',
+                  },
+                  {
+                    title: 'Add New Course',
+                    itemId: '',
                   },
                 ],
               },
