@@ -1,11 +1,10 @@
-import React from 'react';
-import { BsFillInboxesFill } from 'react-icons/bs';
-import { AiOutlineFundProjectionScreen, AiOutlineUserAdd } from 'react-icons/ai';
-import { GiTeacher } from 'react-icons/gi';
-import { BsBook } from 'react-icons/bs';
-import {Navigation} from 'react-minimal-side-navigation';
-import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 import { useRouter } from 'next/dist/client/router';
+import React from 'react';
+import { AiOutlineFundProjectionScreen, AiOutlineUserAdd } from 'react-icons/ai';
+import { BsBook, BsFillInboxesFill } from 'react-icons/bs';
+import { GiTeacher } from 'react-icons/gi';
+import { Navigation } from 'react-minimal-side-navigation';
+import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 const Sidebar = () => {
   const router = useRouter();
  
@@ -51,6 +50,11 @@ const Sidebar = () => {
                   {
                     title: 'Student',
                     itemId: '/',
+                    elemBefore: () => <BsBook name="book" />,
+                  },
+                  {
+                    title: 'Manage courses',
+                    itemId: '/dashboard/courses/managecourses',
                     elemBefore: () => <BsBook name="book" />,
                   },
                 ],
