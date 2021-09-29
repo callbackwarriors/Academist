@@ -2,6 +2,8 @@ import { useRouter } from 'next/dist/client/router';
 import React from 'react';
 import { AiOutlineFundProjectionScreen, AiOutlineUserAdd } from 'react-icons/ai';
 import { BsBook, BsFillInboxesFill } from 'react-icons/bs';
+import {GoReport} from 'react-icons/go';
+
 import { GiTeacher } from 'react-icons/gi';
 import { Navigation } from 'react-minimal-side-navigation';
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
@@ -69,6 +71,21 @@ const Sidebar = () => {
                   },
                 ],
               },
+              {
+                title:'Report',
+                itemId:'',
+                elemBefore: () => <GoReport name="inbox" />,
+                subNav:[
+                  {
+                    title:'Admin Revenue',
+                    itemId:'/dashboard/report/admin-revenue'
+                  },
+                  {
+                    title:'Instructor Revenue',
+                    itemId:'/dashboard/report/instructor-revenue'
+                  }
+                ]
+              }
               
             ]}
           />
