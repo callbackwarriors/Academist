@@ -100,7 +100,6 @@ const Sidebar = () => {
                   },
                 ],
               },
-<<<<<<< HEAD
               {
                 title:'Report',
                 itemId:'',
@@ -117,9 +116,6 @@ const Sidebar = () => {
                 ]
               }
               
-=======
-          
->>>>>>> develop
             ]}
           />
            </nav>
