@@ -15,10 +15,8 @@ const index = () => {
                 <div className="h-1/2 bg-white mt-5">
                 <DashboardChart />
                 </div>
-                
             </div>
             </div>
-       
          </Layout>
          
         

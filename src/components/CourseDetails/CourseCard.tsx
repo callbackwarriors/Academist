@@ -1,7 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
-import cb from 'assets/images/cb.jpg'
-import { BiLike, BiDislike } from 'react-icons/bi';
+import { BiLike } from 'react-icons/bi';
 
 const courseCard = () => {
     return (
@@ -12,7 +10,7 @@ const courseCard = () => {
                         {/* <Image src={cb} alt="this is image" /> */}
                     </div>
                 </div>
-                <div className=" Bal px-2">
+                <div className="Bal px-2">
                     <p className="pt-2" >Acctual Price</p>
                     <h3>$ 149.00</h3>
                     <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
