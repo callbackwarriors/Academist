@@ -1,12 +1,12 @@
 .footer{
     &:before, &:after{
         content: "";
-        width: 300px;
-        height: 300px;
+        width: 200px;
+        height: 200px;
         position: absolute;
         background-repeat: no-repeat;
         background-size: 100%;
-        @apply hidden md:block;  
+        @apply hidden lg:block;  
     }
     &:before{
         background-image: url('../../../images/footer-top.png');
@@ -51,7 +51,7 @@
     .news-wrap{
         @apply bg-woodsmoke-400;
         &__news-letter{
-            @apply md:border-b p-2 border-gray-700 md:px-3 md:py-8;
+            @apply md:border-b p-2 border-gray-700 py-20;
             
             &--section-wrapper{
                 @apply flex md:flex-row justify-between flex-col;
