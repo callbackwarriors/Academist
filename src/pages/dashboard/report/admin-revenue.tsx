@@ -6,8 +6,8 @@ const adminRevenue = () => {
     <Layout>
       <div className="flex w-full items-stretch bg-gray-200">
         <Sidebar />
-        <div className="w-full p-6 h-screen transition-all">
-          <AdminRevenue/>
+       <div className="w-full py-20 h-screen transition-all">
+          <AdminRevenue />
         </div>
       </div>
     </Layout>
