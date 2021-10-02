@@ -8,8 +8,8 @@ import { FaBook, FaStar, FaUsers } from 'react-icons/fa'
 const FeaturedTeacher = () => {
     return (
         <section className="FeaturedTeacher">
-            <h4>WORLD-CLASS INSTRUCTORS</h4>
-            <h2>Classes Taught By Real Creators</h2>
+            <h4>WORLD-className INSTRUCTORS</h4>
+            <h2>classNamees Taught By Real Creators</h2>
             <div className="container sm:grid  grid-cols-4 gap-8">
 
                 <div className="FeaturedTeacher__card">

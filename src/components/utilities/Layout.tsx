@@ -19,7 +19,6 @@ export default function Layout({ title, keywords, description, children }:ILayou
         <meta name='keywords' content={keywords} />
       </Head>
       <Header/>
-      {children}
       <Footer/>
     </>
   )
