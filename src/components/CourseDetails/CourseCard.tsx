@@ -36,8 +36,8 @@ const courseCard = () => {
                     </div>
                 </div>
 
-                <button> Get Membership  </button><br />
-                <button> Enroll Now  </button>
+                <button className="member_ship"> Get Membership  </button><br />
+                <button className="enroll_now"> Enroll Now  </button>
 
             </div>
         </div>
