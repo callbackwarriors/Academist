@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { AiOutlineFundProjectionScreen, AiOutlineUserAdd } from 'react-icons/ai';
 import { BiImageAdd } from 'react-icons/bi';
 import { BsBook, BsFillInboxesFill } from 'react-icons/bs';
+import {GoReport} from 'react-icons/go';
 import { FaDiscourse } from 'react-icons/fa';
 import { GiTeacher } from 'react-icons/gi';
 import { Navigation } from 'react-minimal-side-navigation';
@@ -99,7 +100,22 @@ const Sidebar = () => {
                   },
                 ],
               },
-          
+              {
+                title:'Report',
+                itemId:'',
+                elemBefore: () => <GoReport name="inbox" />,
+                subNav:[
+                  {
+                    title:'Admin Revenue',
+                    itemId:'/dashboard/report/admin-revenue'
+                  },
+                  {
+                    title:'Instructor Revenue',
+                    itemId:'/dashboard/report/instructor-revenue'
+                  }
+                ]
+              }
+              
             ]}
           />
 
