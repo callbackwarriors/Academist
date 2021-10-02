@@ -15,7 +15,7 @@ const Sidebar = () => {
         <>
         <React.Fragment>
  
-       <nav className="w-1/4 bg-white m-5 origin-bottom-left">
+       <nav className="bg-white m-5 origin-bottom-left">
            <Navigation
             // you can use your own router's api to get pathname
             activeItemId={router.pathname}
@@ -118,6 +118,42 @@ const Sidebar = () => {
               
             ]}
           />
+
+
+<Navigation
+            // you can use your own router's api to get pathname
+            activeItemId={router.pathname}
+            onSelect={({itemId}) => {
+              router.push({pathname:itemId})
+              // maybe push to the route
+            }}
+
+            
+            
+            items={[
+         
+              {
+                title: 'Admins',
+                itemId: '',
+                elemBefore: () => <FaDiscourse name="courses" />,
+                subNav: [
+                  {
+                    title: 'Admin Manage',
+                    itemId: '/dashboard/admin/manageadmin',
+                    elemBefore: () => <AiOutlineFundProjectionScreen name="project" />,
+                  },
+                  {
+                    title: 'Add Admin',
+                    itemId: '/dashboard/admin/addadmin',
+                    elemBefore: () => <BiImageAdd name="teacher" />,
+                  }
+                ],
+              },
+          
+            ]}
+          />
+
+
            </nav>
       
 =
