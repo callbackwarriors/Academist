@@ -1,0 +1,37 @@
+.cart-head{
+    @apply px-24 py-20 bg-gray-200
+}
+
+.cart-content{
+    @apply w-auto justify-between flex;
+    &__item{
+        .cart-course-list{
+            @apply w-auto;
+            li{
+                @apply mt-7;
+                .course-image{
+                    img{
+                        height: 120px;
+                        width: 120px;
+                        @apply rounded-md;
+                    }
+                }
+                .CourseName-instructor{
+                    @apply ml-6;
+                    h5{
+                        @apply mb-6;
+                    }
+                    img{
+                        @apply rounded-md;
+                    }
+                    span{
+                        @apply ml-1 py-2;
+                    }
+                }
+            }
+        }
+    }
+    &__checkout{
+
+    }
+}

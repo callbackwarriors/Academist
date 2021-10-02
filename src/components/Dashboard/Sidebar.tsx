@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { AiOutlineFundProjectionScreen, AiOutlineUserAdd } from 'react-icons/ai';
 import { BiImageAdd } from 'react-icons/bi';
 import { BsBook, BsFillInboxesFill } from 'react-icons/bs';
+import {GoReport} from 'react-icons/go';
 import { FaDiscourse } from 'react-icons/fa';
 import { GiTeacher } from 'react-icons/gi';
 import { Navigation } from 'react-minimal-side-navigation';
@@ -14,7 +15,7 @@ const Sidebar = () => {
         <>
         <React.Fragment>
  
-       <nav className="w-1/4 bg-white m-5 origin-bottom-left">
+       <nav className="bg-white m-5 origin-bottom-left">
            <Navigation
             // you can use your own router's api to get pathname
             activeItemId={router.pathname}
@@ -99,9 +100,60 @@ const Sidebar = () => {
                   },
                 ],
               },
+              {
+                title:'Report',
+                itemId:'',
+                elemBefore: () => <GoReport name="inbox" />,
+                subNav:[
+                  {
+                    title:'Admin Revenue',
+                    itemId:'/dashboard/report/admin-revenue'
+                  },
+                  {
+                    title:'Instructor Revenue',
+                    itemId:'/dashboard/report/instructor-revenue'
+                  }
+                ]
+              }
+              
+            ]}
+          />
+
+
+<Navigation
+            // you can use your own router's api to get pathname
+            activeItemId={router.pathname}
+            onSelect={({itemId}) => {
+              router.push({pathname:itemId})
+              // maybe push to the route
+            }}
+
+            
+            
+            items={[
+         
+              {
+                title: 'Admins',
+                itemId: '',
+                elemBefore: () => <FaDiscourse name="courses" />,
+                subNav: [
+                  {
+                    title: 'Admin Manage',
+                    itemId: '/dashboard/admin/manageadmin',
+                    elemBefore: () => <AiOutlineFundProjectionScreen name="project" />,
+                  },
+                  {
+                    title: 'Add Admin',
+                    itemId: '/dashboard/admin/addadmin',
+                    elemBefore: () => <BiImageAdd name="teacher" />,
+                  }
+                ],
+              },
           
             ]}
           />
+
+
            </nav>
       
 =
