@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Footer from './Footer'
 import Header from './Header'
 
 interface ILayout {
@@ -19,6 +20,7 @@ export default function Layout({ title, keywords, description, children }:ILayou
       </Head>
       <Header/>
       {children}
+      <Footer/>
     </>
   )
 }
