@@ -85,12 +85,12 @@ const Sidebar = () => {
                   },
                   {
                     title: 'Add New Course',
-                    itemId: '',
+                    itemId: '/dashboard/courses/addNewCourse',
                     elemBefore: () => <BiImageAdd name="teacher" />,
                   },
                   {
                     title: 'Course Catagory',
-                    itemId: '',
+                    itemId: '/dashboard/courses/courseCategory',
                     elemBefore: () => <BsBook name="book" />,
                   },
                   {
