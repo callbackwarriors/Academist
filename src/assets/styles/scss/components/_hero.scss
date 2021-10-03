@@ -26,8 +26,9 @@
         content: "";
         position: absolute;
         background: url(../../../images/dots-pattern.svg) no-repeat;
-        height: 250px;
-        width: 110px;
+        height: 150px;
+        width: 60px;
+        background-size: contain;
     }
 
     &:before {

@@ -20,7 +20,7 @@ const Hero = () => {
             Pick from over <strong>100,000</strong> online video courses with
             new additions published every month.
           </p>
-          <div className="flex shadow justify-center flex-row w-full">
+          <div className="flex justify-center flex-row w-full">
             <div className="flex w-full sm:flex-row flex-col mx-auto px-8 sm:px-0 items-end">
               <div className="relative flex-grow w-full lg:mb-0 sm:mb-0  mb-3">
                 <input
