@@ -1,6 +1,8 @@
 import Logo from "assets/images/academist-logo.svg";
 import Image from "next/image";
 import Link from "next/link";
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import Usermenu from './Usermenu';
 const Header = () => {
   return (
       <header className="text-gray-600 body-font">
@@ -26,6 +28,14 @@ const Header = () => {
               </Link>          
             </nav>
 
+           
+            <span className="relative inline-block mr-6">
+ 
+  <span className="cart__ico text-xl"><AiOutlineShoppingCart /></span>
+  <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-royal-blue rounded-full">1</span>
+</span>
+
+
           <Link href="/login">
             <a>
               <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
@@ -33,6 +43,7 @@ const Header = () => {
               </button>
             </a>
           </Link>
+          <Usermenu/>
         </div>
       </header>
   );
