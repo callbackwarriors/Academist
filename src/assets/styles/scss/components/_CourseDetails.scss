@@ -99,6 +99,7 @@
             .courseCard{
                 background-color: #fff;
                 border-radius: 6px;
+                padding-bottom: 48px;
                p{
                    color: #000;
                    margin-bottom: 2px;
@@ -142,6 +143,28 @@
                         color: #fff;
                     }
                 }
+               }
+               .member_ship{
+                background-color: #0dad28;
+                margin: 0 auto;
+                display: block;
+                width: 80%;
+                padding: 10px 10px;
+                color: #fff;
+                font-weight: 700;
+                border-radius: 5px;
+                margin-top: 13px;
+               }
+               .enroll_now{
+                background-color: #f16126;
+                margin: 0 auto;
+                display: block;
+                width: 80%;
+                padding: 10px 10px;
+                color: #fff;
+                font-weight: 700;
+                border-radius: 5px;
+                margin-top: 13px;
                }
             }
         }

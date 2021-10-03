@@ -63,7 +63,6 @@ const LatestCourses = () => {
           <p className="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
         </div>
       </div>
-
       <div className="xl:w-1/3 md:w-1/2 p-4 transition duration-100 ease-in-out transform hover:scale-105">
         <div className="bg-gray-100 p-6 rounded-lg">
         <div className="relative">

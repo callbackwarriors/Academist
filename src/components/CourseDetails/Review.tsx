@@ -1,8 +1,8 @@
-import React from 'react';
+import c2 from 'assets/images/c2.jpg';
 import Image from 'next/image';
-import c2 from 'assets/images/c2.jpg'
-import { BiLike, BiDislike } from 'react-icons/bi';
-import { FaStar, FaRegStar } from 'react-icons/fa';
+import React from 'react';
+import { BiDislike, BiLike } from 'react-icons/bi';
+import { FaRegStar, FaStar } from 'react-icons/fa';
 import { Progress } from 'react-sweet-progress';
 
 const Review = () => {

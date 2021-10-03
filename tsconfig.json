@@ -13,8 +13,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    // "noImplicitAny": false,
     "baseUrl": "./src",
+    "typeRoots": [
+      "../node_modules/@types",
+      "@types"
+    ]
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "custom.d.ts", "src/**/*.ts", "src/**/*.tsx", "src/components/utilities/Title.js", "src/components/CourseDetails", "src/components/utilities/Usermenu.jsx"]
+  "include": ["next-env.d.ts", "custom.d.ts", "src/**/*.ts", "src/**/*.tsx", "src/components/utilities/Title.js", "src/components/CourseDetails", "src/components/Home/Hero.js", "src/components/utilities/Modal.js"]
 }

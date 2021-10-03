@@ -8,7 +8,9 @@ const AllCourses = () => {
         <div className="sectionAllCourses">
             <Header/>
             <div className="allCourses bg-gray-300">
-            <h2 className="py-12 bg-white"> Find Your Course</h2>
+                
+                <h2 className="py-12 bg-white"> Find Your Course</h2>
+                
             <div className="container flex py-16">
            
             <div className="allCourses__page-sidebar w-1/3  pb-10 ">
