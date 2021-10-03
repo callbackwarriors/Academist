@@ -1,10 +1,13 @@
 import Image from "next/image";
-import React from 'react';
+import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
+import { Modal } from "react-responsive-modal";
+import "react-responsive-modal/styles.css";
 import HeroBg from "../../assets/images/hero.jpg";
-
 const Hero = () => {
-
+  const [open, setOpen] = useState(false);
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
   return (
     <section className="hero relative">
       <div className="container flex flex-col items-center  md:flex-row ">
@@ -38,7 +41,11 @@ const Hero = () => {
             className="object-cover object-center rounded-lg"
             src={HeroBg}
           />
-          
+<button onClick={onOpenModal}>Open modal</button>
+      <Modal open={open} onClose={onCloseModal} center>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ezbJwaLmOeM" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+
+      </Modal>
         </div>
       </div>
     </section>

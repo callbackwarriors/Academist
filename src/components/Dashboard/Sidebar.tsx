@@ -1,11 +1,11 @@
 import { useRouter } from 'next/dist/client/router';
-import React, { useState } from 'react';
+import React from 'react';
 import { AiOutlineFundProjectionScreen, AiOutlineUserAdd } from 'react-icons/ai';
 import { BiImageAdd } from 'react-icons/bi';
 import { BsBook, BsFillInboxesFill } from 'react-icons/bs';
-import {GoReport} from 'react-icons/go';
 import { FaDiscourse } from 'react-icons/fa';
 import { GiTeacher } from 'react-icons/gi';
+import { GoReport } from 'react-icons/go';
 import { Navigation } from 'react-minimal-side-navigation';
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 const Sidebar = () => {
