@@ -1,15 +1,11 @@
 import img from "assets/images/cycle.png";
 import Image from "next/image";
 import { useState } from "react";
-import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
-import { useRouter } from 'next/router'
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-  
-
   const [newUser, setNewUser] = useState(false);
-
   const [user, setUser] = useState({
     isLoggedIn: false,
     name: "",
@@ -57,7 +53,7 @@ const Login = () => {
                   </span>
                 </div>
 
-                <form action=""  >
+                <form >
                   {newUser && (
                     <div className="form-element">
                       <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
