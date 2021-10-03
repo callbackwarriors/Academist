@@ -22,7 +22,7 @@ const Testimonial = () => {
 
           <div className="flex flex-wrap -m-4">
             {
-              fakeData?.map((fd:ITestimonial)=> <TestimonialCart fd={fd} /> )
+              fakeData?.map((fd:ITestimonial)=> <TestimonialCart key={fd.id} fd={fd} /> )
            } 
             </div>
             </div>
