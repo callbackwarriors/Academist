@@ -1,0 +1,36 @@
+.manageCourse{
+    .box1{
+       [type="text"], select{
+            background-color: #fff;
+            padding: 10px 10px;
+            width: 189px;
+            margin-top: 10px;
+            border-radius: 3px;
+            color: #000;
+            border: 1px solid #0be94e;
+            font-weight: 600;
+        }
+        p{
+            color: #555;
+        }
+        button{
+            background-color: #21ca11;
+            color: #fff;
+            padding: 7px 0px;
+            font-size: 22px;
+            border-radius: 5px;
+            margin-top: 5px;
+            display: block;
+            width: 115px;
+        }
+    }
+    .courseTable{
+        table{
+            tr{
+                td{
+                    border: 2px solid #ddd;
+                }
+            }
+        }
+    }
+}
