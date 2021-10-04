@@ -1,21 +1,44 @@
 .hero{
     background: $light-color;
     @apply py-28;
+    &__content{
+        @extend .animate-left;
+    }
+&__video{
+        @extend .moveUpDown;
+
+    &:before {
+        width: 100%;
+        height: 100%;
+        content: "";
+        position: absolute;
+        border: 1px solid #B2ACF8;
+        border-radius: 5px;
+        right: -30px;
+        top: 30px;
+        box-shadow: 0 20px 30px #ccc;
+        @extend .moveUpDown;
+    }
+}
+
 
     &:before, &:after{
         content: "";
         position: absolute;
         background: url(../../../images/dots-pattern.svg) no-repeat;
-        height: 250px;
-        width: 110px;
+        height: 150px;
+        width: 60px;
+        background-size: contain;
     }
 
     &:before {
         top: 10%;
         right: 0;
+        @extend .animate-right;
     }
     &:after {
         bottom: 10%;
         left: 0;
+        @extend .animate-left;
     }
 }

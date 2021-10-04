@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import { AiOutlineFundProjectionScreen, AiOutlineUserAdd } from 'react-icons/ai';
 import { BiImageAdd } from 'react-icons/bi';
 import { BsBook, BsFillInboxesFill } from 'react-icons/bs';
-import {GoReport} from 'react-icons/go';
 import { FaDiscourse } from 'react-icons/fa';
-import { GiHamburgerMenu, GiTeacher } from 'react-icons/gi';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { GiTeacher } from 'react-icons/gi';
+import { GoReport } from 'react-icons/go';
 import { Navigation } from 'react-minimal-side-navigation';
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 import { IconBase } from 'react-icons/lib';
@@ -43,7 +44,6 @@ const Sidebar = () => {
             MANAGEMENT
           </span>
         </div>
-       {/* <nav className="bg-white m-5 origin-bottom-left"> */}
            <Navigation
             // you can use your own router's api to get pathname
             activeItemId={router.pathname}
@@ -113,12 +113,12 @@ const Sidebar = () => {
                   },
                   {
                     title: 'Add New Course',
-                    itemId: '',
+                    itemId: '/dashboard/courses/addNewCourse',
                     elemBefore: () => <BiImageAdd name="teacher" />,
                   },
                   {
                     title: 'Course Catagory',
-                    itemId: '',
+                    itemId: '/dashboard/courses/courseCategory',
                     elemBefore: () => <BsBook name="book" />,
                   },
                   {
@@ -182,8 +182,9 @@ const Sidebar = () => {
           />
 
 
-           {/* </nav> */}
+         
       
+
     </div>
     </React.Fragment>
          
