@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, AccordionItemPanel,
+    Accordion, AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel
 } from 'react-accessible-accordion';
 const Curriculam = () => {
     return (
@@ -10,16 +10,15 @@ const Curriculam = () => {
             <AccordionItem>
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                        What harsh truths do you prefer to ignore?
+                        Lesson 01
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                     <p>
-                        Exercitation in fugiat est ut ad ea cupidatat ut in
-                        cupidatat occaecat ut occaecat consequat est minim minim
-                        esse tempor laborum consequat esse adipisicing eu
-                        reprehenderit enim.
+                        Video one
                     </p>
+                    <p>Video two</p>
+                    <p>Video three</p>
                 </AccordionItemPanel>
             </AccordionItem>
 

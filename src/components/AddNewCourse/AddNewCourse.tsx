@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const AddNewCourse = () => {
     return (
         <div className="addNewCourse">
@@ -33,16 +32,10 @@ const AddNewCourse = () => {
 
                             <p>Price</p>
                             <input type="text" name="title" />
-
-                            <p>Seo Title</p>
-                            <input type="text" name="title" />
-
-                            <p>Seo Tags</p>
-                            <input type="text" name="title" />
-
+                            
                         </div>
 
-                        <div className="leftInput mt-5">
+                        <div className="mt-5 leftInput">
 
                             <select>
                                 <option value="">Course Provider</option>
