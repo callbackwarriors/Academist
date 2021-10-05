@@ -12,7 +12,6 @@ const LatestCourses = () => {
       const response = fetch('http://localhost:5000/api/courses')
       const data = await (await response).json()
       setCourses(data)
-
     }
     fetchCoursesData()
   }, [])

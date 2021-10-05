@@ -1,4 +1,5 @@
 import { AiFillEye, AiFillVideoCamera, AiOutlineHeart, AiOutlineStar } from 'react-icons/ai';
+import { Link } from 'theme-ui';
 import { ICourses } from 'type';
 
 interface IProp {
@@ -6,8 +7,9 @@ interface IProp {
 }
 
 const LatestCourse = ({ course }: IProp) => {
-    const { img, title, desc } = course;
-    console.log('course', course);
+    const { img, title, desc, _id } = course;
+    // console.log('course', course);
+    //`/booking/${_id}`
 
     return (
             <div className="p-4 transition duration-100 ease-in-out transform xl:w-1/3 md:w-1/2 hover:scale-105">
@@ -27,8 +29,9 @@ const LatestCourse = ({ course }: IProp) => {
                             <AiFillVideoCamera className="text-2xl text-green-400" /> 15
                         </div>
                     </div>
-                    <h4 className="mb-2 text-2xl">{title}</h4>
+                  <h4 className="mb-2 text-2xl">{title}</h4>
                     <p className="text-base leading-relaxed">{desc}</p>
+                    <Link  href={`/courses/${_id}`}> <button>Details</button></Link>
                 </div>
         </div>
     );
