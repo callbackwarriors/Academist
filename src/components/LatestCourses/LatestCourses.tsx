@@ -1,11 +1,10 @@
+import CourseDetails from 'components/CourseDetails/CourseDetails';
 import { useEffect, useState } from 'react';
-import { AiFillEye, AiFillVideoCamera, AiOutlineHeart, AiOutlineStar } from 'react-icons/ai';
 import Title from "../utilities/Title";
 import LatestCourse from './LatestCourse';
 
 const LatestCourses = () => {
   const [courses, setCourses] = useState([]);
-  // console.log(courses);
 
   useEffect(() => {
     async function fetchCoursesData() {
