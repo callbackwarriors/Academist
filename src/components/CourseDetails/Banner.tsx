@@ -7,7 +7,6 @@ interface IProp {
 }
 
 const Banner = ({ evt }: IProp) => {
-    console.log(evt);
     const { title, desc } = evt;
 
     return (
