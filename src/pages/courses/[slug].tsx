@@ -30,7 +30,7 @@ export async function getStaticPaths() {
         fallback: true,
     };
 }
-
+// 61597ca74d0c193bf4547ec4 || 61598005c48fd96b3616e539
 export async function getStaticProps({ params: { slug } }: any) {
     const res = await fetch(`http://localhost:5000/api/courses?slug=${slug}`);
     const events = await res.json();
