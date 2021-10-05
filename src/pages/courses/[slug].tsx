@@ -1,33 +1,33 @@
 import CourseDetails from "components/CourseDetails/CourseDetails";
 import Layout from "components/utilities/Layout";
-import type { NextPage } from 'next';
+import { API_URL } from "config";
 import { useRouter } from 'next/router'
-import { ICourses } from 'type';
+import { useEffect, useState } from "react";
 
-interface IProp {
-    course: ICourses;
-}
 
-const courseDetails: NextPage = ({ course }: IProp) =>{
+export default function courseDetails({ evt }: any) {
+    console.log('evt', evt);
+    
     const router = useRouter()
-    console.log(item)
+
     return (
         <Layout>
-         <CourseDetails></CourseDetails>
+            <CourseDetails evt={evt}></CourseDetails>
         </Layout>
     );
 };
 
-export default courseDetails;
 
+export async function getServerSideProps({ query: { slug } }: any) {
+    console.log(slug);
+    
+    const res = await fetch(`${API_URL}/courses?slug=${slug}`)
+    const courses = await res.json()
+console.log('courses', courses);
 
-export async function getServerSideProps({ query: { slug } }) {
-    const res = await fetch(`http://localhost:5000/api/courses/?slug=${slug}`)
-    const events = await res.json()
-  
     return {
-      props: {
-        item: courses[0],
-      },
+        props: {
+            evt: courses[0],
+        },
     }
-  }
+}
