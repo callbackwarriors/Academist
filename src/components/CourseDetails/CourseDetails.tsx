@@ -16,6 +16,8 @@ interface IProp {
 }
 
 const CourseDetails = ({ evt }: IProp) => {
+    console.log(evt);
+    
     return (
         <div className="CourseDetails">
             <div className="banner">
