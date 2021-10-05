@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.3.0",
     "@headlessui/react": "^1.4.1",
     "@heroicons/react": "^1.0.4",
+    "faker": "^5.5.3",
     "@types/react-modal": "^3.12.1",
     "axios": "^0.22.0",
     "dotenv": "^10.0.0",
