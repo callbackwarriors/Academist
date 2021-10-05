@@ -1,13 +1,13 @@
 import CourseDetails from "components/CourseDetails/CourseDetails";
 import Layout from "components/utilities/Layout";
 import { API_URL } from "config";
-import type { NextPage } from 'next';
 import { useRouter } from 'next/router'
 import { useEffect, useState } from "react";
 
+
 export default function courseDetails({ evt }: any) {
     console.log('evt', evt);
-    
+
     const router = useRouter()
 
     return (
@@ -21,9 +21,9 @@ export default function courseDetails({ evt }: any) {
 
 // export async function getStaticPaths() {
 //     const res = await fetch(`http://localhost:5000/api/courses`);
-//     const events = await res.json();
+//     const courses = await res.json();
 
-//     const paths = events.map((evt: any) => ({
+//     const paths = courses.map((evt: any) => ({
 //         params: { slug: evt._id },
 //     }));
 
@@ -35,11 +35,11 @@ export default function courseDetails({ evt }: any) {
 
 // export async function getStaticProps({ params: { slug } }: any) {
 //     const res = await fetch(`http://localhost:5000/api/courses?slug=${slug}`);
-//     const events = await res.json();
+//     const courses = await res.json();
 
 //     return {
 //         props: {
-//             evt: events[0],
+//             evt: courses[0],
 //         },
 //         revalidate: 1,
 //     };
@@ -47,12 +47,15 @@ export default function courseDetails({ evt }: any) {
 
 
 export async function getServerSideProps({ query: { slug } }: any) {
-    const res = await fetch(`http://localhost:5000/api/courses?slug=${slug}`)
-    const events = await res.json()
+    console.log(slug);
+
+    const res = await fetch(`${API_URL}/courses?slug=${slug}`)
+    const courses = await res.json()
+    console.log('courses', courses);
 
     return {
         props: {
-            evt: events[0],
+            evt: courses[0],
         },
     }
 }
