@@ -8,6 +8,7 @@ interface IProp {
 
 const LatestCourse = ({ course }: IProp) => {
     const { img, title, desc, _id } = course;
+    // console.log('course', course);
 
     return (
 

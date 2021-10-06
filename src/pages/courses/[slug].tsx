@@ -28,3 +28,28 @@ export  async function getServerSideProps({ query: { slug } }: any) {
         },
     }
 }
+
+// import { API_URL } from "config";
+// import { useRouter } from "next/router";
+// import { ICourses } from "type";
+
+
+// export default function Product() {
+// const data  = (`${API_URL}/courses`)
+// console.log(data);
+
+//   const router = useRouter();
+//   const { slug } = router.query;
+//   console.log(slug);
+  
+//   const product = data
+//   if (!product) {
+//     return <div>Product not found</div>;
+//   }
+//   return (
+//     <div>
+//       {/* <h1>{product.name}</h1> */}
+//     </div>
+//   );
+// }
+
