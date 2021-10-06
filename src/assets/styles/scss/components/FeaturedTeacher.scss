@@ -3,17 +3,15 @@
     background-color: #FFF9F1;
     @apply  py-16 text-center;
     .brown{
-        color: #f16126;
+        @apply text-royal-blue;
     }
     p{
         color: #555555;
     }
-    h2{
-        @apply pb-16 text-4xl;
-    }
+
     h4{
         @apply text-xl tracking-widest;
-        color: #f16126;
+        @apply text-royal-blue;
     }
     &__card{
         background-color: #fff;
@@ -38,7 +36,7 @@
         &--star{
             @apply flex justify-center;
            p{
-            color: #f16126;
+            @apply text-royal-blue;
             font-size: 24px;
            @apply my-5;
            }
@@ -51,13 +49,16 @@
             height: 50px;
         }
     }
+    &__card{
+        @apply p-5 mb-5;
+    }
 
     &__card:hover{
         transform: translateY(-8px);
     }
 
     &__card:hover h5{
-        color: #f16126;
+        @apply text-royal-blue;
     }
 
 }

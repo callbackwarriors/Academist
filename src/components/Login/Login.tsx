@@ -3,6 +3,28 @@ import Image from "next/image";
 import { useState } from "react";
 import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import {useRouter} from 'next/router'
+
+// export default function Login ({evt}:any){
+//    console.log('evt',evt);
+// }
+
+// const router =useRouter();
+
+
+// export async function getServerSideProps(){
+//   const res =await fetch(`localhost:5000/api/auth/register`)
+//   const events = await res.json()
+
+//  return {
+//   props:{
+//     evt:event [0]
+//   }
+// }
+
+// }
+
+
 
 const Login = () => {
   const [newUser, setNewUser] = useState(false);
