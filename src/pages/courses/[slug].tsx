@@ -1,8 +1,16 @@
 import CourseDetails from "components/CourseDetails/CourseDetails";
 import Layout from "components/utilities/Layout";
-import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
+import { ICourses } from 'type';
+import data from '../../utils/data';
+interface IProps {
+    course: ICourses,
+}
+const courseDetails = () =>{
+    const router = useRouter();
+    const {slug} = router.query;
+    const course = data.courses.find((a) => a.slug === slug);
 
-const courseDetails: NextPage = () =>{
     return (
         <Layout>
          <CourseDetails></CourseDetails>

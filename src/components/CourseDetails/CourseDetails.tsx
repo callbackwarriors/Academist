@@ -1,27 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
+
+   
+import React from 'react';
 import 'react-accessible-accordion/dist/fancy-example.css';
 import "react-sweet-progress/lib/style.css";
+import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 import Banner from './Banner';
-import Overview from './Overview';
+import CourseCard from './CourseCard';
 import Curriculam from './Curriculam';
 import Instructor from './Instructor';
+import Overview from './Overview';
 import Review from './Review';
-import CourseCard from './CourseCard';
-import { ICourses } from 'type';
 
-interface IProp {
-    evt: ICourses;
-}
 
-const CourseDetails = ({ evt }: IProp) => {
-    console.log(evt);
-    
+const CourseDetails = () => {
     return (
         <div className="CourseDetails">
             <div className="banner">
-                <Banner evt={evt}></Banner>
+                <Banner></Banner>
             </div>
             <div className="pt-5 body">
                 <div className="container grid grid-cols-3 ">
@@ -50,7 +46,7 @@ const CourseDetails = ({ evt }: IProp) => {
                         </Tabs>
                     </div>
                     <div className="rightSide">
-                        <CourseCard evt={evt}></CourseCard>
+                        <CourseCard></CourseCard>
                     </div>
                 </div>
             </div>

@@ -1,14 +1,9 @@
 import React from 'react';
 import { BiLike } from 'react-icons/bi';
-import { ICourses } from 'type';
-import Image from 'next/dist/client/image';
 
-interface IProp {
-    evt: ICourses;
-}
 
-const courseCard = ({ evt }: IProp) => {
-    const { price, img } = evt;
+const courseCard = () => {
+
     return (
         <div className="container">
             <div className="shadow-xl courseCard">
@@ -19,7 +14,7 @@ const courseCard = ({ evt }: IProp) => {
                 </div>
                 <div className="px-2 Bal">
                     <p className="pt-2" >Acctual Price</p>
-                    <h3>$ {price}</h3>
+                    <h3>$ 300</h3>
                     <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
                     <h6>Course Features</h6>
                 </div>

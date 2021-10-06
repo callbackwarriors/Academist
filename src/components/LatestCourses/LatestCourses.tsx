@@ -1,19 +1,18 @@
-import { useEffect, useState } from 'react';
+import data from '../../utils/data';
 import Title from "../utilities/Title";
 import LatestCourse from './LatestCourse';
-
 const LatestCourses = () => {
-  const [courses, setCourses] = useState([]);
+  // const [courses, setCourses] = useState([]);
 
-  useEffect(() => {
-    async function fetchCoursesData() {
-      const response = fetch('http://localhost:5000/api/courses')
-      const data = await (await response).json()
-      setCourses(data)
+  // useEffect(() => {
+  //   async function fetchCoursesData() {
+  //     const response = fetch('http://localhost:5000/api/courses')
+  //     const data = await (await response).json()
+  //     setCourses(data)
 
-    }
-    fetchCoursesData()
-  }, [])
+  //   }
+  //   fetchCoursesData()
+  // }, [])
 
   return (
     <section className="latest__courses section-padding">
@@ -21,7 +20,11 @@ const LatestCourses = () => {
         <Title subtitle="ROOF PARTY POLAROID" title="Master Cleanse Reliac Heirloom" description="Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table." />
       </div>
       <div className="container">
-        <div className="flex flex-wrap">{courses.map(course => (<LatestCourse course={course} ></LatestCourse>))}</div>
+        <div className="flex flex-wrap">
+          {data.courses.map((course) => (
+            <LatestCourse key={course.name} course={course}></LatestCourse>
+          ))}
+        </div>
       </div>
     </section>
   );
