@@ -1,15 +1,13 @@
 export interface ICourses {
-    _id: string;
     title: string;
+    _id: number;
+    slug: string;
     shortDesc: string;
-    category: [];
-    level: [];
+    categories: string;
+    level: string;
     price: number;
-    courseProvider: [];
+    courseProvider: number;
     videoUrl: string;
     img: string;
     desc: string;
-    createdAt: string;
-    updatedAt: string;
-    __v: number;
   }
