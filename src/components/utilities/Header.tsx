@@ -6,6 +6,7 @@ import { AiOutlineCloseSquare, AiOutlineShoppingCart } from 'react-icons/ai';
 import { FiMenu } from 'react-icons/fi';
 import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
+import MobileMenu from "./MobileMenu";
 import Usermenu from './Usermenu';
 
 const Header = () => {
@@ -28,27 +29,21 @@ const Header = () => {
             <FiMenu/>
           </button>
         <Drawer open={isOpen} onClose={toggleDrawer} direction='left'>
-          <div onClick={toggleDrawer} className="close p-3 text-royal-blue text-2xl text-right overflow-hidden">
+        <div onClick={toggleDrawer} className="close p-3 text-royal-blue text-2xl text-right overflow-hidden">
           <AiOutlineCloseSquare className="float-right"/>
           </div>
-            <div className="p-4">            <Link href="/">
-              <a className="text-xl">
-                <Image src={Logo} />
-              </a>
-            </Link></div>
+          <MobileMenu/>
+          
         </Drawer>
 
           <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center hidden lg:block">
-            <a className="mr-5 hover:text-gray-900">Course</a>
-            <a className="mr-5 hover:text-gray-900">Teachers</a>
-            <a className="mr-5 hover:text-gray-900">Offers</a>
-            <a className="mr-5 hover:text-gray-900">Review</a>
 
-            <Link href="/courseDetails"><a className="mr-5 hover:text-gray-900">Course Details</a></Link>
+            <Link href="/courses"><a className="mr-5 hover:text-gray-900">Courses</a></Link>
+            <Link href="/instractors"><a className="mr-5 hover:text-gray-900">Instractors</a></Link>
  
 
-              <Link href="/category">
-                  <a className="mr-5 hover:text-gray-900">Category</a>
+              <Link href="/categories">
+                  <a className="mr-5 hover:text-gray-900">Categories</a>
               </Link>          
             </nav>
 
