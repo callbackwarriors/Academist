@@ -1,11 +1,17 @@
 import React from 'react';
 import { FaBookOpen, FaPlay, FaRegStar, FaStar, FaUser } from 'react-icons/fa';
+import { ICourses } from 'type';
+interface IProps {
+    course: ICourses
+}
 
-const Banner = () => {
+const Banner = ({course}:IProps) => {
+
+    const { name, image, description, slug } = course;
 
     return (
         <div className="container">
-            <h3>Course name</h3>
+            <h3>{name}</h3>
             <div className="flex bannerDiv">
                 <div className="flex box ">
                     <h6 className="px-2"> <FaBookOpen /></h6>
@@ -23,7 +29,7 @@ const Banner = () => {
                 </div>
             </div>
 
-            <p className="pText">Course description</p>
+            <p className="pText">{course.description}</p>
 
             <div className="flex box2 ">
                 <h6 className="px-2"> <FaStar /></h6>
