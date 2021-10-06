@@ -1,6 +1,6 @@
 .hero{
     background: $light-color;
-    @apply py-28;
+    @apply py-28 md:py-20 sm:py-20;
     &__content{
         @extend .animate-left;
     }
