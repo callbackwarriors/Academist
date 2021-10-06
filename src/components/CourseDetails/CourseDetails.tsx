@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import 'react-accessible-accordion/dist/fancy-example.css';
@@ -9,16 +9,23 @@ import Curriculam from './Curriculam';
 import Instructor from './Instructor';
 import Review from './Review';
 import CourseCard from './CourseCard';
+import { ICourses } from 'type';
 
-const CourseDetails = () => {
+interface IProp {
+    evt: ICourses;
+}
+
+const CourseDetails = ({ evt }: IProp) => {
+    console.log(evt);
+    
     return (
         <div className="CourseDetails">
             <div className="banner">
-                <Banner></Banner>
+                <Banner evt={evt}></Banner>
             </div>
-            <div className="body pt-5">
+            <div className="pt-5 body">
                 <div className="container grid grid-cols-3 ">
-                    <div className="leftSide col-span-2">
+                    <div className="col-span-2 leftSide">
                         <Tabs>
                             <TabList>
                                 <Tab>Overview</Tab>
@@ -43,7 +50,7 @@ const CourseDetails = () => {
                         </Tabs>
                     </div>
                     <div className="rightSide">
-                      <CourseCard></CourseCard>
+                        <CourseCard evt={evt}></CourseCard>
                     </div>
                 </div>
             </div>
