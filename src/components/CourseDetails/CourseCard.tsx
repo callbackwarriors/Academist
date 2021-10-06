@@ -1,9 +1,12 @@
 import axios from "axios";
+import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 import { AiOutlinePlayCircle } from "react-icons/ai";
 import { BiLike } from "react-icons/bi";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { ICourses } from "type";
 import { Store } from "../../utils/Store";
 interface IProps {
@@ -11,21 +14,26 @@ interface IProps {
 }
 
 const courseCard = ({course}:IProps) => {
+  const router = useRouter()
   const [open, setOpen] = useState(false);
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
   const { price,img,_id } = course;
   const {dispatch} = useContext(Store)
   
+  
   const enrollCourseHandler = async () => {
     const {data} = await axios.get(`/api/courses/${_id}`);
     dispatch({type: 'ENROLL_ADD_ITEM', payload: {...course, quantity: 1}})
+    
+    router.push('/cart')
+    toast.success('Course added to cart.')
   }
 
 
   return (
     <div className="container">
-
+      <ToastContainer />
       <div className="shadow-xl courseCard">
         <div
           className="imgCard relative"

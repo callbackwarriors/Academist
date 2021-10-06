@@ -47,6 +47,10 @@ const Header = () => {
         </Drawer>
 
         <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center hidden lg:block">
+        <Link href="/">
+            <a className="mr-5 hover:text-gray-900">Home</a>
+          </Link>
+
           <Link href="/courses">
             <a className="mr-5 hover:text-gray-900">Courses</a>
           </Link>
