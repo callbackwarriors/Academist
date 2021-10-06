@@ -1,5 +1,6 @@
 export interface ICourses {
     title: string;
+    _id: number;
     slug: string;
     shortDesc: string;
     categories: string;

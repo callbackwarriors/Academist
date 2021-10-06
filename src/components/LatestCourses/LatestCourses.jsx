@@ -12,7 +12,7 @@ const LatestCourses = ({courses}) => {
       <div className="container">
         <div className="flex flex-wrap">
           {courses.map((course) => (
-            <LatestCourse key={course.name} course={course}></LatestCourse>
+            <LatestCourse key={course.title} course={course}></LatestCourse>
           ))}
         </div>
       </div>

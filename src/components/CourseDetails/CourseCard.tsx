@@ -5,7 +5,7 @@ import { BiLike } from "react-icons/bi";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import { ICourses } from "type";
-import { Store } from "utils/Store";
+import { Store } from "../../utils/Store";
 interface IProps {
   course: ICourses;
 }
@@ -14,16 +14,18 @@ const courseCard = ({course}:IProps) => {
   const [open, setOpen] = useState(false);
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
-  const { price,img } = course;
-
+  const { price,img,_id } = course;
+  const {dispatch} = useContext(Store)
+  
   const enrollCourseHandler = async () => {
-    const {state, dispatch} = useContext(Store)
-    const data = await axios.get(`/api/courses/${_id}`);
+    const {data} = await axios.get(`/api/courses/${_id}`);
     dispatch({type: 'ENROLL_ADD_ITEM', payload: {...course, quantity: 1}})
   }
 
+
   return (
     <div className="container">
+
       <div className="shadow-xl courseCard">
         <div
           className="imgCard relative"
