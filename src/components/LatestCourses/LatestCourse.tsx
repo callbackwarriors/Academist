@@ -7,7 +7,7 @@ interface IProp {
 }
 
 const LatestCourse = ({ course }: IProp) => {
-    const { name, image, description, slug } = course;
+    const { title, img, desc, slug } = course;
 
     return (
 
@@ -17,7 +17,7 @@ const LatestCourse = ({ course }: IProp) => {
                 <a>
                     <div className="p-6 bg-gray-100 rounded-lg">
                         <div className="relative">
-                            <img className="object-cover object-center w-full h-40 mb-6 rounded" src={image} alt="" />
+                            <img className="object-cover object-center w-full h-40 mb-6 rounded" src={img} alt="" />
                             <AiOutlineHeart className="absolute text-2xl top-3 right-3" />
                         </div>
                         <div className="flex justify-between gap-3 pb-3 mb-3 border-b border-gray-300">
@@ -31,8 +31,8 @@ const LatestCourse = ({ course }: IProp) => {
                                 <AiFillVideoCamera className="text-2xl text-green-400" /> 15
                             </div>
                         </div>
-                        <h4 className="mb-2 text-2xl">{name}</h4>
-                        <p className="text-base leading-relaxed">{description}</p>
+                        <h4 className="mb-2 text-2xl">{title}</h4>
+                        <p className="text-base leading-relaxed">{desc}</p>
                     </div>
                 </a>
             </Link>

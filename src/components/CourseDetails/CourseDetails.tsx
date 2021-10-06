@@ -12,7 +12,6 @@ import Curriculam from './Curriculam';
 import Instructor from './Instructor';
 import Overview from './Overview';
 import Review from './Review';
-
 interface IProps {
     course: ICourses
 }
@@ -20,7 +19,7 @@ interface IProps {
 const CourseDetails = ({course}:IProps) => {
     return (
         <div className="CourseDetails">
-            <div className="banner" style={{ backgroundImage: `linear-gradient(rgb(91 79 238), rgb(91 79 238 / 47%)), url(${course.image})` }}>
+            <div className="banner" style={{ backgroundImage: `linear-gradient(rgb(91 79 238), rgb(91 79 238 / 47%)), url(${course.img})` }}>
                 <Banner course={course}></Banner>
             </div>
             <div className="pt-5 body">
