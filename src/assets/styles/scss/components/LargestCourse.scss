@@ -1,5 +1,5 @@
 .largestCourse{
-    @apply py-20 ;
+    @apply py-20;
     h4{ @apply text-center ;  color: #f16126;}
     h3{ @apply text-center text-4xl mb-10;}
 
@@ -11,17 +11,15 @@
 
         &--TextSection{
             h5{
-                color: #f16126;
-                @apply ml-5 mt-5;
+                @apply ml-5 mt-5 text-royal-blue;
                
             }
-            h6:hover{ color: #f16126;}
+            h6:hover{ @apply text-royal-blue}
             h6{ @apply ml-5;}
              
             .leftSide{
                 h6{
-                    color:#f16126;
-                    @apply mt-1 ml-5;
+                    @apply mt-1 ml-5 text-royal-blue;
                  }
                  p{
                     color:#555555;
@@ -31,9 +29,10 @@
         }
         &--imgSection{
             img{
-                height: 189px;
-                width: 280px;
-                border-radius: 50%;
+                height: 150px!important;
+                width: 150px!important;
+                border-radius: 100%;
+                object-fit: cover;
                 transition-duration: 0.3s;
                 transition-timing-function: ease-in-out;
                  
@@ -44,11 +43,11 @@
     }
 
     &__detailsButton{
-        background-color: #f16126;
+        @apply bg-royal-blue py-3 px-8;
         display: block;
         text-align: center;
         margin: 0 auto;
-        padding: 10px 10px;
+     
         color: #fff;
         font-weight: 600;
         margin-top: 40px;
@@ -58,10 +57,14 @@
     &__detailsButton:hover{
         background-color: #000;
     }
+    &__cardSection{
+        @apply shadow rounded transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105;
+
+    }
     &__cardSection:hover{
         @apply shadow-lg rounded;
     }
-    &__cardSection:hover img {
-        border-radius: 5px;
-    }
+
+
+
 }
