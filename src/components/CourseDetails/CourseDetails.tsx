@@ -50,7 +50,7 @@ const CourseDetails = ({course}:IProps) => {
                         </Tabs>
                     </div>
                     <div className="rightSide">
-                        <CourseCard></CourseCard>
+                        <CourseCard course={course}></CourseCard>
                     </div>
                 </div>
             </div>

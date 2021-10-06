@@ -1,20 +1,46 @@
-import React from 'react';
+
+import React, { useState } from "react";
+import { AiOutlinePlayCircle } from "react-icons/ai";
 import { BiLike } from 'react-icons/bi';
+import { Modal } from "react-responsive-modal";
+import "react-responsive-modal/styles.css";
+import { ICourses } from 'type';
+interface IProps {
+    course: ICourses
+}
 
+const courseCard = ({course}:IProps) => {
 
-const courseCard = () => {
+    const [open, setOpen] = useState(false);
+    const onOpenModal = () => setOpen(true);
+    const onCloseModal = () => setOpen(false);
+
+    
+
+    const {image, price} = course;
 
     return (
+
+       
         <div className="container">
             <div className="shadow-xl courseCard">
-                <div className="imgCard">
-                    <div className="overley">
-                        {/* <Image src={img} alt="this is image" width="350px" height="330px" /> */}
-                    </div>
+                <div className="imgCard relative"  style={{ backgroundImage: `inear-gradient(rgb(0 0 0), rgb(91 79 238 / 0%)), url(${image})` }}>
+    
+
+                <button className="text-5xl hover:text-royal-blue text-black-squeeze transition duration-500 ease-in-out  transform hover:-translate-y-1 hover:scale-110 absolute left-5 top-5" onClick={onOpenModal}>
+  <AiOutlinePlayCircle/>
+</button>
+
+
                 </div>
+
+    <Modal open={open} onClose={onCloseModal} center>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ezbJwaLmOeM" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      </Modal>
+
                 <div className="px-2 Bal">
                     <p className="pt-2" >Acctual Price</p>
-                    <h3>$ 300</h3>
+                    <h3>$ {price}</h3>
                     <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
                     <h6>Course Features</h6>
                 </div>
