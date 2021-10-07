@@ -14,7 +14,7 @@ const HomePage = (props) => {
       <Hero/>
       <LatestCourses courses={courses}/>
       <Testimonial />
-      <FeaturedTeacher></FeaturedTeacher>
+      <FeaturedTeacher />
       <LargestCourse/>
       <Partner/>
     </Layout>

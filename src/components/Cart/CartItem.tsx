@@ -1,38 +1,50 @@
-import Image from 'next/image';
+import Image from "next/image";
+import Link from "next/link";
 import { BsFillXSquareFill } from "react-icons/bs";
-import { ICourses } from 'type';
+import { ICourses } from "type";
 interface IProp {
-    item: ICourses;
+  item: ICourses;
 }
-
 
 function CartItem({ item }: IProp) {
-    const {title, img, desc, courseProvider} = item;
-    return (
-        <li className="border border-gray-00 flex p-5">
-    <div className="flex">
-    <div className="course-image ">
-
-        <Image width="100px" height="100px" className="object-cover" src={img} alt=""/>
-    </div>
-    <div className="CourseName-instructor">
-    <h5>{title}</h5>
-    <picture className="flex">
-        <img src="http://skilify.theuxuidesigner.com/images/webp/profile-img4.webp"/>
-        <span>{courseProvider}</span>
-    </picture>
-    </div>
-    </div>
-    <div className="price my-5 mx-5">
-        <span className="mb-2 text-2xl font-semibold">$125</span><br/>
-        <del className="text-xl text-gray-500">$225</del>
-    </div>
-    <button className="text-royal-blue text-2xl">
-        <BsFillXSquareFill/>
-    </button>
-
-</li>
-    )
+  const { title, img, price, slug, desc, courseProvider } = item;
+  return (
+    <li className="border border-gray-00 flex p-5 mb-3 justify-between gap-6">
+      <div className="flex gap-4">
+        <div className="course-image ">
+          <Link href={`/courses/${slug}`}>
+            <a>
+              <Image
+                width="100"
+                height="100"
+                className="object-cover"
+                src={img}
+                alt=""
+              />
+            </a>
+          </Link>
+        </div>
+        <div className="CourseName-instructor">
+        <Link href={`/courses/${slug}`}>
+            <a className="hover:underline hover:text-royal-blue">
+            <h5>{title}</h5>
+            </a>
+          </Link>
+          
+          <picture className="flex">
+            <img src="http://skilify.theuxuidesigner.com/images/webp/profile-img4.webp" />
+            <span>{courseProvider}</span>
+          </picture>
+        </div>
+      </div>
+      <div className="price">
+        <span className="mb-2 text-2xl font-semibold">${price}</span>
+      </div>
+      <button className="text-royal-blue text-2xl flex">
+        <BsFillXSquareFill />
+      </button>
+    </li>
+  );
 }
 
-export default CartItem
+export default CartItem;
