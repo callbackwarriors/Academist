@@ -1,30 +1,45 @@
 import CourseDetails from "components/CourseDetails/CourseDetails";
 import Layout from "components/utilities/Layout";
-import { API_URL } from "config";
+import { ICourses } from "type";
+import Courses from '../../models/Courses';
+import db from '../../utils/db';
 
-export default function courseDetails({ evt }: any) {
+interface IProps {
+  course: ICourses;
+}
+
+
+const courseDetails = (props: IProps) =>{
+
+    const { course } = props;
+    if(!course) {
+        return <Layout>
+         <div className="container py-20 text-center">
+         Loading...
+         </div>
+       </Layout>
+    }
 
     return (
-        <Layout>
-            <CourseDetails evt={evt}></CourseDetails>
+        <Layout title={course.title}>
+         <CourseDetails course={course}></CourseDetails>
         </Layout>
     );
-}
+};
 
-export  async function getServerSideProps({ query: { slug } }: any) {
-    console.log(slug);
-    console.log(`${API_URL}/courses?slug=${slug}`);
-    
-    
-    const res = await fetch(`${API_URL}/courses?slug=${slug}`)
+export default courseDetails;
 
-    
-    const courses = await res.json()
-    console.log('courses', courses);
 
+
+export async function getServerSideProps(context: { params: any; }) {
+    const {params} = context;
+    const {slug} = params;
+    await db.connect();
+    const course = await Courses.findOne({slug}).lean();
+    await db.disconnect();
     return {
-        props: {
-            evt: courses[0],
-        },
-    }
-}
+      props: {
+        course: db.convertDocToObj(course),
+      },
+    };
+  }

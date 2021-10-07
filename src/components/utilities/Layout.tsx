@@ -1,7 +1,7 @@
-import Head from 'next/head'
-import React from 'react'
-import Footer from './Footer'
-import Header from './Header'
+import Head from 'next/head';
+import React from 'react';
+import Footer from './Footer';
+import Header from './Header';
 
 interface ILayout {
   title: string;
@@ -11,7 +11,6 @@ interface ILayout {
 }
 
 export default function Layout({ title, keywords, description, children }:ILayout) {
-
   return (
     <>
       <Head>
@@ -19,8 +18,6 @@ export default function Layout({ title, keywords, description, children }:ILayou
         <meta name='description' content={description} />
         <meta name='keywords' content={keywords} />
       </Head>
-
-
 
       <Header/>
       {children}
