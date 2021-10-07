@@ -3,12 +3,13 @@
 }
 
 .cart-content{
-    @apply w-auto justify-between flex;
+    @apply flex flex-col md:flex-row gap-5;
     &__item{
+        @apply flex flex-col items-start lg:flex-grow md:w-1/2;
         .cart-course-list{
             @apply w-auto;
             li{
-                @apply mt-7;
+   
                 .course-image{
                     img{
                         height: 120px;
@@ -30,8 +31,5 @@
                 }
             }
         }
-    }
-    &__checkout{
-
     }
 }

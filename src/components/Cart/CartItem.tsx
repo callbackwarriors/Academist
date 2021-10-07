@@ -12,7 +12,7 @@ function CartItem({ item }: IProp) {
     return (
         <Link href={`/courses/${slug}`}>
             <a>
-        <li className="border border-gray-00 flex p-5">
+        <li className="border border-gray-00 flex p-5 mb-3">
     <div className="flex">
     <div className="course-image ">
         <Image width="100px" height="100px" className="object-cover" src={img} alt=""/>

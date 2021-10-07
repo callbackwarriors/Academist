@@ -20,7 +20,7 @@ const AddCart = () => {
                 <h2> Your Shopping Cart</h2>    
                 </div>      
             </div>
-            <div className="cart-content container mb-24">
+            <div className="cart-content container section-padding">
                 <div className="cart-content__item">
                    <ul className="cart-course-list">
 
@@ -34,15 +34,17 @@ const AddCart = () => {
 
                    </ul>
                 </div>
-                <div className="card-content__checkout  bg-royal-blue-200 w-1/4 py-10 px-5 mt-8 h-72">
-                    <h5>Total Price </h5>
-                    <div className="flex justify-between">
-                    <span className="mb-2 text-2xl font-semibold">$125</span>
-                    <span className="text-xl text-gray-500"> 50% off $225</span>
+                <div className="card-content__checkout w-1/4 ">
+                    <div className="bg-royal-blue-200  p-5">
+                <div className="flex gap-3 ">
+
+                    <h6 className="text-lg">Total ({cartItems.reduce((a: any, c: { quantity: any; }) => a + c.quantity, 0)}{' '}items):</h6> <span className="mb-2 text-2xl font-semibold"><sup>$</sup>
+                    {cartItems.reduce((a: number, c: { quantity: number; price: number; }) => a + c.quantity * c.price, 0)}</span>
+
                     </div>
-                    <input className="w-full mt-4 mb-4 h-10 rounded-sm p-2" placeholder="Add Your Coupon"/>
+                    {/* <input className="w-full mt-4 mb-4 h-10 rounded-sm p-2" placeholder="Add Your Coupon"/> */}
                     <button className="bg-royal-blue hover:bg-royal-blue-800 text-white w-full h-10 text-xl font-semibold rounded-sm">Check out</button>
-                    
+                    </div>
                 </div>
             </div>
 
