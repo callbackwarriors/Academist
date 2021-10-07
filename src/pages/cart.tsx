@@ -34,9 +34,9 @@ const AddCart = () => {
 
                    </ul>
                 </div>
-                <div className="card-content__checkout w-1/4 ">
+                <div className="card-content__checkout lg:w-1/4 ">
                     <div className="bg-royal-blue-200  p-5">
-                <div className="flex gap-3 ">
+                <div className="flex gap-3">
 
                     <h6 className="text-lg">Total ({cartItems.reduce((a: any, c: { quantity: any; }) => a + c.quantity, 0)}{' '}items):</h6> <span className="mb-2 text-2xl font-semibold"><sup>$</sup>
                     {cartItems.reduce((a: number, c: { quantity: number; price: number; }) => a + c.quantity * c.price, 0)}</span>
