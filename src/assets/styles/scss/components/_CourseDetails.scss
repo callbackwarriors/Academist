@@ -2,7 +2,6 @@
    p,h3, h6{color: #fff;}
    h3{@apply pt-20;}
     .banner{
-        background:linear-gradient(rgba(8, 57, 77, 0.7), rgba(3, 90, 105, 0.787)), url(../../../images/cb.jpg) ;
         height: 330px;
         width: 100%;
         background-size: cover;
@@ -17,8 +16,8 @@
         .box2{
             @apply pt-5;
             h6{
-                color: #f16126;
-               
+
+                @apply text-yellow-600;
             }
         }
 
@@ -41,11 +40,12 @@
                 list-style: none;
                 padding: 6px 12px;
                 cursor: pointer;
-                border: 1px solid #f16126;
+                border: 1px solid;
+                @apply border-royal-blue hover:border-aquamarine-800 bg-royal-blue hover:bg-aquamarine-800;
                 color: #fff;
-                background: #f16126;
                 margin: 8px 4px;
                 border-radius: 5px;
+
             }
             .tab1{
                 background-color: #fff;
@@ -66,7 +66,8 @@
                    height: 50px;
                    padding: 0px 10px;
                    border-radius: 4px;
-                   border: 1px solid darkorange;
+                   border: 1px solid;
+                   @apply border-royal-blue;
                }
                textarea{
                    width: 90%;
@@ -74,15 +75,19 @@
                    margin-top: 10px;
                    padding: 5px 10px;
                    border-radius: 4px;
-                   border: 1px solid darkorange;
+                   border: 1px solid;
+                   @apply border-royal-blue focus:border-aquamarine-800;
                }
                button{
                 margin-top: 20px;
-                background-color: darkorange;
+                @apply bg-royal-blue;
                 color: #fff;
                 padding: 9px 44px;
                 font-size: 23px;
                 border-radius: 5px;
+                &:hover{
+                    @apply bg-aquamarine-800
+                }
                }
               }
             }
@@ -92,10 +97,6 @@
             margin-left: 20px;
             padding: 10px;
             border-radius: 5px;
-            // position: fixed;
-            // right: 0;
-            // top: 170px;
-            // width: 30%;
             .courseCard{
                 background-color: #fff;
                 border-radius: 6px;
@@ -105,14 +106,14 @@
                    margin-bottom: 2px;
                }
                h3{
-                   color: darkorange;
+
+                   @apply text-royal-blue;
                    margin-top: -80px;
                }
                h6{
                    color: #000;
                }
                .imgCard{
-                background:url(../../../images/cb.jpg) ;
                 height: 330px;
                 width: 100%;
                 background-size: cover;
@@ -135,8 +136,8 @@
                .bara{
                 .hol{
                     h6{
-                        background: #f16126;
-                        background: rgb(233, 183, 68);
+                        @apply bg-royal-blue;
+
                         border-radius: 50%;
                         padding: 8px;
                         margin-right: 9px;
@@ -156,7 +157,7 @@
                 margin-top: 13px;
                }
                .enroll_now{
-                background-color: #f16126;
+                @apply bg-royal-blue hover:bg-aquamarine-800;
                 margin: 0 auto;
                 display: block;
                 width: 80%;

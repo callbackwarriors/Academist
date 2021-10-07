@@ -1,18 +1,19 @@
-import { BsHeart, BsBook } from 'react-icons/bs';
+import c1 from 'assets/images/c1.jpg';
+import c2 from 'assets/images/c2.jpg';
+import c3 from 'assets/images/c3.jpg';
+import c4 from 'assets/images/c4.jpg';
+import c5 from 'assets/images/c5.jpg';
+import c7 from 'assets/images/c7.jpg';
+import Title from 'components/utilities/Title';
+import Image from 'next/image';
+import { BsBook, BsHeart } from 'react-icons/bs';
 import { HiOutlineUserGroup } from 'react-icons/hi';
-import c1 from 'assets/images/c1.jpg'
-import c2 from 'assets/images/c2.jpg'
-import c3 from 'assets/images/c3.jpg'
-import c4 from 'assets/images/c4.jpg'
-import c5 from 'assets/images/c5.jpg'
-import c7 from 'assets/images/c7.jpg'
-import Image from 'next/image'
 
 const LargestCourse = () => {
     return (
         <div className="largestCourse">
-            <h4>GO AT YOUR OWN PACE</h4>
-            <h3>The World’s Largest Selection Of Courses</h3>
+
+            <Title subtitle="GO AT YOUR OWN PACE" title="The World’s Largest Selection Of Courses" description=""/>
             <div className="container sm:grid  grid-cols-2 gap-8 ">
 
                 <div className="largestCourse__cardSection">
