@@ -2,6 +2,7 @@ import CartItem from 'components/Cart/CartItem';
 import Layout from 'components/utilities/Layout';
 import Link from 'next/link';
 import React, { useContext } from 'react';
+import { ICourses } from 'type';
 import { Store } from 'utils/Store';
 
 
@@ -26,7 +27,7 @@ const AddCart = () => {
                     {cartItems.length == 0 ? (
                         <div className="py-20 text-xl ">Cart is empty. <Link href="/courses"><a className="bg-royal-blue hover:bg-royal-blue-800 text-white py-2 px-6 rounded">Go Courses Page</a></Link></div>
                     ) : 
-                            cartItems.map((item) => (
+                            cartItems.map((item: ICourses) => (
                                 <CartItem item={item} key={item._id}/>
                             ))
                         
