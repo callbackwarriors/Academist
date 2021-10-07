@@ -101,15 +101,12 @@
             .courseCard{
                 background-color: #fff;
                 border-radius: 6px;
-                padding-bottom: 48px;
                p{
                    color: #000;
                    margin-bottom: 2px;
                }
                h3{
-
                    @apply text-royal-blue;
-                   margin-top: -80px;
                }
                h6{
                    color: #000;
@@ -128,24 +125,7 @@
                        border-radius: 5px;
                    }
                }
-               .Bal{
-                   p{
-                    color: #463c3c;
-                    margin-bottom: 16px;
-                   }
-               }
-               .bara{
-                .hol{
-                    h6{
-                        @apply bg-royal-blue;
 
-                        border-radius: 50%;
-                        padding: 8px;
-                        margin-right: 9px;
-                        color: #fff;
-                    }
-                }
-               }
                .member_ship{
                 background-color: #0dad28;
                 margin: 0 auto;

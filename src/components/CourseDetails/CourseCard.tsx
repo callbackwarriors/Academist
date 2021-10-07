@@ -34,7 +34,7 @@ const courseCard = ({course}:IProps) => {
   return (
     <div className="container">
       <ToastContainer />
-      <div className="shadow-xl courseCard">
+      <div className="shadow-xl courseCard overflow-hidden">
         <div
           className="imgCard relative"
           style={{
@@ -59,39 +59,41 @@ const courseCard = ({course}:IProps) => {
           ></iframe>
         </Modal>
 
-        <div className="px-2 Bal">
+        <div className="px-6">
+          
           <p className="pt-2">Acctual Price</p>
           <h3>$ {price}</h3>
-          <p>
+          <button onClick={enrollCourseHandler} className="enroll_now"> Enroll Now </button>
+          <p className="mt-3">
             Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
             labore et dolore.
           </p>
           <h6>Course Features</h6>
         </div>
 
-        <div className="grid grid-cols-2 px-2 mt-4 bara">
-          <div className="flex mr-4 hol">
+        <div className="grid grid-cols-2 mt-4 px-6 mb-6">
+          <div className="flex mr-4">
             <h6>
               {" "}
               <BiLike />
             </h6>
             <p>3k View</p>
           </div>
-          <div className="flex mr-4 hol">
+          <div className="flex mr-4">
             <h6>
               {" "}
               <BiLike />
             </h6>
             <p>2 hour 30 min</p>
           </div>
-          <div className="flex mr-4 hol">
+          <div className="flex mr-4">
             <h6>
               {" "}
               <BiLike />
             </h6>
             <p>Principiante</p>
           </div>
-          <div className="flex mr-4 hol">
+          <div className="flex mr-4">
             <h6>
               {" "}
               <BiLike />
@@ -99,10 +101,6 @@ const courseCard = ({course}:IProps) => {
             <p>04 Certified</p>
           </div>
         </div>
-
-        <button className="member_ship"> Get Membership </button>
-        <br />
-        <button onClick={enrollCourseHandler} className="enroll_now"> Enroll Now </button>
       </div>
     </div>
   );
