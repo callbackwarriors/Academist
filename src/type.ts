@@ -6,7 +6,7 @@ export interface ICourses {
     categories: string;
     level: string;
     price: number;
-    courseProvider: number;
+    courseProvider: string;
     videoUrl: string;
     img: string;
     desc: string;
