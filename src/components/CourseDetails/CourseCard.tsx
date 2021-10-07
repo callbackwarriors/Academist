@@ -61,8 +61,10 @@ const courseCard = ({course}:IProps) => {
 
         <div className="px-6">
           
-          <p className="pt-2">Acctual Price</p>
-          <h3>$ {price}</h3>
+          <div className="flex gap-4 mt-6">
+            <h4 className="m-0 p-0">Acctual Price:</h4>
+            <h3 className="m-0 p-0"><sup>$</sup>{price}</h3>
+          </div>
           <button onClick={enrollCourseHandler} className="enroll_now"> Enroll Now </button>
           <p className="mt-3">
             Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
