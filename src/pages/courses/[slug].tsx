@@ -6,9 +6,23 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from "react";
 
 export default function courseDetails({ evt }: any) {
-    console.log('evt', evt);
-    
-    const router = useRouter()
+    const router = useRouter();
+    const id = router.query;
+
+    const [coursesId, setCoursesId] = useState({});
+
+    console.log('this is unique id', id)
+
+    useEffect(() => {
+        async function fetchCoursesData() {
+            const response = fetch(`http://localhost:5000/api/courses/${id}`)
+            const data = await (await response).json()
+            setCoursesId(data)
+        }
+        fetchCoursesData()
+    },[])
+
+    console.log('courses',coursesId );
 
     return (
         <Layout>
@@ -16,6 +30,22 @@ export default function courseDetails({ evt }: any) {
         </Layout>
     );
 };
+
+
+
+export async function getServerSideProps({ query: { slug } }: any) {
+    const res = await fetch(`http://localhost:5000/api/courses?slug=${slug}`)
+    const events = await res.json()
+     console.log("this is responso",res)
+     console.log("this is event",events)
+    return {
+        props: {
+            evt: events[3],
+        },
+    }
+}
+
+
 
 // export default courseDetails;
 
@@ -45,14 +75,34 @@ export default function courseDetails({ evt }: any) {
 //     };
 // }
 
+//888888888888888888888888888888888888888888888888888888888888888
 
-export async function getServerSideProps({ query: { slug } }: any) {
-    const res = await fetch(`http://localhost:5000/api/courses?slug=${slug}`)
-    const events = await res.json()
+// export async function getServerSideProps({ query: { slug } }: any) {
+//     const res = await fetch(`http://localhost:5000/api/courses?slug=${slug}`)
+//     const events = await res.json()
 
-    return {
-        props: {
-            evt: events[0],
-        },
-    }
-}
+//     return {
+//         props: {
+//             evt: events[0],
+//         },
+//     }
+// }
+
+
+
+
+//******************* */
+
+
+
+
+// export async function getServerSideProps({ query: { slug } }: any) {
+//     const res = await fetch(`http://localhost:5000/api/courses?slug=${slug}`)
+//     const events = await res.json()
+
+//     return {
+//         props: {
+//             evt: events[0],
+//         },
+//     }
+// }
