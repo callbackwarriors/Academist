@@ -11,7 +11,7 @@ const Banner = ({course}:IProps) => {
 
     return (
         <div className="container">
-            <h3>{title}</h3>
+            <h2>{title}</h2>
             <div className="flex bannerDiv">
                 <div className="flex box ">
                     <h6 className="px-2"> <FaBookOpen /></h6>

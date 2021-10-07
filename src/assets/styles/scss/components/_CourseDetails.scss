@@ -1,12 +1,13 @@
 .CourseDetails{
-   p,h3, h6{color: #fff;}
-   h3{@apply pt-20;}
+
+   p,h2, h6{color: #fff;}
     .banner{
-        height: 330px;
+        @apply py-20 bg-woodsmoke-400;
         width: 100%;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        
 
         .pText{
             width: 60%;

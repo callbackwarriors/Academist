@@ -30,8 +30,6 @@ const AddCart = () => {
                             cartItems.map((item: ICourses) => (
                                 <CartItem item={item} key={item._id}/>
                             ))
-                        
-
                     }
 
                    </ul>

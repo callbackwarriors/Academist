@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { BsFillXSquareFill } from "react-icons/bs";
 import { ICourses } from 'type';
 interface IProp {
@@ -7,12 +8,13 @@ interface IProp {
 
 
 function CartItem({ item }: IProp) {
-    const {title, img, desc, courseProvider} = item;
+    const {title, img,price, slug, desc, courseProvider} = item;
     return (
+        <Link href={`/courses/${slug}`}>
+            <a>
         <li className="border border-gray-00 flex p-5">
     <div className="flex">
     <div className="course-image ">
-
         <Image width="100px" height="100px" className="object-cover" src={img} alt=""/>
     </div>
     <div className="CourseName-instructor">
@@ -24,14 +26,15 @@ function CartItem({ item }: IProp) {
     </div>
     </div>
     <div className="price my-5 mx-5">
-        <span className="mb-2 text-2xl font-semibold">$125</span><br/>
-        <del className="text-xl text-gray-500">$225</del>
+        <span className="mb-2 text-2xl font-semibold">${price}</span>
     </div>
     <button className="text-royal-blue text-2xl">
         <BsFillXSquareFill/>
     </button>
 
 </li>
+</a>
+</Link>
     )
 }
 

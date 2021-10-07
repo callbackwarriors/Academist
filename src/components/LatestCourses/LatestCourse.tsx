@@ -32,7 +32,7 @@ const LatestCourse = ({ course }: IProp) => {
                             </div>
                         </div>
                         <h4 className="mb-2 text-2xl">{title}</h4>
-                        <p className="text-base leading-relaxed">{desc}</p>
+                        <p className="text-base leading-relaxed">{desc.slice(0, 140)}</p>
                     </div>
                 </a>
             </Link>
