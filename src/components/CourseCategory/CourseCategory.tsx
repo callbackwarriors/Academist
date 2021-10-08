@@ -34,7 +34,8 @@ const CourseCategory = () => {
                     <div className="shadow-xl courseCard">
                         <div className="imgCard">
                             <div className="overley">
-                                <Image src={cb} alt="this is image" />
+                                <Image src={cb} alt="this is image" width="100"
+                                    height="100" />
                             </div>
                         </div>
                         <div className="px-2 bal">
@@ -56,7 +57,8 @@ const CourseCategory = () => {
                     <div className="shadow-xl courseCard">
                         <div className="imgCard">
                             <div className="overley">
-                                <Image src={cb} alt="this is image" />
+                                <Image src={cb} alt="this is image" width="100"
+                height="100" />
                             </div>
                         </div>
                         <div className="px-2 bal">
