@@ -1,60 +1,45 @@
+import bcrypt from "bcryptjs";
 const data = {
-    courses: [
-        {
-            name: 'Course name',
-            slug: 'course-name',
-            category: 'javascript',
-            image: '/images/course1.jpg',
-            price: 70,
-            instractor: 'Mofiz',
-            rating: 4.5,
-            numReviews: 10,
-            description: 'A test description',
-        },
-        {
-            name: 'Course name 2',
-            slug: 'course-name-2',
-            category: 'youtube',
-            image: '/images/course2.jpg',
-            price: 9.99,
-            instractor: 'Sayem',
-            rating: 4.0,
-            numReviews: 10,
-            description: 'A test description',
-        },
-        {
-            name: 'Course name 3',
-            slug: 'course-name-3',
-            category: 'typescript',
-            image: '/images/course3.jpg',
-            price: 90.0,
-            instractor: 'Sajid',
-            rating: 3.0,
-            numReviews: 10,
-            description: 'A test description',
-        },
-        {
-            name: 'Course name 4',
-            slug: 'course-name-4',
-            category: 'nextjs',
-            image: '/images/course4.jpg',
-            price: 70,
-            instractor: 'Traversy',
-            rating: 4.9,
-            numReviews: 10,
-            description: 'A test description',
-        },
-        {
-            name: 'Course name 5',
-            slug: 'course-name-5',
-            category: 'mearn',
-            image: '/images/course5.jpg',
-            price: 70,
-            instractor: 'Academind',
-            rating: 4.3,
-            numReviews: 10,
-            description: 'A test description',
-        },
-    ]
+  users: [
+    {
+      name: "admin",
+      email: "admin@gmail.com",
+      password: bcrypt.hashSync("123456"),
+      isAdmin: true,
+    },
+    {
+      name: "user",
+      email: "user@gmail.com",
+      password: bcrypt.hashSync("123456"),
+      isAdmin: false,
+    },
+  ],
+  courses: [
+    {
+      title: "Complete React Developer in 2021 (w/ Redux, Hooks, GraphQL)",
+      slug: "complete-react-developer-zero-to-mastery",
+      shortDesc: "Become a Senior React Developer! Build a massive E-commerce app with Redux, Hooks, GraphQL, ContextAPI, Stripe, Firebase",
+      categories: "Programming",
+      level: "Beginner",
+      price: 12.99,
+      courseProvider: "Robin Hasan",
+      videoUrl: "https://www.youtube.com/watch?v=7roE88D2FQs&t=133s",
+      img: "https://img-c.udemycdn.com/course/240x135/2365628_0b60_8.jpg",
+      desc: "Just updated with all new React features for 2021 (React v17)! Join a live online community of over 400,000+ developers and a course taught by industry experts that have actually worked both in Silicon Valley and Toronto with React.js Using the latest version of React (React 17), this course is focused on efficiency. Never spend time on confusing, out of date, incomplete tutorials anymore. Graduates of Andrei’s courses are now working at Google, Tesla, Amazon, Apple, IBM, JP Morgan, Facebook, + other top tech companies.",
+    },
+    {
+      title: "Next.js & React - The Complete Guide (incl. Two Paths!)",
+      slug: "nextjs-react-the-complete-guide",
+      shortDesc: "Learn NextJS from the ground up and build production-ready, fullstack ReactJS apps with the NextJS framework!",
+      categories: "Programming",
+      level: "Beginner",
+      price: 12.99,
+      courseProvider: "Robin Hasan",
+      videoUrl: "https://www.youtube.com/watch?v=oV-M6gZL4yQ",
+      img: "https://img-c.udemycdn.com/course/240x135/3873464_403c.jpg",
+      desc: "This course comes with two paths which you can take: The complete path (full >20h course) and the 'summary' path (~3h summary module) - you can choose the path that best fits your time requirements! :-) I created the bestselling Udemy course on React, now I'm super excited to share this course on NextJS with you - an in-depth course about an amazing React framework that allows you to take the next step as a React developer and build real, production-ready projects with React and Next.js!",
+    },
+    
+  ],
 };
- export default data;
+export default data;
