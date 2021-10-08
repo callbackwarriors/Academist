@@ -1,10 +1,13 @@
 import img from "assets/images/cycle.png";
+import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
 import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [newUser, setNewUser] = useState(false);
   const [user, setUser] = useState({
     isLoggedIn: false,
@@ -19,6 +22,19 @@ const Login = () => {
     passError: "",
     success: false,
   });
+
+  const submitHandler = async (e: any) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post("/api/users/login", {
+        email,
+        password,
+      });
+      alert("success login");
+    } catch (err: any) {
+      alert(err.response.data ? err.response.data.message : err.message);
+    }
+  }
 
   return (
     <div>
@@ -53,7 +69,7 @@ const Login = () => {
                   </span>
                 </div>
 
-                <form >
+                <form onSubmit={submitHandler} >
                   {newUser && (
                     <div className="form-element">
                       <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
@@ -75,8 +91,9 @@ const Login = () => {
                         Email
                       </span>
                       <span className="block">
-                        <input 
+                        <input
                           type="email"
+                          onChange={e => setEmail(e.target.value)}
                           className="w-full p-3 bg-yellow-100 border border-gray-400 lg:bg-white lg:border-2 lg:border-gray-200 focus:outline-none active:outline-none focus:border-gray-400 active:border-gray-400"
                         />
                       </span>
@@ -89,8 +106,9 @@ const Login = () => {
                         Password
                       </span>
                       <span className="block">
-                        <input 
+                        <input
                           type="password"
+                          onChange={e => setPassword(e.target.value)}
                           className="w-full p-3 bg-yellow-100 border border-gray-400 lg:bg-white lg:border-2 lg:border-gray-200 focus:outline-none active:outline-none focus:border-gray-400 active:border-gray-400"
                         />
                       </span>
@@ -104,7 +122,7 @@ const Login = () => {
                           Confirm Password
                         </span>
                         <span className="block">
-                          <input 
+                          <input
                             type="password"
                             className="w-full p-3 bg-yellow-100 border border-gray-400 lg:bg-white lg:border-2 lg:border-gray-200 focus:outline-none active:outline-none focus:border-gray-400 active:border-gray-400"
                           />
@@ -168,7 +186,7 @@ const Login = () => {
                           newUserInfo.error = "";
                           setUser(newUserInfo);
                         }}
-                        
+
                       >
                         Create an account
                       </button>
@@ -177,13 +195,13 @@ const Login = () => {
                 )}
                 <p className="text-center d-block">or</p>
                 <div className="flex flex-col justify-center">
-                <button  className="flex w-full px-6 py-3 mx-auto text-lg text-white bg-indigo-500 border-0 rounded lg:w-4/5 focus:outline-none hover:bg-indigo-600">
-                  <FcGoogle className="mt-1.5 mr-1 " />Continue with Google
-                </button> <br />
-                <button  className="flex w-full px-6 py-3 text-lg text-white bg-indigo-500 border-0 rounded lg:w-4/5 md:mx-auto focus:outline-none hover:bg-indigo-600">
-                  <FaFacebook className="mt-1.5 mr-1 " />
-                   Continue with Facebook
-                </button>
+                  <button className="flex w-full px-6 py-3 mx-auto text-lg text-white bg-indigo-500 border-0 rounded lg:w-4/5 focus:outline-none hover:bg-indigo-600">
+                    <FcGoogle className="mt-1.5 mr-1 " />Continue with Google
+                  </button> <br />
+                  <button className="flex w-full px-6 py-3 text-lg text-white bg-indigo-500 border-0 rounded lg:w-4/5 md:mx-auto focus:outline-none hover:bg-indigo-600">
+                    <FaFacebook className="mt-1.5 mr-1 " />
+                    Continue with Facebook
+                  </button>
                 </div>
 
               </div>
