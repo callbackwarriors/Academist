@@ -39,11 +39,6 @@ const LatestCourse = ({ course }: IProp) => {
                         <p className="text-base leading-relaxed">{desc.slice(0, 140)}</p>
                     </div>
 
-                  <h4 className="mb-2 text-2xl">{title}</h4>
-                    <p className="text-base leading-relaxed">{desc}</p>
-                    <Link  href={`/courses/${_id}`}> <button>Details</button></Link>
-           
-
                 </a>
             </Link>
             </div>

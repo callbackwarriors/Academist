@@ -9,6 +9,7 @@ import Courses from '../models/Courses';
 import db from '../utils/db';
 const HomePage = (props) => {
   const {courses} = props;
+  console.log(courses)
   return (
     <Layout>
       <Hero/>
