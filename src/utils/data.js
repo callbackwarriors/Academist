@@ -39,6 +39,18 @@ const data = {
       img: "https://img-c.udemycdn.com/course/240x135/3873464_403c.jpg",
       desc: "This course comes with two paths which you can take: The complete path (full >20h course) and the 'summary' path (~3h summary module) - you can choose the path that best fits your time requirements! :-) I created the bestselling Udemy course on React, now I'm super excited to share this course on NextJS with you - an in-depth course about an amazing React framework that allows you to take the next step as a React developer and build real, production-ready projects with React and Next.js!",
     },
+    {
+      title: "Mastering React With Interview Questions,eStore Project-2021",
+      slug: "mastering-react-with-interview-questions-estore-project-nirmal-joshi",
+      shortDesc: "Fundamentals, Router, Context API, Hooks, Redux, Redux-Toolkit, HTTP & REST API calls, React with TypeScript etc.",
+      categories: "Programming",
+      level: "Beginner",
+      price: 12.99,
+      courseProvider: "Afran",
+      videoUrl: "https://www.youtube.com/watch?v=oV-M6gZL4yQ",
+      img: "https://img-c.udemycdn.com/course/240x135/3591662_80f8.jpg",
+      desc: "In this comprehensive course, we will go through the prior and newer versions of ReactJS with the primary focus on understanding the latest version(17). The entire course is prepared in a methodical way so that candidates learn & master ReactJS fundamentals through smaller applications, get prepared for interviews & advanced concepts in the simplest of ways. React (also known as React.js or ReactJS) is a free and open-source front-end JavaScript library for building user interfaces or UI components.",
+    },
     
   ],
 };
