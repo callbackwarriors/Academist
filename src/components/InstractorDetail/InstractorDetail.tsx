@@ -1,11 +1,10 @@
-import React from 'react';
+import instractor from "assets/images/instractor.jpg";
 import Image from 'next/image';
-import instractor from "assets/images/instractor.jpg"
-import { BiCalendarAlt } from 'react-icons/bi';
+import React from 'react';
 const InstractorDetail = () => {
     return (
-        <>
-           <div className="flex m-5 p-3">
+        <div className="container">
+           <div className="flex align-center justify-center py-20 bg-royal-blue-200">
               <Image src={instractor} width="200px" height="200px"/>
               <div className="ml-5">
                   <span className="m-1 p-2 bg-red-100 text-red-900 rounded-2xl text-sm">Web Development</span>
@@ -24,7 +23,7 @@ const InstractorDetail = () => {
                  <p className=""></p>
               </div>
            </div> 
-        </>
+        </div>
     );
 };
 

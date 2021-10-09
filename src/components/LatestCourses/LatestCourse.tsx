@@ -1,16 +1,14 @@
+import Link from "next/link";
 import { AiFillEye, AiFillVideoCamera, AiOutlineHeart, AiOutlineStar } from 'react-icons/ai';
 // import { Link } from 'theme-ui';
 import { ICourses } from 'type';
-import Link from "next/link";
 
 interface IProp {
     course: ICourses;
 }
 
 const LatestCourse = ({ course }: IProp) => {
-    const { img, title, desc, _id } = course;
-    // console.log('course', course);
-
+    const { title, img, desc, slug } = course;
 
 
 
@@ -18,7 +16,8 @@ const LatestCourse = ({ course }: IProp) => {
     return (
 
         <div className="p-4 transition duration-100 ease-in-out transform xl:w-1/3 md:w-1/2 hover:scale-105">
-            <Link href={`/courses/${_id}`}>
+
+            <Link href={`/courses/${slug}`}>
                 <a>
                     <div className="p-6 bg-gray-100 rounded-lg">
                         <div className="relative">
@@ -37,7 +36,7 @@ const LatestCourse = ({ course }: IProp) => {
                             </div>
                         </div>
                         <h4 className="mb-2 text-2xl">{title}</h4>
-                        <p className="text-base leading-relaxed">{desc}</p>
+                        <p className="text-base leading-relaxed">{desc.slice(0, 140)}</p>
                     </div>
 
                   <h4 className="mb-2 text-2xl">{title}</h4>
