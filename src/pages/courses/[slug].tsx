@@ -1,10 +1,10 @@
 import CourseDetails from "components/CourseDetails/CourseDetails";
 import Layout from "components/utilities/Layout";
-import { API_URL } from "config";
-import type { NextPage } from 'next';
-import { useRouter } from 'next/router'
-import { useEffect, useState } from "react";
+import { ICourses } from "type";
+import Courses from '../../models/Courses';
+import db from '../../utils/db';
 
+<<<<<<< HEAD
 export default function courseDetails({ evt }: any) {
     const router = useRouter();
     const id = router.query;
@@ -23,14 +23,32 @@ export default function courseDetails({ evt }: any) {
     },[])
 
     console.log('courses',coursesId );
+=======
+interface IProps {
+  course: ICourses;
+}
+
+
+const courseDetails = (props: IProps) =>{
+
+    const { course } = props;
+    if(!course) {
+        return <Layout>
+         <div className="container py-20 text-center">
+         Loading...
+         </div>
+       </Layout>
+    }
+>>>>>>> develop
 
     return (
-        <Layout>
-            <CourseDetails evt={evt}></CourseDetails>
+        <Layout title={course.title}>
+         <CourseDetails course={course}></CourseDetails>
         </Layout>
     );
 };
 
+<<<<<<< HEAD
 
 
 export async function getServerSideProps({ query: { slug } }: any) {
@@ -52,11 +70,12 @@ export async function getServerSideProps({ query: { slug } }: any) {
 // export async function getStaticPaths() {
 //     const res = await fetch(`http://localhost:5000/api/courses`);
 //     const events = await res.json();
+=======
+export default courseDetails;
+>>>>>>> develop
 
-//     const paths = events.map((evt: any) => ({
-//         params: { slug: evt._id },
-//     }));
 
+<<<<<<< HEAD
 //     return {
 //         paths,
 //         fallback: true,
@@ -106,3 +125,18 @@ export async function getServerSideProps({ query: { slug } }: any) {
 //         },
 //     }
 // }
+=======
+
+export async function getServerSideProps(context: { params: any; }) {
+    const {params} = context;
+    const {slug} = params;
+    await db.connect();
+    const course = await Courses.findOne({slug}).lean();
+    await db.disconnect();
+    return {
+      props: {
+        course: db.convertDocToObj(course),
+      },
+    };
+  }
+>>>>>>> develop
