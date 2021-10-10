@@ -40,8 +40,8 @@ const Login = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-center py-40 overflow-x-hidden bg-yellow-100 lg:overflow-x-auto lg:overflow-hidden">
-        <div className="flex flex-col flex-wrap justify-between w-full border-gray-300 rounded-lg login-container lg:w-4/5 lg:bg-white lg:h-screen lg:border lg:flex-nowrap lg:flex-row group">
+      <div className="flex items-center justify-center overflow-x-hidden bg-yellow-100 lg:overflow-x-auto lg:overflow-hidden">
+        <div className="flex flex-col flex-wrap justify-between w-full border-gray-300 login-container lg:w-4/5 lg:bg-white lg:h-screen lg:border lg:flex-nowrap lg:flex-row group">
           <div className="relative flex order-2 w-full mt-32 lg:w-1/2 h-28 lg:h-full lg:mt-0 lg:bg-theme-yellow-dark lg:order-1">
             <div className="items-center justify-start hidden w-full h-full text-center select-none lg:flex">
               <span className="transform block whitespace-nowrap h-full -rotate-90 text-[55px] 2xl:text-[70px] font-black uppercase text-yellow-300 opacity-0 transition-all group-hover:opacity-100 ml-10 2xl:ml-12 group-hover:-ml-20 2xl:group-hover:ml-26 lg:group-hover:ml-20 duration-1000 lg:duration-700 ease-in-out">
@@ -61,8 +61,8 @@ const Login = () => {
           <div className="order-1 w-full lg:w-1/2 lg:order-2">
             <div className="relative z-10 flex items-center px-10 pt-16 form-wrapper lg:h-full lg:pt-0">
               <div className="w-full space-y-2">
-                <div className="flex items-end justify-center mb-20 space-x-3 text-center form-caption">
-                  <span className="text-3xl font-semibold text-red-400 ">
+                <div className="flex items-end justify-center mb-8 space-x-3 text-center form-caption">
+                  <span className="text-3xl font-semibold text-royal-blue ">
                     Create an account Login
                   </span>
                 </div>
@@ -96,8 +96,8 @@ const Login = () => {
                     </label>
                   </div>
                   <div className="form-element">
-                    <div className="flex items-center justify-between block w-full mx-auto lg:w-4/5">
-                      <label className="flex items-center block space-x-2 tracking-wide text-gray-800 select-none">
+                    <div className="flex items-center justify-between w-full py-2 mx-auto lg:w-4/5">
+                      <label className="flex items-center space-x-2 tracking-wide text-gray-800 select-none">
                         <input type="checkbox" name="" id="" />
                         <span className="block tracking-wide text-gray-800">
                           Remember me
@@ -105,7 +105,7 @@ const Login = () => {
                       </label>
                       <Link
                         href="#"
-                        className="block inline-block tracking-wide text-gray-800 border-b border-gray-300"
+                        className="block tracking-wide text-gray-800 border-b border-gray-300"
                       >
                         Forgot Password?
                       </Link>
@@ -113,28 +113,29 @@ const Login = () => {
                   </div>
 
                   <div className="form-element">
-                    <span className="block w-full mx-auto lg:w-4/5 ">
+                    <span className="block w-full mx-auto lg:w-full ">
                       <input
                         type="submit"
-                        className="w-full p-3 transition-all bg-yellow-200 border-2 border-yellow-200 cursor-pointer focus:outline-none active:outline-none focus:bg-theme-yellow active:bg-theme-yellow hover:bg-theme-yellow"
-                        value="Create an Account Login"
+                        className="flex w-full px-6 py-3 mx-auto text-lg text-white bg-indigo-500 border-0 rounded lg:w-4/5 focus:outline-none hover:bg-aquamarine-800"
+                        value="Log in now"
                       />
                     </span>
                   </div>
                 </form>
                 <p className="text-center d-block">
-                  <small>
-                    Don't have an account? <Link href="/register"><a>Create an account</a></Link>
-                  </small>
+                  Don't have an account?{" "}
+                  <Link href="/register">
+                    <a className="text-royal-blue">Create an account</a>
+                  </Link>
                 </p>
                 <p className="text-center d-block">or</p>
                 <div className="flex flex-col justify-center">
-                  <button className="flex w-full px-6 py-3 mx-auto text-lg text-white bg-indigo-500 border-0 rounded lg:w-4/5 focus:outline-none hover:bg-indigo-600">
+                  <button className="flex w-full px-6 py-3 mx-auto text-lg text-white bg-indigo-500 border-0 rounded lg:w-4/5 focus:outline-none hover:bg-aquamarine-800">
                     <FcGoogle className="mt-1.5 mr-1 " />
                     Continue with Google
                   </button>{" "}
                   <br />
-                  <button className="flex w-full px-6 py-3 text-lg text-white bg-indigo-500 border-0 rounded lg:w-4/5 md:mx-auto focus:outline-none hover:bg-indigo-600">
+                  <button className="flex w-full px-6 py-3 text-lg text-white bg-indigo-500 border-0 rounded lg:w-4/5 md:mx-auto focus:outline-none hover:bg-aquamarine-800">
                     <FaFacebook className="mt-1.5 mr-1 " />
                     Continue with Facebook
                   </button>

@@ -47,8 +47,8 @@ const Register = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-center py-40 overflow-x-hidden bg-yellow-100 lg:overflow-x-auto lg:overflow-hidden">
-        <div className="flex flex-col flex-wrap justify-between w-full border-gray-300 rounded-lg login-container lg:w-4/5 lg:bg-white lg:h-screen lg:border lg:flex-nowrap lg:flex-row group">
+      <div className="flex items-center justify-center overflow-x-hidden bg-yellow-100 lg:overflow-x-auto lg:overflow-hidden">
+        <div className="flex flex-col flex-wrap justify-between w-full border-gray-300 login-container lg:w-4/5 lg:bg-white lg:h-screen lg:border lg:flex-nowrap lg:flex-row group">
           <div className="relative flex order-2 w-full mt-32 lg:w-1/2 h-28 lg:h-full lg:mt-0 lg:bg-theme-yellow-dark lg:order-1">
             <div className="items-center justify-start hidden w-full h-full text-center select-none lg:flex">
               <span className="transform block whitespace-nowrap h-full -rotate-90 text-[55px] 2xl:text-[70px] font-black uppercase text-yellow-300 opacity-0 transition-all group-hover:opacity-100 ml-10 2xl:ml-12 group-hover:-ml-20 2xl:group-hover:ml-26 lg:group-hover:ml-20 duration-1000 lg:duration-700 ease-in-out">
@@ -151,19 +151,17 @@ const Register = () => {
                     <span className="block w-full mx-auto lg:w-4/5 ">
                       <input
                         type="submit"
-                        className="w-full p-3 transition-all bg-yellow-200 border-2 border-yellow-200 cursor-pointer focus:outline-none active:outline-none focus:bg-theme-yellow active:bg-theme-yellow hover:bg-theme-yellow"
-                        value="Create an Account Login"
+                        className="flex w-full px-6 py-3 text-lg text-white bg-indigo-500 border-0 rounded focus:outline-none hover:bg-aquamarine-800"
+                        value="Create an Account"
                       />
                     </span>
                   </div>
                 </form>
                 <p className="text-center d-block">
-                  <small>
-                    Don't have an account?{" "}
-                    <Link href="/register">
-                      <a>Create an account</a>
-                    </Link>
-                  </small>
+                  Don't have an account?{" "}
+                  <Link href="/login">
+                    <a className="text-royal-blue">Log in now</a>
+                  </Link>
                 </p>
               </div>
             </div>
