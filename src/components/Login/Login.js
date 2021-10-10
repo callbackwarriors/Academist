@@ -159,7 +159,7 @@ const Login = () => {
                     <span className="block w-full mx-auto lg:w-full ">
                       <input
                         type="submit"
-                        className="flex w-full px-6 py-3 mx-auto text-lg text-white bg-indigo-500 border-0 rounded cursor-pointer lg:w-4/5 focus:outline-none hover:bg-aquamarine-800"
+                        className="flex w-full px-6 py-3 mx-auto text-lg text-white bg-indigo-600 border-0 rounded cursor-pointer lg:w-4/5 focus:outline-none hover:bg-aquamarine-800"
                         value="Log in now"
                       />
                     </span>
@@ -173,12 +173,12 @@ const Login = () => {
                 </p>
                 <p className="text-center d-block">or</p>
                 <div className="flex flex-col justify-center">
-                  <button className="flex w-full px-6 py-3 mx-auto text-lg text-white bg-indigo-500 border-0 rounded lg:w-4/5 focus:outline-none hover:bg-aquamarine-800">
+                  <button className="flex w-full px-6 py-3 mx-auto text-lg text-white bg-indigo-600 border-0 rounded lg:w-4/5 focus:outline-none hover:bg-aquamarine-800">
                     <FcGoogle className="mt-1.5 mr-1 " />
                     Continue with Google
                   </button>{" "}
                   <br />
-                  <button className="flex w-full px-6 py-3 text-lg text-white bg-indigo-500 border-0 rounded lg:w-4/5 md:mx-auto focus:outline-none hover:bg-aquamarine-800">
+                  <button className="flex w-full px-6 py-3 text-lg text-white bg-indigo-600 border-0 rounded lg:w-4/5 md:mx-auto focus:outline-none hover:bg-aquamarine-800">
                     <FaFacebook className="mt-1.5 mr-1 " />
                     Continue with Facebook
                   </button>

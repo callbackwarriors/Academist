@@ -222,7 +222,7 @@ const Register = () => {
                     <span className="block w-full mx-auto lg:w-4/5 ">
                       <input
                         type="submit"
-                        className="flex w-full px-6 py-3 text-lg text-white bg-indigo-500 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"
+                        className="flex w-full px-6 py-3 text-lg text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"
                         value="Create an Account"
                       />
                     </span>
