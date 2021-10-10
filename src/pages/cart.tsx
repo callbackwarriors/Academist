@@ -39,12 +39,13 @@ const AddCart = () => {
                 <div className="flex gap-3 bg-white color-white shadow rounded p-3 mb-3">
 
                     <h6 className="text-lg m-0 ">Total ({cartItems.reduce((a: any, c: { quantity: any; }) => a + c.quantity, 0)}{' '}items):</h6> <h6 className="text-lg m-0 "><sup>$</sup>
-                    {cartItems.reduce((a: number, c: { quantity: number; price: number; }) => a + c.quantity * c.price, 0)}</h6>
+                    {cartItems.reduce((a: number, c: { quantity: number; price: number; }) => a + c.quantity * c.price, 0)                    
+                    }</h6>
 
                     </div>
                     <input className="w-full mt-4 mb-4 h-10 rounded-sm p-2" placeholder="Add Your Coupon"/>
                     <button className="bg-royal-blue hover:bg-royal-blue-800 text-white w-full h-10 text-xl font-semibold rounded-sm">Check out</button>
-                    </div>
+                    </div>         
                 </div>
             </div>
 
