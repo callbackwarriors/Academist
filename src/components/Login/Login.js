@@ -2,14 +2,21 @@ import img from "assets/images/cycle.png";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Store } from "utils/Store";
 import Cookies from "js-cookie";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
+  console.log(errors);
   const router = useRouter();
   const { redirect } = router.query;
   const { state, dispatch } = useContext(Store);
@@ -19,11 +26,8 @@ const Login = () => {
       router.push("/");
     }
   }, []);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
+  const submitHandler = async ({ email, password }) => {
     try {
       const { data } = await axios.post("/api/users/login", {
         email,
@@ -63,10 +67,10 @@ const Login = () => {
               <div className="w-full space-y-2">
                 <div className="flex items-end justify-center mb-8 space-x-3 text-center form-caption">
                   <span className="text-3xl font-semibold text-royal-blue ">
-                    Create an account Login
+                    Log in now
                   </span>
                 </div>
-                <form onSubmit={submitHandler}>
+                <form onSubmit={handleSubmit(submitHandler)}>
                   <div className="form-element">
                     <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
                       <span className="block text-lg tracking-wide text-gray-800">
@@ -75,9 +79,32 @@ const Login = () => {
                       <span className="block">
                         <input
                           type="email"
-                          onChange={(e) => setEmail(e.target.value)}
-                          className="w-full p-3 bg-yellow-100 border border-gray-400 lg:bg-white lg:border-2 lg:border-gray-200 focus:outline-none active:outline-none focus:border-gray-400 active:border-gray-400"
+                          name="Email"
+                          {...register("email", {
+                            required: {
+                              value: true,
+                              message: "You most enter email address",
+                            },
+                            minLength: {
+                              value: 8,
+                              message: "This is not long enough to be an email",
+                            },
+                            maxLength: {
+                              value: 120,
+                              message: "This is too long",
+                            },
+                            pattern: {
+                              value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                              message: "invalid email address",
+                            },
+                          })}
+                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+           ${errors.email ? "ring-2 ring-red-500" : null}`}
+                          placeholder="Email"
                         />
+                        <span className="py-2 text-sm text-red-400">
+                          {errors?.email?.message}
+                        </span>
                       </span>
                     </label>
                   </div>
@@ -89,9 +116,25 @@ const Login = () => {
                       <span className="block">
                         <input
                           type="password"
-                          onChange={(e) => setPassword(e.target.value)}
-                          className="w-full p-3 bg-yellow-100 border border-gray-400 lg:bg-white lg:border-2 lg:border-gray-200 focus:outline-none active:outline-none focus:border-gray-400 active:border-gray-400"
+                          name="password"
+                          // eslint-disable-next-line react/jsx-props-no-spreading
+                          {...register("password", {
+                            required: {
+                              value: true,
+                              message: "You most enter password",
+                            },
+                            minLength: {
+                              value: 6,
+                              message: "Password lenth is more then 5",
+                            },
+                          })}
+                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+               ${errors.password ? "ring-2 ring-red-500" : null}`}
+                          placeholder="password"
                         />
+                        <span className="py-2 text-sm text-red-400">
+                          {errors?.password?.message}
+                        </span>
                       </span>
                     </label>
                   </div>
@@ -116,7 +159,7 @@ const Login = () => {
                     <span className="block w-full mx-auto lg:w-full ">
                       <input
                         type="submit"
-                        className="flex w-full px-6 py-3 mx-auto text-lg text-white bg-indigo-500 border-0 rounded lg:w-4/5 focus:outline-none hover:bg-aquamarine-800"
+                        className="flex w-full px-6 py-3 mx-auto text-lg text-white bg-indigo-500 border-0 rounded cursor-pointer lg:w-4/5 focus:outline-none hover:bg-aquamarine-800"
                         value="Log in now"
                       />
                     </span>
