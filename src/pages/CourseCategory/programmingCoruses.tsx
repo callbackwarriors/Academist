@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from 'components/utilities/Header';
 import {  BsFillGrid3X2GapFill, BsFillGrid3X3GapFill, BsSearch  } from 'react-icons/bs';
 import Footer from 'components/utilities/Footer';
 import CoursesSidebar from 'components/CoursesSidebar/CoursesSidebar';
 import Courses from 'components/Courses/Courses';
-const AllCourses = () => {
+
+
+
+
+
+
+
+const programmingCoruses = () => {
+      const [proCourse, setProCourse] = useState([]);
+  
+      useEffect(()=>{
+          async function fetchCoursesData() {
+            const response = fetch("http://localhost:5000/api/courses")
+            const data = await (await response).json()
+            setProCourse(data);
+          }
+          fetchCoursesData()
+      },[])
+
+const programming = proCourse.filter(({res}:any)=> res.categories === "programming" )
+
+
     return (
-        <div className="sectionAllCourses">
+        <>
+               <div className="sectionAllCourses">
             <Header/>
             <div className="allCourses bg-gray-300">
                 
@@ -45,8 +67,11 @@ const AllCourses = () => {
                         </div>
                         </div>
                     </div>
-
-           <Courses />
+        
+        {
+          programming.map(({pc}:any)=> <Courses pc={pc} />)
+        }
+           
 
 
                 </div>
@@ -54,8 +79,9 @@ const AllCourses = () => {
             </div>
             </div> 
             <Footer/>                 
-        </div>
+        </div> 
+        </>
     );
 };
 
-export default AllCourses;
+export default programmingCoruses;  
