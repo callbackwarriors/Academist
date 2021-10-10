@@ -1,18 +1,17 @@
 import React from 'react';
-import { FaBookOpen, FaPlay, FaUser, FaStar, FaRegStar } from 'react-icons/fa';
+import { FaBookOpen, FaPlay, FaRegStar, FaStar, FaUser } from 'react-icons/fa';
 import { ICourses } from 'type';
-
-interface IProp {
-    evt: ICourses;
+interface IProps {
+    course: ICourses
 }
 
-const Banner = ({ evt }: IProp) => {
-    console.log(evt);
-    const { title, desc } = evt;
+const Banner = ({course}:IProps) => {
+
+    const { title,desc } = course;
 
     return (
         <div className="container">
-            <h3>{title}</h3>
+            <h2>{title}</h2>
             <div className="flex bannerDiv">
                 <div className="flex box ">
                     <h6 className="px-2"> <FaBookOpen /></h6>

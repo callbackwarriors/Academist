@@ -4,7 +4,7 @@
     h3{ @apply text-center text-4xl mb-10;}
 
     &__cardSection{
-        @apply flex;
+        @apply flex bg-black-squeeze;
         @apply py-5 px-5;
         height: 235px;
 
@@ -29,8 +29,7 @@
         }
         &--imgSection{
             img{
-                height: 150px!important;
-                width: 150px!important;
+
                 border-radius: 100%;
                 object-fit: cover;
                 transition-duration: 0.3s;

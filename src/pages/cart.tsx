@@ -1,101 +1,54 @@
-import Footer from 'components/utilities/Footer';
-import Header from 'components/utilities/Header';
-import React from 'react';
-import { BsFillXSquareFill } from 'react-icons/bs';
+import CartItem from 'components/Cart/CartItem';
+import Layout from 'components/utilities/Layout';
+import Link from 'next/link';
+import React, { useContext } from 'react';
+import { ICourses } from 'type';
+import { Store } from 'utils/Store';
+
 
 const AddCart = () => {
+    const { state, dispatch } = useContext(Store);
+    const {
+        cart: { cartItems },
+      } = state;
+
     return (
-        <div>
-            <Header/>
-            <div className="cart-head">
-               
-                <h2> Your Shopping Cart</h2>
-                         
+        <Layout>
+
+            <div className="cart-head text-center">
+                <div className="container">
+                <h2> Your Shopping Cart</h2>    
+                </div>      
             </div>
-            <div className="cart-content container mb-24">
+            <div className="cart-content container section-padding">
                 <div className="cart-content__item">
                    <ul className="cart-course-list">
-                    <li className="border border-gray-00 flex p-5">
-                        <div className="flex">
-                        <div className="course-image ">
-                            <img src="http://skilify.theuxuidesigner.com/images/webp/crd-img3.webp"/>
-                        </div>
-                        <div className="CourseName-instructor">
-                        <h5>Agile Crash Course: Agile Project Management</h5>
-                        <picture className="flex">
-                            <img src="http://skilify.theuxuidesigner.com/images/webp/profile-img4.webp"/>
-                            <span>Pori moni</span>
-                        </picture>
-                        </div>
-                        </div>
-                        <div className="price my-5 mx-5">
-                           <span className="mb-2 text-2xl font-semibold">$125</span><br/>
-                           <del className="text-xl text-gray-500">$225</del>
-                        </div>
-                        <button className="text-red-400 text-2xl">
-                            <BsFillXSquareFill/>
-                        </button>
 
-                    </li>
-                    <li className="border border-gray-00 flex p-5">
-                        <div className="flex">
-                        <div className="course-image ">
-                            <img src="http://skilify.theuxuidesigner.com/images/webp/crd-img3.webp"/>
-                        </div>
-                        <div className="CourseName-instructor">
-                        <h5>Agile Crash Course: Agile Project Management</h5>
-                        <picture className="flex">
-                            <img src="http://skilify.theuxuidesigner.com/images/webp/profile-img4.webp"/>
-                            <span>Pori moni</span>
-                        </picture>
-                        </div>
-                        </div>
-                        <div className="price my-5 mx-5">
-                           <span className="mb-2 text-2xl font-semibold">$125</span><br/>
-                           <del className="text-xl text-gray-500">$225</del>
-                        </div>
-                        <button className="text-red-400 text-3xl">
-                            <BsFillXSquareFill/>
-                        </button>
+                    {cartItems.length == 0 ? (
+                        <div className="py-20 text-xl ">Cart is empty. <Link href="/courses"><a className="bg-royal-blue hover:bg-royal-blue-800 text-white py-2 px-6 rounded">Go Courses Page</a></Link></div>
+                    ) : 
+                            cartItems.map((item: ICourses) => (
+                                <CartItem item={item} key={item._id}/>
+                            ))
+                    }
 
-                    </li>
-                    <li className="border border-gray-00 flex p-5">
-                        <div className="flex">
-                        <div className="course-image ">
-                            <img src="http://skilify.theuxuidesigner.com/images/webp/crd-img3.webp"/>
-                        </div>
-                        <div className="CourseName-instructor">
-                        <h5>Agile Crash Course: Agile Project Management</h5>
-                        <picture className="flex">
-                            <img src="http://skilify.theuxuidesigner.com/images/webp/profile-img4.webp"/>
-                            <span>Pori moni</span>
-                        </picture>
-                        </div>
-                        </div>
-                        <div className="price my-5 mx-5">
-                           <span className="mb-2 text-2xl font-semibold">$125</span><br/>
-                           <del className="text-xl text-gray-500">$225</del>
-                        </div>
-                        <button className="text-red-400 text-3xl">
-                            <BsFillXSquareFill/>
-                        </button>
-
-                    </li>
                    </ul>
                 </div>
-                <div className="card-content__checkout  bg-red-100 w-1/4 py-10 px-5 mt-8 h-72">
-                    <h5>Total Price </h5>
-                    <div className="flex justify-between">
-                    <span className="mb-2 text-2xl font-semibold">$125</span>
-                    <span className="text-xl text-gray-500"> 50% off $225</span>
+                <div className="card-content__checkout lg:w-1/4 ">
+                    <div className="bg-royal-blue-200  p-5">
+                <div className="flex gap-3 bg-white color-white shadow rounded p-3 mb-3">
+
+                    <h6 className="text-lg m-0 ">Total ({cartItems.reduce((a: any, c: { quantity: any; }) => a + c.quantity, 0)}{' '}items):</h6> <h6 className="text-lg m-0 "><sup>$</sup>
+                    {cartItems.reduce((a: number, c: { quantity: number; price: number; }) => a + c.quantity * c.price, 0)}</h6>
+
                     </div>
                     <input className="w-full mt-4 mb-4 h-10 rounded-sm p-2" placeholder="Add Your Coupon"/>
-                    <button className="bg-red-400 hover:bg-red-700 hover:text-white w-full h-10 text-xl font-semibold rounded-sm">Check out</button>
-                    
+                    <button className="bg-royal-blue hover:bg-royal-blue-800 text-white w-full h-10 text-xl font-semibold rounded-sm">Check out</button>
+                    </div>
                 </div>
             </div>
-            <Footer/>
-        </div>
+
+        </Layout>
     );
 };
 
