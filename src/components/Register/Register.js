@@ -123,7 +123,7 @@ const Register = () => {
                       </span>
                       <span className="block">
                         <input
-                          type="confirmPassword"
+                          type="password"
                           onChange={(e) => setConfirmPassword(e.target.value)}
                           className="w-full p-3 bg-yellow-100 border border-gray-400 lg:bg-white lg:border-2 lg:border-gray-200 focus:outline-none active:outline-none focus:border-gray-400 active:border-gray-400"
                         />
