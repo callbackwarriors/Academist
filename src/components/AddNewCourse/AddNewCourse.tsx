@@ -42,18 +42,18 @@ const AddNewCourse = () => {
             <form action="" onSubmit={handleSubmit}>
                 <div className="container">
                     <div className="mb-4">
-                        <label htmlFor="title">Title</label>
+                        <label className=" font-bold text-gray-500" htmlFor="title">Title</label>
                         <input id="title" className="rounded focus:border-royal-blue px-4 py-3 w-full" onBlur={handleBlur} type="text" name="title" placeholder="Write your course title here..."/>
                     </div>
 
                     <div className="mb-4">
-                        <label htmlFor="short__desc">Short Description</label>
+                        <label className=" font-bold text-gray-500" htmlFor="short__desc">Short Description</label>
 
                         <textarea  className="rounded focus:border-royal-blue  px-4 py-3 w-full" placeholder="Write short description" id="short__desc"></textarea>
                     </div>
 
                     <div className="mb-4">
-                        <label htmlFor="course__overview">Course Overview</label>
+                        <label className=" font-bold text-gray-500" htmlFor="course__overview">Course Overview</label>
 
                         <textarea  className="rounded focus:border-royal-blue  px-4 py-3 w-full" placeholder="Write your course overview..." id="course__overview"></textarea>
                     </div>
@@ -65,7 +65,7 @@ const AddNewCourse = () => {
                     </div>
 
                     <div className="mb-4">
-                        <label htmlFor="course__category">Course Category</label>
+                        <label className=" font-bold text-gray-500" htmlFor="course__category">Course Category</label>
                         <select id="course__category" className="form-select focus:border-royal-blue w-full px-4 py-3 rounded">
                         <option value="javascript">Javascript</option>
                         <option value="react">React</option>
@@ -75,7 +75,7 @@ const AddNewCourse = () => {
                     </div>
 
                     <div className="mb-4">
-                        <label htmlFor="course__label">Course Label</label>
+                        <label className=" font-bold text-gray-500" htmlFor="course__label">Course Label</label>
                         <select id="course__label" className="form-select focus:border-royal-blue w-full px-4 py-3 rounded">
                         <option value="basic">Basic</option>
                         <option value="beginner">Beginner</option>
@@ -85,14 +85,14 @@ const AddNewCourse = () => {
                     </div>
 
                     <div className="mb-4">
-                        <label htmlFor="price">Course Price</label>
+                        <label className=" font-bold text-gray-500" htmlFor="price">Course Price</label>
                         <input id="price" className="rounded focus:border-royal-blue px-4 py-3 w-full" onBlur={handleBlur} type="number" name="price" placeholder="Write your course price here..."/>
                     </div>
 
                     <div className="mb-4">
                     <input id="certificate" className="rounded focus:border-royal-blue " onBlur={handleBlur} type='checkbox' name="certificate"/>
                     
-                        <label htmlFor="certificate"> Is certificate include?</label>
+                        <label className=" font-bold text-gray-500" htmlFor="certificate"> Is certificate include?</label>
                         
                     </div>
 
@@ -126,11 +126,11 @@ const AddNewCourse = () => {
 
 
                     <div className="mb-4">
-                        <label htmlFor="intro">Intro video</label>
+                        <label className=" font-bold text-gray-500" htmlFor="intro">Intro video</label>
                         <input id="intro" className="rounded focus:border-royal-blue px-4 py-3 w-full" onBlur={handleBlur} type="url" name="intro" placeholder="Add intro video link"/>
                     </div>
 
-                    <input className="text-white bg-royal-blue border-0 py-3 px-12 focus:outline-none hover:bg-indigo-600  text-lg" type="submit"></input>
+                    <input className=" rounded text-white bg-royal-blue border-0 py-3 px-12 focus:outline-none hover:bg-indigo-600 text-lg" type="submit"></input>
 
                 </div>
             </form>
