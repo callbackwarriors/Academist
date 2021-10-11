@@ -21,9 +21,3 @@
     ]
   },
   "exclude": ["node_modules"],
-<<<<<<< HEAD
-  "include": ["next-env.d.ts", "custom.d.ts", "src/**/*.ts", "src/**/*.tsx", "src/components/utilities/Title.js", "src/components/CourseDetails", "src/components/Home/Hero.js", "src/components/utilities/Modal.js", "src/components/LatestCourses/LatestCourses.jsx", "src/components/Login/Login.js"]
-=======
-  "include": ["next-env.d.ts", "custom.d.ts", "src/**/*.ts", "src/**/*.tsx", "src/components/utilities/Title.js", "src/components/CourseDetails", "src/components/Home/Hero.js", "src/components/utilities/Modal.js", "src/components/LatestCourses/LatestCourses.jsx", "src/components/Login/Login.js", "src/pages/shipping.js", "src/components/Register/Register.js"]
->>>>>>> develop
-}
