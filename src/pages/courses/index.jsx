@@ -54,14 +54,14 @@ const CoursesPage = (props) => {
                     placeholder="Search for new course..."
                     id="email"
                     name="search"
-                    className="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out outline-none font-1 focus:border-royal-blue focus:bg-transparent focus:ring-2 focus:ring-indigo-200"
+                    className="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out border-none font-1 focus:border-royal-blue focus:bg-transparent focus:ring-2 focus:ring-indigo-200"
                   />
                 </div>
               </div>
 
               <div className="allCourses__page-sidebar--catagory ">
                 <label className="">
-                  <select className="w-full px-3 py-1 mt-3 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 outline-none h-14 focus:border-royal-blue focus:bg-transparent focus:ring-2 focus:ring-indigo-200">
+                  <select className="w-full px-3 py-1 mt-3 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 border-none h-14 focus:border-royal-blue focus:bg-transparent focus:ring-2 focus:ring-indigo-200">
                     <option>Select</option>
                     <option>Option 2</option>
                     <option>Option 1</option>
@@ -201,7 +201,7 @@ const CoursesPage = (props) => {
                 <div className="flex lg:grid lg:grid-cols-3 xs:grid-cols-2">
                   <span className="flex items-center text-xs lg:text-base">Short by:</span>
                   <div>
-                    <select className="w-20 text-base leading-8 transition-colors duration-200 ease-in-out bg-white bg-opacity-50 outline-none focus:border-royal-blue focus:bg-transparent focus:ring-2 focus:ring-indigo-200">
+                    <select className="w-full text-base leading-8 transition-colors duration-200 ease-in-out bg-white bg-opacity-50 border-none focus:border-royal-blue focus:bg-transparent focus:ring-2 focus:ring-indigo-200">
                       <option>Select</option>
                       <option>Mostly visited</option>
                       <option>Most popular</option>
