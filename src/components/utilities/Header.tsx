@@ -30,14 +30,6 @@ const Header = () => {
           </Link>
         </span>
 
-<<<<<<< HEAD
-          <button className="text-3xl inline-block lg:hidden" onClick={toggleDrawer}>
-            <FiMenu/>
-          </button>
-        <Drawer  open={isOpen} onClose={toggleDrawer} direction='left'>
-        <div onClick={toggleDrawer} className="close p-3 text-royal-blue text-2xl text-right overflow-hidden">
-          <AiOutlineCloseSquare className="float-right"/>
-=======
         <button
           className="text-3xl inline-block lg:hidden"
           onClick={toggleDrawer}
@@ -50,7 +42,6 @@ const Header = () => {
             className="close p-3 text-royal-blue text-2xl text-right overflow-hidden"
           >
             <AiOutlineCloseSquare className="float-right" />
->>>>>>> develop
           </div>
           <MobileMenu />
         </Drawer>
