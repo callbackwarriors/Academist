@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import Header from "components/utilities/Header";
 import {
-  AiFillEye,
-  AiFillVideoCamera,
-  AiOutlineHeart,
-  AiOutlineStar,
-} from "react-icons/ai";
-import {
   BsFillGrid3X2GapFill,
   BsFillGrid3X3GapFill,
   BsSearch,
@@ -36,7 +30,7 @@ const CoursesPage = (props) => {
         />
         <div>
           <button
-            className="p-2 btn-menu lg:hidden"
+            className="lg:px-2 btn-menu lg:hidden"
             onClick={() => setIsSidebarOpen(true)}
             type="button"
           >
@@ -45,7 +39,7 @@ const CoursesPage = (props) => {
         </div>
             <div 
             // className="p-8 bg-white rounded-md page-sidebar"
-            className={`fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 ease-out transform translate-x-0 bg-white border-r-2 lg:translate-x-0 lg:static lg:inset-0 ${isSidebarOpen ? "ease-out translate-x-0" : "ease-in -translate-x-full"
+            className={`fixed inset-y-0 left-0 z-30 w-64 lg:w-96 p-8 overflow-y-auto transition duration-300 ease-out transform translate-x-0 bg-white border-r-2 lg:translate-x-0 lg:static lg:inset-0 ${isSidebarOpen ? "ease-out translate-x-0" : "ease-in -translate-x-full"
             }`}
             >
               <div className="flex allCourses__page-sidebar--findBox ">
@@ -198,7 +192,7 @@ const CoursesPage = (props) => {
               </div>
             </div>
           </React.Fragment>
-          <div className="w-2/3 pl-2 content">
+          <div className="pl-2 content">
             <div className="page-content ">
               <div className="grid items-center grid-cols-2 px-2 bg-white rounded-sm page-content__header">
                 <div className="lg:p-2">

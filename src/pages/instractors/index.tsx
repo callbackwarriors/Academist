@@ -26,7 +26,7 @@ const Instractors = () => {
 
                             <div className="allCourses__page-sidebar--catagory ">
                                 <label className="" >
-                                    <select className="w-full px-3 py-1 mt-3 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 outline-none  h-14 focus:border-royal-blue focus:bg-transparent focus:ring-2 focus:ring-indigo-200">
+                                    <select className="w-full px-3 py-1 mt-3 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 outline-none h-14 focus:border-royal-blue focus:bg-transparent focus:ring-2 focus:ring-indigo-200">
                                         <option>Select</option>
                                         <option>Option 2</option>
                                         <option>Option 1</option>
@@ -156,7 +156,7 @@ const Instractors = () => {
                                 <div className="grid grid-cols-3">
                                     <span className="flex justify-end p-3">Short by:</span>
                                     <div>
-                                        <select className="w-full py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 outline-none  h-14 focus:border-royal-blue focus:bg-transparent focus:ring-2 focus:ring-indigo-200">
+                                        <select className="w-full py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 outline-none h-14 focus:border-royal-blue focus:bg-transparent focus:ring-2 focus:ring-indigo-200">
                                             <option>Select</option>
                                             <option>Mostly visited</option>
                                             <option>Most popular</option>
