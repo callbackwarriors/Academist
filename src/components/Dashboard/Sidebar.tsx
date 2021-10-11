@@ -4,12 +4,10 @@ import { AiOutlineFundProjectionScreen, AiOutlineUserAdd } from 'react-icons/ai'
 import { BiImageAdd } from 'react-icons/bi';
 import { BsBook, BsFillInboxesFill } from 'react-icons/bs';
 import { FaDiscourse } from 'react-icons/fa';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import { GiTeacher } from 'react-icons/gi';
+import { GiHamburgerMenu, GiTeacher } from 'react-icons/gi';
 import { GoReport } from 'react-icons/go';
 import { Navigation } from 'react-minimal-side-navigation';
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
-import { IconBase } from 'react-icons/lib';
 const Sidebar = () => {
   const router = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -26,7 +24,7 @@ const Sidebar = () => {
 
 <div>
         <button
-          className="btn-menu"
+          className="btn-menu lg:hidden p-2"
           onClick={(): void => setIsSidebarOpen(true)}
           type="button"
         >

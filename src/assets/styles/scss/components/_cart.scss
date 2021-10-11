@@ -3,24 +3,20 @@
 }
 
 .cart-content{
-    @apply w-auto justify-between flex;
+    @apply flex flex-col md:flex-row gap-5;
     &__item{
+        @apply flex flex-col items-start flex-grow md:w-1/2;
         .cart-course-list{
             @apply w-auto;
             li{
-                @apply mt-7;
+   
                 .course-image{
                     img{
-                        height: 120px;
-                        width: 120px;
                         @apply rounded-md;
                     }
                 }
                 .CourseName-instructor{
-                    @apply ml-6;
-                    h5{
-                        @apply mb-6;
-                    }
+
                     img{
                         @apply rounded-md;
                     }
@@ -30,8 +26,5 @@
                 }
             }
         }
-    }
-    &__checkout{
-
     }
 }
