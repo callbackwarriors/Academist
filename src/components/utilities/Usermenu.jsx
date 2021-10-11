@@ -25,15 +25,28 @@ export default function Example() {
     Cookies.remove("cartItems");
     router.push("/");
   };
+
+  const { userInfo } = state;
+
   return (
     <Menu as="div" className="relative inline-block text-left">
-      <Menu.Button className="inline-flex justify-center w-full px-4 py-2 ml-3 text-sm font-medium text-white rounded-md bg-royal-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-        User name
-        <ChevronDownIcon
-          className="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
-          aria-hidden="true"
-        />
-      </Menu.Button>
+      {userInfo ? (
+        <Menu.Button className="inline-flex justify-center w-full px-4 py-2 ml-3 text-sm font-medium text-white rounded-md bg-royal-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+          {userInfo.name}
+          <ChevronDownIcon
+            className="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
+            aria-hidden="true"
+          />
+        </Menu.Button>
+      ) : (
+        <Menu.Button className="inline-flex justify-center w-full px-4 py-2 ml-3 text-sm font-medium text-white rounded-md bg-royal-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+          User name
+          <ChevronDownIcon
+            className="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
+            aria-hidden="true"
+          />
+        </Menu.Button>
+      )}
       <Transition
         as={Fragment}
         enter="transition ease-out duration-100"
@@ -164,7 +177,15 @@ export default function Example() {
                       aria-hidden="true"
                     />
                   )}
-                  Log out
+                  {userInfo ? (
+                    <p>Log out</p>
+                  ) : (
+                    <Link href="/login">
+                      <a>
+                        <p>Log in</p>
+                      </a>
+                    </Link>
+                  )}
                 </button>
               )}
             </Menu.Item>
