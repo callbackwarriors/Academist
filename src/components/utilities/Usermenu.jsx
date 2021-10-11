@@ -157,38 +157,61 @@ export default function Example() {
               )}
             </Menu.Item>
 
-            <Menu.Item>
-              {({ active }) => (
-                <button
-                  anchorEl={anchorEl}
-                  onClick={logoutClickHandler}
-                  className={`${
-                    active ? "bg-royal-blue text-white" : "text-gray-900"
-                  } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                >
-                  {active ? (
-                    <BiLogOutCircle
-                      className="w-5 h-5 mr-2 text-violet-400"
-                      aria-hidden="true"
-                    />
-                  ) : (
-                    <BiLogOutCircle
-                      className="w-5 h-5 mr-2 text-violet-400"
-                      aria-hidden="true"
-                    />
-                  )}
-                  {userInfo ? (
-                    <p>Log out</p>
-                  ) : (
-                    <Link href="/login">
-                      <a>
-                        <p>Log in</p>
-                      </a>
-                    </Link>
-                  )}
-                </button>
-              )}
-            </Menu.Item>
+            {userInfo ? (
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    anchorEl={anchorEl}
+                    onClick={logoutClickHandler}
+                    className={`${
+                      active ? "bg-royal-blue text-white" : "text-gray-900"
+                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                  >
+                    {active ? (
+                      <BiLogOutCircle
+                        className="w-5 h-5 mr-2 text-violet-400"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <BiLogOutCircle
+                        className="w-5 h-5 mr-2 text-violet-400"
+                        aria-hidden="true"
+                      />
+                    )}
+                    Log out
+                  </button>
+                )}
+              </Menu.Item>
+            ) : (
+              <Link href="/login">
+                <a>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        anchorEl={anchorEl}
+                        onClick={logoutClickHandler}
+                        className={`${
+                          active ? "bg-royal-blue text-white" : "text-gray-900"
+                        } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                      >
+                        {active ? (
+                          <BiLogOutCircle
+                            className="w-5 h-5 mr-2 text-violet-400"
+                            aria-hidden="true"
+                          />
+                        ) : (
+                          <BiLogOutCircle
+                            className="w-5 h-5 mr-2 text-violet-400"
+                            aria-hidden="true"
+                          />
+                        )}
+                        Log in
+                      </button>
+                    )}
+                  </Menu.Item>
+                </a>
+              </Link>
+            )}
           </div>
         </Menu.Items>
       </Transition>
