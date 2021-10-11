@@ -21,11 +21,11 @@ const Sidebar = () => {
         />
         <div>
           <button
-            className="p-2 btn-menu lg:hidden"
+            className="w-8 h-8 p-2 lg:w-0 lg:h-0 btn-menu lg:hidden"
             onClick={(): void => setIsSidebarOpen(true)}
             type="button"
           >
-            <GiHamburgerMenu name="burger" className="w-6 h-6" />
+            <GiHamburgerMenu name="burger" className="w-8 h-8" />
           </button>
         </div>
         {/* Sidebar */}

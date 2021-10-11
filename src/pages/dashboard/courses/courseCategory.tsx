@@ -6,9 +6,9 @@ import CourseCategory from 'components/CourseCategory/CourseCategory';
 const courseCategory = () => {
     return (
         <Layout>
-            <div className="flex w-full items-stretch bg-gray-200">
+            <div className="flex items-stretch w-full bg-gray-200">
                 <Sidebar />
-                <div className="w-full bg-white m-5 p-5 h-screen transition-all">
+                <div className="w-full min-h-screen p-5 m-5 transition-all bg-white">
                     <CourseCategory></CourseCategory>
                 </div>
             </div>
