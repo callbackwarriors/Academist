@@ -6,14 +6,16 @@ import Testimonial from 'components/Testimonial/Testimonial';
 import Hero from '../components/Home/Hero';
 import Layout from '../components/utilities/Layout';
 import Courses from '../models/Courses';
+import User from '../models/User';
 import db from '../utils/db';
 const HomePage = (props) => {
-  const {courses} = props;
+  const {courses,users} = props;
+
   return (
     <Layout>
       <Hero/>
       <LatestCourses courses={courses}/>
-      <Testimonial />
+      <Testimonial users ={users} />
       <FeaturedTeacher />
       <LargestCourse/>
       <Partner/>
@@ -27,10 +29,14 @@ export default HomePage;
 export async function getServerSideProps() {
   await db.connect();
   const courses = await Courses.find({}).lean();
+  const users = await User.find({}).lean();
   await db.disconnect();
   return {
     props: {
       courses: courses.map(db.convertDocToObj),
+      users: users.map(db.convertDocToObj),
     },
   };
 }
+
+

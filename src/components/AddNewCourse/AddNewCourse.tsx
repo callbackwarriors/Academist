@@ -1,39 +1,25 @@
 import React, { useState } from 'react';
+import axios from "axios";
+import { useRouter } from "next/router";
 
 const AddNewCourse = () => {
+    const router = useRouter();
+    const [name, setName] = useState("");
+  
 
-    const [course, setCourse] = useState({});
-    // const [file, setFile] = useState(null)
-    const handleBlur = (e: any) => {
-        // const newCourse = { ...course };
-        // newCourse[e.target.name] = e.target.value;
-        // console.log(newCourse);
-    }
-
-    const handleFileChange = () => { }
-
-    const handleSubmit = (e: any) => {
+    const handleSubmit = async ( e:any ) => {
         e.preventDefault();
-        // const formData = new FormData()
-        // // formData.append('file', file)
-        // formData.append('name', course.name);
-        // formData.append('price', course.price);
-        // formData.append('textarea', course.textarea);
 
-        // fetch('http://localhost:5000/api/courses', {
-        //     method: 'POST',
-        //     body: formData
-        // })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         console.log(data);
-        //         alert("Course added successfully.")
-        //     })
-        //     .catch(error => {
-        //         console.log(error)
-        //     })
-    }
-
+        try {
+            const { data } = await axios.post("/api/testCourse/testCourse", {
+                name,
+            });
+            console.log("couse name", data);
+          } catch (err) {
+               console.log(err)
+          }
+        };
+       
 
     return (
         <div className="addNewCourse">
@@ -42,9 +28,9 @@ const AddNewCourse = () => {
                     <div className="grid grid-cols-2">
                         <div className="leftInput">
                             <p>Title</p>
-                            <input onBlur={handleBlur} type="text" name="title" />
+                            <input  onChange={(e) => setName(e.target.value)} type="text" name="title" />
 
-                            <p>Short Description</p>
+                            {/* <p>Short Description</p>
                             <input onBlur={handleBlur} type="text" name="desc" /> <br />
 
                             <select onBlur={handleBlur}>
@@ -86,7 +72,7 @@ const AddNewCourse = () => {
                             <input onChange={handleFileChange} type="file" name="thumbnail" />
 
                             <p>Description</p>
-                            <textarea onBlur={handleBlur} name="desc" id=""></textarea>
+                            <textarea onBlur={handleBlur} name="desc" id=""></textarea> */}
 
                         </div>
                         <input type="submit"></input>
@@ -95,6 +81,7 @@ const AddNewCourse = () => {
             </form>
         </div>
     );
-};
+}
+;
 
 export default AddNewCourse;

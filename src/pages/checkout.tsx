@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
 import { Store } from 'utils/Store';
+import Layout from "components/utilities/Layout";
 
 const Checkout = () => {
     const router = useRouter()
@@ -10,9 +11,9 @@ const Checkout = () => {
       router.push('/login?redirect=/checkout')
     }
     return (
-        <div>
-            checkout
-        </div>
+        <Layout>
+            
+        </Layout>
     );
 };
 
