@@ -45,7 +45,7 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <>
       <div className="flex items-center justify-center overflow-x-hidden bg-yellow-100 lg:overflow-x-auto lg:overflow-hidden">
         <div className="flex flex-col flex-wrap justify-between w-full border-gray-300 login-container lg:w-4/5 lg:bg-white lg:h-screen lg:border lg:flex-nowrap lg:flex-row group">
           <div className="relative flex order-2 w-full mt-32 lg:w-1/2 h-28 lg:h-full lg:mt-0 lg:bg-theme-yellow-dark lg:order-1">
@@ -158,7 +158,7 @@ const Register = () => {
                           })}
                           className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.password ? "ring-2 ring-red-500" : null}`}
-                          placeholder="password"
+                          placeholder="Password"
                         />
                         <span className="py-2 text-sm text-red-400">
                           {errors?.password?.message}
@@ -193,7 +193,7 @@ const Register = () => {
                           })}
                           className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.confirmPassword ? "ring-2 ring-red-500" : null}`}
-                          placeholder="confirm Password"
+                          placeholder="Confirm Password"
                         />
                         <span className="py-2 text-sm text-red-400">
                           {errors?.confirmPassword?.message}
@@ -202,19 +202,13 @@ const Register = () => {
                     </label>
                   </div>
                   <div className="form-element">
-                    <div className="flex items-center justify-between py-2 mx-auto lg:w-4/5">
+                    <div className="flex items-center py-2 mx-auto lg:w-4/5">
                       <label className="flex items-center space-x-2 tracking-wide text-gray-800 select-none">
                         <input type="checkbox" name="" id="" />
                         <span className="block tracking-wide text-gray-800">
                           Remember me
                         </span>
                       </label>
-                      <Link
-                        href="#"
-                        className="block tracking-wide text-gray-800 border-b border-gray-300"
-                      >
-                        Forgot Password?
-                      </Link>
                     </div>
                   </div>
 
@@ -239,7 +233,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
