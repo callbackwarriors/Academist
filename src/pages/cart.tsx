@@ -17,6 +17,7 @@ const AddCart = () => {
         router.push('/checkout')
     }
 
+    
     return (
         <Layout>
 
