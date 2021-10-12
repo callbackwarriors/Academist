@@ -5,7 +5,7 @@ const FeaturedCourse = () => {
     return (
         <>
             {
-                coursesData.map((cd)=> <Card cd={cd} />)
+                coursesData.map((cd) => <Card cd={cd} />)
             }
         </>
     );

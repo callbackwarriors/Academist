@@ -19,9 +19,9 @@ const Sidebar = () => {
           className={`fixed inset-0 z-20 block transition-opacity bg-black opacity-50 lg:hidden ${isSidebarOpen ? "block" : "hidden"
             }`}
         />
-        <div>
+        <div className="absolute inline-block">
           <button
-            className="w-8 h-8 p-2 lg:w-0 lg:h-0 btn-menu lg:hidden"
+            className="mt-6 ml-6 lg:w-0 lg:h-0 btn-menu lg:hidden"
             onClick={(): void => setIsSidebarOpen(true)}
             type="button"
           >
