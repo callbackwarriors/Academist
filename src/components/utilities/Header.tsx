@@ -73,7 +73,7 @@ const Header = () => {
           </span>
         </span>
         {userInfo ? (
-          <button> {userInfo.name} </button>
+          <></>
         ) : (
           <Link href="/login">
             <a>
