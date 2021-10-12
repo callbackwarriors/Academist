@@ -11,7 +11,7 @@ const managecourses = (props: any) => {
         <Layout>
             <div className="flex items-stretch w-full bg-gray-200">
                 <Sidebar />
-                <div className="flex flex-wrap w-full min-h-screen p-5 m-5 transition-all bg-white section-padding page-content__body">
+                <div className="w-full min-h-screen p-5 m-5 transition-all bg-white manageCourses__items section-padding page-content__body">
                     <ManageCourses courses={courses} />
                 </div>
             </div>
