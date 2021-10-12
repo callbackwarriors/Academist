@@ -52,6 +52,13 @@ function reducer(state, action) {
         return { ...state, billingAddress: action.payload };
       case "PAYMENT_DETAILS":
         return { ...state, paymentInfo: action.payload };
+      return {
+        ...state,
+        userInfo: null,
+        cart: {
+          cartItems: [],
+        },
+      };
     default:
       state;
   }

@@ -3,11 +3,11 @@ import coursesData from './CoursesData'
 import Card from './Card'
 const FeaturedCourse = () => {
     return (
-        <div>
+        <>
             {
-                coursesData.map((cd)=> <Card cd={cd} />)
+                coursesData.map((cd) => <Card cd={cd} />)
             }
-        </div>
+        </>
     );
 };
 

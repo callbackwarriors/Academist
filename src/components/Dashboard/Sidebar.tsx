@@ -11,53 +11,42 @@ import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 const Sidebar = () => {
   const router = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-    return (
-        <>
-        <React.Fragment>
+  return (
+    <>
+      <React.Fragment>
         <div
-        onClick={() => setIsSidebarOpen(false)}
-        className={`fixed inset-0 z-20 block transition-opacity bg-black opacity-50 lg:hidden ${
-          isSidebarOpen ? "block" : "hidden"
-        }`}
-      />
-
-
-<div>
-        <button
-          className="btn-menu lg:hidden p-2"
-          onClick={(): void => setIsSidebarOpen(true)}
-          type="button"
-        >
-          <GiHamburgerMenu name="burger" className="w-6 h-6" />
-        </button>
-      </div>
- {/* Sidebar */}
- <div
-        className={`fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 ease-out transform translate-x-0 bg-white border-r-2 lg:translate-x-0 lg:static lg:inset-0 ${
-          isSidebarOpen ? "ease-out translate-x-0" : "ease-in -translate-x-full"
-        }`}
-      >
-          <div className="flex items-center justify-center mt-10 text-center py-6">
-          <span className="mx-2 text-2xl font-semibold text-black">
-            MANAGEMENT
-          </span>
+          onClick={() => setIsSidebarOpen(false)}
+          className={`fixed inset-0 z-20 block transition-opacity bg-black opacity-50 lg:hidden ${isSidebarOpen ? "block" : "hidden"
+            }`}
+        />
+        <div className="absolute inline-block">
+          <button
+            className="mt-6 ml-6 lg:w-0 lg:h-0 btn-menu lg:hidden"
+            onClick={(): void => setIsSidebarOpen(true)}
+            type="button"
+          >
+            <GiHamburgerMenu name="burger" className="w-8 h-8" />
+          </button>
         </div>
-           <Navigation
-            // you can use your own router's api to get pathname
+        {/* Sidebar */}
+        <div
+          className={`fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 ease-out transform translate-x-0 bg-white border-r-2 lg:translate-x-0 lg:static lg:inset-0 ${isSidebarOpen ? "ease-out translate-x-0" : "ease-in -translate-x-full"
+            }`}
+        >
+          <div className="flex items-center justify-center py-6 mt-10 text-center">
+            <span className="mx-2 text-2xl font-semibold text-black">
+              MANAGEMENT
+            </span>
+          </div>
+          <Navigation
             activeItemId={router.pathname}
-            onSelect={({itemId}) => {
-              router.push({pathname:itemId})
-              // maybe push to the route
+            onSelect={({ itemId }) => {
+              router.push({ pathname: itemId })
             }}
-
-            
-            
             items={[
               {
                 title: 'Dashboard',
                 itemId: '/dashboard',
-                // you can use your own custom Icon component as well
-                // icon is optional
                 elemBefore: () => <BsFillInboxesFill name="inbox" />,
               },
               {
@@ -68,8 +57,6 @@ const Sidebar = () => {
                   {
                     title: 'Admin',
                     itemId: '/',
-                  
-                    // Requires v1.9.1+ (https://github.com/abhijithvijayan/react-minimal-side-navigation/issues/13)
                     elemBefore: () => <AiOutlineFundProjectionScreen name="project" />,
                   },
                   {
@@ -84,21 +71,15 @@ const Sidebar = () => {
                   },
                 ],
               },
-          
+
             ]}
           />
-            <Navigation
-            // you can use your own router's api to get pathname
+          <Navigation
             activeItemId={router.pathname}
-            onSelect={({itemId}) => {
-              router.push({pathname:itemId})
-              // maybe push to the route
+            onSelect={({ itemId }) => {
+              router.push({ pathname: itemId })
             }}
-
-            
-            
             items={[
-         
               {
                 title: 'Courses',
                 itemId: '',
@@ -127,37 +108,29 @@ const Sidebar = () => {
                 ],
               },
               {
-                title:'Report',
-                itemId:'',
+                title: 'Report',
+                itemId: '',
                 elemBefore: () => <GoReport name="inbox" />,
-                subNav:[
+                subNav: [
                   {
-                    title:'Admin Revenue',
-                    itemId:'/dashboard/report/admin-revenue'
+                    title: 'Admin Revenue',
+                    itemId: '/dashboard/report/admin-revenue'
                   },
                   {
-                    title:'Instructor Revenue',
-                    itemId:'/dashboard/report/instructor-revenue'
+                    title: 'Instructor Revenue',
+                    itemId: '/dashboard/report/instructor-revenue'
                   }
                 ]
               }
-              
+
             ]}
           />
-
-
-<Navigation
-            // you can use your own router's api to get pathname
+          <Navigation
             activeItemId={router.pathname}
-            onSelect={({itemId}) => {
-              router.push({pathname:itemId})
-              // maybe push to the route
+            onSelect={({ itemId }) => {
+              router.push({ pathname: itemId })
             }}
-
-            
-            
             items={[
-         
               {
                 title: 'Admins',
                 itemId: '',
@@ -175,21 +148,12 @@ const Sidebar = () => {
                   }
                 ],
               },
-          
             ]}
           />
-
-
-         
-      
-
-    </div>
-    </React.Fragment>
-         
-
-
-        </>
-    );
+        </div>
+      </React.Fragment>
+    </>
+  );
 };
 
 export default Sidebar;
