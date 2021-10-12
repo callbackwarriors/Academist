@@ -6,8 +6,8 @@ const Checkout = () => {
     const router = useRouter()
     const { state } = useContext(Store);
     const { userInfo } = state;
-    if(!userInfo) {
-      router.push('/login?redirect=/checkout')
+    if (!userInfo) {
+        router.push('/login?redirect=/checkout')
     }
     return (
         <div>
