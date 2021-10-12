@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image'
 import { ICourses } from 'type';
+import Link from 'next/link'
 
 interface IProp {
   course: ICourses;
@@ -10,16 +11,28 @@ const ManageCourse = ({ course }: IProp) => {
   const { title, img } = course;
 
   return (
-    <div className="grid p-5 m-5 bg-white rounded-lg grid-col-1 lg:grid-cols-3">
-      <div className="text-center">
-        <Image height="100px" width="100px" src={img} />
-      </div>
-      <div className="mt-1 ml-5 mr-10 text-center">
-        <h5 className="font-semibold text-gray-600">{title}</h5>
-      </div>
-      <div className="mt-10 ml-8 text-center" >
-        <button className="inline-block px-4 py-3 text-sm font-bold text-center text-white uppercase transition duration-200 ease-in-out bg-indigo-500 rounded-md cursor-pointer hover:bg-indigo-600">View Courses</button>
-      </div>
+    <div className="p-4 transition duration-100 ease-in-out transform xl:w-1/3 md:w-1/2 hover:scale-105">
+      <Link href="#">
+        <a>
+          <div className="p-6 bg-gray-100 rounded-lg">
+            <div className="relative">
+              <Image
+                width="500"
+                height="300"
+                className="object-cover mb-6 rounded"
+                src={img}
+                alt={title}
+              />
+            </div>
+            <h4 className="mb-2 text-base">{title}</h4>
+            <div className="">
+              <button className="block w-full py-2 mb-2 text-sm text-center text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800">View Courses</button>
+              <button className="block w-full py-2 mb-2 text-sm text-center text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800">Edit Courses</button>
+              <button className="block w-full py-2 mb-2 text-sm text-center text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800">Delete Courses</button>
+            </div>
+          </div>
+        </a>
+      </Link>
     </div>
   );
 };

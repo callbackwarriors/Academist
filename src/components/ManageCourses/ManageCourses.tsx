@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image'
 import ManageCourse from 'components/ManageCourse/ManageCourse';
 import { ICourses } from 'type';
 
@@ -7,15 +6,21 @@ interface IProp {
   courses: ICourses;
 }
 
-const ManageCourses = ({courses}: IProp) => {
-  
+const ManageCourses = ({ courses }: IProp) => {
+
   return (
-    <div>
-      <h5>This is manage section</h5>
-      {courses.map((course: ICourses) => (
-        <ManageCourse key={course.title} course={course}></ManageCourse>
-      ))}
-    </div>
+    <>
+      <div className="title">
+        <h2 className="title__subtitle"></h2>
+        <h2 className="mb-4">Manage section</h2>
+        <p>Dear admin, Welcome to your manage courses page. You can manage the courses below and start selling from now on.</p>
+      </div>
+      <div  className="flex flex-wrap page-content__body">
+          {courses.map((course: ICourses) => (
+            <ManageCourse key={course.title} course={course}></ManageCourse>
+          ))}
+      </div>
+    </>
   );
 };
 
