@@ -1,23 +1,24 @@
+import AllCourses from "components/AllCourses/AllCourses";
 import React, { useState } from "react";
-import Header from "components/utilities/Header";
 import {
   BsFillGrid3X2GapFill,
   BsFillGrid3X3GapFill,
-  BsSearch,
+  BsSearch
 } from "react-icons/bs";
-import Footer from "components/utilities/Footer";
-import db from "../../utils/db";
-import Courses from "../../models/Courses";
-import AllCourses from "components/AllCourses/AllCourses";
 import { GiHamburgerMenu } from 'react-icons/gi';
+import Layout from '../../components/utilities/Layout';
+import Courses from "../../models/Courses";
+import db from "../../utils/db";
 
 const CoursesPage = (props) => {
   const { courses } = props;
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  
 
   return (
+    <Layout>
     <div className="sectionAllCourses">
-      <Header />
+
       <div className="bg-gray-300 allCourses">
         <h2 className="pt-12 text-center"> Find Your Course</h2>
 
@@ -223,15 +224,16 @@ const CoursesPage = (props) => {
 
               <div className="flex flex-wrap page-content__body">
                 {courses.map((course) => (
-                  <AllCourses key={course.title} course={course}></AllCourses>
+                  <AllCourses key={course.title} course={course} />
                 ))}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Footer />
+
     </div>
+    </Layout>
   );
 };
 
