@@ -10,7 +10,7 @@ const checkout = () => {
     const { state } = useContext(Store);
     const { userInfo } = state;
     if (!userInfo) {
-        router.push('/login?redirect=/checkout')
+        router.push('/login')
     }
     return (
         <Layout>
