@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 import { BsFillXSquareFill } from "react-icons/bs";
@@ -20,13 +19,7 @@ function CartItem({ item }: IProp) {
         <div className="course-image ">
           <Link href={`/courses/${slug}`}>
             <a>
-              <Image
-                width="50"
-                height="50"
-                className="object-cover"
-                src={img}
-                alt=""
-              />
+              <img src={img} width="50" height="50" alt="" />
             </a>
           </Link>
         </div>

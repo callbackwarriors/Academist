@@ -8,7 +8,9 @@ h1, h2, h3, h4, h5, h6 {
     font-family: $title-font!important;
     @apply font-bold mb-3;
 }
-
+button {
+    font-family: $title-font!important;
+}
 h1 {
     @apply text-5xl;
 }
