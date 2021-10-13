@@ -1,11 +1,38 @@
-import React from 'react';
+
+import axios from 'axios';
+import React, { useState } from 'react';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 
 const AddNewCourse = () => {
-    const handleBlur = () => { }
-    const handleSubmit = () => { }
+    const [title, setTitle] = useState("");
+    const [slug, setSlug] = useState("");
+    const [videoUrl, setVideoUrl] = useState("");
+    const [shortDesc, setShortDesc] = useState("");
+    const [categories, setCategories] = useState("");
+    const [level, setLevel] = useState("");
+    // const [price, setPrice] = useState(0);
+    const [desc, setDesc] = useState("");
 
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+
+        try {
+            const { data } = await axios.post("/api/postCourse/postCourse", {
+                title,
+                slug,
+                videoUrl,
+                shortDesc,
+                categories,
+                level,
+                // price,
+                desc
+            });
+            console.log("course name", data);
+        } catch (err) {
+            console.log(err)
+        }
+    };
 
     return (
         <div className="addNewCourse">
@@ -13,30 +40,24 @@ const AddNewCourse = () => {
                 <div className="container">
                     <div className="mb-4">
                         <label htmlFor="title">Title</label>
-                        <input id="title" className="w-full px-4 py-3 rounded focus:border-royal-blue" onBlur={handleBlur} type="text" name="title" placeholder="Write your course title here..." />
+                        <input onChange={(e) => setTitle(e.target.value)} id="title" className="w-full px-4 py-3 rounded focus:border-royal-blue" type="text" name="title" placeholder="Write your course title here..." />
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="slug">Slug</label>
+                        <input onChange={(e) => setSlug(e.target.value)} id="slug" className="w-full px-4 py-3 rounded focus:border-royal-blue" type="text" name="slug" placeholder="Write your course title here..." />
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="intro">Intro video</label>
+                        <input onChange={(e) => setVideoUrl(e.target.value)} id="intro" className="w-full px-4 py-3 rounded focus:border-royal-blue" type="text" name="intro" placeholder="Add intro video link" />
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="shortDesc">Short Description</label>
+                        <textarea onChange={(e) => setShortDesc(e.target.value)} className="w-full px-4 py-3 rounded focus:border-royal-blue" name="shortDesc" placeholder="Write short description" id="shortDesc"></textarea>
                     </div>
 
                     <div className="mb-4">
-                        <label htmlFor="short__desc">Short Description</label>
-
-                        <textarea className="w-full px-4 py-3 rounded focus:border-royal-blue" placeholder="Write short description" id="short__desc"></textarea>
-                    </div>
-
-                    <div className="mb-4">
-                        <label htmlFor="course__overview">Course Overview</label>
-
-                        <textarea className="w-full px-4 py-3 rounded focus:border-royal-blue" placeholder="Write your course overview..." id="course__overview"></textarea>
-                    </div>
-
-                    <div className="mb-4">
-                        <label htmlFor="course__features">Course Features</label>
-
-                        <textarea className="w-full px-4 py-3 rounded focus:border-royal-blue" placeholder="Write your course overview..." id="course__features"></textarea>
-                    </div>
-
-                    <div className="mb-4">
-                        <label htmlFor="course__category">Course Category</label>
-                        <select id="course__category" className="w-full px-4 py-3 rounded form-select focus:border-royal-blue">
+                        <label htmlFor="categories">Course Category</label>
+                        <select onChange={(e) => setCategories(e.target.value)} id="categories" name="categories" className="w-full px-4 py-3 rounded form-select focus:border-royal-blue">
                             <option value="javascript">Javascript</option>
                             <option value="react">React</option>
                             <option value="nodejs">Nodejs</option>
@@ -45,8 +66,8 @@ const AddNewCourse = () => {
                     </div>
 
                     <div className="mb-4">
-                        <label htmlFor="course__label">Course Label</label>
-                        <select id="course__label" className="w-full px-4 py-3 rounded form-select focus:border-royal-blue">
+                        <label htmlFor="level">Course Label</label>
+                        <select id="level" onChange={(e) => setLevel(e.target.value)} name="level" className="w-full px-4 py-3 rounded form-select focus:border-royal-blue">
                             <option value="basic">Basic</option>
                             <option value="beginner">Beginner</option>
                             <option value="medium">Medium</option>
@@ -54,16 +75,25 @@ const AddNewCourse = () => {
                         </select>
                     </div>
 
+                    {/* <div className="mb-4">
+                        <label htmlFor="price">Course Price</label>
+                        <input onChange={(e) => setPrice(e.target.value)} id="price" className="w-full px-4 py-3 rounded focus:border-royal-blue" type="number" name="price" placeholder="Write your course price here..." />
+                    </div> */}
+                    <div className="mb-4">
+                        <label htmlFor="desc">Course Overview</label>
+
+                        <textarea onChange={(e) => setDesc(e.target.value)} className="w-full px-4 py-3 rounded focus:border-royal-blue" placeholder="Write your course overview..." id="desc" name="desc"></textarea>
+                    </div>
+
+                    {/*
                     <div className="mb-4">
                         <label htmlFor="price">Course Price</label>
                         <input id="price" className="w-full px-4 py-3 rounded focus:border-royal-blue" onBlur={handleBlur} type="number" name="price" placeholder="Write your course price here..." />
                     </div>
-
                     <div className="mb-4">
                         <input id="certificate" className="rounded focus:border-royal-blue " onBlur={handleBlur} type='checkbox' name="certificate" />
                         <label htmlFor="certificate"> Is certificate include?</label>
                     </div>
-
                     <div>
                         <div className="flex mt-8 mb-8">
                             <div className="max-w-2xl rounded-lg shadow-xl bg-gray-50">
@@ -88,11 +118,8 @@ const AddNewCourse = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="mb-4">
-                        <label htmlFor="intro">Intro video</label>
-                        <input id="intro" className="w-full px-4 py-3 rounded focus:border-royal-blue" onBlur={handleBlur} type="url" name="intro" placeholder="Add intro video link" />
-                    </div>
-                    <input className="px-12 py-3 text-lg text-white border-0 bg-royal-blue focus:outline-none hover:bg-indigo-600" type="submit"></input>
+                     */}
+                    < input className="px-12 py-3 text-lg text-white border-0 bg-royal-blue focus:outline-none hover:bg-indigo-600" type="submit" />
                 </div>
             </form>
         </div>
