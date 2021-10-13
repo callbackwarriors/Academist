@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
-import { BsFillXSquareFill } from "react-icons/bs";
 import { ICourses } from "type";
 import { Store } from "utils/Store";
 interface IProp {
@@ -19,24 +19,28 @@ function CartItem({ item }: IProp) {
         <div className="course-image ">
           <Link href={`/courses/${slug}`}>
             <a>
-              <img src={img} width="50" height="50" alt="" />
+              <Image
+                width="50"
+                height="50"
+                className="object-cover"
+                src={img}
+                alt=""
+              />
             </a>
           </Link>
         </div>
         <div className="CourseName-instructor">
           <Link href={`/courses/${slug}`}>
             <a className="hover:underline hover:text-royal-blue">
-              <h5 className="m-0">{title}</h5>
+              <h6 className="m-0">{title}</h6>
             </a>
           </Link>
         </div>
       </div>
       <div className="price">
-        <span className="mb-2 text-2xl font-semibold">${price}</span>
+        <span className="mb-2 text-lg font-semibold">- ${price}</span>
       </div>
-      <button className="flex text-2xl text-royal-blue" onClick={(() => removeItemHandler(item))}>
-        <BsFillXSquareFill />
-      </button>
+      
     </li>
   );
 }

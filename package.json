@@ -13,6 +13,8 @@
     "@emotion/styled": "^11.3.0",
     "@headlessui/react": "^1.4.1",
     "@heroicons/react": "^1.0.4",
+    "@stripe/react-stripe-js": "^1.6.0",
+    "@stripe/stripe-js": "^1.19.1",
     "@tailwindcss/forms": "^0.3.4",
     "@types/react-modal": "^3.12.1",
     "axios": "^0.22.0",

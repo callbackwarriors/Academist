@@ -1,7 +1,8 @@
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
-import Link from "next/link";
 import Cookies from "js-cookie";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { Fragment, useContext, useState } from "react";
 import {
   BiBookReader,
@@ -9,9 +10,8 @@ import {
   BiCog,
   BiListCheck,
   BiLogOutCircle,
-  BiUserCheck,
+  BiUserCheck
 } from "react-icons/bi";
-import { useRouter } from "next/router";
 import { Store } from "utils/Store";
 
 export default function Example() {
@@ -28,19 +28,12 @@ export default function Example() {
 
   const { userInfo } = state;
 
+  console.log("User info", userInfo)
   return (
     <Menu as="div" className="relative inline-block text-left">
-      {userInfo ? (
+      {userInfo && (
         <Menu.Button className="inline-flex justify-center w-full px-4 py-2 ml-3 text-sm font-medium text-white rounded-md bg-royal-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
           {userInfo.name}
-          <ChevronDownIcon
-            className="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
-            aria-hidden="true"
-          />
-        </Menu.Button>
-      ) : (
-        <Menu.Button className="inline-flex justify-center w-full px-4 py-2 ml-3 text-sm font-medium text-white rounded-md bg-royal-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-          User name
           <ChevronDownIcon
             className="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
             aria-hidden="true"
@@ -82,8 +75,10 @@ export default function Example() {
                 )}
               </Menu.Item>
             </Link>
+            <Link href="/cart">
             <Menu.Item>
               {({ active }) => (
+                
                 <button
                   className={`${
                     active ? "bg-royal-blue text-white" : "text-gray-900"
@@ -96,8 +91,10 @@ export default function Example() {
                   )}
                   My cart
                 </button>
+                
               )}
             </Menu.Item>
+            </Link>
           </div>
           <div className="px-1 py-1">
             <Menu.Item>
