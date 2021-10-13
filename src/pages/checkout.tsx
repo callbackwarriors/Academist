@@ -1,8 +1,8 @@
+import Checkout from "components/Checkout/Checkout";
+import Layout from "components/utilities/Layout";
 import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
 import { Store } from 'utils/Store';
-import Layout from "components/utilities/Layout";
-import Checkout from "components/Checkout/Checkout";
 
 
 const checkout = () => {
@@ -14,6 +14,11 @@ const checkout = () => {
     }
     return (
         <Layout>
+            <div className="text-center cart-head">
+                <div className="container">
+                    <h2>Checkout</h2>
+                </div>
+            </div>
            <Checkout></Checkout>
         </Layout>
     );
