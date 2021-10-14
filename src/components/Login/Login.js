@@ -26,15 +26,17 @@ const Login = () => {
 
   const submitHandler = async ({ email, password }) => {
     try {
-      const { data } = await axios.post('/api/users/login', {
+      const { data } = await axios.post("/api/users/login", {
         email,
         password,
       });
-      dispatch({ type: 'USER_LOGIN', payload: data });
-      Cookies.set('userInfo', data);
-      router.push(redirect || '/');
+      console.log('login', data);
+      dispatch({ type: "USER_LOGIN", payload: data });
+      Cookies.set("userInfo", data.token);
+      router.push(redirect || "/");
     } catch (err) {
-      alert(err.response.data ? err.response.data.message : err.message);
+      console.log(err);
+      // alert(err.response.data ? err.response.data.message : err.message);
     }
   };
 
@@ -167,7 +169,6 @@ const Login = () => {
                     <a className="text-royal-blue">Create an account</a>
                   </Link>
                 </p>
-
               </div>
             </div>
           </div>
