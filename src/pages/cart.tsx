@@ -14,10 +14,9 @@ const AddCart = () => {
         cart: { cartItems },
     } = state;
     const checkoutHandler = () => {
-        router.push('/checkout')
+        router.push('/login?redirect=/checkout')
     }
 
-    
     return (
         <Layout>
 

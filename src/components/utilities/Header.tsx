@@ -19,8 +19,6 @@ const Header = () => {
   const { state, dispatch } = useContext(Store);
   const { cart, userInfo } = state;
 
-  console.log("userInfo in header", userInfo )
-  console.log("cart in header", cart )
   return (
     
     <header className="text-gray-600 body-font">
