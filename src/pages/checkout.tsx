@@ -19,7 +19,7 @@ const checkout = () => {
                     <h2>Checkout</h2>
                 </div>
             </div>
-           <Checkout></Checkout>
+           <Checkout />
         </Layout>
     );
 };
