@@ -39,13 +39,38 @@ const SimpleCardForm = () => {
         }
     };
 
+    const handelPaymentSuccess = async (paymentId) => {
+        try {
+            const { data } = await axios.post(
+                '/api/orders/orders',
+                {
+                    userDetails: userInfo,
+                    userAddress:billingAddress,
+                    paymentId,
+                    orderItems: cartItems,
+                },
+                {
+                    headers: {
+                        authorization: `Bearer ${userInfo.token}`,
+                    },
+                }
+            )
+            console.log('checkout data', data);
+            dispatch({ type: 'CART_CLEAR' });
+            Cookies.remove('cartItems');
+            // router.push(`/order/${data._id}`);
+        } catch (err) {
+            console.log(err.message);
+
+        }
+    }
 
 
-    const handelPaymentSuccess =async (paymentId)=>{
-        const data = paymentId;
-        dispatch({ type: "PAYMENT_DETAILS", payload: data });
-        Cookies.set("paymentInfo", data);
-      }
+    // const handelPaymentSuccess = async (paymentId)=>{
+    //     const data = paymentId;
+    //     dispatch({ type: "PAYMENT_DETAILS", payload: data });
+    //     Cookies.set("paymentInfo", data);
+    //   }
 
     return (
         <div className="container mt-5">

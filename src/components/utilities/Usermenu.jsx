@@ -24,6 +24,8 @@ export default function Example() {
     Cookies.remove("userInfo");
     Cookies.remove("cartItems");
     router.push("/");
+    localStorage.clear();
+
   };
 
   const { userInfo } = state;
