@@ -19,6 +19,7 @@ const Checkout = () => {
     const { state, dispatch } = useContext(Store);
     const { cart: { cartItems }, userInfo } = state;
     console.log('userInfo', userInfo);
+    console.log('cartItems', cartItems);
     
     const { billingAddress } = state;
     const [phone, setPhone] = useState('');
@@ -33,7 +34,7 @@ const Checkout = () => {
                     address: address,
                     paymentId,
                     userInfo,
-                    // orderItems: cartItems,
+                    cartItems,
                 },
                 {
                     headers: {
