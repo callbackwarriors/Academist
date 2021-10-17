@@ -30,7 +30,10 @@ const Header = () => {
   }, []);
 
 
+  console.log("userInfo in header", userInfo )
+  console.log("cart in header", cart )
   return (
+    
     <header className="text-gray-600 body-font">
       <div className="container flex flex-wrap items-center justify-between p-5 mx-auto">
         <span className="flex items-center hidden mb-4 font-medium text-gray-900 lg:block title-font md:mb-0">
@@ -85,8 +88,10 @@ const Header = () => {
           </span>
         </span>
         <p><p>{email}</p></p>
-        {  userInfo ? (
-          <></>
+        {/* {  userInfo ? ( */}
+         
+        {(userInfo ? (
+          <Usermenu />
         ) : (
           <Link href="/login">
             <a>
@@ -94,8 +99,8 @@ const Header = () => {
                 Login/Registation
               </button>
             </a>
-          </Link>)}
-        <Usermenu />
+          </Link>))}
+        
       </div>
     </header>
   );
