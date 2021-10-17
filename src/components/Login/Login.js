@@ -36,7 +36,7 @@ const Login = () => {
       router.push(redirect || "/");
     } catch (err) {
       console.log(err);
-      // alert(err.response.data ? err.response.data.message : err.message);
+      alert(err.response.data ? err.response.data.message : err.message);
     }
   };
 
