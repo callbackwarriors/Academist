@@ -2,34 +2,69 @@ import CartItemTwo from 'components/Cart/CartItemTwo';
 import Cookies from "js-cookie";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ICourses } from 'type';
 import { Store } from 'utils/Store';
 import Payment from "components/Payment/Payment"
+import axios from 'axios';
 
 const Checkout = () => {
+    useEffect(() => {
+        if (cartItems.length === 0) {
+            router.push('/cart');
+        }
+    }, []);
 
     const router = useRouter()
     const { state, dispatch } = useContext(Store);
     const { cart: { cartItems }, userInfo } = state;
+    console.log('userInfo', userInfo);
+    
     const { billingAddress } = state;
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
     const [show, setShow] = useState(true);
-    const handlePaymentSuccess = (paymentId: any) => {
+    const handlePaymentSuccess = async (paymentId: any) => {
+        try {
+            const { data } = await axios.post(
+                '/api/orders/orders',
+                {
+                    phone: phone,
+                    address: address,
+                    paymentId,
+                    userInfo,
+                    // orderItems: cartItems,
+                },
+                {
+                    headers: {
+                        authorization: `Bearer ${userInfo.token}`,
+                    },
+                }
+            )
+            console.log('checkout_data', data);
+            dispatch({ type: 'CART_CLEAR' });
+            Cookies.remove('cartItems');
+            // router.push(`/order/${data._id}`);
+        } catch (err: any) {
+            console.log(err.message);
 
-        const data = {
-            ...userInfo,
-            phone: phone,
-            address: address,
-            paymentId,
         }
-        console.log('checkout data', data);
-
-        dispatch({ type: "BILLING_ADDRESS", payload: data });
-        Cookies.set("billingAddress", data);
-
     }
+    // TRY
+    // const handlePaymentSuccess = (paymentId: any) => {
+
+    //     const data = {
+    //         userDetails: userInfo,
+    //         phone: phone,
+    //         address: address,
+    //         paymentId,
+    //         orderItems: cartItems,
+    //     }
+    //     console.log('checkout data', data);
+
+    //     dispatch({ type: "BILLING_ADDRESS", payload: data });
+    //     Cookies.set("billingAddress", data);
+    // }
 
 
     return (
@@ -76,8 +111,6 @@ const Checkout = () => {
 
                             <label>Phone:</label>
                             <input className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" onBlur={(e) => setPhone(e.target.value)} type="text" placeholder="Enter your Phone" />
-
-
 
                             <label>Address:</label>
                             <textarea className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" onBlur={(e) => setAddress(e.target.value)} placeholder="Enter your Address" ></textarea>

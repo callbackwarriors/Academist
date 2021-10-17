@@ -61,9 +61,9 @@ const SimpleCardForm = ({handelPayment}) => {
       setPaymentError(error.message);
       setPaymentSuccess(null);
     } else {
-      setPaymentSuccess(paymentMethod);
+      setPaymentSuccess(paymentMethod.id);
       setPaymentError(null);
-      handelPayment(paymentMethod);
+      handelPayment(paymentMethod.id);
     }
   };
 
