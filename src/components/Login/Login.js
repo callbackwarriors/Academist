@@ -30,9 +30,10 @@ const Login = () => {
         email,
         password,
       });
-      console.log('login', data);
+      console.log("login", data);
       dispatch({ type: "USER_LOGIN", payload: data });
-      Cookies.set("userInfo", data.token);
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      // localStorage.setItem("password", password);
       router.push(redirect || "/");
     } catch (err) {
       console.log(err);

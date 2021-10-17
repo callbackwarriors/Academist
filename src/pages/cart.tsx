@@ -2,7 +2,7 @@ import CartItem from 'components/Cart/CartItem';
 import Layout from 'components/utilities/Layout';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ICourses } from 'type';
 import { Store } from 'utils/Store';
 
@@ -11,10 +11,10 @@ const AddCart = () => {
     const router = useRouter()
     const { state, dispatch } = useContext(Store);
     const {
-        cart: { cartItems },
+        cart: { cartItems }, userInfo
     } = state;
     const checkoutHandler = () => {
-        router.push('/login?redirect=/checkout')
+        router.push('/checkout')
     }
 
     return (
