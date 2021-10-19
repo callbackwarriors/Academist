@@ -13,7 +13,7 @@ const AddNewCourse = () => {
     const [shortDesc, setShortDesc] = useState("");
     const [categories, setCategories] = useState("");
     const [level, setLevel] = useState("");
-    // const [price, setPrice] = useState(0);
+    const [price, setPrice] = useState("0");
     const [desc, setDesc] = useState("");
     const [selectImage, setSelectImage]= useState();
    
@@ -52,7 +52,7 @@ const AddNewCourse = () => {
                 shortDesc,
                 categories,
                 level,
-                // price,
+                price,
                 desc,
                
             });
@@ -103,10 +103,10 @@ const AddNewCourse = () => {
                         </select>
                     </div>
 
-                    {/* <div className="mb-4">
+                    <div className="mb-4">
                         <label htmlFor="price">Course Price</label>
                         <input onChange={(e) => setPrice(e.target.value)} id="price" className="w-full px-4 py-3 rounded focus:border-royal-blue" type="number" name="price" placeholder="Write your course price here..." />
-                    </div> */}
+                    </div>
                     <div className="mb-4">
                         <label htmlFor="desc">Course Overview</label>
 

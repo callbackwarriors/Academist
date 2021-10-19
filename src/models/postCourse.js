@@ -6,8 +6,8 @@ const PostCourseSchema = new mongoose.Schema(
     videoUrl: { type: String, required: true },
     shortDesc: { type: String, required: true },
     categories: { type: String, required: true },
-    level: { type: String, required: true },
-    // price: { type: Number, required: true },
+    level: { type: String, required: true },       
+    price: { type: String, required: true },
     desc: { type: String, required: true },
   },
   { timestamps: true }
