@@ -51,9 +51,7 @@ const AddNewCourse = () => {
                 shortDesc,
                 categories,
                 level,
-                // price,
                 desc,
-               
             });
             console.log("course name", data);
         } catch (err) {
