@@ -4,7 +4,7 @@ const ViewAllOrder = ({ orderingData }) => {
     console.log("this is view all order ", orderingData)
     return (
         <div>
-            <h5>This is view all order</h5>
+            <h5> Views all Order</h5>
             <table className="table-auto">
                 <thead className="bg-green-900 text-white ">
                     <tr>
