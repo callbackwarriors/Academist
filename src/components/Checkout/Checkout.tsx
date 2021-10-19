@@ -1,12 +1,12 @@
+import axios from 'axios';
 import CartItemTwo from 'components/Cart/CartItemTwo';
+import Payment from "components/Payment/Payment";
 import Cookies from "js-cookie";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
 import { ICourses } from 'type';
 import { Store } from 'utils/Store';
-import Payment from "components/Payment/Payment"
-import axios from 'axios';
 
 const Checkout = () => {
     const [error, setError] = useState()
@@ -80,14 +80,16 @@ const Checkout = () => {
                 <div className="cart-content__item">
                     <h5>Select payment method</h5>
                     <div onClick={() => setShow(true)} className="flex items-center gap-3 mb-3">
-                        <input type="radio" id="stripe" name="method" value="CSS" /> <label htmlFor="stripe">New Payment Card</label>
+                        <input checked type="radio" id="stripe" name="method" value="CSS" /> <label htmlFor="stripe">New Payment Card</label>
                     </div>
                     <div onClick={() => setShow(false)} className="flex items-center gap-3">
                         <input type="radio" id="paypal" name="method" value="Paypal" /> <label htmlFor="paypal">Paypal</label>
                     </div>
                     {show ?
                         <Payment handlePaymentSuccess={handlePaymentSuccess} error={error}></Payment>
-                        : null}
+                        : 
+                        <button className="mt-8 bg-yellow-500 text-white py-4 px-16 uppercase rounded">Pay now</button>    
+                    }
                 </div>
             </div>
             <ul className="mt-10 cart-course-list">
