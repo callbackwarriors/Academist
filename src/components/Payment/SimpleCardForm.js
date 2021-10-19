@@ -67,16 +67,9 @@ const SimpleCardForm = ({handelPayment}) => {
     }
   };
 
-  // const handelPaymentSuccess= async (paymentId) => {
-  //   const data = paymentId;
-  //   console.log("data", data);
-  //   dispatch({ type: "PAYMENT_DETAILS", paymentMethod: data });
-  //   Cookies.set("paymentInfo", data);
-  // };
-
   return (
     <div className="container mt-5 ">
-      <form onSubmit={handleSubmit} className="lg:w-6/12">
+      <form onSubmit={handleSubmit} className="lg:w-8/12">
         <label>
           Card number
           <CardNumberElement

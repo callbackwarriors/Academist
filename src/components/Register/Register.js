@@ -31,6 +31,7 @@ const Register = () => {
     }
     try {
       const { data } = await axios.post("/api/users/register", {
+        name,
         email,
         password,
       });

@@ -1,12 +1,17 @@
 import AdminRevenue from "components/AdminRevenue/AdminRevenue";
 import Sidebar from "components/Dashboard/Sidebar";
 import Layout from "components/utilities/Layout";
-const adminRevenue = () => {
+import db from "utils/db";
+import Order from "../../../models/Orders";
+
+const adminRevenue = ({ props }: any) => {
+  console.log(props);
+
   return (
     <Layout>
-      <div className="flex w-full items-stretch bg-gray-200">
+      <div className="flex items-stretch w-full bg-gray-200">
         <Sidebar />
-       <div className="w-full py-20 h-screen transition-all">
+        <div className="w-full h-screen py-20 transition-all">
           <AdminRevenue />
         </div>
       </div>
@@ -15,3 +20,16 @@ const adminRevenue = () => {
 };
 
 export default adminRevenue;
+
+
+export async function getServerSideProps() {
+  await db.connect();
+  const order = await Order.find({}).lean();
+  await db.disconnect();
+  return {
+    props: {
+      courses: order.map(db.convertDocToObj),
+    },
+  };
+}
+
