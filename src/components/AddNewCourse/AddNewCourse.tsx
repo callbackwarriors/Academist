@@ -2,6 +2,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { useFormState } from 'react-hook-form';
+import { useMutate } from 'restful-react';
 
 
 const AddNewCourse = () => {
@@ -13,6 +15,31 @@ const AddNewCourse = () => {
     const [level, setLevel] = useState("");
     // const [price, setPrice] = useState(0);
     const [desc, setDesc] = useState("");
+    const [selectImage, setSelectImage]= useState();
+   
+    const {mutate: uplodeImage} = useMutate({
+          verb: "POST",
+          path: "api/postCourse/img-uplode"
+    });
+    const handleImage = (event:any) => {
+         setSelectImage(event.target.files[0])
+    }
+
+ 
+    const handleImageUplode = () =>{
+        
+        if(!selectImage){return;}
+        const formData = new FormData();
+        formData.append("image", selectImage)
+        uplodeImage(formData)
+        .then(uplodedImage=>{
+            console.log(uplodedImage)
+        })
+        .catch(_ =>{
+            console.log('uppsss something went worng')
+        })
+    }
+
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -26,7 +53,8 @@ const AddNewCourse = () => {
                 categories,
                 level,
                 // price,
-                desc
+                desc,
+               
             });
             console.log("course name", data);
         } catch (err) {
@@ -85,15 +113,15 @@ const AddNewCourse = () => {
                         <textarea onChange={(e) => setDesc(e.target.value)} className="w-full px-4 py-3 rounded focus:border-royal-blue" placeholder="Write your course overview..." id="desc" name="desc"></textarea>
                     </div>
 
-                    {/*
-                    <div className="mb-4">
+                    
+                    {/* <div className="mb-4">
                         <label htmlFor="price">Course Price</label>
                         <input id="price" className="w-full px-4 py-3 rounded focus:border-royal-blue" onBlur={handleBlur} type="number" name="price" placeholder="Write your course price here..." />
                     </div>
                     <div className="mb-4">
                         <input id="certificate" className="rounded focus:border-royal-blue " onBlur={handleBlur} type='checkbox' name="certificate" />
                         <label htmlFor="certificate"> Is certificate include?</label>
-                    </div>
+                    </div> */}
                     <div>
                         <div className="flex mt-8 mb-8">
                             <div className="max-w-2xl rounded-lg shadow-xl bg-gray-50">
@@ -111,14 +139,15 @@ const AddNewCourse = () => {
                                                 <p className="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
                                                     Attach a file</p>
                                             </div>
-                                            <input type="file" className="opacity-0" />
+                                            <input onChange={handleImage} accept=".jpg, .jpeg, .png" type="file" className="opacity-0" />
                                         </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                     */}
+                    < button onClick={handleImageUplode} disabled={!selectImage} className="px-12 py-3 text-lg text-white border-0 bg-royal-blue focus:outline-none hover:bg-indigo-600">img-upload</button><br /> <br />
+
                     < input className="px-12 py-3 text-lg text-white border-0 bg-royal-blue focus:outline-none hover:bg-indigo-600" type="submit" />
                 </div>
             </form>
