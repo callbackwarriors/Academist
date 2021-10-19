@@ -37,7 +37,7 @@ const Register = () => {
       });
       console.log("data", data);
       dispatch({ type: "USER_LOGIN", payload: data });
-      Cookies.set("userInfo", data);
+      localStorage.setItem("userInfo", JSON.stringify(data));
       router.push(redirect || "/");
     } catch (err) {
       alert(err.response.data ? err.response.data.message : err.message);

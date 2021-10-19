@@ -2,7 +2,7 @@ import CartItem from 'components/Cart/CartItem';
 import Layout from 'components/utilities/Layout';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ICourses } from 'type';
 import { Store } from 'utils/Store';
 
@@ -11,11 +11,11 @@ const AddCart = () => {
     const router = useRouter()
     const { state, dispatch } = useContext(Store);
     const {
-        cart: { cartItems },
+        cart: { cartItems }, userInfo
     } = state;
-    const checkoutHandler = () => {
-        router.push('/checkout')
-    }
+    // const checkoutHandler = () => {
+    //     router.push('/checkout')
+    // }
 
     return (
         <Layout>
@@ -36,7 +36,6 @@ const AddCart = () => {
                                 <CartItem item={item} key={item._id} />
                             ))
                         }
-
                     </ul>
                 </div>
                 <div className="card-content__checkout lg:w-1/4 ">
@@ -45,10 +44,9 @@ const AddCart = () => {
 
                             <h6 className="m-0 text-lg ">Total ({cartItems.reduce((a: any, c: { quantity: any; }) => a + c.quantity, 0)}{' '}items):</h6> <h6 className="m-0 text-lg "><sup>$</sup>
                                 {cartItems.reduce((a: number, c: { quantity: number; price: number; }) => a + c.quantity * c.price, 0)}</h6>
-
                         </div>
-                        <input className="w-full h-10 p-2 mt-4 mb-4 rounded-sm" placeholder="Add Your Coupon" />
-                        <button className="w-full h-10 text-xl font-semibold text-white rounded-sm bg-royal-blue hover:bg-royal-blue-800" onClick={checkoutHandler}>Check out</button>
+                        {/* <input className="w-full h-10 p-2 mt-4 mb-4 rounded-sm" placeholder="Add Your Coupon" /> */}
+                        <button className="w-full h-10 text-xl font-semibold text-white rounded-sm bg-royal-blue hover:bg-royal-blue-800" onClick={() => router.push('/checkout')}>Check out</button>
                     </div>
                 </div>
             </div>

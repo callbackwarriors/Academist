@@ -1,11 +1,10 @@
-import React from 'react';
 import Link from "next/link";
-import Image from "next/image";
+import React from 'react';
 import {
     AiFillEye,
     AiFillVideoCamera,
     AiOutlineHeart,
-    AiOutlineStar,
+    AiOutlineStar
 } from "react-icons/ai";
 import { ICourses } from 'type';
 
@@ -16,24 +15,17 @@ interface IProp {
 const AllCourses = ({ course }: IProp) => {
     const { title, img, slug } = course;
 
+    console.log("Course", course)
+
     return (
         <div className="p-4 transition duration-100 ease-in-out transform xl:w-1/3 md:w-1/2 hover:scale-105">
             <Link href={`/courses/${slug}`}>
                 <a>
                     <div className="p-6 bg-gray-100 rounded-lg">
                         <div className="relative">
-                            {/* <img
-                        className="object-cover object-center w-full h-40 mb-6 rounded"
-                        src="https://i.ibb.co/9V1Xq8s/crd-img.webp"
-                        alt=""
-                    /> */}
-                            <Image
-                                width="500"
-                                height="300"
-                                className="object-cover mb-6 rounded"
-                                src={img}
-                                alt={title}
-                            />
+
+<img className="w-full mb-4" src={img} alt="" />
+
                             <AiOutlineHeart className="absolute text-2xl top-3 right-3" />
                         </div>
 

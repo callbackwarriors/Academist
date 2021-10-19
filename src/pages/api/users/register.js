@@ -1,8 +1,8 @@
-import nc from 'next-connect';
-import bcrypt from 'bcryptjs';
-import User from '../../../models/User';
-import db from '../../../utils/db';
-import { signToken } from '../../../utils/auth';
+import nc from "next-connect";
+import bcrypt from "bcryptjs";
+import User from "../../../models/User";
+import db from "../../../utils/db";
+import { signToken } from "../../../utils/auth";
 
 const handler = nc();
 
@@ -26,5 +26,5 @@ handler.post(async (req, res) => {
     isAdmin: user.isAdmin,
   });
 });
-
 export default handler;
+

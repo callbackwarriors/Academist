@@ -1,14 +1,12 @@
 import img from "assets/images/cycle.png";
 import axios from "axios";
+import Cookies from "js-cookie";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
-import { FaFacebook } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
-import { Store } from "utils/Store";
-import Cookies from "js-cookie";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { Store } from "utils/Store";
 
 const Login = () => {
   const {
@@ -16,7 +14,6 @@ const Login = () => {
     register,
     formState: { errors },
   } = useForm();
-  console.log(errors);
   const router = useRouter();
   const { redirect } = router.query;
   const { state, dispatch } = useContext(Store);
@@ -33,20 +30,22 @@ const Login = () => {
         email,
         password,
       });
-      console.log("data", data);
+      console.log("login", data);
       dispatch({ type: "USER_LOGIN", payload: data });
-      Cookies.set("userInfo", data);
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      // localStorage.setItem("password", password);
       router.push(redirect || "/");
     } catch (err) {
+      console.log(err);
       alert(err.response.data ? err.response.data.message : err.message);
     }
   };
 
   return (
     <div>
-      <div className="flex items-center justify-center overflow-x-hidden bg-yellow-100 lg:overflow-x-auto lg:overflow-hidden">
+      <div className="flex items-center justify-center overflow-x-hidden bg-chateau-green-50 lg:overflow-x-auto lg:overflow-hidden">
         <div className="flex flex-col flex-wrap justify-between w-full border-gray-300 login-container lg:w-4/5 lg:bg-white lg:h-screen lg:border lg:flex-nowrap lg:flex-row group">
-          <div className="relative flex order-2 w-full mt-32 lg:w-1/2 h-28 lg:h-full lg:mt-0 lg:bg-theme-yellow-dark lg:order-1">
+          <div className="relative flex order-2 w-full mt-32 lg:w-1/2 h-28 lg:h-full lg:mt-0 lg:bg-royal-blue lg:order-1">
             <div className="items-center justify-start hidden w-full h-full text-center select-none lg:flex">
               <span className="transform block whitespace-nowrap h-full -rotate-90 text-[55px] 2xl:text-[70px] font-black uppercase text-yellow-300 opacity-0 transition-all group-hover:opacity-100 ml-10 2xl:ml-12 group-hover:-ml-20 2xl:group-hover:ml-26 lg:group-hover:ml-20 duration-1000 lg:duration-700 ease-in-out">
                 Academist
@@ -66,7 +65,7 @@ const Login = () => {
             <div className="relative flex items-center px-10 pt-16 form-wrapper lg:h-full lg:pt-0">
               <div className="w-full space-y-2">
                 <div className="flex items-end justify-center mb-8 space-x-3 text-center form-caption">
-                  <span className="text-3xl font-semibold text-royal-blue ">
+                  <span className="text-3xl font-semibold text-royal-blue center">
                     Log in now
                   </span>
                 </div>
@@ -171,18 +170,6 @@ const Login = () => {
                     <a className="text-royal-blue">Create an account</a>
                   </Link>
                 </p>
-                <p className="text-center d-block">or</p>
-                <div className="flex flex-col justify-center">
-                  <button className="flex w-full px-6 py-3 mx-auto text-lg text-white bg-indigo-600 border-0 rounded lg:w-4/5 focus:outline-none hover:bg-aquamarine-800">
-                    <FcGoogle className="mt-1.5 mr-1 " />
-                    Continue with Google
-                  </button>{" "}
-                  <br />
-                  <button className="flex w-full px-6 py-3 text-lg text-white bg-indigo-600 border-0 rounded lg:w-4/5 md:mx-auto focus:outline-none hover:bg-aquamarine-800">
-                    <FaFacebook className="mt-1.5 mr-1 " />
-                    Continue with Facebook
-                  </button>
-                </div>
               </div>
             </div>
           </div>

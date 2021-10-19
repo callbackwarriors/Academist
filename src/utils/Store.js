@@ -9,10 +9,25 @@ const initialState = {
       ? JSON.parse(Cookies.get("cartItems"))
       : [],
   },
-  userInfo: Cookies.get("userInfo")
-    ? JSON.parse(JSON.stringify(Cookies.get("userInfo")))
+
+  billingAddress: Cookies.get("billingAddress")
+    ? JSON.parse(JSON.stringify(Cookies.get("billingAddress")))
     : null,
+
+  paymentInfo: Cookies.get("paymentInfo")
+    ? JSON.parse(JSON.stringify(Cookies.get("paymentInfo")))
+    : null,
+
+  // userInfo: localStorage.getItem("userInfo")
+  //   ? JSON.parse(localStorage.getItem("userInfo"))
+  //   : undefined,
 };
+
+// useEffect(() => {
+//   const value = localStorage.getItem("userInfo");
+//   const user = !!value ? JSON.parse(value) : undefined;
+//   setUser(user);
+// }, []);
 
 function reducer(state, action) {
   switch (action.type) {
@@ -39,6 +54,17 @@ function reducer(state, action) {
     case "USER_LOGIN":
       return { ...state, userInfo: action.payload };
     case "USER_LOGOUT":
+      return {
+        ...state,
+        userInfo: null,
+        cart: {
+          cartItems: [],
+        },
+      };
+    case "BILLING_ADDRESS":
+      return { ...state, billingAddress: action.payload };
+    case "PAYMENT_DETAILS":
+      return { ...state, paymentInfo: action.payload };
       return {
         ...state,
         userInfo: null,
