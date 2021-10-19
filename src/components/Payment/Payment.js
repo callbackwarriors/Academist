@@ -6,10 +6,10 @@ import SimpleCardForm from './SimpleCardForm';
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe('pk_test_X2jogsHYgJQNw8Mxn1iYXZyM001TvFWmtv');
 
-const Payment = ({handelPaymentSuccess}) => {
+const Payment = ({handlePaymentSuccess, error}) => {
     return (
         <Elements  stripe={stripePromise} >
-             <SimpleCardForm handelPayment={handelPaymentSuccess}></SimpleCardForm>  
+             <SimpleCardForm handlePayment={handlePaymentSuccess} err={error}></SimpleCardForm>  
         </Elements>
     );
 };

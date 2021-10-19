@@ -9,6 +9,7 @@ import Payment from "components/Payment/Payment"
 import axios from 'axios';
 
 const Checkout = () => {
+    const [error, setError] = useState()
     useEffect(() => {
         if (cartItems.length === 0) {
             router.push('/cart');
@@ -25,14 +26,14 @@ const Checkout = () => {
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
     const [show, setShow] = useState(true);
-    const handlePaymentSuccess = async (paymentId: any) => {
+    const handlePaymentSuccess = async (paymentInfo: any) => {
         try {
             const { data } = await axios.post(
                 '/api/orders/orders',
                 {
                     phone: phone,
                     address: address,
-                    paymentId,
+                    paymentInfo,
                     userInfo,
                     cartItems,
                 },
@@ -47,8 +48,7 @@ const Checkout = () => {
             Cookies.remove('cartItems');
             // router.push(`/order/${data._id}`);
         } catch (err: any) {
-            console.log(err.message);
-
+            setError(err);
         }
     }
 
@@ -86,7 +86,7 @@ const Checkout = () => {
                         <input type="radio" id="paypal" name="method" value="Paypal" /> <label htmlFor="paypal">Paypal</label>
                     </div>
                     {show ?
-                        <Payment handelPaymentSuccess={handlePaymentSuccess}></Payment>
+                        <Payment handlePaymentSuccess={handlePaymentSuccess} error={error}></Payment>
                         : null}
                 </div>
             </div>

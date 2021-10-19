@@ -29,16 +29,17 @@ const useOptions = () => {
   return options;
 };
 
-const SimpleCardForm = ({handelPayment}) => {
+const SimpleCardForm = ({ handlePayment, err }) => {
+  console.log("err", err.message);
   const [paymentError, setPaymentError] = useState(null);
   const [paymentSuccess, setPaymentSuccess] = useState(null);
   const { state, dispatch } = useContext(Store);
-  const {
-    cart: { cartItems },
-    userInfo,
-    billingAddress,
-    paymentInfo,
-  } = state;
+  // const {
+  //   cart: { cartItems },
+  //   userInfo,
+  //   billingAddress,
+  //   paymentInfo,
+  // } = state;
 
   const stripe = useStripe();
   const elements = useElements();
@@ -61,9 +62,9 @@ const SimpleCardForm = ({handelPayment}) => {
       setPaymentError(error.message);
       setPaymentSuccess(null);
     } else {
-      setPaymentSuccess(paymentMethod.id);
+      setPaymentSuccess(paymentMethod.card);
       setPaymentError(null);
-      handelPayment(paymentMethod.id);
+      handlePayment(paymentMethod.card);
     }
   };
 
@@ -109,9 +110,8 @@ const SimpleCardForm = ({handelPayment}) => {
         </button>
       </form>
       {paymentError && <p style={{ color: "red" }}>{paymentError}</p>}
-      {paymentSuccess && (
-        <p style={{ color: "green" }}>Your Payment Was Successfully</p>
-      )}
+      {/* <p style={{ color: "red" }}>{err.message}</p> */}
+      {err && <p style={{ color: "red" }}>{err.message}</p>}
     </div>
   );
 };

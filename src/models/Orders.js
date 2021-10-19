@@ -2,7 +2,11 @@ import mongoose from "mongoose";
 
 const ordersSchema = new mongoose.Schema(
   {
-    paymentId: { type: String, required: true },
+    paymentInfo: {
+      brand: { type: String, required: true },
+      country: { type: String, required: true },
+      last4: { type: String, required: true },
+    },
     phone: { type: String, required: true },
     address: { type: String, required: true },
 
@@ -36,5 +40,5 @@ const ordersSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Order = mongoose.models.Order || mongoose.model("Order", ordersSchema);
+const Order = mongoose.models.Test || mongoose.model("Test", ordersSchema);
 export default Order;
