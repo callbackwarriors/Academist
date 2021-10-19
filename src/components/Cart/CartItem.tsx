@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { BsFillXSquareFill } from "react-icons/bs";
 import { ICourses } from "type";
 import { Store } from "utils/Store";
+import Image from "next/image";
 interface IProp {
   item: ICourses;
 }
@@ -19,7 +20,13 @@ function CartItem({ item }: IProp) {
         <div className="course-image ">
           <Link href={`/courses/${slug}`}>
             <a>
-              <img src={img} width="50" height="50" alt="" />
+              <Image
+                width="50"
+                height="50"
+                className="object-cover"
+                src={img}
+                alt=""
+              />
             </a>
           </Link>
         </div>

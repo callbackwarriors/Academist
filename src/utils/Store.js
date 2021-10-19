@@ -18,10 +18,16 @@ const initialState = {
     ? JSON.parse(JSON.stringify(Cookies.get("paymentInfo")))
     : null,
 
-  userInfo: Cookies.get("userInfo")
-    ? JSON.parse(JSON.stringify(Cookies.get("userInfo")))
-    : null,
+  // userInfo: localStorage.getItem("userInfo")
+  //   ? JSON.parse(localStorage.getItem("userInfo"))
+  //   : undefined,
 };
+
+// useEffect(() => {
+//   const value = localStorage.getItem("userInfo");
+//   const user = !!value ? JSON.parse(value) : undefined;
+//   setUser(user);
+// }, []);
 
 function reducer(state, action) {
   switch (action.type) {
