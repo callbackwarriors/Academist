@@ -30,7 +30,6 @@ const useOptions = () => {
 };
 
 const SimpleCardForm = ({ handlePayment, err }) => {
-  console.log("err", err.message);
   const [paymentError, setPaymentError] = useState(null);
   const [paymentSuccess, setPaymentSuccess] = useState(null);
   const { state, dispatch } = useContext(Store);
