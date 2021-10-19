@@ -1,15 +1,8 @@
 import {
-  CardElement,
-  useStripe,
-  useElements,
-  CardNumberElement,
-  CardExpiryElement,
-  CardCvcElement,
+  CardCvcElement, CardExpiryElement, CardNumberElement, useElements, useStripe
 } from "@stripe/react-stripe-js";
-import React, { useMemo } from "react";
-import { useState, useContext } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { Store } from "utils/Store";
-import Cookies from "js-cookie";
 
 const useOptions = () => {
   const options = useMemo(() => ({
@@ -29,16 +22,16 @@ const useOptions = () => {
   return options;
 };
 
-const SimpleCardForm = ({handelPayment}) => {
+const SimpleCardForm = ({ handlePayment, err }) => {
   const [paymentError, setPaymentError] = useState(null);
   const [paymentSuccess, setPaymentSuccess] = useState(null);
   const { state, dispatch } = useContext(Store);
-  const {
-    cart: { cartItems },
-    userInfo,
-    billingAddress,
-    paymentInfo,
-  } = state;
+  // const {
+  //   cart: { cartItems },
+  //   userInfo,
+  //   billingAddress,
+  //   paymentInfo,
+  // } = state;
 
   const stripe = useStripe();
   const elements = useElements();
@@ -61,25 +54,18 @@ const SimpleCardForm = ({handelPayment}) => {
       setPaymentError(error.message);
       setPaymentSuccess(null);
     } else {
-      setPaymentSuccess(paymentMethod.id);
+      setPaymentSuccess(paymentMethod.card);
       setPaymentError(null);
-      handelPayment(paymentMethod.id);
+      handlePayment(paymentMethod.card);
     }
   };
 
-  // const handelPaymentSuccess= async (paymentId) => {
-  //   const data = paymentId;
-  //   console.log("data", data);
-  //   dispatch({ type: "PAYMENT_DETAILS", paymentMethod: data });
-  //   Cookies.set("paymentInfo", data);
-  // };
-
   return (
     <div className="container mt-5 ">
-      <form onSubmit={handleSubmit} className="lg:w-6/12">
+      <form onSubmit={handleSubmit} className="lg:w-8/12">
         <label>
           Card number
-          <CardNumberElement
+          <CardNumberElement className="bg-gray-500"
             options={options}
             className="py-2"
             onChange={(event) => {
@@ -116,9 +102,8 @@ const SimpleCardForm = ({handelPayment}) => {
         </button>
       </form>
       {paymentError && <p style={{ color: "red" }}>{paymentError}</p>}
-      {paymentSuccess && (
-        <p style={{ color: "green" }}>Your Payment Was Successfully</p>
-      )}
+      {/* <p style={{ color: "red" }}>{err.message}</p> */}
+      {err && <p style={{ color: "red" }}>{err.message}</p>}
     </div>
   );
 };

@@ -11,6 +11,15 @@ import MobileMenu from "./MobileMenu";
 import Usermenu from "./Usermenu";
 
 const Header = () => {
+  const [user, setUser] = useState();
+
+  // fetch data
+  useEffect(() => {
+    const value = localStorage.getItem("userInfo");
+    const user = !!value ? JSON.parse(value) : undefined;
+    setUser(user);
+  }, []);
+
   const [isOpen, setIsOpen] = React.useState(false);
 
   const toggleDrawer = () => {
@@ -18,10 +27,9 @@ const Header = () => {
   };
 
   const { state, dispatch } = useContext(Store);
-  const { cart, userInfo } = state;
+  const { cart } = state;
 
   return (
-    
     <header className="text-gray-600 body-font">
       <div className="container flex flex-wrap items-center justify-between p-5 mx-auto">
         <span className="flex items-center hidden mb-4 font-medium text-gray-900 lg:block title-font md:mb-0">
@@ -68,18 +76,19 @@ const Header = () => {
         
 
         <span className="relative inline-block mr-6">
-          <Link href="/cart"><a><span className="text-xl cart__ico">
-            <AiOutlineShoppingCart />
-          </span></a></Link>
+          <Link href="/cart">
+            <a>
+              <span className="text-xl cart__ico">
+                <AiOutlineShoppingCart />
+              </span>
+            </a>
+          </Link>
           <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 rounded-full bg-royal-blue">
             {cart.cartItems.length}
           </span>
         </span>
-        {/* <p><p>{email}</p></p> */}
-        {/* {  userInfo ? ( */}
-         
-        {(userInfo ? (
-          <Usermenu />
+        {user ? (
+          <Usermenu user={user} />
         ) : (
           <Link href="/login">
             <a>
@@ -87,8 +96,8 @@ const Header = () => {
                 Login/Registation
               </button>
             </a>
-          </Link>))}
-        
+          </Link>
+        )}
       </div>
     </header>
   );

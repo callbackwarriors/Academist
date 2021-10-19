@@ -10,30 +10,30 @@ import {
   BiCog,
   BiListCheck,
   BiLogOutCircle,
-  BiUserCheck
+  BiUserCheck,
 } from "react-icons/bi";
 import { Store } from "utils/Store";
 
-export default function Example() {
+export default function Example({ user }) {
   const router = useRouter();
-  const { state, dispatch } = useContext(Store);
+  const { dispatch } = useContext(Store);
   const [anchorEl, setAnchorEl] = useState(null);
   const logoutClickHandler = () => {
     setAnchorEl(null);
     dispatch({ type: "USER_LOGOUT" });
-    Cookies.remove("userInfo");
     Cookies.remove("cartItems");
+    localStorage.clear();
+    window.location.reload()
     router.push("/");
     localStorage.clear();
 
   };
 
-  const { userInfo } = state;
   return (
     <Menu as="div" className="relative inline-block text-left">
-      {userInfo && (
+      {user && (
         <Menu.Button className="inline-flex justify-center w-full px-4 py-2 ml-3 text-sm font-medium text-white rounded-md bg-royal-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-          {userInfo.name}
+          {user?.name}
           <ChevronDownIcon
             className="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
             aria-hidden="true"
@@ -76,24 +76,22 @@ export default function Example() {
               </Menu.Item>
             </Link>
             <Link href="/cart">
-            <Menu.Item>
-              {({ active }) => (
-                
-                <button
-                  className={`${
-                    active ? "bg-royal-blue text-white" : "text-gray-900"
-                  } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                >
-                  {active ? (
-                    <BiCart className="w-5 h-5 mr-2" aria-hidden="true" />
-                  ) : (
-                    <BiCart className="w-5 h-5 mr-2" aria-hidden="true" />
-                  )}
-                  My cart
-                </button>
-                
-              )}
-            </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    className={`${
+                      active ? "bg-royal-blue text-white" : "text-gray-900"
+                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                  >
+                    {active ? (
+                      <BiCart className="w-5 h-5 mr-2" aria-hidden="true" />
+                    ) : (
+                      <BiCart className="w-5 h-5 mr-2" aria-hidden="true" />
+                    )}
+                    My cart
+                  </button>
+                )}
+              </Menu.Item>
             </Link>
           </div>
           <div className="px-1 py-1">
@@ -153,62 +151,30 @@ export default function Example() {
                 </button>
               )}
             </Menu.Item>
-
-            {userInfo ? (
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    anchorEl={anchorEl}
-                    onClick={logoutClickHandler}
-                    className={`${
-                      active ? "bg-royal-blue text-white" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                  >
-                    {active ? (
-                      <BiLogOutCircle
-                        className="w-5 h-5 mr-2 text-violet-400"
-                        aria-hidden="true"
-                      />
-                    ) : (
-                      <BiLogOutCircle
-                        className="w-5 h-5 mr-2 text-violet-400"
-                        aria-hidden="true"
-                      />
-                    )}
-                    Log out
-                  </button>
-                )}
-              </Menu.Item>
-            ) : (
-              <Link href="/login">
-                <a>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        anchorEl={anchorEl}
-                        onClick={logoutClickHandler}
-                        className={`${
-                          active ? "bg-royal-blue text-white" : "text-gray-900"
-                        } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                      >
-                        {active ? (
-                          <BiLogOutCircle
-                            className="w-5 h-5 mr-2 text-violet-400"
-                            aria-hidden="true"
-                          />
-                        ) : (
-                          <BiLogOutCircle
-                            className="w-5 h-5 mr-2 text-violet-400"
-                            aria-hidden="true"
-                          />
-                        )}
-                        Log in
-                      </button>
-                    )}
-                  </Menu.Item>
-                </a>
-              </Link>
-            )}
+            <Menu.Item>
+              {({ active }) => (
+                <button
+                  anchorEl={anchorEl}
+                  onClick={logoutClickHandler}
+                  className={`${
+                    active ? "bg-royal-blue text-white" : "text-gray-900"
+                  } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                >
+                  {active ? (
+                    <BiLogOutCircle
+                      className="w-5 h-5 mr-2 text-violet-400"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <BiLogOutCircle
+                      className="w-5 h-5 mr-2 text-violet-400"
+                      aria-hidden="true"
+                    />
+                  )}
+                  Log out
+                </button>
+              )}
+            </Menu.Item>
           </div>
         </Menu.Items>
       </Transition>
