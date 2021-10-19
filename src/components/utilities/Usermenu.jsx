@@ -29,8 +29,6 @@ export default function Example() {
   };
 
   const { userInfo } = state;
-
-  console.log("User info", userInfo)
   return (
     <Menu as="div" className="relative inline-block text-left">
       {userInfo && (

@@ -10,5 +10,5 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const User = mongoose.models.user || mongoose.model("user", userSchema);
+const User = mongoose.models.register || mongoose.model("register", userSchema);
 export default User;

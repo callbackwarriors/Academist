@@ -20,18 +20,6 @@ const Header = () => {
   const { state, dispatch } = useContext(Store);
   const { cart, userInfo } = state;
 
-  const [email, setUser] = useState(null)
-
-  // fetch data
-  useEffect(() => {
-    const value = localStorage.getItem('email');
-    // const user = !!value ? JSON.parse(value) : undefined;
-    setUser(value)
-  }, []);
-
-
-  console.log("userInfo in header", userInfo )
-  console.log("cart in header", cart )
   return (
     
     <header className="text-gray-600 body-font">
@@ -87,7 +75,7 @@ const Header = () => {
             {cart.cartItems.length}
           </span>
         </span>
-        <p><p>{email}</p></p>
+        {/* <p><p>{email}</p></p> */}
         {/* {  userInfo ? ( */}
          
         {(userInfo ? (
