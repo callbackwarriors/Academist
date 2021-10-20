@@ -23,8 +23,15 @@ export default function Example({ user }) {
     dispatch({ type: "USER_LOGOUT" });
     Cookies.remove("cartItems");
     localStorage.clear();
-    window.location.reload()
+    window.location.reload();
     router.push("/");
+  };
+
+  const loginMenuCloseHandler = (e, redirect) => {
+    setAnchorEl(null);
+    if (redirect) {
+      router.push(redirect);
+    }
   };
 
   return (
@@ -127,7 +134,7 @@ export default function Example({ user }) {
             </Menu.Item>
           </div>
           <div className="px-1 py-1">
-            <Menu.Item>
+            <Menu.Item onClick={(e) => loginMenuCloseHandler(e, "/profile")}>
               {({ active }) => (
                 <button
                   className={`${
