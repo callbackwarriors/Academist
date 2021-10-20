@@ -25,6 +25,8 @@ export default function Example({ user }) {
     localStorage.clear();
     window.location.reload()
     router.push("/");
+    localStorage.clear();
+
   };
 
   return (

@@ -7,7 +7,7 @@ import { AiFillEye, AiFillVideoCamera, AiOutlineHeart, AiOutlineStar } from 'rea
 import { BsFillGrid3X2GapFill, BsFillGrid3X3GapFill, BsSearch } from 'react-icons/bs';
 import db from 'utils/db';
 const Instractors = (props) => {
-    console.log('user info',props)
+    // console.log('user info',props)
     const {user} = props;
     return (
         <div className="sectionAllCourses">

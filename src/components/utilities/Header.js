@@ -21,6 +21,7 @@ const Header = () => {
   }, []);
 
   const [isOpen, setIsOpen] = React.useState(false);
+
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
   };
@@ -71,6 +72,8 @@ const Header = () => {
             <a className="mr-5 hover:text-gray-900">Categories</a>
           </Link>
         </nav>
+
+        
 
         <span className="relative inline-block mr-6">
           <Link href="/cart">
