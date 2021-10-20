@@ -5,8 +5,15 @@ import Stuck from 'components/Stack/Stuck';
 import Layout from 'components/utilities/Layout';
 import React from 'react';
 import Title from 'components/utilities/Title';
+import db from 'utils/db';
+import Orders from 'models/Orders';
 
-const index = () => {
+const index = (props:any) => {
+
+    console.log('this is stack data', props);
+
+    const orderingData = props.order;
+
     return (
         
          <Layout> 
@@ -18,7 +25,7 @@ const index = () => {
                 <DashboardChart />
                 </div>
                 <div className="block mt-5">
-                    <Stuck />
+                    <Stuck orderingData={orderingData} />
                 </div>
                 <div className="block mt-5">
                     <FeaturedCourse />
@@ -32,3 +39,17 @@ const index = () => {
 };
 
 export default index;
+
+
+
+export async function getServerSideProps() {
+    await db.connect();
+    const order = await Orders.find({}).lean();
+    await db.disconnect();
+    return {
+      props: {
+        order: order.map(db.convertDocToObj),
+      },
+    };
+  
+  }
