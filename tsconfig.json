@@ -21,7 +21,7 @@
   "include": [
     "next-env.d.ts",
     "custom.d.ts",
-    "src/**/*.ts",
+    "src/**/*.ts",, "src/pages/instractors/index.js"
     "src/**/*.tsx",
     "src/components/utilities/Title.js",
     "src/components/CourseDetails",
