@@ -15,7 +15,7 @@
     "jsx": "preserve",
     // "noImplicitAny": false,
     "baseUrl": "./src",
-    "typeRoots": ["../node_modules/@types", "@types"]
+    "typeRoots": ["../node_modules/@types", "@types"],
   },
   "exclude": ["node_modules"],
 
@@ -24,6 +24,7 @@
     "custom.d.ts",
     "src/**/*.ts",
     "src/pages/instractors/index.js",
+
     "src/**/*.tsx",
     "src/components/utilities/Title.js",
     "src/components/CourseDetails",
@@ -38,4 +39,8 @@
     "src/components/Payment/SimpleCardForm.js",
     "src/components/utilities/Header.js"
   ]
+
 }
+
+
+

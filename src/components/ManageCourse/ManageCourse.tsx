@@ -1,7 +1,7 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { AiFillEye } from 'react-icons/ai';
-// import Link from 'next/link'
 import { FiEdit } from 'react-icons/fi';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import { ICourses } from 'type';
@@ -11,7 +11,9 @@ interface IProp {
 }
 
 const ManageCourse = ({ course }: IProp) => {
-  const { title, img } = course;
+  const { title, img, _id } = course;
+  console.log(_id);
+  
 
   return (
     <div className="single__course">
@@ -21,7 +23,13 @@ const ManageCourse = ({ course }: IProp) => {
       </div>
       <div className="flex-auto" >
         <button className="px-4 py-2 text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"><AiFillEye className="text-2xl" /></button>
-        <button className="px-4 py-2 mx-4 text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"><FiEdit className="text-2xl" /></button>
+        <Link href={`/admin/course/${_id}`}>
+          <a>
+            <button className="px-4 py-2 mx-4 text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800">
+              <FiEdit className="text-2xl" />
+            </button>
+          </a>
+        </Link>
         <button className="px-4 py-2 text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"><RiDeleteBin7Line className="text-2xl" /></button>
       </div>
     </div>
