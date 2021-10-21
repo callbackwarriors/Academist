@@ -8,7 +8,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ICourses } from 'type';
 import { Store } from 'utils/Store';
 
-const Checkout = () => {
+const Checkout = ({user}: any) => {
+    console.log('user', user);
+    
     const [error, setError] = useState()
     useEffect(() => {
         if (cartItems.length === 0) {
@@ -19,7 +21,6 @@ const Checkout = () => {
     const router = useRouter()
     const { state, dispatch } = useContext(Store);
     const { cart: { cartItems }, userInfo } = state;
-    console.log('userInfo', userInfo);
     console.log('cartItems', cartItems);
 
     const { billingAddress } = state;
@@ -34,12 +35,12 @@ const Checkout = () => {
                     phone: phone,
                     address: address,
                     paymentInfo,
-                    userInfo,
+                    user,                       /////////////////////////////////////////////////////////////////////
                     cartItems,
                 },
                 {
                     headers: {
-                        authorization: `Bearer ${userInfo.token}`,
+                        authorization: `Bearer ${user.token}`,
                     },
                 }
             )
@@ -64,10 +65,10 @@ const Checkout = () => {
                         <div className="p-3 mb-3 bg-white rounded shadow color-white">
                             <h6>Billing Address</h6>
                             <label>Name:</label>
-                            <input className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" type="text" value={userInfo?.name} />
+                            <input className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" type="text" value={user?.name} />
 
                             <label>Email:</label>
-                            <input className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" type="text" value={userInfo?.email} />
+                            <input className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" type="text" value={user?.email} />
 
                             <label>Phone:</label>
                             <input className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" onBlur={(e) => setPhone(e.target.value)} type="text" placeholder="Enter your Phone" />
