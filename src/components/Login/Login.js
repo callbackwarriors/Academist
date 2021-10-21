@@ -4,11 +4,17 @@ import Cookies from "js-cookie";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Store } from "utils/Store";
 
 const Login = () => {
+  const [user, setUser] = useState();
+  useEffect(() => {
+    const value = localStorage.getItem("userInfo");
+    const user = !!value ? JSON.parse(value) : undefined;
+    setUser(user);
+  }, []);
   const {
     handleSubmit,
     register,
@@ -19,7 +25,7 @@ const Login = () => {
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
   useEffect(() => {
-    if (userInfo) {
+    if (user) {
       router.push("/");
     }
   }, []);
