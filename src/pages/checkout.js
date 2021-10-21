@@ -1,28 +1,22 @@
 import Checkout from "components/Checkout/Checkout";
 import Layout from "components/utilities/Layout";
 import { useRouter } from 'next/router';
-import React, { useContext, useEffect, useState } from 'react';
-import { Store } from 'utils/Store';
+import React, { useEffect, useState } from 'react';
 
 
 const checkout = () => {
+    const [user, setUser] = useState();
+    console.log('user', user);
     
-
-    const [email, setUser] = useState(null)
-
-    // fetch data
     useEffect(() => {
-      const value = localStorage.getItem('email');
-      // const user = !!value ? JSON.parse(value) : undefined;
-      setUser(value)
+        const value = localStorage.getItem("userInfo");
+        const user = !!value ? JSON.parse(value) : undefined;
+        setUser(user);
     }, []);
-    
     const router = useRouter()
-    const { state } = useContext(Store);
-    const { userInfo } = state;
-    if (!userInfo) {
-        router.push('/login?redirect=/checkout')
-    }
+    // if (!user) {
+    //     router.push('/login?redirect=/checkout')
+    // }
     return (
         <Layout>
             <div className="text-center cart-head">
@@ -30,7 +24,7 @@ const checkout = () => {
                     <h2>Checkout</h2>
                 </div>
             </div>
-           <Checkout></Checkout>
+            <Checkout user={user}></Checkout>
         </Layout>
     );
 };

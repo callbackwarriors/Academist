@@ -9,13 +9,10 @@ import { Store } from 'utils/Store';
 
 const AddCart = () => {
     const router = useRouter()
-    const { state, dispatch } = useContext(Store);
+    const { state } = useContext(Store);
     const {
-        cart: { cartItems }, userInfo
+        cart: { cartItems }
     } = state;
-    // const checkoutHandler = () => {
-    //     router.push('/checkout')
-    // }
 
     return (
         <Layout>
