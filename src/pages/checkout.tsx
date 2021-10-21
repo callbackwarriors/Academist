@@ -25,7 +25,7 @@ const checkout = () => {
                     <h2>Checkout</h2>
                 </div>
             </div>
-            <Checkout></Checkout>
+            <Checkout user={user}></Checkout>
         </Layout>
     );
 };

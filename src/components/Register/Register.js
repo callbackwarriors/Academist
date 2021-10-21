@@ -17,9 +17,16 @@ const Register = () => {
   const router = useRouter();
   const { redirect } = router.query;
   const { state, dispatch } = useContext(Store);
-  const { userInfo } = state;
+
+  const [user, setUser] = useState();
   useEffect(() => {
-    if (userInfo) {
+    const value = localStorage.getItem("userInfo");
+    const user = !!value ? JSON.parse(value) : undefined;
+    setUser(user);
+  }, []);
+
+  useEffect(() => {
+    if (user) {
       router.push("/");
     }
   }, []);

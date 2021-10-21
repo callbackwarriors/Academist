@@ -10,9 +10,9 @@ const ordersSchema = new mongoose.Schema(
     phone: { type: String, required: true },
     address: { type: String, required: true },
 
-    userInfo: {
+    user: {
       name: { type: String, required: true },
-      email: { type: String, required: true, unique: true },
+      email: { type: String, required: true },
       isAdmin: { type: Boolean, required: true, default: false },
       _id: { type: String, required: true },
     },
@@ -20,7 +20,7 @@ const ordersSchema = new mongoose.Schema(
     cartItems: [
       {
         title: { type: String, required: true }, // unique: true
-        slug: { type: String, required: true, unique: true },
+        slug: { type: String, required: true },
         shortDesc: { type: String, required: true },
         categories: { type: String, required: true },
         level: { type: String, required: true },

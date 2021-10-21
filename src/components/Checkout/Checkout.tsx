@@ -9,6 +9,8 @@ import Payment from "components/Payment/Payment"
 import axios from 'axios';
 
 const Checkout = ({user}: any) => {
+    console.log('user', user);
+    
     const [error, setError] = useState()
     useEffect(() => {
         if (cartItems.length === 0) {
