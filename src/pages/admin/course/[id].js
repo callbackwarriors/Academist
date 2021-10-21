@@ -115,14 +115,14 @@ function CourseEdit({ params }) {
 
   return (
     <Layout>
-      <div className="flex items-center justify-center min-h-screen overflow-x-hidden bg-yellow-100 lg:overflow-x-auto lg:overflow-hidden">
-        <div className="flex flex-col flex-wrap justify-between w-full border-gray-300 login-container lg:w-4/5 lg:bg-white lg:border lg:flex-nowrap lg:flex-row group">
+      <div className="flex items-center justify-center min-h-screen overflow-x-hidden lg:overflow-x-auto lg:overflow-hidden">
+        <div className="flex flex-col flex-wrap justify-between w-full login-container lg:w-4/5 lg:flex-nowrap lg:flex-row group">
           <div className="order-1 w-full min-h-screen lg:order-2">
-            <div className="relative z-10 flex items-center min-h-screen px-10 pt-16 form-wrapper lg:pt-0">
+            <div className="relative flex items-center min-h-screen px-10 pt-16 form-wrapper lg:pt-0">
               <div className="w-full space-y-2">
                 <div className="flex items-end justify-center mb-8 space-x-3 text-center form-caption">
                   <span className="text-3xl font-semibold text-royal-blue">
-                    Account Settings
+                    Course Update
                   </span>
                 </div>
                 <form onSubmit={handleSubmit(submitHandler)}>
@@ -144,7 +144,6 @@ function CourseEdit({ params }) {
                           })}
                           className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                          // placeholder="Full name"
                         />
                         <span className="py-2 text-sm text-red-400">
                           {errors?.name?.message}
@@ -170,7 +169,6 @@ function CourseEdit({ params }) {
                           })}
                           className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                          // placeholder="Full name"
                         />
                         <span className="py-2 text-sm text-red-400">
                           {errors?.name?.message}
@@ -196,7 +194,6 @@ function CourseEdit({ params }) {
                           })}
                           className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                          // placeholder="Full name"
                         />
                         <span className="py-2 text-sm text-red-400">
                           {errors?.name?.message}
@@ -222,7 +219,6 @@ function CourseEdit({ params }) {
                           })}
                           className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                          // placeholder="Full name"
                         />
                         <span className="py-2 text-sm text-red-400">
                           {errors?.name?.message}
@@ -248,7 +244,6 @@ function CourseEdit({ params }) {
                           })}
                           className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                          // placeholder="Full name"
                         />
                         <span className="py-2 text-sm text-red-400">
                           {errors?.name?.message}
@@ -274,7 +269,6 @@ function CourseEdit({ params }) {
                           })}
                           className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                          // placeholder="Full name"
                         />
                         <span className="py-2 text-sm text-red-400">
                           {errors?.name?.message}
@@ -300,7 +294,6 @@ function CourseEdit({ params }) {
                           })}
                           className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                          // placeholder="Full name"
                         />
                         <span className="py-2 text-sm text-red-400">
                           {errors?.name?.message}
@@ -326,7 +319,6 @@ function CourseEdit({ params }) {
                           })}
                           className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                          // placeholder="Full name"
                         />
                         <span className="py-2 text-sm text-red-400">
                           {errors?.name?.message}
@@ -352,7 +344,6 @@ function CourseEdit({ params }) {
                           })}
                           className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                          // placeholder="Full name"
                         />
                         <span className="py-2 text-sm text-red-400">
                           {errors?.name?.message}
@@ -378,7 +369,6 @@ function CourseEdit({ params }) {
                           })}
                           className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                          // placeholder="Full name"
                         />
                         <span className="py-2 text-sm text-red-400">
                           {errors?.name?.message}
@@ -388,7 +378,7 @@ function CourseEdit({ params }) {
                   </div>
 
                   <div className="form-element">
-                    <span className="block w-full mx-auto lg:w-4/5 ">
+                    <span className="block w-full mx-auto my-4 lg:w-4/5 ">
                       <input
                         type="submit"
                         className="flex w-full px-6 py-3 text-lg text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"

@@ -65,7 +65,7 @@ const Register = () => {
             <div className="hidden w-1/3 ml-auto bg-white lg:block"></div>
           </div>
           <div className="order-1 w-full lg:w-1/2 lg:order-2">
-            <div className="relative z-10 flex items-center px-10 pt-16 form-wrapper lg:h-full lg:pt-0">
+            <div className="relative flex items-center px-10 pt-16 form-wrapper lg:h-full lg:pt-0">
               <div className="w-full space-y-2">
                 <div className="flex items-end justify-center mb-8 space-x-3 text-center form-caption">
                   <span className="text-3xl font-semibold text-royal-blue">
