@@ -1,12 +1,12 @@
+import img from "assets/images/cycle.png";
 import axios from "axios";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { useRouter } from "next/router";
-import NextLink from "next/link";
-import React, { useEffect, useContext, useReducer, useState } from "react";
-// import { getError } from "../../../utils/error";
-import { Store } from "../../../utils/Store";
-import { Controller, useForm } from "react-hook-form";
-// import { useSnackbar } from "notistack";
+import { useContext, useEffect, useReducer } from "react";
+import { Store } from "utils/Store";
+import { useForm } from "react-hook-form";
+import Layout from "components/utilities/Layout";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -21,520 +21,339 @@ function reducer(state, action) {
   }
 }
 
-function ProductEdit({ params }) {
-  const [user, setUser] = useState();
-  useEffect(() => {
-    const value = localStorage.getItem("userInfo");
-    const user = !!value ? JSON.parse(value) : undefined;
-    setUser(user);
-  }, []);
-
-  const {
-    handleSubmit,
-    register,
-    formState: { errors },
-    setValue,
-  } = useForm();
-  const courseId = params.id;
+function CourseEdit({ params }) {
+  // console.log('params', params);
+  const productId = params.id;
   const { state } = useContext(Store);
   const [{ loading, error }, dispatch] = useReducer(reducer, {
     loading: true,
     error: "",
   });
-  // const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-  const router = useRouter();
 
+  const {
+    handleSubmit,
+    control,
+    register,
+    formState: { errors },
+    setValue,
+  } = useForm();
+  const router = useRouter();
+  const { userInfo } = state;
   useEffect(() => {
-    // if (!user) {
-    //   return router.push("/login");
-    // } else {
-    //   const fetchData = async () => {
-    //     try {
-    //       dispatch({ type: "FETCH_REQUEST" });
-    //       const { data } = await axios.get(`/api/admin/course/${courseId}`, {
-    //         headers: { authorization: `Bearer ${user.token}` },
-    //       });
-    //       console.log("data data", data);
-    //       dispatch({ type: "FETCH_SUCCESS" });
-    //       setValue("name", data.title);
-    //       //   setValue("slug", data.slug);
-    //       //   setValue("price", data.price);
-    //       //   setValue("image", data.img);
-    //       //   setValue("category", data.category);
-    //       //   //   setValue('brand', data.brand);
-    //       //   //   setValue('countInStock', data.countInStock);
-    //       //   //   setValue('description', data.description);
-    //     } catch (err) {
-    //       // dispatch({ type: "FETCH_FAIL", payload: getError(err) });
-    //       console.log(err);
-    //     }
-    //   };
-    //   fetchData();
-    // }
-    const fetchData = async () => {
-      try {
-        dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get(`/api/admin/course/${courseId}`, {
-          headers: { authorization: `Bearer ${user.token}` },
-        });
-        dispatch({ type: "FETCH_SUCCESS" });
-        setValue("title", data.title);
-        setValue("slug", data.slug);
-        setValue("price", data.price);
-        setValue("image", data.img);
-        setValue("category", data.category);
-        //   setValue('brand', data.brand);
-        //   setValue('countInStock', data.countInStock);
-        //   setValue('description', data.description);
-      } catch (err) {
-        // dispatch({ type: "FETCH_FAIL", payload: getError(err) });
-        console.log(err.message);
-      }
-    };
-    fetchData();
+    if (!userInfo) {
+      return router.push('/login');
+    } else {
+      const fetchData = async () => {
+        try {
+          dispatch({ type: 'FETCH_REQUEST' });
+          const { data } = await axios.get(`/api/admin/courses/${productId}`, {
+            headers: { authorization: `Bearer ${userInfo.token}` },
+          });
+          console.log(data);
+          dispatch({ type: 'FETCH_SUCCESS' });
+          setValue('title', data.title);
+          setValue('slug', data.slug);
+          setValue('price', data.price);
+          // setValue('image', data.image);
+          // setValue('category', data.category);
+          // setValue('brand', data.brand);
+          // setValue('countInStock', data.countInStock);
+          // setValue('description', data.description);
+        } catch (err) {
+          console.log(err.message);
+          // dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
+        }
+      };
+      fetchData();
+    }
   }, []);
-  const submitHandler = async ({ name }) => {
-    // closeSnackbar();
+
+  const submitHandler = async ({ title }) => {
     try {
       const { data } = await axios.put(
-        `/api/admin/course/${courseId}`,
+        `/api/admin/courses/${productId}`,
         {
-          name,
+          title,
         },
-        { headers: { authorization: `Bearer ${user?.token}` } }
+        { headers: { authorization: `Bearer ${userInfo.token}` } }
       );
-      // enqueueSnackbar("Courses updated successfully", { variant: "success" });
+      // dispatch({ type: "USER_LOGIN", payload: data });
+      // localStorage.setItem("userInfo", JSON.stringify(data));
+      // alert("Courses updated successfully");
     } catch (err) {
-      // enqueueSnackbar(getError(err), { variant: "error" });
-      console.log(err.message);
+      alert(err.message);
     }
   };
-  return (
-    <div title={`Edit Course ${courseId}`}>
-      <div>
-        <div>
-          <div>
-            <ul>
-              {/* <ListItem>
-                <Typography component="h1" variant="h1">
-                  Edit Product {courseId}
-                </Typography>
-              </ListItem>
-              <ListItem>
-                {loading && <CircularProgress></CircularProgress>}
-                {error && (
-                  <Typography>{error}</Typography>
-                )}
-              </ListItem> */}
-              <div>
-                <form action="" onSubmit={handleSubmit(submitHandler)}>
-                  <div className="container">
-                    <div className="mb-4">
-                      <label htmlFor="title">Title</label>
-                      <input
-                        id="title"
-                        className="w-full px-4 py-3 rounded focus:border-royal-blue"
-                        type="text"
-                        name="title"
-                        value={data.title}
-                        placeholder="Write your course title here..."
-                        {...register("name", {
-                          required: {
-                            value: true,
-                            message: "You most enter name",
-                          },
-                        })}
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label htmlFor="slug">Slug</label>
-                      <input
-                        id="slug"
-                        className="w-full px-4 py-3 rounded focus:border-royal-blue"
-                        type="text"
-                        name="slug"
-                        placeholder="Write your course title here..."
-                        {...register("name", {
-                          required: {
-                            value: true,
-                            message: "You most enter name",
-                          },
-                        })}
-                      />
-                    </div>
-                    {/* <div className="mb-4">
-                      <label htmlFor="intro">Intro video</label>
-                      <InputEvent
-                        id="intro"
-                        className="w-full px-4 py-3 rounded focus:border-royal-blue"
-                        type="text"
-                        name="intro"
-                        placeholder="Add intro video link"
-                        {...register("name", {
-                          required: {
-                            value: true,
-                            message: "You most enter name",
-                          },
-                        })}
-                      />
-                    </div> */}
-                    <div className="mb-4">
-                      <label htmlFor="shortDesc">Short Description</label>
-                      <textarea
-                        className="w-full px-4 py-3 rounded focus:border-royal-blue"
-                        name="shortDesc"
-                        placeholder="Write short description"
-                        id="shortDesc"
-                        {...register("name", {
-                          required: {
-                            value: true,
-                            message: "You most enter name",
-                          },
-                        })}
-                      ></textarea>
-                    </div>
-                    <div className="mb-4">
-                      <label htmlFor="categories">Course Category</label>
-                      <select
-                        id="categories"
-                        name="categories"
-                        className="w-full px-4 py-3 rounded form-select focus:border-royal-blue"
-                        {...register("name", {
-                          required: {
-                            value: true,
-                            message: "You most enter name",
-                          },
-                        })}
-                      >
-                        <option value="javascript">Javascript</option>
-                        <option value="react">React</option>
-                        <option value="nodejs">Nodejs</option>
-                        <option value="nextjs">Nextjs</option>
-                      </select>
-                    </div>
-                    <div className="mb-4">
-                      <label htmlFor="level">Course Label</label>
-                      <select
-                        id="level"
-                        name="level"
-                        className="w-full px-4 py-3 rounded form-select focus:border-royal-blue"
-                        {...register("name", {
-                          required: {
-                            value: true,
-                            message: "You most enter name",
-                          },
-                        })}
-                      >
-                        <option value="basic">Basic</option>
-                        <option value="beginner">Beginner</option>
-                        <option value="medium">Medium</option>
-                        <option value="advance">Advance</option>
-                      </select>
-                    </div>
-                    <div className="mb-4">
-                      <label htmlFor="price">Course Price</label>
-                      <input
-                        onChange={(e) => setPrice(e.target.value)}
-                        id="price"
-                        className="w-full px-4 py-3 rounded focus:border-royal-blue"
-                        type="number"
-                        name="price"
-                        placeholder="Write your course price here..."
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label htmlFor="desc">Course Overview</label>
 
-                      <textarea
-                        className="w-full px-4 py-3 rounded focus:border-royal-blue"
-                        placeholder="Write your course overview..."
-                        id="desc"
-                        name="desc"
-                        {...register("name", {
-                          required: {
-                            // value: true,
-                            message: "You most enter name",
-                          },
-                        })}
-                      ></textarea>
-                    </div>
-                    <div className="mb-4">
-                      <label htmlFor="price">Course Price</label>
+  return (
+    <Layout>
+      <div className="flex items-center justify-center overflow-x-hidden bg-yellow-100 lg:overflow-x-auto lg:overflow-hidden">
+        <div className="flex flex-col flex-wrap justify-between w-full border-gray-300 login-container lg:w-4/5 lg:bg-white lg:h-screen lg:border lg:flex-nowrap lg:flex-row group">
+          <div className="relative flex order-2 w-full mt-32 lg:w-1/2 h-28 lg:h-full lg:mt-0 lg:bg-theme-yellow-dark lg:order-1">
+            <div className="items-center justify-start hidden w-full h-full text-center select-none lg:flex">
+              <span className="transform block whitespace-nowrap h-full -rotate-90 text-[55px] 2xl:text-[70px] font-black uppercase text-yellow-300 opacity-0 transition-all group-hover:opacity-100 ml-10 2xl:ml-12 group-hover:-ml-20 2xl:group-hover:ml-26 lg:group-hover:ml-20 duration-1000 lg:duration-700 ease-in-out">
+                Academist
+              </span>
+            </div>
+            <div className="absolute bottom-0 right-0 flex items-center w-full opacity-50 product lg:justify-center lg:opacity-100">
+              <Image
+                src={img}
+                alt="product"
+                className="-mb-5 lg:mb-0 -ml-12 lg:ml-0 product h-[500px] xl:h-[700px] 2xl:h-[900px] w-auto object-cover transform group-hover:translate-x-26 2xl:group-hover:translate-x-48 transition-all duration-1000 lg:duration-700 ease-in-out"
+              />
+              <div className="absolute bottom-0 left-0 w-full h-5 transform bg-black bg-opacity-25 rounded-full shadow filter blur lg:bottom-14 lg:left-24 skew-x-10"></div>
+            </div>
+            <div className="hidden w-1/3 ml-auto bg-white lg:block"></div>
+          </div>
+          <div className="order-1 w-full lg:w-1/2 lg:order-2">
+            <div className="relative z-10 flex items-center px-10 pt-16 form-wrapper lg:h-full lg:pt-0">
+              <div className="w-full space-y-2">
+                <div className="flex items-end justify-center mb-8 space-x-3 text-center form-caption">
+                  <span className="text-3xl font-semibold text-royal-blue">
+                    Account Settings
+                  </span>
+                </div>
+                <form onSubmit={handleSubmit(submitHandler)}>
+                  <div className="form-element">
+                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
+                      <span className="block text-lg tracking-wide text-gray-800">
+                        Title
+                      </span>
+                      <span className="block">
+                        <input
+                          type="text"
+                          name="title"
+                          // eslint-disable-next-line react/jsx-props-no-spreading
+                          {...register("title", {
+                            required: {
+                              value: true,
+                              message: "You most enter title",
+                            },
+                          })}
+                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+               ${errors.name ? "ring-2 ring-red-500" : null}`}
+                          // placeholder="Full name"
+                        />
+                        <span className="py-2 text-sm text-red-400">
+                          {errors?.name?.message}
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <div className="form-element">
+                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
+                      <span className="block text-lg tracking-wide text-gray-800">
+                        Slug
+                      </span>
+                      <span className="block">
+                        <input
+                          type="text"
+                          name="slug"
+                          // eslint-disable-next-line react/jsx-props-no-spreading
+                          {...register("slug", {
+                            required: {
+                              value: true,
+                              message: "You most enter slug",
+                            },
+                          })}
+                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+               ${errors.name ? "ring-2 ring-red-500" : null}`}
+                          // placeholder="Full name"
+                        />
+                        <span className="py-2 text-sm text-red-400">
+                          {errors?.name?.message}
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <div className="form-element">
+                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
+                      <span className="block text-lg tracking-wide text-gray-800">
+                        Price
+                      </span>
+                      <span className="block">
+                        <input
+                          type="text"
+                          name="price"
+                          // eslint-disable-next-line react/jsx-props-no-spreading
+                          {...register("price", {
+                            required: {
+                              value: true,
+                              message: "You most enter price",
+                            },
+                          })}
+                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+               ${errors.name ? "ring-2 ring-red-500" : null}`}
+                          // placeholder="Full name"
+                        />
+                        <span className="py-2 text-sm text-red-400">
+                          {errors?.name?.message}
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+
+                  <div className="form-element">
+                    <span className="block w-full mx-auto lg:w-4/5 ">
                       <input
-                        id="price"
-                        className="w-full px-4 py-3 rounded focus:border-royal-blue"
-                        type="number"
-                        name="price"
-                        placeholder="Write your course price here..."
+                        type="submit"
+                        className="flex w-full px-6 py-3 text-lg text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"
+                        value="Update Account"
                       />
-                    </div>
-                    <div className="mb-4">
-                      <input
-                        id="certificate"
-                        className="rounded focus:border-royal-blue "
-                        type="checkbox"
-                        name="certificate"
-                      />
-                      <label htmlFor="certificate">
-                        {" "}
-                        Is certificate include?
-                      </label>
-                    </div>
-                    <div>
-                      <div className="flex mt-8 mb-8">
-                        <div className="max-w-2xl rounded-lg shadow-xl bg-gray-50">
-                          <div className="m-4 ">
-                            <label className="inline-block mb-2 text-gray-500">
-                              Upload thumbnail
-                            </label>
-                            <div className="flex items-center justify-center w-full">
-                              <label className="flex flex-col w-full h-32 border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
-                                <div className="flex flex-col items-center justify-center cursor-pointer pt-7">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="w-8 h-8 text-gray-400 group-hover:text-gray-600"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                  >
-                                    <path
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round"
-                                      stroke-width="2"
-                                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                                    />
-                                  </svg>
-                                  <p className="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
-                                    Attach a file
-                                  </p>
-                                </div>
-                                <input
-                                  accept=".jpg, .jpeg, .png"
-                                  type="file"
-                                  className="opacity-0"
-                                />
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <button
-                      // disabled={!selectImage}
-                      className="px-12 py-3 text-lg text-white border-0 bg-royal-blue focus:outline-none hover:bg-indigo-600"
-                    >
-                      img-upload
-                    </button>
-                    <br /> <br />
-                    <input
-                      className="px-12 py-3 text-lg text-white border-0 bg-royal-blue focus:outline-none hover:bg-indigo-600"
-                      type="submit"
-                    />
-                    <button type="submit">Update</button>
+                    </span>
                   </div>
                 </form>
-                {/* <form
-                  onSubmit={handleSubmit(submitHandler)}
-                >
-                  <List>
-                    <ListItem>
-                      <Controller
-                        name="name"
-                        control={control}
-                        defaultValue=""
-                        rules={{
-                          required: true,
-                        }}
-                        render={({ field }) => (
-                          <TextField
-                            variant="outlined"
-                            fullWidth
-                            id="name"
-                            label="Name"
-                            error={Boolean(errors.name)}
-                            helperText={errors.name ? 'Name is required' : ''}
-                            {...field}
-                          ></TextField>
-                        )}
-                      ></Controller>
-                    </ListItem>
-                    <ListItem>
-                      <Controller
-                        name="slug"
-                        control={control}
-                        defaultValue=""
-                        rules={{
-                          required: true,
-                        }}
-                        render={({ field }) => (
-                          <TextField
-                            variant="outlined"
-                            fullWidth
-                            id="slug"
-                            label="Slug"
-                            error={Boolean(errors.slug)}
-                            helperText={errors.slug ? 'Slug is required' : ''}
-                            {...field}
-                          ></TextField>
-                        )}
-                      ></Controller>
-                    </ListItem>
-                    <ListItem>
-                      <Controller
-                        name="price"
-                        control={control}
-                        defaultValue=""
-                        rules={{
-                          required: true,
-                        }}
-                        render={({ field }) => (
-                          <TextField
-                            variant="outlined"
-                            fullWidth
-                            id="price"
-                            label="Price"
-                            error={Boolean(errors.price)}
-                            helperText={errors.price ? 'Price is required' : ''}
-                            {...field}
-                          ></TextField>
-                        )}
-                      ></Controller>
-                    </ListItem>
-                    <ListItem>
-                      <Controller
-                        name="image"
-                        control={control}
-                        defaultValue=""
-                        rules={{
-                          required: true,
-                        }}
-                        render={({ field }) => (
-                          <TextField
-                            variant="outlined"
-                            fullWidth
-                            id="image"
-                            label="Image"
-                            error={Boolean(errors.image)}
-                            helperText={errors.image ? 'Image is required' : ''}
-                            {...field}
-                          ></TextField>
-                        )}
-                      ></Controller>
-                    </ListItem>
-                    <ListItem>
-                      <Controller
-                        name="category"
-                        control={control}
-                        defaultValue=""
-                        rules={{
-                          required: true,
-                        }}
-                        render={({ field }) => (
-                          <TextField
-                            variant="outlined"
-                            fullWidth
-                            id="category"
-                            label="Category"
-                            error={Boolean(errors.category)}
-                            helperText={
-                              errors.category ? 'Category is required' : ''
-                            }
-                            {...field}
-                          ></TextField>
-                        )}
-                      ></Controller>
-                    </ListItem>
-                    <ListItem>
-                      <Controller
-                        name="brand"
-                        control={control}
-                        defaultValue=""
-                        rules={{
-                          required: true,
-                        }}
-                        render={({ field }) => (
-                          <TextField
-                            variant="outlined"
-                            fullWidth
-                            id="brand"
-                            label="Brand"
-                            error={Boolean(errors.brand)}
-                            helperText={errors.brand ? 'Brand is required' : ''}
-                            {...field}
-                          ></TextField>
-                        )}
-                      ></Controller>
-                    </ListItem>
-                    <ListItem>
-                      <Controller
-                        name="countInStock"
-                        control={control}
-                        defaultValue=""
-                        rules={{
-                          required: true,
-                        }}
-                        render={({ field }) => (
-                          <TextField
-                            variant="outlined"
-                            fullWidth
-                            id="countInStock"
-                            label="Count in stock"
-                            error={Boolean(errors.countInStock)}
-                            helperText={
-                              errors.countInStock
-                                ? 'Count in stock is required'
-                                : ''
-                            }
-                            {...field}
-                          ></TextField>
-                        )}
-                      ></Controller>
-                    </ListItem>
-                    <ListItem>
-                      <Controller
-                        name="description"
-                        control={control}
-                        defaultValue=""
-                        rules={{
-                          required: true,
-                        }}
-                        render={({ field }) => (
-                          <TextField
-                            variant="outlined"
-                            fullWidth
-                            multiline
-                            id="description"
-                            label="Description"
-                            error={Boolean(errors.description)}
-                            helperText={
-                              errors.description
-                                ? 'Description is required'
-                                : ''
-                            }
-                            {...field}
-                          ></TextField>
-                        )}
-                      ></Controller>
-                    </ListItem>
+                {/* <form onSubmit={handleSubmit(submitHandler)}>
+                  <div className="form-element">
+                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
+                      <span className="block text-lg tracking-wide text-gray-800">
+                        Name
+                      </span>
+                      <span className="block">
+                        <input
+                          type="text"
+                          name="name"
+                          // eslint-disable-next-line react/jsx-props-no-spreading
+                          {...register("name", {
+                            required: {
+                              value: true,
+                              message: "You most enter name",
+                            },
+                          })}
+                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+               ${errors.name ? "ring-2 ring-red-500" : null}`}
+                          placeholder="Full name"
+                        />
+                        <span className="py-2 text-sm text-red-400">
+                          {errors?.name?.message}
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <div className="form-element">
+                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
+                      <span className="block text-lg tracking-wide text-gray-800">
+                        Email
+                      </span>
+                      <span className="block">
+                        <input
+                          type="email"
+                          name="Email"
+                          {...register("email", {
+                            required: {
+                              value: true,
+                              message: "You most enter email address",
+                            },
+                            minLength: {
+                              value: 8,
+                              message: "This is not long enough to be an email",
+                            },
+                            maxLength: {
+                              value: 120,
+                              message: "This is too long",
+                            },
+                            pattern: {
+                              value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                              message: "invalid email address",
+                            },
+                          })}
+                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+           ${errors.email ? "ring-2 ring-red-500" : null}`}
+                          placeholder="Email"
+                        />
+                        <span className="py-2 text-sm text-red-400">
+                          {errors?.email?.message}
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <div className="form-element">
+                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
+                      <span className="block text-lg tracking-wide text-gray-800">
+                        Password
+                      </span>
+                      <span className="block">
+                        <input
+                          type="password"
+                          name="password"
+                          // eslint-disable-next-line react/jsx-props-no-spreading
+                          {...register("password", {
+                            required: {
+                              value: true,
+                              message: "You most enter password",
+                            },
+                            minLength: {
+                              value: 6,
+                              message: "Password lenth is more then 5",
+                            },
+                          })}
+                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+               ${errors.password ? "ring-2 ring-red-500" : null}`}
+                          placeholder="Password"
+                        />
+                        <span className="py-2 text-sm text-red-400">
+                          {errors?.password?.message}
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <div className="form-element">
+                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
+                      <span className="block text-lg tracking-wide text-gray-800">
+                        Conform Password
+                      </span>
+                      <span className="block">
+                        <input
+                          type="password"
+                          name="confirmPassword"
+                          // eslint-disable-next-line react/jsx-props-no-spreading
+                          {...register("confirmPassword", {
+                            required: {
+                              value: true,
+                              message: "You most enter confirm Password",
+                            },
+                            minLength: {
+                              value: 6,
+                              message: "confirm Password lenth is more then 5",
+                            },
+                          })}
+                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+               ${errors.confirmPassword ? "ring-2 ring-red-500" : null}`}
+                          placeholder="Confirm Password"
+                        />
+                        <span className="py-2 text-sm text-red-400">
+                          {errors?.confirmPassword?.message}
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <div className="form-element">
+                    <div className="flex items-center py-2 mx-auto lg:w-4/5">
+                      <label className="flex items-center space-x-2 tracking-wide text-gray-800 select-none">
+                        <input type="checkbox" name="" id="" />
+                        <span className="block tracking-wide text-gray-800">
+                          Remember me
+                        </span>
+                      </label>
+                    </div>
+                  </div>
 
-                    <ListItem>
-                      <Button
-                        variant="contained"
+                  <div className="form-element">
+                    <span className="block w-full mx-auto lg:w-4/5 ">
+                      <input
                         type="submit"
-                        fullWidth
-                        color="primary"
-                      >
-                        Update
-                      </Button>
-                    </ListItem>
-                  </List>
+                        className="flex w-full px-6 py-3 text-lg text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"
+                        value="Update Account"
+                      />
+                    </span>
+                  </div>
                 </form> */}
               </div>
-            </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }
 
@@ -544,4 +363,4 @@ export async function getServerSideProps({ params }) {
   };
 }
 
-export default dynamic(() => Promise.resolve(ProductEdit), { ssr: false });
+export default dynamic(() => Promise.resolve(CourseEdit), { ssr: false });

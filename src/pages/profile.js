@@ -5,9 +5,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { Store } from "utils/Store";
-import Cookies from "js-cookie";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
+import Layout from "components/utilities/Layout";
 
 function Profile() {
   const {
@@ -20,15 +19,15 @@ function Profile() {
   const router = useRouter();
   const { redirect } = router.query;
   const { state, dispatch } = useContext(Store);
-    const { userInfo } = state;
+  const { userInfo } = state;
 
-//   const [userInfo, setUserInfo] = useState();
+  //   const [userInfo, setUserInfo] = useState();
 
-//   useEffect(() => {
-//     const value = localStorage.getItem("userInfo");
-//     const user = !!value ? JSON.parse(value) : undefined;
-//     setUserInfo(user);
-//   }, []);
+  //   useEffect(() => {
+  //     const value = localStorage.getItem("userInfo");
+  //     const user = !!value ? JSON.parse(value) : undefined;
+  //     setUserInfo(user);
+  //   }, []);
   useEffect(() => {
     if (!userInfo) {
       return router.push("/login");
@@ -62,7 +61,7 @@ function Profile() {
   };
 
   return (
-    <>
+    <Layout>
       <div className="flex items-center justify-center overflow-x-hidden bg-yellow-100 lg:overflow-x-auto lg:overflow-hidden">
         <div className="flex flex-col flex-wrap justify-between w-full border-gray-300 login-container lg:w-4/5 lg:bg-white lg:h-screen lg:border lg:flex-nowrap lg:flex-row group">
           <div className="relative flex order-2 w-full mt-32 lg:w-1/2 h-28 lg:h-full lg:mt-0 lg:bg-theme-yellow-dark lg:order-1">
@@ -239,7 +238,7 @@ function Profile() {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 }
 

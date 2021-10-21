@@ -116,22 +116,32 @@ export default function Example({ user }) {
                 </button>
               )}
             </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <button
-                  className={`${
-                    active ? "bg-royal-blue text-white" : "text-gray-900"
-                  } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                >
-                  {active ? (
-                    <BiUserCheck className="w-5 h-5 mr-2" aria-hidden="true" />
-                  ) : (
-                    <BiUserCheck className="w-5 h-5 mr-2" aria-hidden="true" />
+            <Link href="/dashboard">
+              <a>
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      className={`${
+                        active ? "bg-royal-blue text-white" : "text-gray-900"
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    >
+                      {active ? (
+                        <BiUserCheck
+                          className="w-5 h-5 mr-2"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        <BiUserCheck
+                          className="w-5 h-5 mr-2"
+                          aria-hidden="true"
+                        />
+                      )}
+                      Instructor dashboard
+                    </button>
                   )}
-                  Instructor dashboard
-                </button>
-              )}
-            </Menu.Item>
+                </Menu.Item>
+              </a>
+            </Link>
           </div>
           <div className="px-1 py-1">
             <Menu.Item onClick={(e) => loginMenuCloseHandler(e, "/profile")}>
