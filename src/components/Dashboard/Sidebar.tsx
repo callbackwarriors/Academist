@@ -119,6 +119,11 @@ const Sidebar = () => {
                   {
                     title: 'Instructor Revenue',
                     itemId: '/dashboard/report/instructor-revenue'
+                  },
+
+                  {
+                    title: 'View All Order',
+                    itemId: '/dashboard/report/viewAllOrder'
                   }
                 ]
               }

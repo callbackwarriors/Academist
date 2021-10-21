@@ -22,6 +22,7 @@ const InstractorDetail = () => {
                  <p className="m-2 p-5 bg-white text-gray-900 rounded-sm border-2 border-gray-400 font-bold">Share</p>
                  <p className=""></p>
               </div>
+             
            </div> 
         </div>
     );

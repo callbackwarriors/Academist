@@ -1,15 +1,8 @@
 import {
-  CardElement,
-  useStripe,
-  useElements,
-  CardNumberElement,
-  CardExpiryElement,
-  CardCvcElement,
+  CardCvcElement, CardExpiryElement, CardNumberElement, useElements, useStripe
 } from "@stripe/react-stripe-js";
-import React, { useMemo } from "react";
-import { useState, useContext } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { Store } from "utils/Store";
-import Cookies from "js-cookie";
 
 const useOptions = () => {
   const options = useMemo(() => ({
@@ -72,7 +65,7 @@ const SimpleCardForm = ({ handlePayment, err }) => {
       <form onSubmit={handleSubmit} className="lg:w-8/12">
         <label>
           Card number
-          <CardNumberElement
+          <CardNumberElement className="bg-gray-500"
             options={options}
             className="py-2"
             onChange={(event) => {
