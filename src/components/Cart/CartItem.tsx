@@ -1,22 +1,28 @@
-import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 import { BsFillXSquareFill } from "react-icons/bs";
 import { ICourses } from "type";
+import { Store } from "utils/Store";
+import Image from "next/image";
 interface IProp {
   item: ICourses;
 }
 
 function CartItem({ item }: IProp) {
+  const { state, dispatch } = useContext(Store);
   const { title, img, price, slug, desc, courseProvider } = item;
+  const removeItemHandler = (item: ICourses) => {
+    dispatch({ type: 'CART_REMOVE_ITEM', payload: item })
+  }
   return (
-    <li className="border border-gray-00 flex p-5 mb-3 justify-between gap-6">
-      <div className="flex gap-4">
+    <li className="flex items-center justify-between gap-6 p-5 mb-3 border border-gray-00">
+      <div className="flex items-center gap-4">
         <div className="course-image ">
           <Link href={`/courses/${slug}`}>
             <a>
               <Image
-                width="100"
-                height="100"
+                width="50"
+                height="50"
                 className="object-cover"
                 src={img}
                 alt=""
@@ -25,22 +31,17 @@ function CartItem({ item }: IProp) {
           </Link>
         </div>
         <div className="CourseName-instructor">
-        <Link href={`/courses/${slug}`}>
+          <Link href={`/courses/${slug}`}>
             <a className="hover:underline hover:text-royal-blue">
-            <h5>{title}</h5>
+              <h5 className="m-0">{title}</h5>
             </a>
           </Link>
-          
-          <picture className="flex">
-            <img src="http://skilify.theuxuidesigner.com/images/webp/profile-img4.webp" />
-            <span>{courseProvider}</span>
-          </picture>
         </div>
       </div>
       <div className="price">
         <span className="mb-2 text-2xl font-semibold">${price}</span>
       </div>
-      <button className="text-royal-blue text-2xl flex">
+      <button className="flex text-2xl text-royal-blue" onClick={(() => removeItemHandler(item))}>
         <BsFillXSquareFill />
       </button>
     </li>

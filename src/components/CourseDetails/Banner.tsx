@@ -6,7 +6,6 @@ interface IProps {
 }
 
 const Banner = ({course}:IProps) => {
-
     const { title,desc } = course;
 
     return (
