@@ -28,7 +28,6 @@ function reducer(state, action) {
 }
 
 function CourseEdit({ params }) {
-  // console.log('params', params);
   const productId = params.id;
   const { state } = useContext(Store);
   const [{ loading, error, loadingUpdate }, dispatch] = useReducer(reducer, {
@@ -55,7 +54,6 @@ function CourseEdit({ params }) {
           const { data } = await axios.get(`/api/admin/courses/${productId}`, {
             headers: { authorization: `Bearer ${userInfo.token}` },
           });
-          console.log(data);
           dispatch({ type: "FETCH_SUCCESS" });
           setValue("title", data.title);
           setValue("slug", data.slug);

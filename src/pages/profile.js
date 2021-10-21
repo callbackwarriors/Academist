@@ -19,15 +19,15 @@ function Profile() {
   const router = useRouter();
   const { redirect } = router.query;
   const { state, dispatch } = useContext(Store);
-  const { userInfo } = state;
+  // const { userInfo } = state;
 
-  //   const [userInfo, setUserInfo] = useState();
+    const [userInfo, setUserInfo] = useState();
 
-  //   useEffect(() => {
-  //     const value = localStorage.getItem("userInfo");
-  //     const user = !!value ? JSON.parse(value) : undefined;
-  //     setUserInfo(user);
-  //   }, []);
+    useEffect(() => {
+      const value = localStorage.getItem("userInfo");
+      const user = !!value ? JSON.parse(value) : undefined;
+      setUserInfo(user);
+    }, []);
   useEffect(() => {
     if (!userInfo) {
       return router.push("/login");
@@ -51,7 +51,6 @@ function Profile() {
         },
         { headers: { authorization: `Bearer ${userInfo.token}` } }
       );
-      //   console.log("data", data);
       dispatch({ type: "USER_LOGIN", payload: data });
       localStorage.setItem("userInfo", JSON.stringify(data));
       alert("Profile updated successfully");

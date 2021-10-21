@@ -7,17 +7,15 @@ import Header from './Header';
 interface ILayout {
   title: string;
   keywords: string;
-  description:string;
+  description: string;
   children: any,
 }
 
-export default function Layout({ title, keywords, description, children }:ILayout) {
+export default function Layout({ title, keywords, description, children }: ILayout) {
 
   const router = useRouter();
 
   const isDashboard = router.asPath.startsWith('/dashboard');
-
-  console.log("Dashboard", isDashboard)
   return (
     <>
       <Head>
@@ -25,10 +23,10 @@ export default function Layout({ title, keywords, description, children }:ILayou
         <meta name='description' content={description} />
         <meta name='keywords' content={keywords} />
       </Head>
-      {!isDashboard && <Header/>}
+      {!isDashboard && <Header />}
       {children}
 
-      {!isDashboard && <Footer/>}
+      {!isDashboard && <Footer />}
     </>
   )
 }

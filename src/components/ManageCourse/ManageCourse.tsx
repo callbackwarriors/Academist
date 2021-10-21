@@ -12,8 +12,6 @@ interface IProp {
 
 const ManageCourse = ({ course }: IProp) => {
   const { title, img, _id } = course;
-  console.log(_id);
-  
 
   return (
     <div className="single__course">
