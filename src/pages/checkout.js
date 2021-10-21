@@ -1,8 +1,7 @@
 import Checkout from "components/Checkout/Checkout";
 import Layout from "components/utilities/Layout";
 import { useRouter } from 'next/router';
-import React, { useContext, useEffect, useState } from 'react';
-import { Store } from 'utils/Store';
+import React, { useEffect, useState } from 'react';
 
 
 const checkout = () => {

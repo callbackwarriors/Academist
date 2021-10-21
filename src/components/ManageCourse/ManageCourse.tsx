@@ -1,10 +1,10 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
-import Image from 'next/image'
+import { AiFillEye } from 'react-icons/ai';
+import { FiEdit } from 'react-icons/fi';
+import { RiDeleteBin7Line } from 'react-icons/ri';
 import { ICourses } from 'type';
-import Link from 'next/link'
-import { FiEdit } from 'react-icons/fi'
-import { RiDeleteBin7Line } from 'react-icons/ri'
-import { AiFillEye } from 'react-icons/ai'
 
 interface IProp {
   course: ICourses;
@@ -16,9 +16,9 @@ const ManageCourse = ({ course }: IProp) => {
   
 
   return (
-    <div className="items-center mb-5 rounded-lg md:flex">
-      <div className="flex items-center mb-3 lg:w-9/12 md:w-7/12 lg:mb-0">
-        <Image height="80" width="80" className="w-40 mx-4 rounded" src={img} />
+    <div className="single__course">
+      <div className="single__course__image">
+        <Image height="80" width="80" src={img} />
         <h5 className="px-2 lg:px-4">{title}</h5>
       </div>
       <div className="flex-auto" >
