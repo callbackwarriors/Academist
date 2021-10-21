@@ -6,7 +6,7 @@ const DatauriParser = require('datauri/parser')
 const parser = new DatauriParser();
 console.log(process.env.CLOUDINARY_NAME)
 const ALLOWED_FORMATES = ['image/jpg', 'image/jpeg', 'image/png']
-const app = express();
+
 const storage = multer.memoryStorage();
 const upload = multer({
   storage,
