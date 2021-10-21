@@ -1,7 +1,7 @@
 import Logo from "assets/images/academist-logo.svg";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AiOutlineCloseSquare, AiOutlineShoppingCart } from "react-icons/ai";
 import { FiMenu } from "react-icons/fi";
 import Drawer from "react-modern-drawer";
@@ -11,7 +11,17 @@ import MobileMenu from "./MobileMenu";
 import Usermenu from "./Usermenu";
 
 const Header = () => {
+  const [user, setUser] = useState();
+
+  // fetch data
+  useEffect(() => {
+    const value = localStorage.getItem("userInfo");
+    const user = !!value ? JSON.parse(value) : undefined;
+    setUser(user);
+  }, []);
+
   const [isOpen, setIsOpen] = React.useState(false);
+
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
   };
@@ -21,8 +31,8 @@ const Header = () => {
 
   return (
     <header className="text-gray-600 body-font">
-      <div className="container mx-auto flex flex-wrap p-5 items-center justify-between">
-        <span className="hidden lg:block flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+      <div className="container flex flex-wrap items-center justify-between p-5 mx-auto">
+        <span className="flex items-center hidden mb-4 font-medium text-gray-900 lg:block title-font md:mb-0">
           <Link href="/">
             <a className="ml-3 text-xl">
               <Image src={Logo} />
@@ -31,7 +41,7 @@ const Header = () => {
         </span>
 
         <button
-          className="text-3xl inline-block lg:hidden"
+          className="inline-block text-3xl lg:hidden"
           onClick={toggleDrawer}
         >
           <FiMenu />
@@ -39,15 +49,15 @@ const Header = () => {
         <Drawer open={isOpen} onClose={toggleDrawer} direction="left">
           <div
             onClick={toggleDrawer}
-            className="close p-3 text-royal-blue text-2xl text-right overflow-hidden"
+            className="p-3 overflow-hidden text-2xl text-right close text-royal-blue"
           >
             <AiOutlineCloseSquare className="float-right" />
           </div>
           <MobileMenu />
         </Drawer>
 
-        <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center hidden lg:block">
-        <Link href="/">
+        <nav className="flex flex-wrap items-center justify-center hidden text-base md:ml-auto md:mr-auto lg:block">
+          <Link href="/">
             <a className="mr-5 hover:text-gray-900">Home</a>
           </Link>
 
@@ -63,23 +73,31 @@ const Header = () => {
           </Link>
         </nav>
 
+        
+
         <span className="relative inline-block mr-6">
-          <Link href="/cart"><a><span className="cart__ico text-xl">
-            <AiOutlineShoppingCart />
-          </span></a></Link>
-          <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-royal-blue rounded-full">
+          <Link href="/cart">
+            <a>
+              <span className="text-xl cart__ico">
+                <AiOutlineShoppingCart />
+              </span>
+            </a>
+          </Link>
+          <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 rounded-full bg-royal-blue">
             {cart.cartItems.length}
           </span>
         </span>
-
-        <Link href="/login">
-          <a>
-            <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base  md:mt-0">
-              Login/Registation
-            </button>
-          </a>
-        </Link>
-        <Usermenu />
+        {user ? (
+          <Usermenu user={user} />
+        ) : (
+          <Link href="/login">
+            <a>
+              <button className="inline-flex items-center px-3 py-1 text-base bg-gray-100 border-0 rounded focus:outline-none hover:bg-gray-200 md:mt-0">
+                Login/Registation
+              </button>
+            </a>
+          </Link>
+        )}
       </div>
     </header>
   );
