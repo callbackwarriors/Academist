@@ -4,8 +4,6 @@ import db from "../../../utils/db";
 
 const handler = nc();
 handler.post(async (req, res) => {
-  console.log("body", req.body);
-
   await db.connect();
   const newCourse = new Course({
     title: req.body.title,
@@ -17,7 +15,6 @@ handler.post(async (req, res) => {
     // price: req.body.price,
     desc: req.body.desc,
   });
-  console.log("newCourse", newCourse);
   const course = await newCourse.save();
 
   await db.disconnect();

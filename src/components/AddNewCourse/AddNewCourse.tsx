@@ -53,7 +53,6 @@ const AddNewCourse = () => {
                 level,
                 desc,
             });
-            console.log("course name", data);
         } catch (err) {
             console.log(err)
         }
