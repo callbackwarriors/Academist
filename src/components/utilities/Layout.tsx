@@ -1,5 +1,6 @@
+import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import React from 'react';
 import Footer from './Footer';
 import Header from './Header';
@@ -17,7 +18,6 @@ export default function Layout({ title, keywords, description, children }:ILayou
 
   const isDashboard = router.asPath.startsWith('/dashboard');
 
-  console.log("Dashboard", isDashboard)
   return (
     <>
       <Head>
