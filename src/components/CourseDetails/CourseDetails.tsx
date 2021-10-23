@@ -12,6 +12,7 @@ import Curriculam from './Curriculam';
 import Instructor from './Instructor';
 import Overview from './Overview';
 import Review from './Review';
+
 interface IProps {
     course: ICourses
 }

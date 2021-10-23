@@ -2,15 +2,14 @@ import axios from 'axios';
 import CartItemTwo from 'components/Cart/CartItemTwo';
 import Payment from "components/Payment/Payment";
 import Cookies from "js-cookie";
+import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
 import { ICourses } from 'type';
 import { Store } from 'utils/Store';
 
-const Checkout = ({user}: any) => {
-    console.log('user', user);
-    
+const Checkout = ({ user }: any) => {
     const [error, setError] = useState()
     useEffect(() => {
         if (cartItems.length === 0) {
@@ -21,8 +20,6 @@ const Checkout = ({user}: any) => {
     const router = useRouter()
     const { state, dispatch } = useContext(Store);
     const { cart: { cartItems }, userInfo } = state;
-    console.log('cartItems', cartItems);
-
     const { billingAddress } = state;
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
@@ -35,7 +32,7 @@ const Checkout = ({user}: any) => {
                     phone: phone,
                     address: address,
                     paymentInfo,
-                    user,                       /////////////////////////////////////////////////////////////////////
+                    user,
                     cartItems,
                 },
                 {
@@ -44,7 +41,8 @@ const Checkout = ({user}: any) => {
                     },
                 }
             )
-            console.log('checkout_data', data);
+            console.log('data', data);
+            
             dispatch({ type: 'CART_CLEAR' });
             Cookies.remove('cartItems');
             // router.push(`/order/${data._id}`);
@@ -88,8 +86,8 @@ const Checkout = ({user}: any) => {
                     </div>
                     {show ?
                         <Payment handlePaymentSuccess={handlePaymentSuccess} error={error}></Payment>
-                        : 
-                        <button className="mt-8 bg-yellow-500 text-white py-4 px-16 uppercase rounded">Pay now</button>    
+                        :
+                        <button className="px-16 py-4 mt-8 text-white uppercase bg-yellow-500 rounded">Pay now</button>
                     }
                 </div>
             </div>

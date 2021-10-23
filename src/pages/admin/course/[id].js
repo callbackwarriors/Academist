@@ -38,7 +38,6 @@ function reducer(state, action) {
 }
 
 function CourseEdit({ params }) {
-  // console.log('params', params);
   const productId = params.id;
   const { state } = useContext(Store);
   const [{ loading, error, loadingUpdate, loadingUpload }, dispatch] =
@@ -66,7 +65,6 @@ function CourseEdit({ params }) {
           const { data } = await axios.get(`/api/admin/courses/${productId}`, {
             headers: { authorization: `Bearer ${userInfo.token}` },
           });
-          console.log(data);
           dispatch({ type: "FETCH_SUCCESS" });
           setValue("title", data.title);
           setValue("slug", data.slug);
@@ -422,8 +420,10 @@ function CourseEdit({ params }) {
                       <input
                         type="submit"
                         className="flex w-full px-6 py-3 text-lg text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"
-                        value="Update Account"
-                      />
+                          value="Update Account"
+                      >
+                        
+                      </input>
                     </span>
                   </div>
                 </form>

@@ -42,7 +42,6 @@ const Register = () => {
         email,
         password,
       });
-      console.log("data", data);
       dispatch({ type: "USER_LOGIN", payload: data });
       localStorage.setItem("userInfo", JSON.stringify(data));
       router.push(redirect || "/");
