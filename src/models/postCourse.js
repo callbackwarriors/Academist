@@ -9,8 +9,9 @@ const PostCourseSchema = new mongoose.Schema(
     level: { type: String, required: true },
     // price: { type: Number, required: true },
     desc: { type: String, required: true },
+    img: { type: String, required: true },
   },
   { timestamps: true }
 );
-const Course = mongoose.models.postCourse || mongoose.model("postCourse", PostCourseSchema);
+const Course = mongoose.models.testCourse || mongoose.model("testCourse", PostCourseSchema);
 export default Course;
