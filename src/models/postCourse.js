@@ -7,7 +7,7 @@ const PostCourseSchema = new mongoose.Schema(
     shortDesc: { type: String, required: true },
     categories: { type: String, required: true },
     level: { type: String, required: true },
-    // price: { type: Number, required: true },
+    price: { type: Number, required: true },
     desc: { type: String, required: true },
     img: { type: String, required: true },
   },

@@ -40,11 +40,11 @@ const AddNewCourse = () => {
   const [shortDesc, setShortDesc] = useState("");
   const [categories, setCategories] = useState("");
   const [level, setLevel] = useState("");
-  //   const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState(0);
   const [desc, setDesc] = useState("");
   const [img, setImg] = useState("");
 
-console.log('img', img);
+  console.log("img", img);
 
   const { state } = useContext(Store);
   const { userInfo } = state;
@@ -70,12 +70,9 @@ console.log('img', img);
       dispatch({ type: "UPLOAD_SUCCESS" });
       setImg(data.secure_url);
       console.log(data.secure_url);
-      console.log("File uploaded successfully");
-      // enqueueSnackbar("File uploaded successfully", { variant: "success" });
+      alert("File uploaded successfully");
     } catch (err) {
       console.log(err);
-      // dispatch({ type: "UPLOAD_FAIL", payload: getError(err) });
-      // enqueueSnackbar(getError(err), { variant: "error" });
     }
   };
 
@@ -89,7 +86,7 @@ console.log('img', img);
         videoUrl,
         shortDesc,
         categories,
-        // price,
+        price,
         level,
         desc,
         img,
@@ -191,7 +188,6 @@ console.log('img', img);
           </div>
           <div className="mb-4">
             <label htmlFor="desc">Course Overview</label>
-
             <textarea
               onChange={(e) => setDesc(e.target.value)}
               className="w-full px-4 py-3 rounded focus:border-royal-blue"
@@ -200,15 +196,16 @@ console.log('img', img);
               name="desc"
             ></textarea>
           </div>
-
           {/* <div className="mb-4">
-                        <label htmlFor="price">Course Price</label>
-                        <input id="price" className="w-full px-4 py-3 rounded focus:border-royal-blue" onBlur={handleBlur} type="number" name="price" placeholder="Write your course price here..." />
-                    </div>
-                    <div className="mb-4">
-                        <input id="certificate" className="rounded focus:border-royal-blue " onBlur={handleBlur} type='checkbox' name="certificate" />
-                        <label htmlFor="certificate"> Is certificate include?</label>
-                    </div> */}
+            <input
+              id="certificate"
+              className="rounded focus:border-royal-blue "
+              onBlur={handleBlur}
+              type="checkbox"
+              name="certificate"
+            />
+            <label htmlFor="certificate"> Is certificate include?</label>
+          </div> */}
           <div>
             <div className="flex mt-8 mb-8">
               <div className="max-w-2xl rounded-lg shadow-xl bg-gray-50">
@@ -238,6 +235,7 @@ console.log('img', img);
                         </p>
                       </div>
                       <input
+                        disabled={!setImg}
                         onChange={uploadHandler}
                         accept=".jpg, .jpeg, .png"
                         type="file"
@@ -250,7 +248,7 @@ console.log('img', img);
             </div>
           </div>
           <button
-          disabled={!setImg}
+            disabled={!setImg}
             className="px-12 py-3 text-lg text-white border-0 bg-royal-blue focus:outline-none hover:bg-indigo-600"
           >
             Upload File
@@ -260,7 +258,7 @@ console.log('img', img);
           <br />
 
           <input
-            className="px-12 py-3 text-lg text-white border-0 bg-royal-blue focus:outline-none hover:bg-indigo-600"
+            className="px-12 py-3 text-lg text-white border-0 cursor-pointer bg-royal-blue focus:outline-none hover:bg-indigo-600"
             type="submit"
           />
         </div>
