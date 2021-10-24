@@ -14,7 +14,7 @@ interface IProp {
   course: ICourses;
 }
 
-function reducer(state, action) {
+function reducer(state: any, action: any) {
   switch (action.type) {
     case "FETCH_REQUEST":
       return { ...state, loading: true, error: "" };

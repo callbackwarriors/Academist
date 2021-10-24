@@ -38,7 +38,6 @@ function reducer(state, action) {
 }
 
 function CourseEdit({ params }) {
-  console.log('params', params);
   const productId = params.id;
   const { state } = useContext(Store);
   const [{ loading, error, loadingUpdate, loadingUpload }, dispatch] =
