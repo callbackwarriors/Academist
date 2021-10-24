@@ -51,6 +51,7 @@
     "recharts": "^2.1.4",
     "restful-react": "^15.9.2",
     "streamifier": "^0.1.1",
+    "sweetalert2": "^11.1.9",
     "theme-ui": "^0.11.3"
   },
   "devDependencies": {

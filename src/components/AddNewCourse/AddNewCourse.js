@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext, useReducer, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useMutate } from "restful-react";
+import Swal from "sweetalert2";
 import { Store } from "utils/Store";
 
 function reducer(state, action) {
@@ -44,8 +45,6 @@ const AddNewCourse = () => {
   const [desc, setDesc] = useState("");
   const [img, setImg] = useState("");
 
-  console.log("img", img);
-
   const { state } = useContext(Store);
   const { userInfo } = state;
   const [{ loading, error, loadingUpdate, loadingUpload }, dispatch] =
@@ -66,13 +65,20 @@ const AddNewCourse = () => {
           authorization: `Bearer ${userInfo.token}`,
         },
       });
-      console.log("data", data);
+
       dispatch({ type: "UPLOAD_SUCCESS" });
       setImg(data.secure_url);
-      console.log(data.secure_url);
-      alert("File uploaded successfully");
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Image',
+        text: 'Image uploaded successfully',
+      })
     } catch (err) {
-      console.log(err);
+      Swal.fire({
+        icon: "error",
+        text: err.message,
+      });
     }
   };
 
@@ -91,9 +97,17 @@ const AddNewCourse = () => {
         desc,
         img,
       });
-      console.log("course data upload", data);
+      Swal.fire({
+        icon: 'success',
+        title: 'Image',
+        text: 'Image uploaded successfully',
+      })
+
     } catch (err) {
-      console.log(err);
+      Swal.fire({
+        icon: "error",
+        text: err.message,
+      });
     }
   };
 

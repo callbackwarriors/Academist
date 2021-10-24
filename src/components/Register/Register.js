@@ -7,6 +7,7 @@ import { Store } from "utils/Store";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const {
@@ -27,7 +28,10 @@ const Register = () => {
 
   const submitHandler = async ({ name, email, password, confirmPassword }) => {
     if (password !== confirmPassword) {
-      alert("Password don't match");
+      Swal.fire({
+        icon: "error",
+        text: "Password don't match",
+      });
       return;
     }
     try {
@@ -40,7 +44,10 @@ const Register = () => {
       Cookies.set("userInfo", JSON.stringify(data));
       router.push(redirect || "/");
     } catch (err) {
-      alert(err.response.data ? err.response.data.message : err.message);
+      Swal.fire({
+        icon: "error",
+        text: err.message,
+      });
     }
   };
 

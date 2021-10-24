@@ -40,7 +40,6 @@ const Checkout = () => {
                     },
                 }
             )
-            console.log('data', data);
             
             dispatch({ type: 'CART_CLEAR' });
             Cookies.remove('cartItems');

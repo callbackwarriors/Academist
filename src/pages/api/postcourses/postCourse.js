@@ -17,9 +17,8 @@ handler.post(async (req, res) => {
     desc: req.body.desc,
     img: req.body.img,
   });
-  console.log("newCourse", newCourse);
+
   const course = await newCourse.save();
-  console.log("upload course", course);
   await db.disconnect();
 
   res.send({

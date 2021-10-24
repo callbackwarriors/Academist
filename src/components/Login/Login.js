@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 import { Store } from "utils/Store";
 
 const Login = () => {
@@ -30,13 +31,15 @@ const Login = () => {
         email,
         password,
       });
-      console.log("login", data);
+
       dispatch({ type: "USER_LOGIN", payload: data });
       Cookies.set("userInfo", JSON.stringify(data));
       router.push(redirect || "/");
     } catch (err) {
-      console.log(err);
-      alert(err.response.data ? err.response.data.message : err.message);
+      Swal.fire({
+        icon: "error",
+        text: err.message,
+      });
     }
   };
 

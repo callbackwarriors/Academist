@@ -8,6 +8,7 @@ import { Store } from "utils/Store";
 import { useForm } from "react-hook-form";
 import Layout from "components/utilities/Layout";
 import Cookies from "js-cookie";
+import Swal from "sweetalert2";
 
 function Profile() {
   const {
@@ -33,7 +34,10 @@ function Profile() {
 
   const submitHandler = async ({ name, email, password, confirmPassword }) => {
     if (password !== confirmPassword) {
-      alert("Password don't match");
+      Swal.fire({
+        icon: "error",
+        text: "Password don't match",
+      });
       return;
     }
     try {
@@ -48,9 +52,16 @@ function Profile() {
       );
       dispatch({ type: "USER_LOGIN", payload: data });
       Cookies.set("userInfo", JSON.stringify(data));
-      alert("Profile updated successfully");
+      Swal.fire({
+        icon: "success",
+        text: "Profile updated successfully",
+      });
+
     } catch (err) {
-      alert(err.message);
+      Swal.fire({
+        icon: "error",
+        text: err.message,
+      });
     }
   };
 

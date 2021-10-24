@@ -2,6 +2,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import Swal from 'sweetalert2';
 
 
 const AddNewCourse = () => {
@@ -28,9 +29,12 @@ const AddNewCourse = () => {
                 // price,
                 desc
             });
-            console.log("course name", data);
-        } catch (err) {
-            console.log(err)
+
+        } catch (err: any) {
+            Swal.fire({
+                icon: "error",
+                text: err.message,
+            });
         }
     };
 

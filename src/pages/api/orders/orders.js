@@ -9,9 +9,8 @@ handler.post(async (req, res) => {
   const newOrder = new Order({
     ...req.body,
   });
-  console.log("newOrder", newOrder);
+
   const order = await newOrder.save();
-  console.log("order", order);
   res.send(order);
 });
 

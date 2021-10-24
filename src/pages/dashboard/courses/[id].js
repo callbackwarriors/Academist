@@ -1,12 +1,10 @@
-import img from "assets/images/cycle.png";
 import axios from "axios";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useReducer } from "react";
 import { Store } from "utils/Store";
 import { useForm } from "react-hook-form";
-import Layout from "components/utilities/Layout";
+import Swal from "sweetalert2";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -77,8 +75,10 @@ function CourseEdit({ params }) {
           setValue("img", data.img);
           setValue("desc", data.desc);
         } catch (err) {
-          console.log(err.message);
-          // dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
+          Swal.fire({
+            icon: "error",
+            text: err.message,
+          });
         }
       };
       fetchData();
@@ -97,16 +97,14 @@ function CourseEdit({ params }) {
           authorization: `Bearer ${userInfo.token}`,
         },
       });
-      console.log('data', data);
+
       dispatch({ type: "UPLOAD_SUCCESS" });
       setValue("img", data.secure_url);
-      console.log(data.secure_url);
-      console.log("File uploaded successfully");
-      // enqueueSnackbar("File uploaded successfully", { variant: "success" });
     } catch (err) {
-      console.log(err);
-      // dispatch({ type: "UPLOAD_FAIL", payload: getError(err) });
-      // enqueueSnackbar(getError(err), { variant: "error" });
+      Swal.fire({
+        icon: "error",
+        text: err.message,
+      });
     }
   };
 
@@ -141,15 +139,21 @@ function CourseEdit({ params }) {
         { headers: { authorization: `Bearer ${userInfo.token}` } }
       );
       dispatch({ type: "UPDATE_SUCCESS" });
-      alert("Courses updated successfully");
+      Swal.fire({
+        icon: "success",
+        text: "Course updated successfully",
+      });
     } catch (err) {
-      alert(err.message);
+      Swal.fire({
+        icon: "error",
+        text: err.message,
+      });
     }
   };
 
   return (
-    <Layout>
-      <div className="flex items-center justify-center min-h-screen overflow-x-hidden lg:overflow-x-auto lg:overflow-hidden">
+    <>
+      <div className="flex items-center justify-center min-h-screen py-12 overflow-x-hidden lg:overflow-x-auto lg:overflow-hidden">
         <div className="flex flex-col flex-wrap justify-between w-full login-container lg:w-4/5 lg:flex-nowrap lg:flex-row group">
           <div className="order-1 w-full min-h-screen lg:order-2">
             <div className="relative flex items-center min-h-screen px-10 pt-16 form-wrapper lg:pt-0">
@@ -420,10 +424,8 @@ function CourseEdit({ params }) {
                       <input
                         type="submit"
                         className="flex w-full px-6 py-3 text-lg text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"
-                          value="Update Account"
-                      >
-                        
-                      </input>
+                        value="Update Account"
+                      ></input>
                     </span>
                   </div>
                 </form>
@@ -432,7 +434,7 @@ function CourseEdit({ params }) {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 }
 

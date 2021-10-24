@@ -6,6 +6,7 @@ import React, { useContext, useEffect, useReducer } from 'react';
 import { AiFillEye } from 'react-icons/ai';
 import { FiEdit } from 'react-icons/fi';
 import { RiDeleteBin7Line } from 'react-icons/ri';
+import Swal from 'sweetalert2';
 import { ICourses } from 'type';
 import { Store } from 'utils/Store';
 
@@ -21,12 +22,6 @@ function reducer(state, action) {
       return { ...state, loading: false, products: action.payload, error: "" };
     case "FETCH_FAIL":
       return { ...state, loading: false, error: action.payload };
-    case "CREATE_REQUEST":
-      return { ...state, loadingCreate: true };
-    case "CREATE_SUCCESS":
-      return { ...state, loadingCreate: false };
-    case "CREATE_FAIL":
-      return { ...state, loadingCreate: false };
     case "DELETE_REQUEST":
       return { ...state, loadingDelete: true };
     case "DELETE_SUCCESS":
@@ -42,13 +37,12 @@ function reducer(state, action) {
 
 const ManageCourse = ({ course }: IProp) => {
   const { title, img, _id } = course;
-  console.log(_id);
   const { state } = useContext(Store);
   const router = useRouter();
   const { userInfo } = state;
 
   const [
-    { loading, error, products, loadingCreate, successDelete, loadingDelete },
+    { successDelete },
     dispatch,
   ] = useReducer(reducer, {
     loading: true,
@@ -68,8 +62,11 @@ const ManageCourse = ({ course }: IProp) => {
           headers: { authorization: `Bearer ${userInfo.token}` },
         });
         dispatch({ type: "FETCH_SUCCESS", payload: data });
-      } catch (err) {
-        console.log(err);
+      } catch (err: any) {
+        Swal.fire({
+          icon: "error",
+          text: err.message,
+        });
 
       }
     };
@@ -81,7 +78,6 @@ const ManageCourse = ({ course }: IProp) => {
   }, [successDelete]);
 
   const deleteHandler = async (productId: number) => {
-    console.log('productId', productId);
     if (!window.confirm("Are you sure?")) {
       return;
     }
@@ -91,10 +87,16 @@ const ManageCourse = ({ course }: IProp) => {
         headers: { authorization: `Bearer ${userInfo.token}` },
       });
       dispatch({ type: "DELETE_SUCCESS" });
-      alert("Product deleted successfully");
-    } catch (err) {
+      Swal.fire({
+        icon: "success",
+        text: "Product deleted successfully",
+      });
+    } catch (err: any) {
       dispatch({ type: "DELETE_FAIL" });
-      console.log(err);
+      Swal.fire({
+        icon: "error",
+        text: err.message,
+      });
 
     }
   };
@@ -107,7 +109,7 @@ const ManageCourse = ({ course }: IProp) => {
       </div>
       <div className="flex-auto" >
         <button className="px-4 py-2 text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"><AiFillEye className="text-2xl" /></button>
-        <Link href={`/admin/course/${_id}`}>
+        <Link href={`/dashboard/courses/${_id}`}>
           <a>
             <button className="px-4 py-2 mx-4 text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800">
               <FiEdit className="text-2xl" />

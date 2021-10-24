@@ -10,7 +10,6 @@ import React, { useContext, useMemo, useState } from "react";
 import { Store } from "utils/Store";
 
 const useOptions = () => {
-
   const options = useMemo(() => ({
     style: {
       base: {
@@ -68,30 +67,15 @@ const SimpleCardForm = ({ handlePayment, err }) => {
             className="bg-gray-500"
             options={options}
             className="py-2"
-            onChange={(event) => {
-              console.log("CardNumberElement [change]", event);
-            }}
           />
         </label>
         <label>
           Expiration date
-          <CardExpiryElement
-            options={options}
-            className="py-2"
-            onChange={(event) => {
-              console.log("CardNumberElement [change]", event);
-            }}
-          />
+          <CardExpiryElement options={options} className="py-2" />
         </label>
         <label>
           CVC
-          <CardCvcElement
-            options={options}
-            className="py-2"
-            onChange={(event) => {
-              console.log("CardNumberElement [change]", event);
-            }}
-          />
+          <CardCvcElement options={options} className="py-2" />
         </label>
         <button
           className="flex px-6 py-2 my-6 text-lg text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"
