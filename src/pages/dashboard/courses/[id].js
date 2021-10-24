@@ -1,4 +1,6 @@
 import axios from "axios";
+import Sidebar from "components/Dashboard/Sidebar";
+import Title from "components/utilities/Title";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useReducer } from "react";
@@ -36,6 +38,7 @@ function reducer(state, action) {
 }
 
 function CourseEdit({ params }) {
+  console.log('params', params);
   const productId = params.id;
   const { state } = useContext(Store);
   const [{ loading, error, loadingUpdate, loadingUpload }, dispatch] =
@@ -153,282 +156,286 @@ function CourseEdit({ params }) {
 
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen py-12 overflow-x-hidden lg:overflow-x-auto lg:overflow-hidden">
-        <div className="flex flex-col flex-wrap justify-between w-full login-container lg:w-4/5 lg:flex-nowrap lg:flex-row group">
-          <div className="order-1 w-full min-h-screen lg:order-2">
-            <div className="relative flex items-center min-h-screen px-10 pt-16 form-wrapper lg:pt-0">
-              <div className="w-full space-y-2">
-                <div className="flex items-end justify-center mb-8 space-x-3 text-center form-caption">
-                  <span className="text-3xl font-semibold text-royal-blue">
-                    Course Update
-                  </span>
-                </div>
-                <form onSubmit={handleSubmit(submitHandler)}>
-                  <div className="form-element">
-                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
-                      <span className="block text-lg tracking-wide text-gray-800">
-                        Title
-                      </span>
-                      <span className="block">
-                        <input
-                          type="text"
-                          name="title"
-                          // eslint-disable-next-line react/jsx-props-no-spreading
-                          {...register("title", {
-                            required: {
-                              value: true,
-                              message: "You most enter title",
-                            },
-                          })}
-                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+      <div className="flex items-stretch w-full bg-gray-200">
+        <Sidebar />
+        <div className="w-full min-h-screen transition-all bg-white">
+          <div className="flex items-center justify-center min-h-screen py-12 overflow-x-hidden lg:overflow-x-auto lg:overflow-hidden">
+            <div className="flex flex-col flex-wrap justify-between w-full login-container lg:flex-nowrap lg:flex-row group">
+              <div className="order-1 w-full min-h-screen lg:order-2">
+                <div className="relative flex items-center min-h-screen px-10 pt-16 form-wrapper lg:pt-0">
+                  <div className="w-full space-y-2">
+                    <Title
+                      title="Course update"
+                      subtitle=""
+                      description=""
+                    ></Title>
+                    <form onSubmit={handleSubmit(submitHandler)}>
+                      <div className="py-2 form-element">
+                        <label className="space-y-0.5 w-full block mx-auto">
+                          <span className="block text-lg tracking-wide text-gray-800">
+                            Title
+                          </span>
+                          <span className="block">
+                            <input
+                              type="text"
+                              name="title"
+                              // eslint-disable-next-line react/jsx-props-no-spreading
+                              {...register("title", {
+                                required: {
+                                  value: true,
+                                  message: "You most enter title",
+                                },
+                              })}
+                              className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                        />
-                        <span className="py-2 text-sm text-red-400">
-                          {errors?.name?.message}
-                        </span>
-                      </span>
-                    </label>
-                  </div>
-                  <div className="form-element">
-                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
-                      <span className="block text-lg tracking-wide text-gray-800">
-                        Slug
-                      </span>
-                      <span className="block">
-                        <input
-                          type="text"
-                          name="slug"
-                          // eslint-disable-next-line react/jsx-props-no-spreading
-                          {...register("slug", {
-                            required: {
-                              value: true,
-                              message: "You most enter slug",
-                            },
-                          })}
-                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+                            />
+                            <span className="py-2 text-sm text-red-400">
+                              {errors?.name?.message}
+                            </span>
+                          </span>
+                        </label>
+                      </div>
+                      <div className="py-2 form-element">
+                        <label className="space-y-0.5 w-full  block mx-auto">
+                          <span className="block text-lg tracking-wide text-gray-800">
+                            Slug
+                          </span>
+                          <span className="block">
+                            <input
+                              type="text"
+                              name="slug"
+                              // eslint-disable-next-line react/jsx-props-no-spreading
+                              {...register("slug", {
+                                required: {
+                                  value: true,
+                                  message: "You most enter slug",
+                                },
+                              })}
+                              className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                        />
-                        <span className="py-2 text-sm text-red-400">
-                          {errors?.name?.message}
-                        </span>
-                      </span>
-                    </label>
-                  </div>
-                  <div className="form-element">
-                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
-                      <span className="block text-lg tracking-wide text-gray-800">
-                        ShortDesc
-                      </span>
-                      <span className="block">
-                        <input
-                          type="text"
-                          name="shortDesc"
-                          // eslint-disable-next-line react/jsx-props-no-spreading
-                          {...register("shortDesc", {
-                            required: {
-                              value: true,
-                              message: "You most enter shortDesc",
-                            },
-                          })}
-                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+                            />
+                            <span className="py-2 text-sm text-red-400">
+                              {errors?.name?.message}
+                            </span>
+                          </span>
+                        </label>
+                      </div>
+                      <div className="py-2 form-element">
+                        <label className="space-y-0.5 w-full  block mx-auto">
+                          <span className="block text-lg tracking-wide text-gray-800">
+                            ShortDesc
+                          </span>
+                          <span className="block">
+                            <input
+                              type="text"
+                              name="shortDesc"
+                              // eslint-disable-next-line react/jsx-props-no-spreading
+                              {...register("shortDesc", {
+                                required: {
+                                  value: true,
+                                  message: "You most enter shortDesc",
+                                },
+                              })}
+                              className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                        />
-                        <span className="py-2 text-sm text-red-400">
-                          {errors?.name?.message}
-                        </span>
-                      </span>
-                    </label>
-                  </div>
-                  <div className="form-element">
-                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
-                      <span className="block text-lg tracking-wide text-gray-800">
-                        Categories
-                      </span>
-                      <span className="block">
-                        <input
-                          type="text"
-                          name="categories"
-                          // eslint-disable-next-line react/jsx-props-no-spreading
-                          {...register("categories", {
-                            required: {
-                              value: true,
-                              message: "You most enter categories",
-                            },
-                          })}
-                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+                            />
+                            <span className="py-2 text-sm text-red-400">
+                              {errors?.name?.message}
+                            </span>
+                          </span>
+                        </label>
+                      </div>
+                      <div className="py-2 form-element">
+                        <label className="space-y-0.5 w-full  block mx-auto">
+                          <span className="block text-lg tracking-wide text-gray-800">
+                            Categories
+                          </span>
+                          <span className="block">
+                            <input
+                              type="text"
+                              name="categories"
+                              // eslint-disable-next-line react/jsx-props-no-spreading
+                              {...register("categories", {
+                                required: {
+                                  value: true,
+                                  message: "You most enter categories",
+                                },
+                              })}
+                              className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                        />
-                        <span className="py-2 text-sm text-red-400">
-                          {errors?.name?.message}
-                        </span>
-                      </span>
-                    </label>
-                  </div>
-                  <div className="form-element">
-                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
-                      <span className="block text-lg tracking-wide text-gray-800">
-                        Level
-                      </span>
-                      <span className="block">
-                        <input
-                          type="text"
-                          name="level"
-                          // eslint-disable-next-line react/jsx-props-no-spreading
-                          {...register("level", {
-                            required: {
-                              value: true,
-                              message: "You most enter level",
-                            },
-                          })}
-                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+                            />
+                            <span className="py-2 text-sm text-red-400">
+                              {errors?.name?.message}
+                            </span>
+                          </span>
+                        </label>
+                      </div>
+                      <div className="py-2 form-element">
+                        <label className="space-y-0.5 w-full  block mx-auto">
+                          <span className="block text-lg tracking-wide text-gray-800">
+                            Level
+                          </span>
+                          <span className="block">
+                            <input
+                              type="text"
+                              name="level"
+                              // eslint-disable-next-line react/jsx-props-no-spreading
+                              {...register("level", {
+                                required: {
+                                  value: true,
+                                  message: "You most enter level",
+                                },
+                              })}
+                              className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                        />
-                        <span className="py-2 text-sm text-red-400">
-                          {errors?.name?.message}
-                        </span>
-                      </span>
-                    </label>
-                  </div>
-                  <div className="form-element">
-                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
-                      <span className="block text-lg tracking-wide text-gray-800">
-                        Price
-                      </span>
-                      <span className="block">
-                        <input
-                          type="text"
-                          name="price"
-                          // eslint-disable-next-line react/jsx-props-no-spreading
-                          {...register("price", {
-                            required: {
-                              value: true,
-                              message: "You most enter price",
-                            },
-                          })}
-                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+                            />
+                            <span className="py-2 text-sm text-red-400">
+                              {errors?.name?.message}
+                            </span>
+                          </span>
+                        </label>
+                      </div>
+                      <div className="py-2 form-element">
+                        <label className="space-y-0.5 w-full  block mx-auto">
+                          <span className="block text-lg tracking-wide text-gray-800">
+                            Price
+                          </span>
+                          <span className="block">
+                            <input
+                              type="text"
+                              name="price"
+                              // eslint-disable-next-line react/jsx-props-no-spreading
+                              {...register("price", {
+                                required: {
+                                  value: true,
+                                  message: "You most enter price",
+                                },
+                              })}
+                              className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                        />
-                        <span className="py-2 text-sm text-red-400">
-                          {errors?.name?.message}
-                        </span>
-                      </span>
-                    </label>
-                  </div>
-                  <div className="form-element">
-                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
-                      <span className="block text-lg tracking-wide text-gray-800">
-                        CourseProvider
-                      </span>
-                      <span className="block">
-                        <input
-                          type="text"
-                          name="courseProvider"
-                          // eslint-disable-next-line react/jsx-props-no-spreading
-                          {...register("courseProvider", {
-                            required: {
-                              value: true,
-                              message: "You most enter courseProvider",
-                            },
-                          })}
-                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+                            />
+                            <span className="py-2 text-sm text-red-400">
+                              {errors?.name?.message}
+                            </span>
+                          </span>
+                        </label>
+                      </div>
+                      <div className="py-2 form-element">
+                        <label className="space-y-0.5 w-full  block mx-auto">
+                          <span className="block text-lg tracking-wide text-gray-800">
+                            CourseProvider
+                          </span>
+                          <span className="block">
+                            <input
+                              type="text"
+                              name="courseProvider"
+                              // eslint-disable-next-line react/jsx-props-no-spreading
+                              {...register("courseProvider", {
+                                required: {
+                                  value: true,
+                                  message: "You most enter courseProvider",
+                                },
+                              })}
+                              className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                        />
-                        <span className="py-2 text-sm text-red-400">
-                          {errors?.name?.message}
-                        </span>
-                      </span>
-                    </label>
-                  </div>
-                  <div className="form-element">
-                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
-                      <span className="block text-lg tracking-wide text-gray-800">
-                        VideoUrl
-                      </span>
-                      <span className="block">
-                        <input
-                          type="text"
-                          name="videoUrl"
-                          // eslint-disable-next-line react/jsx-props-no-spreading
-                          {...register("videoUrl", {
-                            required: {
-                              value: true,
-                              message: "You most enter videoUrl",
-                            },
-                          })}
-                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+                            />
+                            <span className="py-2 text-sm text-red-400">
+                              {errors?.name?.message}
+                            </span>
+                          </span>
+                        </label>
+                      </div>
+                      <div className="py-2 form-element">
+                        <label className="space-y-0.5 w-full  block mx-auto">
+                          <span className="block text-lg tracking-wide text-gray-800">
+                            VideoUrl
+                          </span>
+                          <span className="block">
+                            <input
+                              type="text"
+                              name="videoUrl"
+                              // eslint-disable-next-line react/jsx-props-no-spreading
+                              {...register("videoUrl", {
+                                required: {
+                                  value: true,
+                                  message: "You most enter videoUrl",
+                                },
+                              })}
+                              className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                        />
-                        <span className="py-2 text-sm text-red-400">
-                          {errors?.name?.message}
-                        </span>
-                      </span>
-                    </label>
-                  </div>
-                  <div className="form-element">
-                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
-                      <span className="block text-lg tracking-wide text-gray-800">
-                        Img
-                      </span>
-                      <span className="block">
-                        <input
-                          type="text"
-                          name="img"
-                          // eslint-disable-next-line react/jsx-props-no-spreading
-                          {...register("img", {
-                            required: {
-                              value: true,
-                              message: "You most enter img",
-                            },
-                          })}
-                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+                            />
+                            <span className="py-2 text-sm text-red-400">
+                              {errors?.name?.message}
+                            </span>
+                          </span>
+                        </label>
+                      </div>
+                      <div className="py-2 form-element">
+                        <label className="space-y-0.5 w-full  block mx-auto">
+                          <span className="block text-lg tracking-wide text-gray-800">
+                            Img
+                          </span>
+                          <span className="block">
+                            <input
+                              type="text"
+                              name="img"
+                              // eslint-disable-next-line react/jsx-props-no-spreading
+                              {...register("img", {
+                                required: {
+                                  value: true,
+                                  message: "You most enter img",
+                                },
+                              })}
+                              className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                        />
-                        <span className="py-2 text-sm text-red-400">
-                          {errors?.name?.message}
-                        </span>
-                      </span>
-                    </label>
-                  </div>
-                  <button>
-                    Upload File
-                    <input type="file" onChange={uploadHandler} />
-                  </button>
-                  <div className="form-element">
-                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
-                      <span className="block text-lg tracking-wide text-gray-800">
-                        Desc
-                      </span>
-                      <span className="block">
-                        <input
-                          type="text"
-                          name="desc"
-                          // eslint-disable-next-line react/jsx-props-no-spreading
-                          {...register("desc", {
-                            required: {
-                              value: true,
-                              message: "You most enter desc",
-                            },
-                          })}
-                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+                            />
+                            <span className="py-2 text-sm text-red-400">
+                              {errors?.name?.message}
+                            </span>
+                          </span>
+                        </label>
+                      </div>
+                      <button>
+                        <input type="file" onChange={uploadHandler} />
+                      </button>
+                      <div className="py-2 form-element">
+                        <label className="space-y-0.5 w-full  block mx-auto">
+                          <span className="block text-lg tracking-wide text-gray-800">
+                            Desc
+                          </span>
+                          <span className="block">
+                            <textarea
+                              type="text"
+                              name="desc"
+                              // eslint-disable-next-line react/jsx-props-no-spreading
+                              {...register("desc", {
+                                required: {
+                                  value: true,
+                                  message: "You most enter desc",
+                                },
+                              })}
+                              className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                ${errors.name ? "ring-2 ring-red-500" : null}`}
-                        />
-                        <span className="py-2 text-sm text-red-400">
-                          {errors?.name?.message}
-                        </span>
-                      </span>
-                    </label>
-                  </div>
+                            />
+                            <span className="py-2 text-sm text-red-400">
+                              {errors?.name?.message}
+                            </span>
+                          </span>
+                        </label>
+                      </div>
 
-                  <div className="form-element">
-                    <span className="block w-full mx-auto my-4 lg:w-4/5 ">
-                      <input
-                        type="submit"
-                        className="flex w-full px-6 py-3 text-lg text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"
-                        value="Update Account"
-                      ></input>
-                    </span>
+                      <div className="py-4 form-element">
+                        <span className="my-4 ">
+                          <input
+                            type="submit"
+                            className="flex px-6 py-3 text-lg text-white bg-indigo-700 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"
+                            value="Update Course"
+                          ></input>
+                        </span>
+                      </div>
+                    </form>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>

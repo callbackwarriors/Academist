@@ -37,6 +37,7 @@ function reducer(state, action) {
 
 const ManageCourse = ({ course }: IProp) => {
   const { title, img, _id } = course;
+
   const { state } = useContext(Store);
   const router = useRouter();
   const { userInfo } = state;
@@ -63,11 +64,6 @@ const ManageCourse = ({ course }: IProp) => {
         });
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (err: any) {
-        Swal.fire({
-          icon: "error",
-          text: err.message,
-        });
-
       }
     };
     if (successDelete) {
