@@ -29,8 +29,6 @@ const courseDetails = (props: IProps) => {
 
 export default courseDetails;
 
-
-
 export async function getServerSideProps(context: { params: any; }) {
   const { params } = context;
   const { slug } = params;

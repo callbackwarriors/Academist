@@ -15,7 +15,7 @@
     "jsx": "preserve",
     // "noImplicitAny": false,
     "baseUrl": "./src",
-    "typeRoots": ["../node_modules/@types", "@types"],
+    "typeRoots": ["../node_modules/@types", "@types"]
   },
   "exclude": ["node_modules"],
 
@@ -35,12 +35,9 @@
     "src/pages/shipping.js",
     "src/components/Register/Register.js",
     "src/pages/payment.js",
+    "src/components/ManageCourse/ManageCourse.tsx",
     "src/components/Payment/Payment.js",
     "src/components/Payment/SimpleCardForm.js",
     "src/components/utilities/Header.js"
-  ]
-
+, "src/components/AddNewCourse/AddNewCourse.js"  ]
 }
-
-
-

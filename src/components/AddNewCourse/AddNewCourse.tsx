@@ -2,7 +2,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { useMutate } from 'restful-react';
+import Swal from 'sweetalert2';
 
 
 const AddNewCourse = () => {
@@ -14,48 +14,27 @@ const AddNewCourse = () => {
     const [level, setLevel] = useState("");
     // const [price, setPrice] = useState(0);
     const [desc, setDesc] = useState("");
-    const [selectImage, setSelectImage]= useState();
-   
-    const {mutate: uplodeImage} = useMutate({
-          verb: "POST",
-          path: "api/postcourses/img-uplode"
-    });
-    const handleImage = (event:any) => {
-         setSelectImage(event.target.files[0])
-    }
-
- 
-    const handleImageUplode = () =>{
-        
-        if(!selectImage){return;}
-        const formData = new FormData();
-        formData.append("image", selectImage)
-        uplodeImage(formData)
-        .then(uplodedImage=>{
-            console.log(uplodedImage)
-        })
-        .catch(_ =>{
-            console.log('uppsss something went worng')
-        })
-    }
-
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
 
         try {
-            const { data } = await axios.post("/api/postcourses/postCourse", {
+            const { data } = await axios.post("/api/postCourse/postCourse", {
                 title,
                 slug,
                 videoUrl,
                 shortDesc,
                 categories,
                 level,
-                desc,
+                // price,
+                desc
             });
-            console.log("course name", data);
-        } catch (err) {
-            console.log(err)
+
+        } catch (err: any) {
+            Swal.fire({
+                icon: "error",
+                text: err.message,
+            });
         }
     };
 
@@ -110,15 +89,18 @@ const AddNewCourse = () => {
                         <textarea onChange={(e) => setDesc(e.target.value)} className="w-full px-4 py-3 rounded focus:border-royal-blue" placeholder="Write your course overview..." id="desc" name="desc"></textarea>
                     </div>
 
-                    
-                    {/* <div className="mb-4">
+                    {/*
+
+                    <div className="mb-4">
                         <label htmlFor="price">Course Price</label>
                         <input id="price" className="w-full px-4 py-3 rounded focus:border-royal-blue" onBlur={handleBlur} type="number" name="price" placeholder="Write your course price here..." />
                     </div>
+
                     <div className="mb-4">
                         <input id="certificate" className="rounded focus:border-royal-blue " onBlur={handleBlur} type='checkbox' name="certificate" />
                         <label htmlFor="certificate"> Is certificate include?</label>
-                    </div> */}
+                    </div>
+
                     <div>
                         <div className="flex mt-8 mb-8">
                             <div className="max-w-2xl rounded-lg shadow-xl bg-gray-50">
@@ -130,21 +112,20 @@ const AddNewCourse = () => {
                                             <div className="flex flex-col items-center justify-center cursor-pointer pt-7">
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-gray-400 group-hover:text-gray-600"
                                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                         d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                                                 </svg>
                                                 <p className="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
                                                     Attach a file</p>
                                             </div>
-                                            <input onChange={handleImage} accept=".jpg, .jpeg, .png" type="file" className="opacity-0" />
+                                            <input type="file" className="opacity-0" />
                                         </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    < button onClick={handleImageUplode} disabled={!selectImage} className="px-12 py-3 text-lg text-white border-0 bg-royal-blue focus:outline-none hover:bg-indigo-600">img-upload</button><br /> <br />
-
+                     */}
                     < input className="px-12 py-3 text-lg text-white border-0 bg-royal-blue focus:outline-none hover:bg-indigo-600" type="submit" />
                 </div>
             </form>

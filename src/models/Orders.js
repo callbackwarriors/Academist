@@ -11,7 +11,7 @@ const ordersSchema = new mongoose.Schema(
     phone: { type: String, required: true },
     address: { type: String, required: true },
 
-    user: {
+    userInfo: {
       name: { type: String, required: true },
       email: { type: String, required: true },
       isAdmin: { type: Boolean, required: true, default: false },
@@ -41,5 +41,5 @@ const ordersSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Order = mongoose.models.orders || mongoose.model("orders", ordersSchema);
+const Order = mongoose.models.test || mongoose.model("test", ordersSchema);
 export default Order;
