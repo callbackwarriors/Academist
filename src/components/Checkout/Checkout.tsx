@@ -13,7 +13,7 @@ const Checkout = () => {
     const [error, setError] = useState()
     useEffect(() => {
         if (cartItems.length === 0) {
-            router.push('/cart');
+            router.push('/courses');
         }
     }, []);
 
