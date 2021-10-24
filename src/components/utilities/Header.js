@@ -20,7 +20,7 @@ const Header = () => {
     setUser(user);
   }, []);
 
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);  
 
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
