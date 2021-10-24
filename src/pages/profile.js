@@ -1,28 +1,34 @@
 import img from "assets/images/cycle.png";
 import axios from "axios";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Store } from "utils/Store";
-import Cookies from "js-cookie";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
+import Layout from "components/utilities/Layout";
+import Cookies from "js-cookie";
 
-const Register = () => {
+function Profile() {
   const {
     handleSubmit,
+    control,
     register,
     formState: { errors },
+    setValue,
   } = useForm();
   const router = useRouter();
   const { redirect } = router.query;
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
 
+
   useEffect(() => {
-    if (userInfo) {
-      router.push("/");
+    if (!userInfo) {
+      return router.push("/login");
     }
+    setValue("name", userInfo?.name);
+    setValue("email", userInfo?.email);
   }, []);
 
   const submitHandler = async ({ name, email, password, confirmPassword }) => {
@@ -31,21 +37,25 @@ const Register = () => {
       return;
     }
     try {
-      const { data } = await axios.post("/api/users/register", {
-        name,
-        email,
-        password,
-      });
+      const { data } = await axios.put(
+        "/api/users/profile",
+        {
+          name,
+          email,
+          password,
+        },
+        { headers: { authorization: `Bearer ${userInfo.token}` } }
+      );
       dispatch({ type: "USER_LOGIN", payload: data });
       Cookies.set("userInfo", JSON.stringify(data));
-      router.push(redirect || "/");
+      alert("Profile updated successfully");
     } catch (err) {
-      alert(err.response.data ? err.response.data.message : err.message);
+      alert(err.message);
     }
   };
 
   return (
-    <>
+    <Layout>
       <div className="flex items-center justify-center overflow-x-hidden bg-yellow-100 lg:overflow-x-auto lg:overflow-hidden">
         <div className="flex flex-col flex-wrap justify-between w-full border-gray-300 login-container lg:w-4/5 lg:bg-white lg:h-screen lg:border lg:flex-nowrap lg:flex-row group">
           <div className="relative flex order-2 w-full mt-32 lg:w-1/2 h-28 lg:h-full lg:mt-0 lg:bg-theme-yellow-dark lg:order-1">
@@ -69,7 +79,7 @@ const Register = () => {
               <div className="w-full space-y-2">
                 <div className="flex items-end justify-center mb-8 space-x-3 text-center form-caption">
                   <span className="text-3xl font-semibold text-royal-blue">
-                    Create an account
+                    Account Settings
                   </span>
                 </div>
                 <form onSubmit={handleSubmit(submitHandler)}>
@@ -172,11 +182,6 @@ const Register = () => {
                         Conform Password
                       </span>
                       <span className="block">
-                        {/* <input
-                          type="password"
-                          onChange={(e) => setConfirmPassword(e.target.value)}
-                          className="w-full p-3 bg-yellow-100 border border-gray-400 lg:bg-white lg:border-2 lg:border-gray-200 focus:outline-none active:outline-none focus:border-gray-400 active:border-gray-400"
-                        /> */}
                         <input
                           type="password"
                           name="confirmPassword"
@@ -217,24 +222,18 @@ const Register = () => {
                       <input
                         type="submit"
                         className="flex w-full px-6 py-3 text-lg text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"
-                        value="Create an Account"
+                        value="Update Account"
                       />
                     </span>
                   </div>
                 </form>
-                <p className="text-center d-block">
-                  Don't have an account?{" "}
-                  <Link href="/login">
-                    <a className="text-royal-blue">Log in now</a>
-                  </Link>
-                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
-};
+}
 
-export default Register;
+export default dynamic(() => Promise.resolve(Profile), { ssr: false });

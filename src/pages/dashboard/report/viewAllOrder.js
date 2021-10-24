@@ -1,33 +1,34 @@
-import AdminRevenue from "components/AdminRevenue/AdminRevenue";
+import React, { useEffect, useState } from "react";
 import Sidebar from "components/Dashboard/Sidebar";
 import Layout from "components/utilities/Layout";
+import ViewAllOrder from "components/ViewAllOrder/ViewAllOrder";
+// import type { NextPage } from 'next';
 import db from "utils/db";
-import Order from "../../../models/Orders";
+import Orders from "../../../models/Orders";
 
-const adminRevenue = ({ props }: any) => {
+const viewAllOrder = (props) => {
+  const orderingData = props.order;
+
   return (
     <Layout>
       <div className="flex items-stretch w-full bg-gray-200">
         <Sidebar />
         <div className="w-full h-screen py-20 transition-all">
-          <AdminRevenue />
+          <ViewAllOrder orderingData={orderingData}></ViewAllOrder>
         </div>
       </div>
     </Layout>
   );
 };
-
-export default adminRevenue;
-
+export default viewAllOrder;
 
 export async function getServerSideProps() {
   await db.connect();
-  const order = await Order.find({}).lean();
+  const order = await Orders.find({}).lean();
   await db.disconnect();
   return {
     props: {
-      courses: order.map(db.convertDocToObj),
+      order: order.map(db.convertDocToObj),
     },
   };
 }
-

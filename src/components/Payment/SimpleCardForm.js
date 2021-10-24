@@ -1,17 +1,16 @@
 import {
-  CardElement,
-  useStripe,
-  useElements,
-  CardNumberElement,
-  CardExpiryElement,
   CardCvcElement,
+  CardExpiryElement,
+  CardNumberElement,
+  useElements,
+  useStripe,
 } from "@stripe/react-stripe-js";
-import React, { useMemo } from "react";
-import { useState, useContext } from "react";
+import { useRouter } from "next/router";
+import React, { useContext, useMemo, useState } from "react";
 import { Store } from "utils/Store";
-import Cookies from "js-cookie";
 
 const useOptions = () => {
+
   const options = useMemo(() => ({
     style: {
       base: {
@@ -30,17 +29,9 @@ const useOptions = () => {
 };
 
 const SimpleCardForm = ({ handlePayment, err }) => {
-  console.log("err", err.message);
+  const router = useRouter();
   const [paymentError, setPaymentError] = useState(null);
   const [paymentSuccess, setPaymentSuccess] = useState(null);
-  const { state, dispatch } = useContext(Store);
-  // const {
-  //   cart: { cartItems },
-  //   userInfo,
-  //   billingAddress,
-  //   paymentInfo,
-  // } = state;
-
   const stripe = useStripe();
   const elements = useElements();
   const options = useOptions();
@@ -56,7 +47,6 @@ const SimpleCardForm = ({ handlePayment, err }) => {
       type: "card",
       card: elements.getElement(CardNumberElement),
     });
-    console.log("paymentMethod", paymentMethod);
 
     if (error) {
       setPaymentError(error.message);
@@ -65,6 +55,7 @@ const SimpleCardForm = ({ handlePayment, err }) => {
       setPaymentSuccess(paymentMethod.card);
       setPaymentError(null);
       handlePayment(paymentMethod.card);
+      // router.push("/");
     }
   };
 
@@ -74,6 +65,7 @@ const SimpleCardForm = ({ handlePayment, err }) => {
         <label>
           Card number
           <CardNumberElement
+            className="bg-gray-500"
             options={options}
             className="py-2"
             onChange={(event) => {
@@ -110,7 +102,6 @@ const SimpleCardForm = ({ handlePayment, err }) => {
         </button>
       </form>
       {paymentError && <p style={{ color: "red" }}>{paymentError}</p>}
-      {/* <p style={{ color: "red" }}>{err.message}</p> */}
       {err && <p style={{ color: "red" }}>{err.message}</p>}
     </div>
   );

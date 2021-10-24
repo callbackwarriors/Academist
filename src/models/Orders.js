@@ -1,3 +1,4 @@
+
 import mongoose from "mongoose";
 
 const ordersSchema = new mongoose.Schema(
@@ -12,7 +13,7 @@ const ordersSchema = new mongoose.Schema(
 
     userInfo: {
       name: { type: String, required: true },
-      email: { type: String, required: true, unique: true },
+      email: { type: String, required: true },
       isAdmin: { type: Boolean, required: true, default: false },
       _id: { type: String, required: true },
     },
@@ -20,7 +21,7 @@ const ordersSchema = new mongoose.Schema(
     cartItems: [
       {
         title: { type: String, required: true }, // unique: true
-        slug: { type: String, required: true, unique: true },
+        slug: { type: String, required: true },
         shortDesc: { type: String, required: true },
         categories: { type: String, required: true },
         level: { type: String, required: true },
@@ -40,5 +41,5 @@ const ordersSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Order = mongoose.models.Test || mongoose.model("Test", ordersSchema);
+const Order = mongoose.models.test || mongoose.model("test", ordersSchema);
 export default Order;

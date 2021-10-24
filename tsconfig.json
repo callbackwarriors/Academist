@@ -18,10 +18,13 @@
     "typeRoots": ["../node_modules/@types", "@types"]
   },
   "exclude": ["node_modules"],
+
   "include": [
     "next-env.d.ts",
     "custom.d.ts",
     "src/**/*.ts",
+    "src/pages/instractors/index.js",
+
     "src/**/*.tsx",
     "src/components/utilities/Title.js",
     "src/components/CourseDetails",
@@ -32,8 +35,9 @@
     "src/pages/shipping.js",
     "src/components/Register/Register.js",
     "src/pages/payment.js",
+    "src/components/ManageCourse/ManageCourse.tsx",
     "src/components/Payment/Payment.js",
     "src/components/Payment/SimpleCardForm.js",
     "src/components/utilities/Header.js"
-  ]
+, "src/components/AddNewCourse/AddNewCourse.js"  ]
 }

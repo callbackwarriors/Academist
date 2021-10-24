@@ -1,22 +1,22 @@
-import AllCourses from "components/AllCourses/AllCourses";
+import InstractorCard from "components/InstractorCard/InstractorCard";
+import User from "models/User";
 import React, { useState } from "react";
+import { GiHamburgerMenu } from "react-icons/gi";
+import Layout from "../../components/utilities/Layout";
 import {
   BsFillGrid3X2GapFill,
   BsFillGrid3X3GapFill,
   BsSearch,
 } from "react-icons/bs";
-import { GiHamburgerMenu } from "react-icons/gi";
-import Layout from "../../components/utilities/Layout";
-import Courses from "../../models/Courses";
-import db from "../../utils/db";
-const CoursesPage = (props) => {
-  const { courses } = props;
+import db from "utils/db";
+const Instractors = (props) => {
+  const { user } = props;
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   return (
     <Layout>
       <div className="sectionAllCourses">
         <div className="bg-gray-300 allCourses">
-          <h2 className="pt-12 text-center"> Find Your Course</h2>
+          <h2 className="pt-12 text-center">Find Your Course</h2>
 
           <div className="container flex py-16">
             <React.Fragment className="w-1/3 pb-10 allCourses__page-sidebar ">
@@ -224,10 +224,9 @@ const CoursesPage = (props) => {
                     </div>
                   </div>
                 </div>
-
                 <div className="flex flex-wrap page-content__body">
-                  {courses.map((course) => (
-                    <AllCourses key={course.title} course={course} />
+                  {user.map((ur) => (
+                    <InstractorCard key={ur._id} ur={ur} />
                   ))}
                 </div>
               </div>
@@ -239,15 +238,15 @@ const CoursesPage = (props) => {
   );
 };
 
-export default CoursesPage;
+export default Instractors;
 
 export async function getServerSideProps() {
   await db.connect();
-  const courses = await Courses.find({}).lean();
+  const user = await User.find({}).lean();
   await db.disconnect();
   return {
     props: {
-      courses: courses.map(db.convertDocToObj),
+      user: user.map(db.convertDocToObj),
     },
   };
 }

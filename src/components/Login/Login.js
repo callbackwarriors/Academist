@@ -32,8 +32,7 @@ const Login = () => {
       });
       console.log("login", data);
       dispatch({ type: "USER_LOGIN", payload: data });
-      localStorage.setItem("userInfo", JSON.stringify(data));
-      // localStorage.setItem("password", password);
+      Cookies.set("userInfo", JSON.stringify(data));
       router.push(redirect || "/");
     } catch (err) {
       console.log(err);
