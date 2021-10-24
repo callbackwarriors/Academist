@@ -35,4 +35,18 @@ handler.put(async (req, res) => {
     res.status(404).send({ message: "Courses Not Found" });
   }
 });
+
+handler.delete(async (req, res) => {
+  await db.connect();
+  const courses = await Courses.findById(req.query.id);
+  if (courses) {
+    await courses.remove();
+    await db.disconnect();
+    res.send({ message: 'Courses Deleted' });
+  } else {
+    await db.disconnect();
+    res.status(404).send({ message: 'Courses Not Found' });
+  }
+});
+
 export default handler;

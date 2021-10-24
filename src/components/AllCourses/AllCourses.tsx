@@ -42,6 +42,7 @@ const AllCourses = ({ course }: IProp) => {
                             </div>
                         </div>
                         <h4 className="mb-2 text-base">{title}</h4>
+                        
                     </div>
                 </a>
             </Link>

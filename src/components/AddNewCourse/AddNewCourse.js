@@ -196,16 +196,16 @@ const AddNewCourse = () => {
               name="desc"
             ></textarea>
           </div>
-          {/* <div className="mb-4">
+          <div className="mb-4">
             <input
               id="certificate"
               className="rounded focus:border-royal-blue "
-              onBlur={handleBlur}
+            //   onBlur={handleBlur}
               type="checkbox"
               name="certificate"
             />
             <label htmlFor="certificate"> Is certificate include?</label>
-          </div> */}
+          </div>
           <div>
             <div className="flex mt-8 mb-8">
               <div className="max-w-2xl rounded-lg shadow-xl bg-gray-50">
@@ -251,7 +251,6 @@ const AddNewCourse = () => {
             disabled={!setImg}
             className="px-12 py-3 text-lg text-white border-0 bg-royal-blue focus:outline-none hover:bg-indigo-600"
           >
-            Upload File
             <input type="file" onChange={uploadHandler} />
           </button>
           <br />
