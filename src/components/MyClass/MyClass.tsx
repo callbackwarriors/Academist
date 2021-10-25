@@ -1,24 +1,17 @@
 import React from 'react';
 import { AiFillEye, AiFillVideoCamera, AiOutlineHeart, AiOutlineStar } from 'react-icons/ai';
-import { IOrders } from 'type';
 
 
-interface IProp {
-    order: IOrders;
-}
 
-
-const MyClass = ({ order }: IProp) => {
-    console.log('order', order);
-
+const MyClass = ({ order }: any) => {
+    const { title, img } = order.cartItems[0];
+    
 
     return (
         <div className="p-4 transition duration-100 ease-in-out transform xl:w-1/3 sm:w-1/2 hover:scale-105">
             <div className="p-6 bg-gray-100 rounded-lg">
                 <div className="relative">
-
-                    <img className="w-full mb-4" src="https://cdn.pixabay.com/photo/2021/09/27/13/06/stones-6660734_960_720.jpg" alt="" />
-
+                    <img src={img} className="w-full pb-4" alt="" />
                     <AiOutlineHeart className="absolute text-2xl top-3 right-3" />
                 </div>
 
@@ -37,7 +30,7 @@ const MyClass = ({ order }: IProp) => {
                         15
                     </div>
                 </div>
-                <h4 className="mb-2 text-base">Mastering React With Interview Questions,eStore Project-2021</h4>
+                <h4 className="mb-2 text-base">{title}</h4>
 
             </div>
         </div>

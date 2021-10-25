@@ -9,7 +9,7 @@ const EnrollCourse = ({ orders }) => {
   const currentUserOrder = orders.filter(
     (order) => order?.userInfo.email === userInfo?.email
   );
-  console.log("currentUserOrder", currentUserOrder);
+
 
   return (
     <div className="container flex flex-wrap">
