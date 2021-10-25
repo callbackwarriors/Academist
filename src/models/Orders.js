@@ -42,5 +42,5 @@ const ordersSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Order = mongoose.models.testorder || mongoose.model("testorder", ordersSchema);
+const Order = mongoose.models.order || mongoose.model("order", ordersSchema);
 export default Order;

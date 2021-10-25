@@ -44,7 +44,7 @@ const Checkout = () => {
             
             dispatch({ type: 'CART_CLEAR' });
             Cookies.remove('cartItems');
-            router.push(`/`);
+            router.push(`/enrollcourse`);
         } catch (err: any) {
             setError(err);
         }

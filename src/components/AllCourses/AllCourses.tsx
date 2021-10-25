@@ -15,7 +15,7 @@ interface IProp {
 const AllCourses = ({ course }: IProp) => {
     const { title, img, slug } = course;
     return (
-        <div className="p-4 transition duration-100 ease-in-out transform xl:w-1/3 md:w-1/2 hover:scale-105">
+        <div className="w-full p-4 transition duration-100 ease-in-out transform xl:w-1/3 md:w-1/2 hover:scale-105">
             <Link href={`/courses/${slug}`}>
                 <a>
                     <div className="p-6 bg-gray-100 rounded-lg">
