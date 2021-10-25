@@ -13,5 +13,5 @@ const PostCourseSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-const Course = mongoose.models.testCourse || mongoose.model("testCourse", PostCourseSchema);
+const Course = mongoose.models.course || mongoose.model("course", PostCourseSchema);
 export default Course;

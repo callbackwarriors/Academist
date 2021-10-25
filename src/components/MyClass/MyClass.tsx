@@ -1,14 +1,23 @@
 import React from 'react';
-import Image from 'next/image'
 import { AiFillEye, AiFillVideoCamera, AiOutlineHeart, AiOutlineStar } from 'react-icons/ai';
+import { IOrders } from 'type';
 
-const InstractorCard = ({ ur }: any) => {
+
+interface IProp {
+    order: IOrders;
+}
+
+
+const MyClass = ({ order }: IProp) => {
+    console.log('order', order);
+
+
     return (
-        <div className="p-4 transition duration-100 ease-in-out transform xl:w-1/3 md:w-1/2 hover:scale-105"> 
+        <div className="p-4 transition duration-100 ease-in-out transform xl:w-1/3 sm:w-1/2 hover:scale-105">
             <div className="p-6 bg-gray-100 rounded-lg">
-                <div className="relative flex items-center justify-center pb-2">
+                <div className="relative">
 
-                    <Image className="grid mb-4 rounded-full justify-items-center" width="150" height="150" src="https://cdn.pixabay.com/photo/2021/09/27/13/06/stones-6660734_960_720.jpg" alt="" />
+                    <img className="w-full mb-4" src="https://cdn.pixabay.com/photo/2021/09/27/13/06/stones-6660734_960_720.jpg" alt="" />
 
                     <AiOutlineHeart className="absolute text-2xl top-3 right-3" />
                 </div>
@@ -28,14 +37,11 @@ const InstractorCard = ({ ur }: any) => {
                         15
                     </div>
                 </div>
-                <h4 className="mb-2 text-base">{ur.name}</h4>
-                <p className="text-base leading-relaxed">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
+                <h4 className="mb-2 text-base">Mastering React With Interview Questions,eStore Project-2021</h4>
+
             </div>
         </div>
-        
     );
 };
 
-export default InstractorCard;
-
-
+export default MyClass;

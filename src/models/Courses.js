@@ -7,7 +7,7 @@ const CoursesSchema = new mongoose.Schema(
     categories: { type: String, required: true },
     level: { type: String, required: true },
     price: { type: Number, required: true },
-    courseProvider: { type: String, required: true },
+    // courseProvider: { type: String, required: true },
     videoUrl: { type: String, required: true },
     img: { type: String, required: true },
     desc: { type: String, required: true },
@@ -19,3 +19,5 @@ const Courses =
   mongoose.models.Courses || mongoose.model("Courses", CoursesSchema);
 
 export default Courses;
+
+
