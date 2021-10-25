@@ -55,48 +55,52 @@ export default function Example({ userInfo }) {
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items className="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <div className="px-1 py-1 ">
-            <Link href="/dashboard">
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={`${
-                      active ? "bg-royal-blue text-white" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                  >
-                    {active ? (
-                      <BiBookReader
-                        className="w-5 h-5 mr-2"
-                        aria-hidden="true"
-                      />
-                    ) : (
-                      <BiBookReader
-                        className="w-5 h-5 mr-2"
-                        aria-hidden="true"
-                      />
-                    )}
-                    My learning
-                  </button>
-                )}
-              </Menu.Item>
+          <div className="px-1 py-1">
+            <Link href="/enrollcourse">
+              <a>
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      className={`${
+                        active ? "bg-royal-blue text-white" : "text-gray-900"
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    >
+                      {active ? (
+                        <BiBookReader
+                          className="w-5 h-5 mr-2"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        <BiBookReader
+                          className="w-5 h-5 mr-2"
+                          aria-hidden="true"
+                        />
+                      )}
+                      My learning
+                    </button>
+                  )}
+                </Menu.Item>
+              </a>
             </Link>
             <Link href="/cart">
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={`${
-                      active ? "bg-royal-blue text-white" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                  >
-                    {active ? (
-                      <BiCart className="w-5 h-5 mr-2" aria-hidden="true" />
-                    ) : (
-                      <BiCart className="w-5 h-5 mr-2" aria-hidden="true" />
-                    )}
-                    My cart
-                  </button>
-                )}
-              </Menu.Item>
+              <a>
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      className={`${
+                        active ? "bg-royal-blue text-white" : "text-gray-900"
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    >
+                      {active ? (
+                        <BiCart className="w-5 h-5 mr-2" aria-hidden="true" />
+                      ) : (
+                        <BiCart className="w-5 h-5 mr-2" aria-hidden="true" />
+                      )}
+                      My cart
+                    </button>
+                  )}
+                </Menu.Item>
+              </a>
             </Link>
           </div>
           <div className="px-1 py-1">

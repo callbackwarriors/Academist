@@ -100,13 +100,13 @@ const AddNewCourse = () => {
       Swal.fire({
         icon: 'success',
         title: 'Image',
-        text: 'Image uploaded successfully',
+        text: 'Course uploaded successfully',
       })
 
-    } catch (err) {
+    } catch (error) {
       Swal.fire({
         icon: "error",
-        text: err.message,
+        text: error.message,
       });
     }
   };
@@ -261,14 +261,14 @@ const AddNewCourse = () => {
               </div>
             </div>
           </div>
-          <button
+          {/* <button
             disabled={!setImg}
             className="px-12 py-3 text-lg text-white border-0 bg-royal-blue focus:outline-none hover:bg-indigo-600"
           >
             <input type="file" onChange={uploadHandler} />
-          </button>
-          <br />
-          <br />
+          </button> */}
+          {/* <br />
+          <br /> */}
 
           <input
             className="px-12 py-3 text-lg text-white border-0 cursor-pointer bg-royal-blue focus:outline-none hover:bg-indigo-600"

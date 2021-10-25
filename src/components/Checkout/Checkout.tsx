@@ -13,7 +13,7 @@ const Checkout = () => {
     const [error, setError] = useState()
     useEffect(() => {
         if (cartItems.length === 0) {
-            router.push('/cart');
+            router.push('/courses');
         }
     }, []);
 
@@ -40,10 +40,11 @@ const Checkout = () => {
                     },
                 }
             )
+            console.log("usrInfo1", userInfo);
             
             dispatch({ type: 'CART_CLEAR' });
             Cookies.remove('cartItems');
-            // router.push(`/order/${data._id}`);
+            router.push(`/enrollcourse`);
         } catch (err: any) {
             setError(err);
         }
@@ -61,10 +62,10 @@ const Checkout = () => {
                         <div className="p-3 mb-3 bg-white rounded shadow color-white">
                             <h6>Billing Address</h6>
                             <label>Name:</label>
-                            <input className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" type="text" value={userInfo?.name} />
+                            <input readOnly className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" type="text" value={userInfo?.name} />
 
                             <label>Email:</label>
-                            <input className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" type="text" value={userInfo?.email} />
+                            <input readOnly className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" type="text" value={userInfo?.email} />
 
                             <label>Phone:</label>
                             <input className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" onBlur={(e) => setPhone(e.target.value)} type="text" placeholder="Enter your Phone" />
