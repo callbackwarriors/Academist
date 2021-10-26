@@ -4,7 +4,6 @@ import db from "../../../utils/db";
 
 const handler = nc();
 handler.post(async (req, res) => {
-  console.log("body", req.body);
 
   await db.connect();
   const newCourse = new Course({
@@ -14,12 +13,11 @@ handler.post(async (req, res) => {
     shortDesc: req.body.shortDesc,
     categories: req.body.categories,
     level: req.body.level,
-    // price: req.body.price,
+    price: req.body.price,
     desc: req.body.desc,
+    img: req.body.img,
   });
-  console.log("newCourse", newCourse);
   const course = await newCourse.save();
-
   await db.disconnect();
 
   res.send({
@@ -29,8 +27,9 @@ handler.post(async (req, res) => {
     shortDesc: course.shortDesc,
     categories: course.categories,
     level: course.level,
-    // price: course.price,
+    price: course.price,
     desc: course.desc,
+    img: course.img,
   });
 });
 export default handler;

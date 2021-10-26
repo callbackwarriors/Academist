@@ -11,23 +11,17 @@ const initialState = {
   },
 
   billingAddress: Cookies.get("billingAddress")
-    ? JSON.parse(JSON.stringify(Cookies.get("billingAddress")))
+    ? JSON.parse(Cookies.get("billingAddress"))
     : null,
 
   paymentInfo: Cookies.get("paymentInfo")
-    ? JSON.parse(JSON.stringify(Cookies.get("paymentInfo")))
+    ? JSON.parse(Cookies.get("paymentInfo"))
     : null,
 
-  // userInfo: localStorage.getItem("userInfo")
-  //   ? JSON.parse(localStorage.getItem("userInfo"))
-  //   : undefined,
+  userInfo: Cookies.get("userInfo")
+    ? JSON.parse(Cookies.get("userInfo"))
+    : null,
 };
-
-// useEffect(() => {
-//   const value = localStorage.getItem("userInfo");
-//   const user = !!value ? JSON.parse(value) : undefined;
-//   setUser(user);
-// }, []);
 
 function reducer(state, action) {
   switch (action.type) {

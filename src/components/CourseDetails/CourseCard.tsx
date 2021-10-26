@@ -13,6 +13,9 @@ interface IProps {
   course: ICourses;
 }
 
+
+
+
 const courseCard = ({course}:IProps) => {
   const router = useRouter()
   const [open, setOpen] = useState(false);

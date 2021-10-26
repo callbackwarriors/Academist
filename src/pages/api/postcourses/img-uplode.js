@@ -4,9 +4,9 @@ const multer = require('multer');
 const path = require('path')
 const DatauriParser = require('datauri/parser')
 const parser = new DatauriParser();
-console.log(process.env.CLOUDINARY_NAME)
+
 const ALLOWED_FORMATES = ['image/jpg', 'image/jpeg', 'image/png']
-const app = express();
+
 const storage = multer.memoryStorage();
 const upload = multer({
   storage,
@@ -47,14 +47,12 @@ cloudinary.config({
 const cloudinaryUpload = file => cloudinary.uploader.upload(file)
 
 app.post( singleUploadeCtrl, async (req, res) => {
-  // await db.connect();
-  // await db.disconnect();
   try{
     if(!req.file){ throw new Error('img is not presented');}
-    console.log(req.file)
+
     const file64 = formateBufferTo64(req.file)
    const uploadResult = await cloudinaryUpload(file64.content)
-    console.log(file64)
+
     return res.json({cloudinaryId: uploadResult.public_id, url: uploadResult.secure_url})
   }catch(e){
     return res.status(422).send({message: e.message})

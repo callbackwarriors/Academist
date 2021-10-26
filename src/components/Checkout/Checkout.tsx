@@ -1,29 +1,25 @@
+import axios from 'axios';
 import CartItemTwo from 'components/Cart/CartItemTwo';
+import Payment from "components/Payment/Payment";
 import Cookies from "js-cookie";
+import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { ICourses } from 'type';
 import { Store } from 'utils/Store';
-import Payment from "components/Payment/Payment"
-import axios from 'axios';
 
-const Checkout = ({user}: any) => {
-    console.log('user', user);
-    
-    const [error, setError] = useState()
-    useEffect(() => {
-        if (cartItems.length === 0) {
-            router.push('/cart');
-        }
-    }, []);
-
+const Checkout = () => {
     const router = useRouter()
     const { state, dispatch } = useContext(Store);
     const { cart: { cartItems }, userInfo } = state;
-    console.log('cartItems', cartItems);
-
-    const { billingAddress } = state;
+    const [error, setError] = useState()
+    useEffect(() => {
+        if (cartItems.length === 0) {
+            router.push('/courses');
+        }
+    }, []);
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
     const [show, setShow] = useState(true);
@@ -35,19 +31,23 @@ const Checkout = ({user}: any) => {
                     phone: phone,
                     address: address,
                     paymentInfo,
-                    user,                       /////////////////////////////////////////////////////////////////////
+                    userInfo,
                     cartItems,
                 },
                 {
                     headers: {
-                        authorization: `Bearer ${user.token}`,
+                        authorization: `Bearer ${userInfo.token}`,
                     },
                 }
             )
-            console.log('checkout_data', data);
+
             dispatch({ type: 'CART_CLEAR' });
             Cookies.remove('cartItems');
-            // router.push(`/order/${data._id}`);
+            Swal.fire({
+                icon: "success",
+                text: "Order successfully",
+            });
+            router.push(`/enrollcourse`);
         } catch (err: any) {
             setError(err);
         }
@@ -65,10 +65,10 @@ const Checkout = ({user}: any) => {
                         <div className="p-3 mb-3 bg-white rounded shadow color-white">
                             <h6>Billing Address</h6>
                             <label>Name:</label>
-                            <input className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" type="text" value={user?.name} />
+                            <input className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" type="text" value={userInfo?.name} />
 
                             <label>Email:</label>
-                            <input className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" type="text" value={user?.email} />
+                            <input className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" type="text" value={userInfo?.email} />
 
                             <label>Phone:</label>
                             <input className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" onBlur={(e) => setPhone(e.target.value)} type="text" placeholder="Enter your Phone" />
@@ -81,14 +81,16 @@ const Checkout = ({user}: any) => {
                 <div className="cart-content__item">
                     <h5>Select payment method</h5>
                     <div onClick={() => setShow(true)} className="flex items-center gap-3 mb-3">
-                        <input type="radio" id="stripe" name="method" value="CSS" /> <label htmlFor="stripe">New Payment Card</label>
+                        <input checked type="radio" id="stripe" name="method" value="CSS" /> <label htmlFor="stripe">New Payment Card</label>
                     </div>
                     <div onClick={() => setShow(false)} className="flex items-center gap-3">
                         <input type="radio" id="paypal" name="method" value="Paypal" /> <label htmlFor="paypal">Paypal</label>
                     </div>
                     {show ?
                         <Payment handlePaymentSuccess={handlePaymentSuccess} error={error}></Payment>
-                        : null}
+                        :
+                        <button className="px-16 py-4 mt-8 text-white uppercase bg-yellow-500 rounded">Pay now</button>
+                    }
                 </div>
             </div>
             <ul className="mt-10 cart-course-list">

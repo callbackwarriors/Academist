@@ -1,4 +1,7 @@
+import Logo from "assets/images/academist-logo.svg";
 import { useRouter } from 'next/dist/client/router';
+import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { AiOutlineFundProjectionScreen, AiOutlineUserAdd } from 'react-icons/ai';
 import { BiImageAdd } from 'react-icons/bi';
@@ -33,10 +36,14 @@ const Sidebar = () => {
           className={`fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 ease-out transform translate-x-0 bg-white border-r-2 lg:translate-x-0 lg:static lg:inset-0 ${isSidebarOpen ? "ease-out translate-x-0" : "ease-in -translate-x-full"
             }`}
         >
-          <div className="flex items-center justify-center py-6 mt-10 text-center">
-            <span className="mx-2 text-2xl font-semibold text-black">
-              MANAGEMENT
-            </span>
+          <div className="flex items-center justify-center px-3 py-6 text-center">
+            
+            <Link href="/">
+            <a className="ml-3 text-xl">
+              <Image src={Logo} />
+            </a>
+          </Link>
+
           </div>
           <Navigation
             activeItemId={router.pathname}
@@ -92,12 +99,12 @@ const Sidebar = () => {
                   },
                   {
                     title: 'Add New Course',
-                    itemId: '/dashboard/courses/addNewCourse',
+                    itemId: '/dashboard/courses/addcourse',
                     elemBefore: () => <BiImageAdd name="teacher" />,
                   },
                   {
                     title: 'Course Catagory',
-                    itemId: '/dashboard/courses/courseCategory',
+                    itemId: '/dashboard/courses/addcategories',
                     elemBefore: () => <BsBook name="book" />,
                   },
                   {
@@ -119,6 +126,11 @@ const Sidebar = () => {
                   {
                     title: 'Instructor Revenue',
                     itemId: '/dashboard/report/instructor-revenue'
+                  },
+
+                  {
+                    title: 'View All Order',
+                    itemId: '/dashboard/report/viewAllOrder'
                   }
                 ]
               }

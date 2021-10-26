@@ -11,22 +11,14 @@ import MobileMenu from "./MobileMenu";
 import Usermenu from "./Usermenu";
 
 const Header = () => {
-  const [user, setUser] = useState();
-
-  // fetch data
-  useEffect(() => {
-    const value = localStorage.getItem("userInfo");
-    const user = !!value ? JSON.parse(value) : undefined;
-    setUser(user);
-  }, []);
-
   const [isOpen, setIsOpen] = React.useState(false);
+
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
   };
 
   const { state, dispatch } = useContext(Store);
-  const { cart } = state;
+  const { cart, userInfo } = state;
 
   return (
     <header className="text-gray-600 body-font">
@@ -84,8 +76,8 @@ const Header = () => {
             {cart.cartItems.length}
           </span>
         </span>
-        {user ? (
-          <Usermenu user={user} />
+        {userInfo ? (
+          <Usermenu userInfo={userInfo} />
         ) : (
           <Link href="/login">
             <a>

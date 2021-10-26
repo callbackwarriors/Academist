@@ -23,7 +23,7 @@ handler.put(async (req, res) => {
     courses.categories = req.body.categories;
     courses.level = req.body.level;
     courses.price = req.body.price;
-    courses.courseProvider = req.body.courseProvider;
+    // courses.courseProvider = req.body.courseProvider;
     courses.videoUrl = req.body.videoUrl;
     courses.img = req.body.img;
     courses.desc = req.body.desc;
@@ -35,4 +35,18 @@ handler.put(async (req, res) => {
     res.status(404).send({ message: "Courses Not Found" });
   }
 });
+
+handler.delete(async (req, res) => {
+  await db.connect();
+  const courses = await Courses.findById(req.query.id);
+  if (courses) {
+    await courses.remove();
+    await db.disconnect();
+    res.send({ message: 'Courses Deleted' });
+  } else {
+    await db.disconnect();
+    res.status(404).send({ message: 'Courses Not Found' });
+  }
+});
+
 export default handler;

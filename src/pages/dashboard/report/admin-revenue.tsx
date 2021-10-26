@@ -5,8 +5,6 @@ import db from "utils/db";
 import Order from "../../../models/Orders";
 
 const adminRevenue = ({ props }: any) => {
-  console.log(props);
-
   return (
     <Layout>
       <div className="flex items-stretch w-full bg-gray-200">
