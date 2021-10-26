@@ -1,7 +1,8 @@
-import axios from 'axios';
-import { useRouter } from 'next/router';
-import React, { useContext, useEffect, useReducer } from 'react';
-import { Store } from 'utils/Store';
+import axios from "axios";
+import { useRouter } from "next/router";
+import React, { useContext, useEffect, useReducer } from "react";
+import { Store } from "utils/Store";
+import Link from "next/link";
 // import Image from 'next/image'
 
 function reducer(state, action) {
@@ -25,10 +26,9 @@ function reducer(state, action) {
   }
 }
 
-
 const ManageTable = (user) => {
   const { name, email, isAdmin, _id } = user.user;
-  
+
   const { state } = useContext(Store);
   const router = useRouter();
   const { userInfo } = state;
@@ -53,7 +53,6 @@ const ManageTable = (user) => {
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (err) {
         console.log(err);
-        
       }
     };
     if (successDelete) {
@@ -62,8 +61,6 @@ const ManageTable = (user) => {
       fetchData();
     }
   }, [successDelete]);
-
-
 
   const deleteHandler = async (userId) => {
     console.log("userId", userId);
@@ -76,11 +73,9 @@ const ManageTable = (user) => {
         headers: { authorization: `Bearer ${userInfo.token}` },
       });
       dispatch({ type: "DELETE_SUCCESS" });
-      
     } catch (err) {
       dispatch({ type: "DELETE_FAIL" });
       console.log(err);
-      
     }
   };
 
@@ -88,20 +83,24 @@ const ManageTable = (user) => {
     <>
       <tbody className="bg-white divide-y divide-gray-200">
         <tr>
-          <td className="px-2 py-4 text-left whitespace-nowrap">
-            {name}
-          </td>
-          <td className="px-2 py-4 text-left whitespace-nowrap">
-            {email}
-          </td>
+          <td className="px-2 py-4 text-left whitespace-nowrap">{name}</td>
+          <td className="px-2 py-4 text-left whitespace-nowrap">{email}</td>
           <td className="px-2 py-4 text-sm text-left text-gray-500 whitespace-nowrap">
-            {isAdmin ? 'Yes' : 'No'}
+            {isAdmin ? "Yes" : "No"}
           </td>
           <td className="px-2 py-4 text-sm font-medium text-center whitespace-nowrap">
             <span className="inline-flex px-2 mx-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full ">
-              <a href="#" className="text-indigo-600 hover:text-indigo-900">Edit</a>
+              <Link
+                href={`/dashboard/user/${_id}`}
+                className="text-indigo-600 hover:text-indigo-900"
+              >
+                <a>Edit</a>
+              </Link>
             </span>
-            <span onClick={() => deleteHandler(_id)} className="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full cursor-pointer">
+            <span
+              onClick={() => deleteHandler(_id)}
+              className="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full cursor-pointer"
+            >
               Delete
             </span>
           </td>
