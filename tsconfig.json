@@ -39,5 +39,10 @@
     "src/components/Payment/Payment.js",
     "src/components/Payment/SimpleCardForm.js",
     "src/components/utilities/Header.js"
+<<<<<<< HEAD
 , "src/components/AddNewCourse/AddNewCourse.js"  ]
 }
+=======
+, "src/components/AddNewCourse/AddNewCourse.js", "src/components/EnrollCourse/EnrollCourse.tsx"  ]
+}
+>>>>>>> develop

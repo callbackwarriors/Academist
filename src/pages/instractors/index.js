@@ -194,7 +194,7 @@ const Instractors = (props) => {
             </React.Fragment>
             <div className="pl-2 content">
               <div className="page-content ">
-                <div className="grid items-center grid-cols-2 px-2 bg-white rounded-sm page-content__header">
+              <div className="grid items-center grid-cols-2 px-2 bg-white rounded-sm page-content__header">
                   <div className="lg:p-2">
                     <h6 className="m-0 text-xs lg:text-base">
                       Showing 1-25 Of 72
