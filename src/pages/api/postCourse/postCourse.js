@@ -17,7 +17,6 @@ handler.post(async (req, res) => {
     desc: req.body.desc,
     img: req.body.img,
   });
-
   const course = await newCourse.save();
   await db.disconnect();
 

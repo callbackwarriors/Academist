@@ -27,7 +27,7 @@ const Header = () => {
   };
 
   const { state, dispatch } = useContext(Store);
-  const { cart } = state;
+  const { cart, userInfo } = state;
 
   return (
     <header className="text-gray-600 body-font">
@@ -73,8 +73,6 @@ const Header = () => {
           </Link>
         </nav>
 
-        
-
         <span className="relative inline-block mr-6">
           <Link href="/cart">
             <a>
@@ -87,8 +85,8 @@ const Header = () => {
             {cart.cartItems.length}
           </span>
         </span>
-        {user ? (
-          <Usermenu user={user} />
+        {userInfo ? (
+          <Usermenu userInfo={userInfo} />
         ) : (
           <Link href="/login">
             <a>

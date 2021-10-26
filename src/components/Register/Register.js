@@ -7,6 +7,7 @@ import { Store } from "utils/Store";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const {
@@ -17,23 +18,20 @@ const Register = () => {
   const router = useRouter();
   const { redirect } = router.query;
   const { state, dispatch } = useContext(Store);
-
-  const [user, setUser] = useState();
-  useEffect(() => {
-    const value = localStorage.getItem("userInfo");
-    const user = !!value ? JSON.parse(value) : undefined;
-    setUser(user);
-  }, []);
+  const { userInfo } = state;
 
   useEffect(() => {
-    if (user) {
+    if (userInfo) {
       router.push("/");
     }
   }, []);
 
   const submitHandler = async ({ name, email, password, confirmPassword }) => {
     if (password !== confirmPassword) {
-      alert("Password don't match");
+      Swal.fire({
+        icon: "error",
+        text: "Password don't match",
+      });
       return;
     }
     try {
@@ -42,12 +40,14 @@ const Register = () => {
         email,
         password,
       });
-      console.log("data", data);
       dispatch({ type: "USER_LOGIN", payload: data });
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      Cookies.set("userInfo", JSON.stringify(data));
       router.push(redirect || "/");
     } catch (err) {
-      alert(err.response.data ? err.response.data.message : err.message);
+      Swal.fire({
+        icon: "error",
+        text: err.message,
+      });
     }
   };
 

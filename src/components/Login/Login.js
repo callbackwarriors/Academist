@@ -4,17 +4,12 @@ import Cookies from "js-cookie";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 import { Store } from "utils/Store";
 
 const Login = () => {
-  const [user, setUser] = useState();
-  useEffect(() => {
-    const value = localStorage.getItem("userInfo");
-    const user = !!value ? JSON.parse(value) : undefined;
-    setUser(user);
-  }, []);
   const {
     handleSubmit,
     register,
@@ -25,7 +20,7 @@ const Login = () => {
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
   useEffect(() => {
-    if (user) {
+    if (userInfo) {
       router.push("/");
     }
   }, []);
@@ -36,14 +31,15 @@ const Login = () => {
         email,
         password,
       });
-      console.log("login", data);
+
       dispatch({ type: "USER_LOGIN", payload: data });
-      localStorage.setItem("userInfo", JSON.stringify(data));
-      // localStorage.setItem("password", password);
+      Cookies.set("userInfo", JSON.stringify(data));
       router.push(redirect || "/");
     } catch (err) {
-      console.log(err);
-      alert(err.response.data ? err.response.data.message : err.message);
+      Swal.fire({
+        icon: "error",
+        text: err.message,
+      });
     }
   };
 

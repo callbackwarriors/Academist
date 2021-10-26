@@ -14,9 +14,6 @@ interface IProp {
 
 const AllCourses = ({ course }: IProp) => {
     const { title, img, slug } = course;
-
-    console.log("Course", course)
-
     return (
         <div className="p-4 transition duration-100 ease-in-out transform xl:w-1/3 md:w-1/2 hover:scale-105">
             <Link href={`/courses/${slug}`}>
@@ -24,7 +21,7 @@ const AllCourses = ({ course }: IProp) => {
                     <div className="p-6 bg-gray-100 rounded-lg">
                         <div className="relative">
 
-<img className="w-full mb-4" src={img} alt="" />
+                            <img className="w-full mb-4" src={img} alt="" />
 
                             <AiOutlineHeart className="absolute text-2xl top-3 right-3" />
                         </div>
@@ -45,6 +42,7 @@ const AllCourses = ({ course }: IProp) => {
                             </div>
                         </div>
                         <h4 className="mb-2 text-base">{title}</h4>
+                        
                     </div>
                 </a>
             </Link>

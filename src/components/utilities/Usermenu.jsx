@@ -14,7 +14,7 @@ import {
 } from "react-icons/bi";
 import { Store } from "utils/Store";
 
-export default function Example({ user }) {
+export default function Example({ userInfo }) {
   const router = useRouter();
   const { dispatch } = useContext(Store);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -22,11 +22,9 @@ export default function Example({ user }) {
     setAnchorEl(null);
     dispatch({ type: "USER_LOGOUT" });
     Cookies.remove("cartItems");
-    localStorage.clear();
-    window.location.reload();
+    Cookies.remove("userInfo");
     router.push("/");
-    localStorage.clear();
-
+    Cookies.remove();
   };
 
   const loginMenuCloseHandler = (e, redirect) => {
@@ -38,9 +36,9 @@ export default function Example({ user }) {
 
   return (
     <Menu as="div" className="relative inline-block text-left">
-      {user && (
+      {userInfo && (
         <Menu.Button className="inline-flex justify-center w-full px-4 py-2 ml-3 text-sm font-medium text-white rounded-md bg-royal-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-          {user?.name}
+          {userInfo?.name}
           <ChevronDownIcon
             className="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
             aria-hidden="true"
