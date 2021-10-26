@@ -11,7 +11,7 @@ const {orders} = props;
     return (
         <Layout>
             <div>
-                <EnrollCourse orders={orders} />
+                <EnrollCourse key={orders._id} orders={orders} />
             </div>
         </Layout>
     );

@@ -7,7 +7,7 @@ import { Store } from "utils/Store";
 const checkout = () => {
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
-  console.log('userInfo3', userInfo);
+  // console.log('userInfo3', userInfo);
   const router = useRouter();
   useEffect(() => {
     if (!userInfo) {
@@ -21,7 +21,7 @@ const checkout = () => {
           <h2>Checkout</h2>
         </div>
       </div>
-      <Checkout userInfo={userInfo}></Checkout>
+      <Checkout></Checkout>
     </Layout>
   );
 };
