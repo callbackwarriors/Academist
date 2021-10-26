@@ -6,20 +6,20 @@ import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 // import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { ICourses } from 'type';
 import { Store } from 'utils/Store';
 
 const Checkout = () => {
+    const router = useRouter()
+    const { state, dispatch } = useContext(Store);
+    const { cart: { cartItems }, userInfo } = state;
     const [error, setError] = useState()
     useEffect(() => {
         if (cartItems.length === 0) {
             router.push('/courses');
         }
     }, []);
-
-    const router = useRouter()
-    const { state, dispatch } = useContext(Store);
-    const { cart: { cartItems }, userInfo } = state;
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
     const [show, setShow] = useState(true);
@@ -40,10 +40,13 @@ const Checkout = () => {
                     },
                 }
             )
-            console.log("usrInfo1", userInfo);
-            
+
             dispatch({ type: 'CART_CLEAR' });
             Cookies.remove('cartItems');
+            Swal.fire({
+                icon: "success",
+                text: "Order successfully",
+            });
             router.push(`/enrollcourse`);
         } catch (err: any) {
             setError(err);
@@ -62,10 +65,10 @@ const Checkout = () => {
                         <div className="p-3 mb-3 bg-white rounded shadow color-white">
                             <h6>Billing Address</h6>
                             <label>Name:</label>
-                            <input readOnly className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" type="text" value={userInfo?.name} />
+                            <input className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" type="text" value={userInfo?.name} />
 
                             <label>Email:</label>
-                            <input readOnly className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" type="text" value={userInfo?.email} />
+                            <input className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" type="text" value={userInfo?.email} />
 
                             <label>Phone:</label>
                             <input className="w-full px-4 py-3 mb-2 rounded focus:border-royal-blue" onBlur={(e) => setPhone(e.target.value)} type="text" placeholder="Enter your Phone" />
