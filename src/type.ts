@@ -65,3 +65,11 @@ export interface IOrders {
     }
   ];
 }
+
+
+export interface IUser {
+  name: string;
+  email: string;
+  isAdmin: boolean;
+  _id: string;
+}
