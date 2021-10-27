@@ -44,9 +44,6 @@ const Checkout = () => {
 
             dispatch({ type: 'CART_CLEAR' });
             Cookies.remove('cartItems');
-<<<<<<< HEAD
-            router.push('/mylearning/mylearning');
-=======
             
             Swal.fire({
                 icon: "success",
@@ -56,7 +53,6 @@ const Checkout = () => {
                 router.push('/enrollcourse');
             }
 
->>>>>>> develop
         } catch (err: any) {
             setError(err);
         }
