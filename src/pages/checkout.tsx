@@ -6,16 +6,17 @@ import React, { useEffect, useState } from 'react';
 
 const checkout = () => {
     const [user, setUser] = useState();
-    console.log('user', user);
+    console.log('api  user', user);
     
     useEffect(() => {
         const value = localStorage.getItem("userInfo");
         const user = !!value ? JSON.parse(value) : undefined;
         setUser(user);
     }, []);
-    const router = useRouter()
+    // const router = useRouter()
     // if (!user) {
     //     router.push('/login?redirect=/checkout')
+
     // }
     return (
         <Layout>

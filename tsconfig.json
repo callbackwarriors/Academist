@@ -38,7 +38,7 @@
     "src/components/Payment/Payment.js",
     "src/components/Payment/SimpleCardForm.js",
     "src/components/utilities/Header.js"
-  ]
+, "src/components/Checkout/Checkout.js"  ]
 
 }
 

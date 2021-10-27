@@ -8,17 +8,25 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ICourses } from 'type';
 import { Store } from 'utils/Store';
 
-const Checkout = ({user}: any) => {
-    console.log('user', user);
-    
+const Checkout = ({ user }: any) => {
+    console.log('user this after checkoyut page ', user);
+    const router = useRouter()
+
+    useEffect(() => {
+        if (!user) {
+            router.push('/login?redirect=/checkout')
+       
+        }
+         
+    }, []);
+
+
     const [error, setError] = useState()
     useEffect(() => {
         if (cartItems.length === 0) {
             router.push('/cart');
         }
     }, []);
-
-    const router = useRouter()
     const { state, dispatch } = useContext(Store);
     const { cart: { cartItems }, userInfo } = state;
     console.log('cartItems', cartItems);
@@ -88,8 +96,8 @@ const Checkout = ({user}: any) => {
                     </div>
                     {show ?
                         <Payment handlePaymentSuccess={handlePaymentSuccess} error={error}></Payment>
-                        : 
-                        <button className="mt-8 bg-yellow-500 text-white py-4 px-16 uppercase rounded">Pay now</button>    
+                        :
+                        <button className="mt-8 bg-yellow-500 text-white py-4 px-16 uppercase rounded">Pay now</button>
                     }
                 </div>
             </div>

@@ -27,8 +27,7 @@ const index = () => {
                 </div>
             </div>
             </div>
-         </Layout>
-         
+         </Layout>    
         
     );
 };
