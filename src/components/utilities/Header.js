@@ -11,7 +11,16 @@ import MobileMenu from "./MobileMenu";
 import Usermenu from "./Usermenu";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [user, setUser] = useState();
+
+  // fetch data
+  useEffect(() => {
+    const value = localStorage.getItem("userInfo");
+    const user = !!value ? JSON.parse(value) : undefined;
+    setUser(user);
+  }, []);
+
+  const [isOpen, setIsOpen] = React.useState(false);  
 
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
