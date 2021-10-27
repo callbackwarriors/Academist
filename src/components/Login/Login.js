@@ -38,7 +38,7 @@ const Login = () => {
     } catch (err) {
       Swal.fire({
         icon: "error",
-        text: err.message,
+        text: err.message? 'Your email or password is not baited.': '',
       });
     }
   };

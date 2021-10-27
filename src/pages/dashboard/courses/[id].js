@@ -80,7 +80,7 @@ function CourseEdit({ params }) {
         } catch (err) {
           Swal.fire({
             icon: "error",
-            text: err.message,
+            text: err.message? 'Profile updated failed' : '',
           });
         }
       };

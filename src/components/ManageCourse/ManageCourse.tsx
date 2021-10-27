@@ -85,7 +85,7 @@ const ManageCourse = ({ course }: IProp) => {
       dispatch({ type: "DELETE_SUCCESS" });
       Swal.fire({
         icon: "success",
-        text: "Product deleted successfully",
+        text: "Course deleted successfully",
       });
     } catch (err: any) {
       dispatch({ type: "DELETE_FAIL" });

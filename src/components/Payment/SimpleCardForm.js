@@ -86,7 +86,7 @@ const SimpleCardForm = ({ handlePayment, err }) => {
         </button>
       </form>
       {paymentError && <p style={{ color: "red" }}>{paymentError}</p>}
-      {err && <p style={{ color: "red" }}>{err.message}</p>}
+      {err && <p style={{ color: "red" }}>{err.message? 'Your course already added' : ''}</p>}
     </div>
   );
 };
