@@ -11,23 +11,24 @@ const ordersSchema = new mongoose.Schema(
     phone: { type: String, required: true },
     address: { type: String, required: true },
 
-    user: {
+    userInfo: {
       name: { type: String, required: true },
       email: { type: String, required: true },
       isAdmin: { type: Boolean, required: true, default: false },
+      token: { type: String, required: true},
       _id: { type: String, required: true },
     },
 
     cartItems: [
       {
         title: { type: String, required: true }, // unique: true
-        slug: { type: String, required: true },
+        slug: { type: String, required: true, unique: true},
         shortDesc: { type: String, required: true },
         categories: { type: String, required: true },
         level: { type: String, required: true },
         price: { type: Number, required: true },
         quantity: { type: Number, required: true },
-        courseProvider: { type: String, required: true },
+        // courseProvider: { type: String, required: true },
         videoUrl: { type: String, required: true },
         img: { type: String, required: true },
         desc: { type: String, required: true },
@@ -41,5 +42,5 @@ const ordersSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Order = mongoose.models.orders || mongoose.model("orders", ordersSchema);
+const Order = mongoose.models.order || mongoose.model("order", ordersSchema);
 export default Order;

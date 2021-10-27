@@ -17,10 +17,9 @@ handler.post(async (req, res) => {
     desc: req.body.desc,
     img: req.body.img,
   });
-console.log('newCourse', newCourse);
   const course = await newCourse.save();
   await db.disconnect();
-console.log('course', course);
+
   res.send({
     title: course.title,
     slug: course.slug,

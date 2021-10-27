@@ -3,10 +3,12 @@ import axios from "axios";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Store } from "utils/Store";
 import { useForm } from "react-hook-form";
 import Layout from "components/utilities/Layout";
+import Cookies from "js-cookie";
+import Swal from "sweetalert2";
 
 function Profile() {
   const {
@@ -21,13 +23,6 @@ function Profile() {
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
 
-  //   const [userInfo, setUserInfo] = useState();
-
-  //   useEffect(() => {
-  //     const value = localStorage.getItem("userInfo");
-  //     const user = !!value ? JSON.parse(value) : undefined;
-  //     setUserInfo(user);
-  //   }, []);
   useEffect(() => {
     if (!userInfo) {
       return router.push("/login");
@@ -38,7 +33,10 @@ function Profile() {
 
   const submitHandler = async ({ name, email, password, confirmPassword }) => {
     if (password !== confirmPassword) {
-      alert("Password don't match");
+      Swal.fire({
+        icon: "error",
+        text: "Password don't match",
+      });
       return;
     }
     try {
@@ -51,12 +49,17 @@ function Profile() {
         },
         { headers: { authorization: `Bearer ${userInfo.token}` } }
       );
-      //   console.log("data", data);
       dispatch({ type: "USER_LOGIN", payload: data });
-      localStorage.setItem("userInfo", JSON.stringify(data));
-      alert("Profile updated successfully");
+      Cookies.set("userInfo", JSON.stringify(data));
+      Swal.fire({
+        icon: "success",
+        text: "Profile updated successfully",
+      });
     } catch (err) {
-      alert(err.message);
+      Swal.fire({
+        icon: "error",
+        text: err.message ? "Profile updated failed" : "",
+      });
     }
   };
 
@@ -96,6 +99,7 @@ function Profile() {
                       </span>
                       <span className="block">
                         <input
+                          onChange={() => {}}
                           type="text"
                           name="name"
                           // eslint-disable-next-line react/jsx-props-no-spreading
@@ -122,6 +126,7 @@ function Profile() {
                       </span>
                       <span className="block">
                         <input
+                          onChange={() => {}}
                           type="email"
                           name="Email"
                           {...register("email", {
