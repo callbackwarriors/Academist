@@ -19,6 +19,8 @@ handler.put(async (req, res) => {
   if (user) {
     user.name = req.body.name;
     user.isAdmin = Boolean(req.body.isAdmin);
+    user.user = Boolean(req.body.user);
+    user.instructor = Boolean(req.body.instructor);
     await user.save();
     await db.disconnect();
     res.send({ message: "User Updated Successfully" });

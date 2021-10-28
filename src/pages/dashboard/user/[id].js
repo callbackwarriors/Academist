@@ -54,6 +54,8 @@ function CourseEdit({ params }) {
     setValue,
   } = useForm();
   const [isAdmin, setIsAdmin] = useState(false);
+  const [user, setUser] = useState(false);
+  const [instructor, setInstructor] = useState(false);
   const router = useRouter();
   const { userInfo } = state;
   useEffect(() => {
@@ -67,6 +69,8 @@ function CourseEdit({ params }) {
             headers: { authorization: `Bearer ${userInfo.token}` },
           });
           setIsAdmin(data.isAdmin);
+          setUser(data.user);
+          setInstructor(data.instructor);
           dispatch({ type: "FETCH_SUCCESS" });
           setValue("name", data.name);
         } catch (err) {
@@ -88,6 +92,8 @@ function CourseEdit({ params }) {
         {
           name,
           isAdmin,
+          user,
+          instructor,
         },
         { headers: { authorization: `Bearer ${userInfo.token}` } }
       );
@@ -145,17 +151,37 @@ function CourseEdit({ params }) {
                           </span>
                         </label>
                       </div>
-                      
-                      <div className="mb-4">
-                        <input
-                          id="isAdmin"
-                          onClick={(e) => setIsAdmin(e.target.checked)}
-                          className="rounded focus:border-royal-blue "
-                          //   onBlur={handleBlur}
-                          type="checkbox"
-                          name="isAdmin"
-                        />
-                        <label htmlFor="isAdmin">Is isAdmin</label>
+                      <div className="flex gap-4">
+                        <div className="mb-4">
+                          <input
+                            id="isAdmin"
+                            onClick={(e) => setIsAdmin(e.target.checked)}
+                            className="rounded focus:border-royal-blue "
+                            type="radio"
+                            name="isAdmin"
+                          />
+                          <label htmlFor="isAdmin">Is isAdmin</label>
+                        </div>
+                        <div className="mb-4">
+                          <input
+                            id="user"
+                            onClick={(e) => setUser(e.target.checked)}
+                            className="rounded focus:border-royal-blue "
+                            type="radio"
+                            name="isAdmin"
+                          />
+                          <label htmlFor="isAdmin">Is isAdmin</label>
+                        </div>
+                        <div className="mb-4">
+                          <input
+                            id="instructor"
+                            onClick={(e) => setInstructor(e.target.checked)}
+                            className="rounded focus:border-royal-blue "
+                            type="radio"
+                            name="isAdmin"
+                          />
+                          <label htmlFor="instructor">Instructor</label>
+                        </div>
                       </div>
                       <div className="py-4 form-element">
                         <span className="my-4 ">

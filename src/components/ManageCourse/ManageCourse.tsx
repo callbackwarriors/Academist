@@ -100,7 +100,7 @@ const ManageCourse = ({ course }: IProp) => {
   return (
     <div className="single__course">
       <div className="single__course__image">
-        <Image height="80" width="80" src={img} />
+        <Image height="50px" width="50px" src={img} />
         <h5 className="px-2 lg:px-4">{title}</h5>
       </div>
       <div className="flex-auto" >
