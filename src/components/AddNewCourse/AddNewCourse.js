@@ -1,9 +1,9 @@
 import axios from "axios";
+import { useRouter } from 'next/router';
 import React, { useContext, useReducer, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Swal from "sweetalert2";
 import { Store } from "utils/Store";
-
 function reducer(state, action) {
   switch (action.type) {
     case "FETCH_REQUEST":
@@ -117,9 +117,15 @@ const AddNewCourse = () => {
       });
       console.log("data", data);
       Swal.fire({
-        icon: "success",
-        text: "Course uploaded successfully",
-      });
+        icon: 'success',
+        // title: 'Image',
+        text: 'Course uploaded successfully',
+      })
+      
+
+
+router.push('/courses')
+
     } catch (error) {
       Swal.fire({
         icon: "error",

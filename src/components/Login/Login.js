@@ -179,20 +179,20 @@ const Login = () => {
                 </p>
 
                 <ul className="pt-8">
-                  <li className="text-center">
-                    <strong>Login Info</strong>
+                  <li className="space-y-0.5 w-full lg:w-4/5 block mx-auto mb-4 text-xl">
+                    <strong>Login Infos</strong>
                   </li>
-                  <li className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
+                  <li className="space-y-0.5 w-full lg:w-4/5 block mx-auto border-2 p-3 mb-2">
                     <strong>Admin: </strong>
                     admin@gmail.com <span>(123456)</span>
                   </li>
-                  <li className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
+                  <li className="space-y-0.5 w-full lg:w-4/5 block mx-auto border-2 p-3 mb-2">
                     <strong>Instructor: </strong>
                     instructor@gmail.com <span>(123456)</span>
                   </li>
-                  <li className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
+                  <li className="space-y-0.5 w-full lg:w-4/5 block mx-auto border-2 p-3">
                     <strong>User: </strong>
-                    user@gmail.com <span>(123456)</span>
+                    student@gmail.com <span>(123456)</span>
                   </li>
                 </ul>
               </div>

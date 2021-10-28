@@ -36,7 +36,7 @@ function reducer(state: any, action: any) {
 }
 
 const ManageCourse = ({ course }: IProp) => {
-  const { title, img, _id } = course;
+  const { title, img, _id, slug } = course;
 
   const { state } = useContext(Store);
   const router = useRouter();
@@ -74,9 +74,11 @@ const ManageCourse = ({ course }: IProp) => {
   }, [successDelete]);
 
   const deleteHandler = async (productId: number) => {
+
     if (!window.confirm("Are you sure?")) {
       return;
     }
+
     try {
       dispatch({ type: "DELETE_REQUEST" });
       await axios.delete(`/api/admin/courses/${productId}`, {
@@ -87,6 +89,8 @@ const ManageCourse = ({ course }: IProp) => {
         icon: "success",
         text: "Course deleted successfully",
       });
+
+      window.location.reload();
     } catch (err: any) {
       dispatch({ type: "DELETE_FAIL" });
       Swal.fire({
@@ -98,21 +102,33 @@ const ManageCourse = ({ course }: IProp) => {
   };
 
   return (
-    <div className="single__course">
+    <div className="single__course px-3 w-full lg:w-1/3 mb-6 xl:w-1/4 md:w-1/2 sm:w-1/2 w-1/2 overflow-hidden">
+      <div className="border p-3 rounded w-full">
       <div className="single__course__image">
-        <Image height="50px" width="50px" src={img} />
+        <Image       width={500}
+      height={500} src={img} />
         <h5 className="px-2 lg:px-4">{title}</h5>
       </div>
-      <div className="flex-auto" >
-        <button className="px-4 py-2 text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"><AiFillEye className="text-2xl" /></button>
+      <div className="flex-auto mt-6" >
+
+      <Link href={`/courses/${slug}`}>
+      <a>
+        <button className="mb-3 px-4 py-2 text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"><AiFillEye className="text-2xl" />
+        
+
+        
+        </button>
+        </a>
+        </Link>
         <Link href={`/dashboard/courses/${_id}`}>
           <a>
-            <button className="px-4 py-2 mx-4 text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800">
+            <button className="mb-3 px-4 py-2 mx-4 text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800">
               <FiEdit className="text-2xl" />
             </button>
           </a>
         </Link>
-        <button onClick={() => deleteHandler(_id)} className="px-4 py-2 text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"><RiDeleteBin7Line className="text-2xl" /></button>
+        <button onClick={() => deleteHandler(_id)} className="mb-3 px-4 py-2 text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"><RiDeleteBin7Line className="text-2xl" /></button>
+      </div>
       </div>
     </div>
   );

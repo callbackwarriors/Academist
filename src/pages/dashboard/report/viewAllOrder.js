@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
 import Sidebar from "components/Dashboard/Sidebar";
 import Layout from "components/utilities/Layout";
 import ViewAllOrder from "components/ViewAllOrder/ViewAllOrder";
+import React from "react";
 // import type { NextPage } from 'next';
 import db from "utils/db";
 import Orders from "../../../models/Orders";
@@ -11,9 +11,9 @@ const viewAllOrder = (props) => {
 
   return (
     <Layout>
-      <div className="flex items-stretch w-full bg-gray-200">
+      <div className="flex items-stretch w-full h-full bg-gray-100">
         <Sidebar />
-        <div className="w-full h-screen py-20 transition-all">
+        <div className="w-full min-h-screen p-5 transition-all bg-white py-4">
           <ViewAllOrder orderingData={orderingData}></ViewAllOrder>
         </div>
       </div>

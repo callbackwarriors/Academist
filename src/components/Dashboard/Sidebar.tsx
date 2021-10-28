@@ -1,10 +1,11 @@
 import Logo from "assets/images/academist-logo.svg";
+import Cookies from "js-cookie";
 import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useContext, useState } from 'react';
 import { AiOutlineFundProjectionScreen, AiOutlineUserAdd } from 'react-icons/ai';
-import { BiImageAdd } from 'react-icons/bi';
+import { BiHome, BiImageAdd, BiLogOutCircle } from 'react-icons/bi';
 import { BsBook, BsFillInboxesFill } from 'react-icons/bs';
 import { FaDiscourse } from 'react-icons/fa';
 import { GiHamburgerMenu, GiTeacher } from 'react-icons/gi';
@@ -12,12 +13,21 @@ import { GoReport } from 'react-icons/go';
 import { Navigation } from 'react-minimal-side-navigation';
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 import { Store } from "utils/Store";
-const Sidebar = () => {
-  const { state } = useContext(Store);
-  const { userInfo } = state;
 
+const Sidebar = () => {
   const router = useRouter();
+  const { state, dispatch } = useContext(Store);
+  const { userInfo } = state;
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+
+  const logoutClickHandler = () => {
+    dispatch({ type: "USER_LOGOUT" });
+    Cookies.remove("cartItems");
+    Cookies.remove("userInfo");
+    router.push("/");
+    Cookies.remove();
+  };
   return (
     <>
       <React.Fragment>
@@ -180,6 +190,33 @@ const Sidebar = () => {
               ]}
             />
           )}
+
+          {/* Log out handler sidebar admin */}
+
+<div className="logout__wrapper justify-center mt-20 border-t-2 pt-20">
+
+<Link href="/">
+<button className="flex mb-4 mx-auto bg-royal-blue hover:to-gray-900 text-white py-2 px-8 rounded">
+                  <BiHome
+                      className="w-5 h-5 mr-2 text-violet-400"
+                      aria-hidden="true"
+                    />
+                 Home
+                </button>
+</Link>
+
+<button className="flex bg-red-600 mx-auto hover:to-gray-900 text-white py-2 px-8 rounded" onClick={logoutClickHandler}>
+                  <BiLogOutCircle
+                      className="w-5 h-5 mr-2 text-violet-400"
+                      aria-hidden="true"
+                    />
+                  Log out
+                </button>
+</div>
+
+
+
+
         </div>
       </React.Fragment>
     </>
