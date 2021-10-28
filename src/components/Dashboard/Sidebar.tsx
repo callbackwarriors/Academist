@@ -2,7 +2,7 @@ import Logo from "assets/images/academist-logo.svg";
 import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { AiOutlineFundProjectionScreen, AiOutlineUserAdd } from 'react-icons/ai';
 import { BiImageAdd } from 'react-icons/bi';
 import { BsBook, BsFillInboxesFill } from 'react-icons/bs';
@@ -11,7 +11,11 @@ import { GiHamburgerMenu, GiTeacher } from 'react-icons/gi';
 import { GoReport } from 'react-icons/go';
 import { Navigation } from 'react-minimal-side-navigation';
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
+import { Store } from "utils/Store";
 const Sidebar = () => {
+  const { state } = useContext(Store);
+  const { userInfo } = state;
+
   const router = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   return (
@@ -37,12 +41,12 @@ const Sidebar = () => {
             }`}
         >
           <div className="flex items-center justify-center px-3 py-6 text-center">
-            
+
             <Link href="/">
-            <a className="ml-3 text-xl">
-              <Image src={Logo} />
-            </a>
-          </Link>
+              <a className="ml-3 text-xl">
+                <Image src={Logo} />
+              </a>
+            </Link>
 
           </div>
           <Navigation
@@ -81,39 +85,50 @@ const Sidebar = () => {
 
             ]}
           />
+          {userInfo?.instructor && (
+            <Navigation
+              activeItemId={router.pathname}
+              onSelect={({ itemId }) => {
+                router.push({ pathname: itemId })
+              }}
+              items={[
+                {
+                  title: 'Courses',
+                  itemId: '',
+                  elemBefore: () => <FaDiscourse name="courses" />,
+                  subNav: [
+                    {
+                      title: 'Manage courses',
+                      itemId: '/dashboard/courses/managecourses',
+                      elemBefore: () => <AiOutlineFundProjectionScreen name="project" />,
+                    },
+                    {
+                      title: 'Add New Course',
+                      itemId: '/dashboard/courses/addcourse',
+                      elemBefore: () => <BiImageAdd name="teacher" />,
+                    },
+                    {
+                      title: 'Course Catagory',
+                      itemId: '/dashboard/courses/addcategories',
+                      elemBefore: () => <BsBook name="book" />,
+                    },
+                    {
+                      title: 'Coupons',
+                      itemId: '',
+                      elemBefore: () => <BsBook name="book" />,
+                    },
+                  ],
+                },
+              ]}
+            />
+          )}
+
           <Navigation
             activeItemId={router.pathname}
             onSelect={({ itemId }) => {
               router.push({ pathname: itemId })
             }}
             items={[
-              {
-                title: 'Courses',
-                itemId: '',
-                elemBefore: () => <FaDiscourse name="courses" />,
-                subNav: [
-                  {
-                    title: 'Manage courses',
-                    itemId: '/dashboard/courses/managecourses',
-                    elemBefore: () => <AiOutlineFundProjectionScreen name="project" />,
-                  },
-                  {
-                    title: 'Add New Course',
-                    itemId: '/dashboard/courses/addcourse',
-                    elemBefore: () => <BiImageAdd name="teacher" />,
-                  },
-                  {
-                    title: 'Course Catagory',
-                    itemId: '/dashboard/courses/addcategories',
-                    elemBefore: () => <BsBook name="book" />,
-                  },
-                  {
-                    title: 'Coupons',
-                    itemId: '',
-                    elemBefore: () => <BsBook name="book" />,
-                  },
-                ],
-              },
               {
                 title: 'Report',
                 itemId: '',
@@ -137,31 +152,34 @@ const Sidebar = () => {
 
             ]}
           />
-          <Navigation
-            activeItemId={router.pathname}
-            onSelect={({ itemId }) => {
-              router.push({ pathname: itemId })
-            }}
-            items={[
-              {
-                title: 'Admins',
-                itemId: '',
-                elemBefore: () => <FaDiscourse name="courses" />,
-                subNav: [
-                  {
-                    title: 'Admin Manage',
-                    itemId: '/dashboard/admin/manageadmin',
-                    elemBefore: () => <AiOutlineFundProjectionScreen name="project" />,
-                  },
-                  {
-                    title: 'Add Admin',
-                    itemId: '/dashboard/admin/addadmin',
-                    elemBefore: () => <BiImageAdd name="teacher" />,
-                  }
-                ],
-              },
-            ]}
-          />
+
+          {userInfo?.isAdmin && (
+            <Navigation
+              activeItemId={router.pathname}
+              onSelect={({ itemId }) => {
+                router.push({ pathname: itemId })
+              }}
+              items={[
+                {
+                  title: 'Admins',
+                  itemId: '',
+                  elemBefore: () => <FaDiscourse name="courses" />,
+                  subNav: [
+                    {
+                      title: 'Admin Manage',
+                      itemId: '/dashboard/admin/manageadmin',
+                      elemBefore: () => <AiOutlineFundProjectionScreen name="project" />,
+                    },
+                    {
+                      title: 'Add Admin',
+                      itemId: '/dashboard/admin/addadmin',
+                      elemBefore: () => <BiImageAdd name="teacher" />,
+                    }
+                  ],
+                },
+              ]}
+            />
+          )}
         </div>
       </React.Fragment>
     </>

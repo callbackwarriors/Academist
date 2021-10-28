@@ -38,7 +38,7 @@ const Login = () => {
     } catch (err) {
       Swal.fire({
         icon: "error",
-        text: err.message? 'Your email or password is not baited.': '',
+        text: err.message ? "Your email or password is not baited." : "",
       });
     }
   };
@@ -172,6 +172,24 @@ const Login = () => {
                     <a className="text-royal-blue">Create an account</a>
                   </Link>
                 </p>
+
+                <ul className="pt-8">
+                  <li className="text-center">
+                    <strong>Login Info</strong>
+                  </li>
+                  <li className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
+                    <strong>Admin: </strong>
+                    admin@gmail.com <span>(123456)</span>
+                  </li>
+                  <li className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
+                    <strong>Instructor: </strong>
+                    instructor@gmail.com <span>(123456)</span>
+                  </li>
+                  <li className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
+                    <strong>User: </strong>
+                    user@gmail.com <span>(123456)</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

@@ -20,8 +20,8 @@ const ViewAllOrder = ({ orderingData }) => {
           {orderingData.map((data) => (
             <tr className="text-white bg-blue-900">
               <td className="px-4 py-2">{data.userInfo.name}</td>
-              <td className="px-4 py-2">{data.cartItems[0].title}</td>
-              <td className="px-4 py-2">{data.cartItems[0].price}</td>
+              <td className="px-4 py-2">{data.cartItems[0]?.title}</td>
+              <td className="px-4 py-2">{data.cartItems[0]?.price}</td>
               <td className="px-4 py-2">{data.paymentId}</td>
               <td className="px-4 py-2">{data.phone}</td>
               <td className="px-4 py-2">{data.updatedAt}</td>

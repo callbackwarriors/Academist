@@ -15,7 +15,6 @@ import {
 import { Store } from "utils/Store";
 
 export default function Example({ userInfo }) {
-  console.log('userInfo', userInfo);
   const router = useRouter();
   const { dispatch } = useContext(Store);
   const [anchorEl, setAnchorEl] = useState(null);
