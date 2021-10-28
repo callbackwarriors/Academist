@@ -4,9 +4,10 @@ import db from "../../../utils/db";
 
 const handler = nc();
 handler.post(async (req, res) => {
-
+  console.log(req.body);
   await db.connect();
   const newCourse = new Course({
+    inputList:req.body.inputList,
     title: req.body.title,
     slug: req.body.slug,
     videoUrl: req.body.videoUrl,
@@ -17,10 +18,14 @@ handler.post(async (req, res) => {
     desc: req.body.desc,
     img: req.body.img,
   });
+
+  console.log('newCourse',newCourse)
   const course = await newCourse.save();
   await db.disconnect();
+  console.log('this course',course)
 
   res.send({
+    inputList:course.inputList,
     title: course.title,
     slug: course.slug,
     videoUrl: course.videoUrl,

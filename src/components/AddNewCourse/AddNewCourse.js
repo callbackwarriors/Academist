@@ -53,6 +53,32 @@ const AddNewCourse = () => {
       error: "",
     });
 
+/*  start  this lession section*/
+const [inputList, setInputList] = useState([{ link: ""}]);
+
+// handle input change
+const handleInputChange = (e, index) => {
+  const { name, value } = e.target;
+  const list = [...inputList];
+  list[index][name] = value;
+  setInputList(list);
+};
+
+// handle click event of the Remove button
+const handleRemoveClick = index => {
+  const list = [...inputList];
+  list.splice(index, 1);
+  setInputList(list);
+};
+
+// handle click event of the Add button
+const handleAddClick = () => {
+  setInputList([...inputList, { link: "" }]);
+};
+
+/*  end  this lession section*/
+
+
   const uploadHandler = async (e) => {
     const file = e.target.files[0];
     const bodyFormData = new FormData();
@@ -85,6 +111,8 @@ const AddNewCourse = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log('this is link url', inputList);
+
     try {
       const { data } = await axios.post("/api/postcourses/postCourse", {
         title,
@@ -96,7 +124,9 @@ const AddNewCourse = () => {
         level,
         desc,
         img,
+        inputList,
       });
+      console.log(' post with video',data);
       Swal.fire({
         icon: 'success',
         title: 'Image',
@@ -115,6 +145,36 @@ const AddNewCourse = () => {
     <div className="addNewCourse">
       <form action="" onSubmit={handleSubmit}>
         <div className="container">
+
+
+          <div className="mb-4">
+          <label htmlFor="title">Enter Lesion</label>
+              {inputList.map((x, i) => {
+                return (
+                  <div >
+                    <input 
+                       className="w-full px-4 text-lg py-3 border-1  focus:border-royal-blue"
+                      name="link"
+                      type="text"
+                      placeholder="Enter Lesion Link"
+                      value={x.link}
+                      onChange={e => handleInputChange(e, i)}
+                    />
+
+                    <div className="btn-box">
+                      {inputList.length !== 1 && <button
+                        className="px-4 my-4 mr-4 py-1 text-lg text-white border-0 cursor-pointer bg-red-600 focus:outline-none hover:bg-red-400"
+                        onClick={() => handleRemoveClick(i)}>Remove</button>}
+                      {inputList.length - 1 === i && <button 
+                       className="px-4 py-1 my-4 text-lg text-white border-0 cursor-pointer bg-royal-blue focus:outline-none hover:bg-indigo-600" onClick={handleAddClick}>Add</button>}
+                    </div>
+
+                  </div>
+                );
+              })}
+              <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
+          </div>
+
           <div className="mb-4">
             <label htmlFor="title">Title</label>
             <input
@@ -126,6 +186,9 @@ const AddNewCourse = () => {
               placeholder="Write your course title here..."
             />
           </div>
+
+
+
           <div className="mb-4">
             <label htmlFor="slug">Slug</label>
             <input
@@ -214,7 +277,7 @@ const AddNewCourse = () => {
             <input
               id="certificate"
               className="rounded focus:border-royal-blue "
-            //   onBlur={handleBlur}
+              //   onBlur={handleBlur}
               type="checkbox"
               name="certificate"
             />

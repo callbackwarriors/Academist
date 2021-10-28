@@ -10,8 +10,13 @@ const PostCourseSchema = new mongoose.Schema(
     price: { type: Number, required: true },
     desc: { type: String, required: true },
     img: { type: String, required: true },
+    inputList:[
+      {
+        link:{ type: String, required: true},
+      },
+    ],
   },
   { timestamps: true }
 );
-const Course = mongoose.models.course || mongoose.model("course", PostCourseSchema);
+const Course = mongoose.models.VideoCourse || mongoose.model("VideoCourse", PostCourseSchema);
 export default Course;
