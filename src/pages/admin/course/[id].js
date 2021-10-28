@@ -374,16 +374,6 @@ function CourseEdit({ params }) {
                       </span>
                     </label>
                   </div>
-                  {/* <div className="form-element">
-                    <span className="block w-full mx-auto my-4 lg:w-4/5 ">
-                      <input
-                        onChange={uploadHandler}
-                        type="file"
-                        className="flex w-full px-6 py-3 text-lg text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"
-                        value="Upload File"
-                      />
-                    </span>
-                  </div> */}
                   <button>
                     Upload File
                     <input type="file" onChange={uploadHandler} hidden />
