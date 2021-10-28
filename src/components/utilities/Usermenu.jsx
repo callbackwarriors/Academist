@@ -10,11 +10,12 @@ import {
   BiCog,
   BiListCheck,
   BiLogOutCircle,
-  BiUserCheck,
+  BiUserCheck
 } from "react-icons/bi";
 import { Store } from "utils/Store";
 
 export default function Example({ user }) {
+
   const router = useRouter();
   const { dispatch } = useContext(Store);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -22,10 +23,11 @@ export default function Example({ user }) {
     setAnchorEl(null);
     dispatch({ type: "USER_LOGOUT" });
     Cookies.remove("cartItems");
-    localStorage.clear();
-    window.location.reload();
+    Cookies.remove("userInfo");
+    // localStorage.clear();
+    // window.location.reload();
     router.push("/");
-    localStorage.clear();
+    // localStorage.clear();
 
   };
 

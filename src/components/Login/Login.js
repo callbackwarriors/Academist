@@ -36,9 +36,11 @@ const Login = () => {
         email,
         password,
       });
-      console.log("login", data);
-      dispatch({ type: "USER_LOGIN", payload: data });
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      dispatch({ type: 'USER_LOGIN', payload: data });
+      Cookies.set('userInfo', JSON.stringify(data));
+      
+      // dispatch({ type: "USER_LOGIN", payload: data });
+      // localStorage.setItem("userInfo", JSON.stringify(data));
       // localStorage.setItem("password", password);
       router.push(redirect || "/");
     } catch (err) {
