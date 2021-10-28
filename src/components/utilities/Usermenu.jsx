@@ -10,7 +10,7 @@ import {
   BiCog,
   BiListCheck,
   BiLogOutCircle,
-  BiUserCheck,
+  BiUserCheck
 } from "react-icons/bi";
 import { Store } from "utils/Store";
 
