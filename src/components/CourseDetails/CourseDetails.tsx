@@ -10,7 +10,6 @@ import Banner from './Banner';
 import CourseCard from './CourseCard';
 import Curriculam from './Curriculam';
 import Instructor from './Instructor';
-import Overview from './Overview';
 import Review from './Review';
 
 interface IProps {
@@ -18,6 +17,7 @@ interface IProps {
 }
 
 const CourseDetails = ({course}:IProps) => {
+    
     return (
         <div className="CourseDetails">
             <div className="banner" style={{ backgroundImage: `linear-gradient(rgb(91 79 238), rgb(91 79 238 / 47%)), url(${course.img})` }}>
@@ -34,8 +34,8 @@ const CourseDetails = ({course}:IProps) => {
                                 <Tab>Reviews </Tab>
                             </TabList>
 
-                            <TabPanel>
-                                <Overview></Overview>
+                            <TabPanel  className="px-10 py-10 mt-10 rounded-md shadow-lg tab1">
+                                {course.desc}
                             </TabPanel>
 
                             <TabPanel>
