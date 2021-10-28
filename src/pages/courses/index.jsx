@@ -1,13 +1,8 @@
 import AllCourses from "components/AllCourses/AllCourses";
-import router from "next/router";
 import React, { useState } from "react";
-import {
-  BsFillGrid3X2GapFill,
-  BsFillGrid3X3GapFill,
-  BsSearch,
-} from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Layout from "../../components/utilities/Layout";
+import PageTitle from "../../components/utilities/PageTitle";
 import Courses from "../../models/Courses";
 import db from "../../utils/db";
 const CoursesPage = (props) => {
@@ -18,20 +13,15 @@ const CoursesPage = (props) => {
   const queryChangeHandle = (e) => {
     setQuery(e.target.value)
   }
-  // const submitHandle = (e) => {
-  //   e.preventDefault();
-  //    router.push(`/search/search/query=${Query}`)
-  // }
-
 
   return (
     <Layout>
+      <PageTitle background="bg-gray-50" title="Courses" subtitle="Find your course" />
       <div className="sectionAllCourses">
-        <div className="bg-gray-300 allCourses">
-          <h2 className="pt-12 text-center"> Find Your Course</h2>
-
-          <div className="container flex py-16">
-            <React.Fragment className="w-1/3 pb-10 allCourses__page-sidebar ">
+        <div className="allCourses">
+          <div className="container">
+          <div class="flex flex-wrap overflow-hidden">
+            <div className="w-full overflow-hidden lg:w-1/4 xl:w-1/4 allCourses__page-sidebar ">
               <div
                 onClick={() => setIsSidebarOpen(false)}
                 className={`fixed inset-0 z-20 block transition-opacity bg-black opacity-50 lg:hidden ${
@@ -48,104 +38,98 @@ const CoursesPage = (props) => {
                 </button>
               </div>
               <div
-                className={`fixed inset-y-0 left-0 z-30 w-2/5 md:w-3/5 p-8 overflow-y-auto transition duration-300 ease-out transform translate-x-0 bg-white border-r-2 lg:translate-x-0 lg:static lg:inset-0 ${
+                className={`h-full section-padding fixed inset-y-0 left-0 z-30  p-8 overflow-y-auto transition duration-300 ease-out transform translate-x-0 bg-white border-r-2 lg:translate-x-0 lg:static lg:inset-0 ${
                   isSidebarOpen
                     ? "ease-out translate-x-0"
                     : "ease-in -translate-x-full"
                 }`}
               >
-                <div className="flex allCourses__page-sidebar--findBox ">
+                <div className="allCourses__page-sidebar--findBox mb-6">
                   <div></div>
               <form action="">
-                  <div className="flex w-full bg-gray-100 bg-opacity-50 border border-gray-300 allCourses__page-sidebar--findBox--find item-center h-14 ">
-                   
-                    
                    <input
                     type="text"
-                    placeholder="Search for new course..."
+                    placeholder="Search for course..."
                     id="email"
                     name="query"
                     onChange={queryChangeHandle}
-                    className="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out border-none font-1 focus:border-royal-blue focus:bg-transparent focus:ring-2 focus:ring-indigo-200"
+                    className="w-full px-4 py-3 rounded focus:border-royal-blue"
                   />
-                    {/* <div className="p-2 pt-4">
-                     <button type="submit"><BsSearch /></button>
-                  </div> */}
-                   </div>
+
               </form>
                 
                 </div>
 
-                <div className="allCourses__page-sidebar--catagory ">
+                <div className="mb-6 allCourses__page-sidebar--catagory">
                   <label>
-                    <select className="w-full px-3 py-1 mt-3 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 border-none h-14 focus:border-royal-blue focus:bg-transparent focus:ring-2 focus:ring-indigo-200">
-                      <option>Select</option>
-                      <option>Option 2</option>
-                      <option>Option 1</option>
-                      <option>Option 2</option>
-                      <option>Option 1</option>
-                      <option>Option 2</option>
+                    <select className="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 border-none h-14 focus:border-royal-blue focus:bg-transparent focus:ring-2 focus:ring-indigo-200">
+                      <option>Select categories</option>
+                      <option>React</option>
+                      <option>Javascript</option>
+                      <option>NodeJs</option>
+                      <option>Next JS</option>
+                      <option>MEARN</option>
                     </select>
                   </label>
                 </div>
 
-                <div className="mt-3 allCourses__page-sidebar--checklist">
-                  <h6>Top instructor</h6>
+                <div className="mb-6 allCourses__page-sidebar--checklist">
+                  <h6>Courses by Top Instractors</h6>
                   <ul>
                     <li>
                       <label className="checkbox-container">
-                        Keny White
+                        Jankar Mahbub
                         <input type="checkbox" />
                         <span className="checkmark"></span>
                       </label>
                       <div className="count">
-                        <span className="count">12</span>
+                        <span className="count">1</span>
                       </div>
                     </li>
                     <li>
                       <label className="checkbox-container">
-                        Keny White
+                        Jonas S.
                         <input type="checkbox" />
                         <span className="checkmark"></span>
                       </label>
                       <div className="count">
-                        <span className="count">12</span>
+                        <span className="count">3</span>
                       </div>
                     </li>
                     <li>
                       <label className="checkbox-container">
-                        Keny White
+                        Maximilian S.
                         <input type="checkbox" />
                         <span className="checkmark"></span>
                       </label>
                       <div className="count">
-                        <span className="count">12</span>
+                        <span className="count">4</span>
                       </div>
                     </li>
                     <li>
                       <label className="checkbox-container">
-                        Keny White
+                        Morgan F.
                         <input type="checkbox" />
                         <span className="checkmark"></span>
                       </label>
                       <div className="count">
-                        <span className="count">12</span>
+                        <span className="count">3</span>
                       </div>
                     </li>
                     <li>
                       <label className="checkbox-container">
-                        Keny White
+                        Evana S.
                         <input type="checkbox" />
                         <span className="checkmark"></span>
                       </label>
                       <div className="count">
-                        <span className="count">12</span>
+                        <span className="count">7</span>
                       </div>
                     </li>
                   </ul>
                 </div>
 
-                <div className="allCourses__page-sidebar--checklist">
+                <div className="allCourses__page-sidebar--checklist mb-6">
                   <h6>Skill level</h6>
                   <ul>
                     <li>
@@ -208,40 +192,13 @@ const CoursesPage = (props) => {
                   </ul>
                 </div>
               </div>
-            </React.Fragment>
-            <div className="pl-2 content">
-              <div className="page-content ">
-                <div className="grid items-center grid-cols-2 px-2 bg-white rounded-sm page-content__header">
-                  <div className="lg:p-2">
-                    <h6 className="m-0 text-xs lg:text-base">
-                      Showing 1-25 Of 72
-                    </h6>
-                  </div>
-                  <div className="flex lg:grid lg:grid-cols-3 xs:grid-cols-2">
-                    <span className="flex items-center text-xs lg:text-base">
-                      Short by:
-                    </span>
-                    <div>
-                      <select className="w-full text-base leading-8 transition-colors duration-200 ease-in-out bg-white bg-opacity-50 border-none focus:border-royal-blue focus:bg-transparent focus:ring-2 focus:ring-indigo-200">
-                        <option>Select</option>
-                        <option>Mostly visited</option>
-                        <option>Most popular</option>
-                        <option>Mostly sold</option>
-                      </select>
-                    </div>
-                    <div className="items-center hidden lg:block">
-                      <div className="grid grid-cols-2 grid-rows-1 ite">
-                        <div className="lg:text-2xl lg:px-6">
-                          <BsFillGrid3X3GapFill />
-                        </div>
-                        <div className=" lg:text-2xl lg:px-6">
-                          <BsFillGrid3X2GapFill />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            </div>
 
+            <div className="w-full overflow-hidden lg:w-3/4 xl:w-3/4 pl-2 content py-16">
+              <div className="page-content ">
+
+                
+              {/* start courses items */}
                 <div className="flex flex-wrap page-content__body">
                   {courses.filter((course)=>{
                     if(query == ""){
@@ -253,10 +210,13 @@ const CoursesPage = (props) => {
                     <AllCourses key={course.title} course={course} />
                   ))}
                 </div>
+                {/* end courses items */}
+                
               </div>
             </div>
           </div>
         </div>
+      </div>
       </div>
     </Layout>
   );

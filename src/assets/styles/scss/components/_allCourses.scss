@@ -1,26 +1,8 @@
 .allCourses{
-    h2{
-
-    }
-
     &__page-sidebar{
 
-        &--findBox{
-
-            &--find{
-
-            }
-        }
-
-        &--catagory{
-
-        }
-
         &--checklist{
-            @apply mt-3;
-            h6{
-                
-            }
+
 
             ul li {
                 .checkbox-container{

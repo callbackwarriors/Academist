@@ -1,9 +1,12 @@
 .single__course {
-    @apply items-center mb-5 rounded-lg md:flex;
+    @apply mb-5 rounded-lg md:flex;
     &__image{
-        @apply flex items-center mb-3 lg:w-9/12 md:w-7/12 lg:mb-0;
+        @apply grid gap-4 items-center mb-3 lg:mb-0;
         img {
             @apply w-40 mx-4 object-cover rounded;
+            width: 100%!important;
+            height: auto!important;
+            object-fit: cover;
         }
     }
 }

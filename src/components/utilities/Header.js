@@ -11,17 +11,6 @@ import MobileMenu from "./MobileMenu";
 import Usermenu from "./Usermenu";
 
 const Header = () => {
-  // const [user, setUser] = useState();
-
-  // fetch data
-  // useEffect(() => {
-  //   const value = localStorage.getItem("userInfo");
-  //   const user = !!value ? JSON.parse(value) : undefined;
-  //   setUser(user);
-
-  // }, []);
-
-
 
   const [isOpen, setIsOpen] = React.useState(false);  
 
@@ -73,6 +62,10 @@ const Header = () => {
 
           <Link href="/categories">
             <a className="mr-5 hover:text-gray-900">Categories</a>
+          </Link>
+
+          <Link href="/contact">
+            <a className="mr-5 hover:text-gray-900">Contact</a>
           </Link>
         </nav>
 

@@ -7,12 +7,12 @@ import { Fragment, useContext, useState } from "react";
 import {
   BiBookReader,
   BiCart,
-  BiCog,
-  BiListCheck,
-  BiLogOutCircle,
-  BiUserCheck
+  BiCog, BiLogOutCircle, BiMessageAltAdd, BiUserCheck
 } from "react-icons/bi";
+import { GrDocumentUpdate } from "react-icons/gr";
 import { Store } from "utils/Store";
+
+
 
 export default function Example({ userInfo }) {
   const router = useRouter();
@@ -56,6 +56,8 @@ export default function Example({ userInfo }) {
       >
         <Menu.Items className="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="px-1 py-1">
+
+          {(userInfo.user) && (
             <Link href="/enrollcourse">
               <a>
                 <Menu.Item>
@@ -82,6 +84,8 @@ export default function Example({ userInfo }) {
                 </Menu.Item>
               </a>
             </Link>
+)}
+{userInfo.user && (
             <Link href="/cart">
               <a>
                 <Menu.Item>
@@ -102,24 +106,10 @@ export default function Example({ userInfo }) {
                 </Menu.Item>
               </a>
             </Link>
+)}
+
           </div>
-          <div className="px-1 py-1">
-            <Menu.Item>
-              {({ active }) => (
-                <button
-                  className={`${
-                    active ? "bg-royal-blue text-white" : "text-gray-900"
-                  } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                >
-                  {active ? (
-                    <BiListCheck className="w-5 h-5 mr-2" aria-hidden="true" />
-                  ) : (
-                    <BiListCheck className="w-5 h-5 mr-2" aria-hidden="true" />
-                  )}
-                  Wish list
-                </button>
-              )}
-            </Menu.Item>
+
             {(userInfo.isAdmin) && (
               <Link href="/dashboard">
                 <a>
@@ -148,7 +138,7 @@ export default function Example({ userInfo }) {
                 </a>
               </Link>
             )}
-            {(userInfo.instructor) && (
+            {(userInfo.instructor) && (<>
               <Link href="/dashboard">
                 <a>
                   <Menu.Item>
@@ -175,8 +165,66 @@ export default function Example({ userInfo }) {
                   </Menu.Item>
                 </a>
               </Link>
+
+              <Link href="/dashboard/courses/addcourse">
+                <a>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`${
+                          active ? "bg-royal-blue text-white" : "text-gray-900"
+                        } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                      >
+                        {active ? (
+                          <BiMessageAltAdd
+                            className="w-5 h-5 mr-2"
+                            aria-hidden="true"
+                          />
+                        ) : (
+                          <BiMessageAltAdd
+                            className="w-5 h-5 mr-2"
+                            aria-hidden="true"
+                          />
+                        )}
+                        Add new course
+                      </button>
+                    )}
+                  </Menu.Item>
+                </a>
+              </Link>
+
+              <Link href="/dashboard/courses/managecourses">
+                <a>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`${
+                          active ? "bg-royal-blue text-white" : "text-gray-900"
+                        } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                      >
+                        {active ? (
+                          <GrDocumentUpdate
+                            className="w-5 h-5 mr-2"
+                            aria-hidden="true"
+                          />
+                        ) : (
+                          <GrDocumentUpdate
+                            className="w-5 h-5 mr-2"
+                            aria-hidden="true"
+                          />
+                        )}
+                        Manage courses
+                      </button>
+                    )}
+                  </Menu.Item>
+                </a>
+              </Link>
+
+
+              
+              </>
             )}
-          </div>
+
           <div className="px-1 py-1">
             <Menu.Item onClick={(e) => loginMenuCloseHandler(e, "/profile")}>
               {({ active }) => (
