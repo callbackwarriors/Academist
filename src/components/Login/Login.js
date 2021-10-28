@@ -34,11 +34,16 @@ const Login = () => {
 
       dispatch({ type: "USER_LOGIN", payload: data });
       Cookies.set("userInfo", JSON.stringify(data));
+      Swal.fire(
+        `Welcome` ,
+        'You logged in successfully!',
+        'success'
+      )
       router.push(redirect || "/");
     } catch (err) {
       Swal.fire({
         icon: "error",
-        text: err.message ? "Your email or password is not baited." : "",
+        text: err.message? 'Your email or password is not valid.': '',
       });
     }
   };

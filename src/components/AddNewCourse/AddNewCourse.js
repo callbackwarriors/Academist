@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useContext, useReducer, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { useMutate } from "restful-react";
 import Swal from "sweetalert2";
 import { Store } from "utils/Store";
 
@@ -99,9 +98,10 @@ const AddNewCourse = () => {
       });
       Swal.fire({
         icon: 'success',
-        title: 'Image',
+        // title: 'Image',
         text: 'Course uploaded successfully',
       })
+      
 
     } catch (error) {
       Swal.fire({

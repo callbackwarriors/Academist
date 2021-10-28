@@ -1,7 +1,7 @@
 import Logo from "assets/images/academist-logo.svg";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { AiOutlineCloseSquare, AiOutlineShoppingCart } from "react-icons/ai";
 import { FiMenu } from "react-icons/fi";
 import Drawer from "react-modern-drawer";
@@ -11,7 +11,19 @@ import MobileMenu from "./MobileMenu";
 import Usermenu from "./Usermenu";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  // const [user, setUser] = useState();
+
+  // fetch data
+  // useEffect(() => {
+  //   const value = localStorage.getItem("userInfo");
+  //   const user = !!value ? JSON.parse(value) : undefined;
+  //   setUser(user);
+
+  // }, []);
+
+
+
+  const [isOpen, setIsOpen] = React.useState(false);  
 
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);

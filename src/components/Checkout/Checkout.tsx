@@ -1,11 +1,10 @@
 import axios from 'axios';
 import CartItemTwo from 'components/Cart/CartItemTwo';
 import Payment from "components/Payment/Payment";
-import Cookies from "js-cookie";
 // import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
 import { ICourses } from 'type';
 import { Store } from 'utils/Store';
@@ -40,10 +39,16 @@ const Checkout = () => {
                     },
                 }
             )
-
-
+            
             dispatch({ type: 'CART_CLEAR' });
-            Cookies.remove('cartItems');
+            // Cookies.remove('cartItems');
+
+
+//  useEffect(() => {
+//     if (!userInfo) {
+//       return router.push("/login?redirect=/checkout");
+//     }
+//   }, []);
             
             Swal.fire({
                 icon: "success",
