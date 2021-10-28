@@ -1,18 +1,31 @@
 import EnrollCourse from 'components/EnrollCourse/EnrollCourse';
 import Layout from 'components/utilities/Layout';
 import Order from 'models/Orders';
-import React, { useContext } from 'react';
+import React from 'react';
 import db from 'utils/db';
-
-
+import PageTitle from "../components/utilities/PageTitle";
 const enrollcourse = (props: any) => {
 const {orders} = props;
 
     return (
         <Layout>
-            <div>
-                <EnrollCourse key={orders._id} orders={orders} />
-            </div>
+      <PageTitle background="bg-gray-50" title="Your enrolled coures" subtitle="" />
+      {
+        orders.length === 0 ? 
+        
+        <div className="section-padding">
+          <div className="container text-center">
+            <h3>You don't have any enrolled course</h3>
+          </div>
+        </div>
+        
+        :
+        <div className="section-padding">
+        <EnrollCourse key={orders._id} orders={orders} />
+        </div>
+      }
+      
+
         </Layout>
     );
 };

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import CartItemTwo from 'components/Cart/CartItemTwo';
 import Payment from "components/Payment/Payment";
+import Cookies from "js-cookie";
 // import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -9,16 +10,13 @@ import Swal from 'sweetalert2';
 import { ICourses } from 'type';
 import { Store } from 'utils/Store';
 
+
 const Checkout = () => {
+
     const router = useRouter()
     const { state, dispatch } = useContext(Store);
     const { cart: { cartItems }, userInfo } = state;
     const [error, setError] = useState()
-    // useEffect(() => {
-    //     if (cartItems.length === 0) {
-    //         router.push('/courses');
-    //     }
-    // }, []);
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
     const [show, setShow] = useState(true);
@@ -38,26 +36,16 @@ const Checkout = () => {
                         authorization: `Bearer ${userInfo.token}`,
                     },
                 }
+                
             )
-            
-            dispatch({ type: 'CART_CLEAR' });
-            // Cookies.remove('cartItems');
-
-
-//  useEffect(() => {
-//     if (!userInfo) {
-//       return router.push("/login?redirect=/checkout");
-//     }
-//   }, []);
             
             Swal.fire({
                 icon: "success",
                 text: "Order successfully",
             });
-            if (cartItems.length === 0) {
-                router.push('/enrollcourse');
-            }
-
+            dispatch({ type: 'CART_CLEAR' });
+            Cookies.remove('cartItems');
+            router.push('/enrollcourse')
         } catch (err: any) {
             setError(err);
         }

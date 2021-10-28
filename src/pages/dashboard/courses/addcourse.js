@@ -5,9 +5,9 @@ import Title from 'components/utilities/Title';
 import React from 'react';
 
 const addNewCourse = () => {
-
     return (
         <Layout>
+
             <div className="flex items-stretch w-full bg-gray-200">
                 <Sidebar />
                 <div className="w-full min-h-screen p-5 transition-all bg-white section-padding">

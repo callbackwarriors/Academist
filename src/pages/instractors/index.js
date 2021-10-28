@@ -1,15 +1,16 @@
 import InstractorCard from "components/InstractorCard/InstractorCard";
 import User from "models/User";
-import React, { useState } from "react";
-import Layout from "../../components/utilities/Layout";
+import React from "react";
 import db from "utils/db";
+import Layout from "../../components/utilities/Layout";
+import PageTitle from "../../components/utilities/PageTitle";
 const instructor = (props) => {
   const { user } = props;
   return (
     <Layout>
-      <div className="bg-gray-300">
-        <div className="container allCourses">
-          <h2 className="pt-12 text-center">All instructor</h2>
+      <PageTitle background="bg-gray-50" title="Instructors" subtitle="Our all instractors" />
+      <div className="instractorsWrapper section-padding">
+        <div className="container ">
 
           <div className="flex flex-wrap page-content__body">
             {user.map((ur) => (
