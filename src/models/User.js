@@ -6,9 +6,11 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     isAdmin: { type: Boolean, required: true, default: false },
+    user: { type: Boolean, required: true},
+    instructor: { type: Boolean, required: true },
   },
   { timestamps: true }
 );
 
-const User = mongoose.models.registers || mongoose.model("registers", userSchema);
+const User = mongoose.models.user || mongoose.model("user", userSchema);
 export default User;
