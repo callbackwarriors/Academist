@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useContext, useReducer, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { useMutate } from "restful-react";
 import Swal from "sweetalert2";
 import { Store } from "utils/Store";
 
@@ -35,6 +34,7 @@ function reducer(state, action) {
 }
 
 const AddNewCourse = () => {
+  const [inputList, setInputList] = useState([{ link: "" }]);
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
@@ -44,7 +44,6 @@ const AddNewCourse = () => {
   const [price, setPrice] = useState(0);
   const [desc, setDesc] = useState("");
   const [img, setImg] = useState("");
-
   const { state } = useContext(Store);
   const { userInfo } = state;
   const [{ loading, error, loadingUpdate, loadingUpload }, dispatch] =
@@ -53,10 +52,6 @@ const AddNewCourse = () => {
       error: "",
     });
 
-  /*  start  this lession section*/
-  const [inputList, setInputList] = useState([{ link: "" }]);
-  console.log("inputList", inputList);
-  // handle input change
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
@@ -64,19 +59,15 @@ const AddNewCourse = () => {
     setInputList(list);
   };
 
-  // handle click event of the Remove button
   const handleRemoveClick = (index) => {
     const list = [...inputList];
     list.splice(index, 1);
     setInputList(list);
   };
 
-  // handle click event of the Add button
   const handleAddClick = () => {
     setInputList([...inputList, { link: "" }]);
   };
-
-  /*  end  this lession section*/
 
   const uploadHandler = async (e) => {
     const file = e.target.files[0];
@@ -109,9 +100,11 @@ const AddNewCourse = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log("inputList", inputList);
+    console.log("title", title);
     try {
       const { data } = await axios.post("/api/postcourses/postCourse", {
+        inputList,
         title,
         slug,
         videoUrl,
@@ -122,15 +115,15 @@ const AddNewCourse = () => {
         desc,
         img,
       });
+      console.log("data", data);
       Swal.fire({
         icon: "success",
-        title: "Image",
-        text: "Image uploaded successfully",
+        text: "Course uploaded successfully",
       });
-    } catch (err) {
+    } catch (error) {
       Swal.fire({
         icon: "error",
-        text: err.message,
+        text: error.message,
       });
     }
   };
@@ -139,6 +132,39 @@ const AddNewCourse = () => {
     <div className="addNewCourse">
       <form action="" onSubmit={handleSubmit}>
         <div className="container">
+          <div className="mb-4">
+            <label htmlFor="title">Title</label>
+            <input
+              onChange={(e) => setTitle(e.target.value)}
+              id="title"
+              className="w-full px-4 py-3 rounded focus:border-royal-blue"
+              type="text"
+              name="title"
+              placeholder="Write your course title here..."
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="slug">Slug</label>
+            <input
+              onChange={(e) => setSlug(e.target.value)}
+              id="slug"
+              className="w-full px-4 py-3 rounded focus:border-royal-blue"
+              type="text"
+              name="slug"
+              placeholder="Write your course title here..."
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="intro">Intro video</label>
+            <input
+              onChange={(e) => setVideoUrl(e.target.value)}
+              id="intro"
+              className="w-full px-4 py-3 rounded focus:border-royal-blue"
+              type="text"
+              name="intro"
+              placeholder="Add intro video link"
+            />
+          </div>
           <div className="mb-4">
             <label htmlFor="title">Enter Lesion</label>
             {inputList.map((x, i) => {
@@ -174,41 +200,6 @@ const AddNewCourse = () => {
                 </div>
               );
             })}
-            <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="title">Title</label>
-            <input
-              onChange={(e) => setTitle(e.target.value)}
-              id="title"
-              className="w-full px-4 py-3 rounded focus:border-royal-blue"
-              type="text"
-              name="title"
-              placeholder="Write your course title here..."
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="slug">Slug</label>
-            <input
-              onChange={(e) => setSlug(e.target.value)}
-              id="slug"
-              className="w-full px-4 py-3 rounded focus:border-royal-blue"
-              type="text"
-              name="slug"
-              placeholder="Write your course title here..."
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="intro">Intro video</label>
-            <input
-              onChange={(e) => setVideoUrl(e.target.value)}
-              id="intro"
-              className="w-full px-4 py-3 rounded focus:border-royal-blue"
-              type="text"
-              name="intro"
-              placeholder="Add intro video link"
-            />
           </div>
           <div className="mb-4">
             <label htmlFor="shortDesc">Short Description</label>
@@ -276,7 +267,6 @@ const AddNewCourse = () => {
             <input
               id="certificate"
               className="rounded focus:border-royal-blue "
-              //   onBlur={handleBlur}
               type="checkbox"
               name="certificate"
             />
@@ -323,15 +313,6 @@ const AddNewCourse = () => {
               </div>
             </div>
           </div>
-          <button
-            disabled={!setImg}
-            className="px-12 py-3 text-lg text-white border-0 bg-royal-blue focus:outline-none hover:bg-indigo-600"
-          >
-            <input type="file" onChange={uploadHandler} />
-          </button>
-          <br />
-          <br />
-
           <input
             className="px-12 py-3 text-lg text-white border-0 cursor-pointer bg-royal-blue focus:outline-none hover:bg-indigo-600"
             type="submit"

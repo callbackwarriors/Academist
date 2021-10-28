@@ -46,7 +46,7 @@ const Register = () => {
     } catch (err) {
       Swal.fire({
         icon: "error",
-        text: err.message,
+        text: err.message? 'Your email already added': '',
       });
     }
   };

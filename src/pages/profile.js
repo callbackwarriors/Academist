@@ -23,7 +23,6 @@ function Profile() {
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
 
-
   useEffect(() => {
     if (!userInfo) {
       return router.push("/login");
@@ -56,11 +55,10 @@ function Profile() {
         icon: "success",
         text: "Profile updated successfully",
       });
-
     } catch (err) {
       Swal.fire({
         icon: "error",
-        text: err.message,
+        text: err.message ? "Profile updated failed" : "",
       });
     }
   };
@@ -101,6 +99,7 @@ function Profile() {
                       </span>
                       <span className="block">
                         <input
+                          onChange={() => {}}
                           type="text"
                           name="name"
                           // eslint-disable-next-line react/jsx-props-no-spreading
@@ -127,6 +126,7 @@ function Profile() {
                       </span>
                       <span className="block">
                         <input
+                          onChange={() => {}}
                           type="email"
                           name="Email"
                           {...register("email", {

@@ -65,6 +65,7 @@ function CourseEdit({ params }) {
           const { data } = await axios.get(`/api/admin/courses/${productId}`, {
             headers: { authorization: `Bearer ${userInfo.token}` },
           });
+
           dispatch({ type: "FETCH_SUCCESS" });
           setValue("title", data.title);
           setValue("slug", data.slug);
@@ -72,14 +73,14 @@ function CourseEdit({ params }) {
           setValue("categories", data.categories);
           setValue("level", data.level);
           setValue("price", data.price);
-          setValue("courseProvider", data.courseProvider);
+          // setValue("courseProvider", data.courseProvider);
           setValue("videoUrl", data.videoUrl);
           setValue("img", data.img);
           setValue("desc", data.desc);
         } catch (err) {
           Swal.fire({
             icon: "error",
-            text: err.message,
+            text: err.message? 'Profile updated failed' : '',
           });
         }
       };
@@ -117,7 +118,7 @@ function CourseEdit({ params }) {
     categories,
     level,
     price,
-    courseProvider,
+    // courseProvider,
     videoUrl,
     img,
     desc,
@@ -133,7 +134,7 @@ function CourseEdit({ params }) {
           categories,
           level,
           price,
-          courseProvider,
+          // courseProvider,
           videoUrl,
           img,
           desc,
@@ -319,7 +320,7 @@ function CourseEdit({ params }) {
                           </span>
                         </label>
                       </div>
-                      <div className="py-2 form-element">
+                      {/* <div className="py-2 form-element">
                         <label className="space-y-0.5 w-full  block mx-auto">
                           <span className="block text-lg tracking-wide text-gray-800">
                             CourseProvider
@@ -343,7 +344,7 @@ function CourseEdit({ params }) {
                             </span>
                           </span>
                         </label>
-                      </div>
+                      </div> */}
                       <div className="py-2 form-element">
                         <label className="space-y-0.5 w-full  block mx-auto">
                           <span className="block text-lg tracking-wide text-gray-800">

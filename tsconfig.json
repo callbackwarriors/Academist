@@ -39,5 +39,5 @@
     "src/components/Payment/Payment.js",
     "src/components/Payment/SimpleCardForm.js",
     "src/components/utilities/Header.js"
-, "src/components/AddNewCourse/AddNewCourse.js"  ]
+, "src/components/AddNewCourse/AddNewCourse.js", "src/components/EnrollCourse/EnrollCourse.tsx", "src/components/ManageAdmin/ManageTable.js"  ]
 }

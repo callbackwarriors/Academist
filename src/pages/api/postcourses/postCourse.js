@@ -7,6 +7,7 @@ handler.post(async (req, res) => {
 
   await db.connect();
   const newCourse = new Course({
+    inputList: req.body.inputList,
     title: req.body.title,
     slug: req.body.slug,
     videoUrl: req.body.videoUrl,
@@ -22,6 +23,7 @@ handler.post(async (req, res) => {
   await db.disconnect();
 
   res.send({
+    inputList: course.inputList,
     title: course.title,
     slug: course.slug,
     videoUrl: course.videoUrl,
