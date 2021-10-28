@@ -25,6 +25,8 @@ handler.put(async (req, res) => {
     name: user.name,
     email: user.email,
     isAdmin: user.isAdmin,
+    user: user.user,
+    instructor: user.instructor,
   });
 });
 

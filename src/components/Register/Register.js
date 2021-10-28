@@ -10,6 +10,8 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 const Register = () => {
+  const [user, setUser] = useState(false);
+  const [instructor, setInstructor] = useState(false);
   const {
     handleSubmit,
     register,
@@ -39,14 +41,17 @@ const Register = () => {
         name,
         email,
         password,
+        user,
+        instructor,
       });
+
       dispatch({ type: "USER_LOGIN", payload: data });
       Cookies.set("userInfo", JSON.stringify(data));
       router.push(redirect || "/");
     } catch (err) {
       Swal.fire({
         icon: "error",
-        text: err.message? 'Your email already added': '',
+        text: err.message ? "Your email already added" : "",
       });
     }
   };
@@ -179,11 +184,6 @@ const Register = () => {
                         Conform Password
                       </span>
                       <span className="block">
-                        {/* <input
-                          type="password"
-                          onChange={(e) => setConfirmPassword(e.target.value)}
-                          className="w-full p-3 bg-yellow-100 border border-gray-400 lg:bg-white lg:border-2 lg:border-gray-200 focus:outline-none active:outline-none focus:border-gray-400 active:border-gray-400"
-                        /> */}
                         <input
                           type="password"
                           name="confirmPassword"
@@ -207,6 +207,31 @@ const Register = () => {
                         </span>
                       </span>
                     </label>
+                  </div>
+
+                  <div className="form-element">
+                    <div className="flex items-center gap-4 py-2 mx-auto lg:w-4/5">
+                      <div className="mb-4">
+                        <input
+                          id="user"
+                          onClick={(e) => setUser(e.target.checked)}
+                          className="rounded focus:border-royal-blue "
+                          type="radio"
+                          name="user"
+                        />
+                        <label htmlFor="user">User</label>
+                      </div>
+                      <div className="mb-4">
+                        <input
+                          id="instructor"
+                          onClick={(e) => setInstructor(e.target.checked)}
+                          className="rounded focus:border-royal-blue "
+                          type="radio"
+                          name="user"
+                        />
+                        <label htmlFor="instructor">Instructor</label>
+                      </div>
+                    </div>
                   </div>
                   <div className="form-element">
                     <div className="flex items-center py-2 mx-auto lg:w-4/5">

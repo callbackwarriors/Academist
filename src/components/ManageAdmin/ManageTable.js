@@ -27,7 +27,7 @@ function reducer(state, action) {
 }
 
 const ManageTable = (user) => {
-  const { name, email, isAdmin, _id } = user.user;
+  const { name, email, isAdmin, instructor, _id } = user.user;
 
   const { state } = useContext(Store);
   const router = useRouter();
@@ -63,7 +63,7 @@ const ManageTable = (user) => {
   }, [successDelete]);
 
   const deleteHandler = async (userId) => {
-    console.log("userId", userId);
+
     if (!window.confirm("Are you sure?")) {
       return;
     }
@@ -87,6 +87,12 @@ const ManageTable = (user) => {
           <td className="px-2 py-4 text-left whitespace-nowrap">{email}</td>
           <td className="px-2 py-4 text-sm text-left text-gray-500 whitespace-nowrap">
             {isAdmin ? "Yes" : "No"}
+          </td>
+          <td className="px-2 py-4 text-sm text-left text-gray-500 whitespace-nowrap">
+            {user.user.user ? "Yes" : "No"}
+          </td>
+          <td className="px-2 py-4 text-sm text-left text-gray-500 whitespace-nowrap">
+            {instructor ? "Yes" : "No"}
           </td>
           <td className="px-2 py-4 text-sm font-medium text-center whitespace-nowrap">
             <span className="inline-flex px-2 mx-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full ">

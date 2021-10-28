@@ -1,5 +1,4 @@
 import React from 'react';
-import adminpicture from './../../assets/images/admin.jpg'
 import ManageTable from './ManageTable';
 
 
@@ -22,6 +21,12 @@ const ManageAdmin = ({ user }: any) => {
                     </th>
                     <th scope="col" className="px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                       isAdmin
+                    </th>
+                    <th scope="col" className="px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                      User
+                    </th>
+                    <th scope="col" className="px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                      Instructor
                     </th>
                     <th scope="col" className="px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                       Edit/Delete

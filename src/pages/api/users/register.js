@@ -13,7 +13,10 @@ handler.post(async (req, res) => {
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password),
     isAdmin: false,
+    user: req.body.user,
+    instructor: req.body.instructor,
   });
+
   const user = await newUser.save();
   await db.disconnect();
 
@@ -24,7 +27,8 @@ handler.post(async (req, res) => {
     name: user.name,
     email: user.email,
     isAdmin: user.isAdmin,
+    user: user.user,
+    instructor: user.instructor,
   });
 });
 export default handler;
-
