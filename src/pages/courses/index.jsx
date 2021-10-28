@@ -1,4 +1,5 @@
 import AllCourses from "components/AllCourses/AllCourses";
+import router from "next/router";
 import React, { useState } from "react";
 import {
   BsFillGrid3X2GapFill,
@@ -9,10 +10,19 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import Layout from "../../components/utilities/Layout";
 import Courses from "../../models/Courses";
 import db from "../../utils/db";
-
 const CoursesPage = (props) => {
   const { courses } = props;
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const [query, setQuery] = useState('')
+  const queryChangeHandle = (e) => {
+    setQuery(e.target.value)
+  }
+  // const submitHandle = (e) => {
+  //   e.preventDefault();
+  //    router.push(`/search/search/query=${Query}`)
+  // }
+
 
   return (
     <Layout>
@@ -38,8 +48,7 @@ const CoursesPage = (props) => {
                 </button>
               </div>
               <div
-                // className="p-8 bg-white rounded-md page-sidebar"
-                className={`fixed inset-y-0 left-0 z-30 w-64 lg:w-96 p-8 overflow-y-auto transition duration-300 ease-out transform translate-x-0 bg-white border-r-2 lg:translate-x-0 lg:static lg:inset-0 ${
+                className={`fixed inset-y-0 left-0 z-30 w-2/5 md:w-3/5 p-8 overflow-y-auto transition duration-300 ease-out transform translate-x-0 bg-white border-r-2 lg:translate-x-0 lg:static lg:inset-0 ${
                   isSidebarOpen
                     ? "ease-out translate-x-0"
                     : "ease-in -translate-x-full"
@@ -47,23 +56,28 @@ const CoursesPage = (props) => {
               >
                 <div className="flex allCourses__page-sidebar--findBox ">
                   <div></div>
+              <form action="">
                   <div className="flex w-full bg-gray-100 bg-opacity-50 border border-gray-300 allCourses__page-sidebar--findBox--find item-center h-14 ">
-                    <div className="p-2 pt-4">
-                      <BsSearch />
-                    </div>
-
-                    <input
-                      type="text"
-                      placeholder="Search for new course..."
-                      id="email"
-                      name="search"
-                      className="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out border-none font-1 focus:border-royal-blue focus:bg-transparent focus:ring-2 focus:ring-indigo-200"
-                    />
-                  </div>
+                   
+                    
+                   <input
+                    type="text"
+                    placeholder="Search for new course..."
+                    id="email"
+                    name="query"
+                    onChange={queryChangeHandle}
+                    className="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out border-none font-1 focus:border-royal-blue focus:bg-transparent focus:ring-2 focus:ring-indigo-200"
+                  />
+                    {/* <div className="p-2 pt-4">
+                     <button type="submit"><BsSearch /></button>
+                  </div> */}
+                   </div>
+              </form>
+                
                 </div>
 
                 <div className="allCourses__page-sidebar--catagory ">
-                  <label className="">
+                  <label>
                     <select className="w-full px-3 py-1 mt-3 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 border-none h-14 focus:border-royal-blue focus:bg-transparent focus:ring-2 focus:ring-indigo-200">
                       <option>Select</option>
                       <option>Option 2</option>
@@ -78,7 +92,7 @@ const CoursesPage = (props) => {
                 <div className="mt-3 allCourses__page-sidebar--checklist">
                   <h6>Top instructor</h6>
                   <ul>
-                    <li className="">
+                    <li>
                       <label className="checkbox-container">
                         Keny White
                         <input type="checkbox" />
@@ -88,7 +102,7 @@ const CoursesPage = (props) => {
                         <span className="count">12</span>
                       </div>
                     </li>
-                    <li className="">
+                    <li>
                       <label className="checkbox-container">
                         Keny White
                         <input type="checkbox" />
@@ -98,7 +112,7 @@ const CoursesPage = (props) => {
                         <span className="count">12</span>
                       </div>
                     </li>
-                    <li className="">
+                    <li>
                       <label className="checkbox-container">
                         Keny White
                         <input type="checkbox" />
@@ -108,7 +122,7 @@ const CoursesPage = (props) => {
                         <span className="count">12</span>
                       </div>
                     </li>
-                    <li className="">
+                    <li>
                       <label className="checkbox-container">
                         Keny White
                         <input type="checkbox" />
@@ -118,7 +132,7 @@ const CoursesPage = (props) => {
                         <span className="count">12</span>
                       </div>
                     </li>
-                    <li className="">
+                    <li>
                       <label className="checkbox-container">
                         Keny White
                         <input type="checkbox" />
@@ -134,21 +148,21 @@ const CoursesPage = (props) => {
                 <div className="allCourses__page-sidebar--checklist">
                   <h6>Skill level</h6>
                   <ul>
-                    <li className="">
+                    <li>
                       <label className="checkbox-container">
                         Beginner
                         <input type="checkbox" />
                         <span className="checkmark"></span>
                       </label>
                     </li>
-                    <li className="">
+                    <li>
                       <label className="checkbox-container">
                         Intermediate
                         <input type="checkbox" />
                         <span className="checkmark"></span>
                       </label>
                     </li>
-                    <li className="">
+                    <li>
                       <label className="checkbox-container">
                         Advanced
                         <input type="checkbox" />
@@ -161,7 +175,7 @@ const CoursesPage = (props) => {
                 <div className="allCourses__page-sidebar--checklist ">
                   <h6>Price</h6>
                   <ul>
-                    <li className="">
+                    <li>
                       <label className="checkbox-container">
                         All
                         <input type="checkbox" />
@@ -171,7 +185,7 @@ const CoursesPage = (props) => {
                         <span className="count">100</span>
                       </div>
                     </li>
-                    <li className="">
+                    <li>
                       <label className="checkbox-container">
                         Free
                         <input type="checkbox" />
@@ -181,7 +195,7 @@ const CoursesPage = (props) => {
                         <span className="count">11</span>
                       </div>
                     </li>
-                    <li className="">
+                    <li>
                       <label className="checkbox-container">
                         Paid
                         <input type="checkbox" />
@@ -229,7 +243,13 @@ const CoursesPage = (props) => {
                 </div>
 
                 <div className="flex flex-wrap page-content__body">
-                  {courses.map((course) => (
+                  {courses.filter((course)=>{
+                    if(query == ""){
+                      return course
+                    }else if(course.title.toLowerCase().includes(query.toLowerCase())) {
+                      return course
+                    }
+                  }).map((course) => (
                     <AllCourses key={course.title} course={course} />
                   ))}
                 </div>

@@ -23,7 +23,7 @@ const Header = () => {
 
 
 
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);  
 
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
@@ -31,8 +31,6 @@ const Header = () => {
 
   const { state, dispatch } = useContext(Store);
   const { cart, userInfo } = state;
-
-  console.log("Header user info", userInfo)
 
   return (
     <header className="text-gray-600 body-font">
@@ -78,8 +76,6 @@ const Header = () => {
           </Link>
         </nav>
 
-        
-
         <span className="relative inline-block mr-6">
           <Link href="/cart">
             <a>
@@ -93,7 +89,7 @@ const Header = () => {
           </span>
         </span>
         {userInfo ? (
-          <Usermenu user={userInfo} />
+          <Usermenu userInfo={userInfo} />
         ) : (
           <Link href="/login">
             <a>

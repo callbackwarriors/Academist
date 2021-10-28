@@ -17,7 +17,7 @@ const ManageCourses = ({ courses }: IProp) => {
       </div>
       <div className="">
         {courses.map((course: ICourses) => (
-          <ManageCourse key={course.title} course={course}></ManageCourse>
+          <ManageCourse key={course._id} course={course}></ManageCourse>
         ))}
       </div>
     </div>
