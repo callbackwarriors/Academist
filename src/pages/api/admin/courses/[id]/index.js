@@ -23,8 +23,8 @@ handler.put(async (req, res) => {
     courses.categories = req.body.categories;
     courses.level = req.body.level;
     courses.price = req.body.price;
-    // courses.courseProvider = req.body.courseProvider;
     courses.videoUrl = req.body.videoUrl;
+    
     courses.img = req.body.img;
     courses.desc = req.body.desc;
     await courses.save();

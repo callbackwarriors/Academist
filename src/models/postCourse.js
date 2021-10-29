@@ -3,7 +3,9 @@ const PostCourseSchema = new mongoose.Schema(
   {
     inputList: [
       {
-         link: { type: String, required: true } 
+         name: { type: String, required: true },
+         link: { type: String, required: true },
+         instructor: {type: Boolean, required: true}
         }
       ],
     title: { type: String, required: true },

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import React, { useContext, useReducer, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Swal from "sweetalert2";
@@ -34,7 +34,9 @@ function reducer(state, action) {
 }
 
 const AddNewCourse = () => {
+  const router = useRouter();
   const [inputList, setInputList] = useState([{ link: "" }]);
+  const [instructor, setInstructor] = useState(false);
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
@@ -66,7 +68,7 @@ const AddNewCourse = () => {
   };
 
   const handleAddClick = () => {
-    setInputList([...inputList, { link: "" }]);
+    setInputList([...inputList, { link: "", name: "" }]);
   };
 
   const uploadHandler = async (e) => {
@@ -100,8 +102,7 @@ const AddNewCourse = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("inputList", inputList);
-    console.log("title", title);
+
     try {
       const { data } = await axios.post("/api/postcourses/postCourse", {
         inputList,
@@ -117,15 +118,12 @@ const AddNewCourse = () => {
       });
       console.log("data", data);
       Swal.fire({
-        icon: 'success',
+        icon: "success",
         // title: 'Image',
-        text: 'Course uploaded successfully',
-      })
-      
+        text: "Course uploaded successfully",
+      });
 
-
-router.push('/courses')
-
+      router.push("/courses");
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -177,13 +175,42 @@ router.push('/courses')
               return (
                 <div>
                   <input
-                    className="w-full px-4 py-3 text-lg border-1 focus:border-royal-blue"
+                    className="w-full px-4 py-3 mb-4 text-lg border-1 focus:border-royal-blue"
+                    name="name"
+                    type="text"
+                    placeholder="Enter Lesion Name"
+                    value={x.name}
+                    onChange={(e) => handleInputChange(e, i)}
+                  />
+                  <input
+                    className="w-full px-4 py-3 mr-10 text-lg border-1 focus:border-royal-blue"
                     name="link"
                     type="text"
                     placeholder="Enter Lesion Link"
                     value={x.link}
                     onChange={(e) => handleInputChange(e, i)}
                   />
+                  {/* <div className="mb-4">
+                    <input
+                      id="certificate"
+                      className="rounded focus:border-royal-blue "
+                      type="checkbox"
+                      name="certificate"
+                    />
+                    <label htmlFor="certificate">
+                      Is certificate include?
+                    </label>
+                  </div> */}
+                  <div className="mb-4">
+                    <input
+                      id="instructor"
+                      onClick={(e) => setInstructor(e.target.checked)}
+                      className="rounded focus:border-royal-blue "
+                      type="checkbox"
+                      name="user"
+                    />
+                    <label htmlFor="instructor">Instructor</label>
+                  </div>
 
                   <div className="btn-box">
                     {inputList.length !== 1 && (
@@ -202,6 +229,9 @@ router.push('/courses')
                         Add
                       </button>
                     )}
+                  </div>
+                  <div style={{ marginTop: 20 }}>
+                    {JSON.stringify(inputList)}
                   </div>
                 </div>
               );
