@@ -35,8 +35,10 @@ function reducer(state, action) {
 
 const AddNewCourse = () => {
   const router = useRouter();
-  const [inputList, setInputList] = useState([{ link: "" }]);
-  const [instructor, setInstructor] = useState(false);
+  const [inputList, setInputList] = useState([
+    { link: "", name: "", isOpen: false },
+  ]);
+  const [certificate, setCertificate] = useState(false);
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
@@ -57,6 +59,7 @@ const AddNewCourse = () => {
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
+    console.log("list", list);
     list[index][name] = value;
     setInputList(list);
   };
@@ -68,7 +71,7 @@ const AddNewCourse = () => {
   };
 
   const handleAddClick = () => {
-    setInputList([...inputList, { link: "", name: "" }]);
+    setInputList([...inputList, { link: "", name: "", isOpen: isOpen }]);
   };
 
   const uploadHandler = async (e) => {
@@ -114,6 +117,7 @@ const AddNewCourse = () => {
         price,
         level,
         desc,
+        certificate,
         img,
       });
       console.log("data", data);
@@ -183,33 +187,23 @@ const AddNewCourse = () => {
                     onChange={(e) => handleInputChange(e, i)}
                   />
                   <input
-                    className="w-full px-4 py-3 mr-10 text-lg border-1 focus:border-royal-blue"
+                    className="w-full px-4 py-3 text-lg border-1 focus:border-royal-blue"
                     name="link"
                     type="text"
                     placeholder="Enter Lesion Link"
                     value={x.link}
                     onChange={(e) => handleInputChange(e, i)}
                   />
-                  {/* <div className="mb-4">
-                    <input
-                      id="certificate"
-                      className="rounded focus:border-royal-blue "
-                      type="checkbox"
-                      name="certificate"
-                    />
-                    <label htmlFor="certificate">
-                      Is certificate include?
-                    </label>
-                  </div> */}
                   <div className="mb-4">
                     <input
                       id="instructor"
-                      onClick={(e) => setInstructor(e.target.checked)}
+                      onChange={(e) => handleInputChange(e, i)}
                       className="rounded focus:border-royal-blue "
                       type="checkbox"
-                      name="user"
+                      value={x.isOpen}
+                      name="isOpen"
                     />
-                    <label htmlFor="instructor">Instructor</label>
+                    <label htmlFor="instructor">open video</label>
                   </div>
 
                   <div className="btn-box">
@@ -304,6 +298,7 @@ const AddNewCourse = () => {
               id="certificate"
               className="rounded focus:border-royal-blue "
               type="checkbox"
+              onClick={(e) => setCertificate(e.target.checked)}
               name="certificate"
             />
             <label htmlFor="certificate"> Is certificate include?</label>

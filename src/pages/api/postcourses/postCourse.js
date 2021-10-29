@@ -16,6 +16,7 @@ handler.post(async (req, res) => {
     level: req.body.level,
     price: req.body.price,
     desc: req.body.desc,
+    certificate: req.body.certificate,
     img: req.body.img,
   });
 console.log('newCourse', newCourse);
@@ -32,6 +33,7 @@ console.log('newCourse', newCourse);
     level: course.level,
     price: course.price,
     desc: course.desc,
+    certificate: course.certificate,
     img: course.img,
   });
 });

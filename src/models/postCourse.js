@@ -5,7 +5,7 @@ const PostCourseSchema = new mongoose.Schema(
       {
          name: { type: String, required: true },
          link: { type: String, required: true },
-         instructor: {type: Boolean, required: true}
+         isOpen: {type: Boolean, required: true}
         }
       ],
     title: { type: String, required: true },
@@ -16,6 +16,7 @@ const PostCourseSchema = new mongoose.Schema(
     level: { type: String, required: true },
     price: { type: Number, required: true },
     desc: { type: String, required: true },
+    certificate: { type: Boolean, required: true},
     img: { type: String, required: true },
   },
   { timestamps: true }
