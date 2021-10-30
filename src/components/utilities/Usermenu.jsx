@@ -166,7 +166,7 @@ export default function Example({ userInfo }) {
                 </a>
               </Link>
 
-              <Link href="/dashboard/courses/addcourse">
+              <Link href="/dashboard/courses/lesson">
                 <a>
                   <Menu.Item>
                     {({ active }) => (
@@ -186,7 +186,7 @@ export default function Example({ userInfo }) {
                             aria-hidden="true"
                           />
                         )}
-                        Add new course
+                        Add new lesson
                       </button>
                     )}
                   </Menu.Item>
