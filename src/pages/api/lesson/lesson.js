@@ -1,5 +1,5 @@
 import nc from "next-connect";
-import Lessons from "../../../models/Lessons";
+import Lessons from "../../../models/LessonData";
 import db from "../../../utils/db";
 
 const handler = nc();

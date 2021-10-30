@@ -10,6 +10,6 @@ const PostLessonSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-const Lesson =
-  mongoose.models.Lesson || mongoose.model("Lesson", PostLessonSchema);
-export default Lesson;
+const LessonData =
+  mongoose.models.LessonData || mongoose.model("LessonData", PostLessonSchema);
+export default LessonData;
