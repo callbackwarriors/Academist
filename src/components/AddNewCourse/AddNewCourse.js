@@ -59,7 +59,7 @@ const AddNewCourse = () => {
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
-    console.log("list", list);
+
     list[index][name] = value;
     setInputList(list);
   };
@@ -71,7 +71,7 @@ const AddNewCourse = () => {
   };
 
   const handleAddClick = () => {
-    setInputList([...inputList, { link: "", name: "", }]);
+    setInputList([...inputList, { link: "", title: "", }]);
   };
 
   const uploadHandler = async (e) => {
@@ -179,14 +179,16 @@ const AddNewCourse = () => {
               return (
                 <div>
                   <input
+                  required
                     className="w-full px-4 py-3 mb-4 text-lg border-1 focus:border-royal-blue"
-                    name="name"
+                    name="title"
                     type="text"
                     placeholder="Enter lecture title"
-                    value={x.name}
+                    value={x.title}
                     onChange={(e) => handleInputChange(e, i)}
                   />
                   <input
+                  required
                     className="w-full px-4 py-3 text-lg border-1 focus:border-royal-blue"
                     name="link"
                     type="text"
@@ -195,7 +197,6 @@ const AddNewCourse = () => {
                     onChange={(e) => handleInputChange(e, i)}
                   />
                   
-
                   <div className="btn-box">
                     {inputList.length !== 1 && (
                       <button
@@ -230,6 +231,9 @@ const AddNewCourse = () => {
               placeholder="Write short description"
               id="shortDesc"
             ></textarea>
+
+
+
           </div>
 
           <div className="mb-4">
