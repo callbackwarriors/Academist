@@ -11,9 +11,9 @@ const LatestCourses = ({courses}) => {
       </div>
       <div className="container">
         <div className="flex flex-wrap">
-          {courses.slice(0, 3).map((course) => (
+          {/* {courses.slice(0, 3).map((course) => (
             <LatestCourse key={course.title} course={course}></LatestCourse>
-          ))}
+          ))} */}
         </div>
       </div>
     </section>
