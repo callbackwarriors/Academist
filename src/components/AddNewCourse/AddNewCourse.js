@@ -36,7 +36,7 @@ function reducer(state, action) {
 const AddNewCourse = () => {
   const router = useRouter();
   const [inputList, setInputList] = useState([
-    { link: "", name: "", isOpen: false },
+    { link: "", title: "" },
   ]);
   const [certificate, setCertificate] = useState(false);
   const [title, setTitle] = useState("");
@@ -71,7 +71,7 @@ const AddNewCourse = () => {
   };
 
   const handleAddClick = () => {
-    setInputList([...inputList, { link: "", name: "", isOpen: isOpen }]);
+    setInputList([...inputList, { link: "", name: "", }]);
   };
 
   const uploadHandler = async (e) => {
@@ -174,7 +174,7 @@ const AddNewCourse = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="title">Enter Lesion</label>
+            <label htmlFor="title">Enter lecture title</label>
             {inputList.map((x, i) => {
               return (
                 <div>
@@ -182,7 +182,7 @@ const AddNewCourse = () => {
                     className="w-full px-4 py-3 mb-4 text-lg border-1 focus:border-royal-blue"
                     name="name"
                     type="text"
-                    placeholder="Enter Lesion Name"
+                    placeholder="Enter lecture title"
                     value={x.name}
                     onChange={(e) => handleInputChange(e, i)}
                   />
@@ -190,21 +190,11 @@ const AddNewCourse = () => {
                     className="w-full px-4 py-3 text-lg border-1 focus:border-royal-blue"
                     name="link"
                     type="text"
-                    placeholder="Enter Lesion Link"
+                    placeholder="Enter lecture link"
                     value={x.link}
                     onChange={(e) => handleInputChange(e, i)}
                   />
-                  <div className="mb-4">
-                    <input
-                      id="instructor"
-                      onChange={(e) => handleInputChange(e, i)}
-                      className="rounded focus:border-royal-blue "
-                      type="checkbox"
-                      value={x.isOpen}
-                      name="isOpen"
-                    />
-                    <label htmlFor="instructor">open video</label>
-                  </div>
+                  
 
                   <div className="btn-box">
                     {inputList.length !== 1 && (
