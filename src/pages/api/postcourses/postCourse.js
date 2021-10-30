@@ -7,6 +7,7 @@ handler.post(async (req, res) => {
 
   await db.connect();
   const newCourse = new Course({
+    inputList: req.body.inputList,
     title: req.body.title,
     slug: req.body.slug,
     videoUrl: req.body.videoUrl,
@@ -15,13 +16,15 @@ handler.post(async (req, res) => {
     level: req.body.level,
     price: req.body.price,
     desc: req.body.desc,
+    certificate: req.body.certificate,
     img: req.body.img,
   });
 console.log('newCourse', newCourse);
   const course = await newCourse.save();
   await db.disconnect();
-console.log('course', course);
+
   res.send({
+    inputList: course.inputList,
     title: course.title,
     slug: course.slug,
     videoUrl: course.videoUrl,
@@ -30,6 +33,7 @@ console.log('course', course);
     level: course.level,
     price: course.price,
     desc: course.desc,
+    certificate: course.certificate,
     img: course.img,
   });
 });

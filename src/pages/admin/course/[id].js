@@ -32,7 +32,6 @@ function reducer(state, action) {
 }
 
 function CourseEdit({ params }) {
-  // console.log('params', params);
   const productId = params.id;
   const { state } = useContext(Store);
   const [{ loading, error, loadingUpdate, loadingUpload }, dispatch] =
@@ -60,7 +59,6 @@ function CourseEdit({ params }) {
           const { data } = await axios.get(`/api/admin/courses/${productId}`, {
             headers: { authorization: `Bearer ${userInfo.token}` },
           });
-          console.log(data);
           dispatch({ type: "FETCH_SUCCESS" });
           setValue("title", data.title);
           setValue("slug", data.slug);
@@ -74,7 +72,6 @@ function CourseEdit({ params }) {
           setValue("desc", data.desc);
         } catch (err) {
           console.log(err.message);
-          // dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
         }
       };
       fetchData();
@@ -377,16 +374,6 @@ function CourseEdit({ params }) {
                       </span>
                     </label>
                   </div>
-                  {/* <div className="form-element">
-                    <span className="block w-full mx-auto my-4 lg:w-4/5 ">
-                      <input
-                        onChange={uploadHandler}
-                        type="file"
-                        className="flex w-full px-6 py-3 text-lg text-white bg-indigo-600 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"
-                        value="Upload File"
-                      />
-                    </span>
-                  </div> */}
                   <button>
                     Upload File
                     <input type="file" onChange={uploadHandler} hidden />

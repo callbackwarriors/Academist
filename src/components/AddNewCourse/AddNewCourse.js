@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import React, { useContext, useReducer, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Swal from "sweetalert2";
@@ -34,8 +34,11 @@ function reducer(state, action) {
 }
 
 const AddNewCourse = () => {
-
-  const router = useRouter()
+  const router = useRouter();
+  const [inputList, setInputList] = useState([
+    { link: "", name: "", isOpen: false },
+  ]);
+  const [certificate, setCertificate] = useState(false);
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
@@ -45,7 +48,6 @@ const AddNewCourse = () => {
   const [price, setPrice] = useState(0);
   const [desc, setDesc] = useState("");
   const [img, setImg] = useState("");
-
   const { state } = useContext(Store);
   const { userInfo } = state;
   const [{ loading, error, loadingUpdate, loadingUpload }, dispatch] =
@@ -53,6 +55,24 @@ const AddNewCourse = () => {
       loading: true,
       error: "",
     });
+
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    console.log("list", list);
+    list[index][name] = value;
+    setInputList(list);
+  };
+
+  const handleRemoveClick = (index) => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
+
+  const handleAddClick = () => {
+    setInputList([...inputList, { link: "", name: "", isOpen: isOpen }]);
+  };
 
   const uploadHandler = async (e) => {
     const file = e.target.files[0];
@@ -71,10 +91,10 @@ const AddNewCourse = () => {
       setImg(data.secure_url);
 
       Swal.fire({
-        icon: 'success',
-        title: 'Image',
-        text: 'Image uploaded successfully',
-      })
+        icon: "success",
+        title: "Image",
+        text: "Image uploaded successfully",
+      });
     } catch (err) {
       Swal.fire({
         icon: "error",
@@ -88,6 +108,7 @@ const AddNewCourse = () => {
 
     try {
       const { data } = await axios.post("/api/postcourses/postCourse", {
+        inputList,
         title,
         slug,
         videoUrl,
@@ -96,18 +117,17 @@ const AddNewCourse = () => {
         price,
         level,
         desc,
+        certificate,
         img,
       });
+      console.log("data", data);
       Swal.fire({
-        icon: 'success',
+        icon: "success",
         // title: 'Image',
-        text: 'Course uploaded successfully',
-      })
-      
+        text: "Course uploaded successfully",
+      });
 
-
-router.push('/courses')
-
+      router.push("/courses");
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -152,6 +172,64 @@ router.push('/courses')
               name="intro"
               placeholder="Add intro video link"
             />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="title">Enter Lesion</label>
+            {inputList.map((x, i) => {
+              return (
+                <div>
+                  <input
+                    className="w-full px-4 py-3 mb-4 text-lg border-1 focus:border-royal-blue"
+                    name="name"
+                    type="text"
+                    placeholder="Enter Lesion Name"
+                    value={x.name}
+                    onChange={(e) => handleInputChange(e, i)}
+                  />
+                  <input
+                    className="w-full px-4 py-3 text-lg border-1 focus:border-royal-blue"
+                    name="link"
+                    type="text"
+                    placeholder="Enter Lesion Link"
+                    value={x.link}
+                    onChange={(e) => handleInputChange(e, i)}
+                  />
+                  <div className="mb-4">
+                    <input
+                      id="instructor"
+                      onChange={(e) => handleInputChange(e, i)}
+                      className="rounded focus:border-royal-blue "
+                      type="checkbox"
+                      value={x.isOpen}
+                      name="isOpen"
+                    />
+                    <label htmlFor="instructor">open video</label>
+                  </div>
+
+                  <div className="btn-box">
+                    {inputList.length !== 1 && (
+                      <button
+                        className="px-4 py-1 my-4 mr-4 text-lg text-white bg-red-600 border-0 cursor-pointer focus:outline-none hover:bg-red-400"
+                        onClick={() => handleRemoveClick(i)}
+                      >
+                        Remove
+                      </button>
+                    )}
+                    {inputList.length - 1 === i && (
+                      <button
+                        className="px-4 py-1 my-4 text-lg text-white border-0 cursor-pointer bg-royal-blue focus:outline-none hover:bg-indigo-600"
+                        onClick={handleAddClick}
+                      >
+                        Add
+                      </button>
+                    )}
+                  </div>
+                  <div style={{ marginTop: 20 }}>
+                    {JSON.stringify(inputList)}
+                  </div>
+                </div>
+              );
+            })}
           </div>
           <div className="mb-4">
             <label htmlFor="shortDesc">Short Description</label>
@@ -219,8 +297,8 @@ router.push('/courses')
             <input
               id="certificate"
               className="rounded focus:border-royal-blue "
-            //   onBlur={handleBlur}
               type="checkbox"
+              onClick={(e) => setCertificate(e.target.checked)}
               name="certificate"
             />
             <label htmlFor="certificate"> Is certificate include?</label>
@@ -266,15 +344,6 @@ router.push('/courses')
               </div>
             </div>
           </div>
-          {/* <button
-            disabled={!setImg}
-            className="px-12 py-3 text-lg text-white border-0 bg-royal-blue focus:outline-none hover:bg-indigo-600"
-          >
-            <input type="file" onChange={uploadHandler} />
-          </button> */}
-          {/* <br />
-          <br /> */}
-
           <input
             className="px-12 py-3 text-lg text-white border-0 cursor-pointer bg-royal-blue focus:outline-none hover:bg-indigo-600"
             type="submit"

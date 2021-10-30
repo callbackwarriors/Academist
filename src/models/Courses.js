@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const CoursesSchema = new mongoose.Schema(
   {
+    inputList: [{ link: { type: Array, required: true } }],
     title: { type: String, required: true }, // unique: true
     slug: { type: String, required: true, unique: true },
     shortDesc: { type: String, required: true },
