@@ -35,10 +35,11 @@ function reducer(state, action) {
 
 const AddNewCourse = () => {
   const router = useRouter();
-  const [inputList, setInputList] = useState([
-    { link: "", name: "", isOpen: false },
-  ]);
+  const [inputList, setInputList] = useState([{ link: "", name: "", isOpen: false }]);
+  console.log("inputList", inputList);
   const [certificate, setCertificate] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  console.log('isOpen', isOpen);
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
@@ -59,8 +60,8 @@ const AddNewCourse = () => {
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
-    console.log("list", list);
     list[index][name] = value;
+    console.log("list", list);
     setInputList(list);
   };
 
@@ -71,7 +72,7 @@ const AddNewCourse = () => {
   };
 
   const handleAddClick = () => {
-    setInputList([...inputList, { link: "", name: "", isOpen: isOpen }]);
+    setInputList([...inputList, { link: "", name: "", isOpen }]);
   };
 
   const uploadHandler = async (e) => {
@@ -194,16 +195,26 @@ const AddNewCourse = () => {
                     value={x.link}
                     onChange={(e) => handleInputChange(e, i)}
                   />
-                  <div className="mb-4">
+                  {/* <div className="mb-4">
                     <input
-                      id="instructor"
+                      id="isOpen"
                       onChange={(e) => handleInputChange(e, i)}
                       className="rounded focus:border-royal-blue "
                       type="checkbox"
                       value={x.isOpen}
                       name="isOpen"
                     />
-                    <label htmlFor="instructor">open video</label>
+                    <label htmlFor="isOpen">open video</label>
+                  </div> */}
+                  <div className="mb-4">
+                    <input
+                      id="isOpen"
+                      onClick={(e) => setIsOpen(e.target.checked)}
+                      className="rounded focus:border-royal-blue "
+                      type="checkbox"
+                      name="isOpen"
+                    />
+                    <label htmlFor="isOpen">open video</label>
                   </div>
 
                   <div className="btn-box">
