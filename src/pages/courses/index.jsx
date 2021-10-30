@@ -44,7 +44,7 @@ const CoursesPage = (props) => {
                     : "ease-in -translate-x-full"
                 }`}
               >
-                <div className="allCourses__page-sidebar--findBox mb-6">
+                <div className="mb-6 allCourses__page-sidebar--findBox">
                   <div></div>
               <form action="">
                    <input
@@ -129,7 +129,7 @@ const CoursesPage = (props) => {
                   </ul>
                 </div>
 
-                <div className="allCourses__page-sidebar--checklist mb-6">
+                <div className="mb-6 allCourses__page-sidebar--checklist">
                   <h6>Skill level</h6>
                   <ul>
                     <li>
@@ -194,7 +194,7 @@ const CoursesPage = (props) => {
               </div>
             </div>
 
-            <div className="w-full overflow-hidden lg:w-3/4 xl:w-3/4 pl-2 content py-16">
+            <div className="w-full py-16 pl-2 overflow-hidden lg:w-3/4 xl:w-3/4 content">
               <div className="page-content ">
 
                 
