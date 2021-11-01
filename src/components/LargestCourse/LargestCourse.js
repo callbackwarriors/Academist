@@ -3,7 +3,8 @@ import Image from 'next/image';
 import { BsBook, BsHeart } from 'react-icons/bs';
 import { HiOutlineUserGroup } from 'react-icons/hi';
 
-const LargestCourse = ({ course }: any) => {
+const LargestCourse = ({ course }) => {
+    console.log(course);
     const { img, title, price, slug } = course;
     return (
 
