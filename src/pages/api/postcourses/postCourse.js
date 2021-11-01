@@ -18,6 +18,7 @@ handler.post(async (req, res) => {
     desc: req.body.desc,
     certificate: req.body.certificate,
     img: req.body.img,
+    prichard: false
   });
 console.log('newCourse', newCourse);
   const course = await newCourse.save();
@@ -35,6 +36,7 @@ console.log('newCourse', newCourse);
     desc: course.desc,
     certificate: course.certificate,
     img: course.img,
+    prichard: course.prichard,
   });
 });
 export default handler;

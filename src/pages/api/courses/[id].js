@@ -1,11 +1,11 @@
 import nc from 'next-connect';
-import Courses from '../../../models/Courses';
+import Course from '../../../models/postCourse';
 import db from '../../../utils/db';
 const handler = nc();
 
 handler.get(async(req, res) => {
   await db.connect();
-  const course = await Courses.findById(req.query.id);
+  const course = await Course.findById(req.query.id);
   await db.disconnect()
   res.send(course);
 });

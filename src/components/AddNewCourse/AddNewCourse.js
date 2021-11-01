@@ -4,6 +4,7 @@ import React, { useContext, useReducer, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Swal from "sweetalert2";
 import { Store } from "utils/Store";
+
 function reducer(state, action) {
   switch (action.type) {
     case "FETCH_REQUEST":
@@ -34,10 +35,8 @@ function reducer(state, action) {
 }
 
 const AddNewCourse = () => {
-  const router = useRouter();
-  const [inputList, setInputList] = useState([
-    { link: "", title: "" },
-  ]);
+const router = useRouter();
+  const [inputList, setInputList] = useState([{ link: "", title: "" }]);
   const [certificate, setCertificate] = useState(false);
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
@@ -71,7 +70,7 @@ const AddNewCourse = () => {
   };
 
   const handleAddClick = () => {
-    setInputList([...inputList, { link: "", title: "", }]);
+    setInputList([...inputList, { link: "", title: "" }]);
   };
 
   const uploadHandler = async (e) => {
@@ -123,7 +122,6 @@ const AddNewCourse = () => {
       console.log("data", data);
       Swal.fire({
         icon: "success",
-        // title: 'Image',
         text: "Course uploaded successfully",
       });
 
@@ -179,7 +177,7 @@ const AddNewCourse = () => {
               return (
                 <div>
                   <input
-                  required
+                    required
                     className="w-full px-4 py-3 mb-4 text-lg border-1 focus:border-royal-blue"
                     name="title"
                     type="text"
@@ -188,7 +186,7 @@ const AddNewCourse = () => {
                     onChange={(e) => handleInputChange(e, i)}
                   />
                   <input
-                  required
+                    required
                     className="w-full px-4 py-3 text-lg border-1 focus:border-royal-blue"
                     name="link"
                     type="text"
@@ -196,7 +194,7 @@ const AddNewCourse = () => {
                     value={x.link}
                     onChange={(e) => handleInputChange(e, i)}
                   />
-                  
+
                   <div className="btn-box">
                     {inputList.length !== 1 && (
                       <button
@@ -215,9 +213,6 @@ const AddNewCourse = () => {
                       </button>
                     )}
                   </div>
-                  <div style={{ marginTop: 20 }}>
-                    {JSON.stringify(inputList)}
-                  </div>
                 </div>
               );
             })}
@@ -231,9 +226,6 @@ const AddNewCourse = () => {
               placeholder="Write short description"
               id="shortDesc"
             ></textarea>
-
-
-
           </div>
 
           <div className="mb-4">
@@ -277,6 +269,7 @@ const AddNewCourse = () => {
               placeholder="Write your course price here..."
             />
           </div>
+
           <div className="mb-4">
             <label htmlFor="desc">Course Overview</label>
             <textarea
