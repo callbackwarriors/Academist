@@ -166,7 +166,7 @@ export default function Example({ userInfo }) {
                 </a>
               </Link>
 
-              <Link href="/dashboard/courses/lesson">
+              <Link href="/dashboard/courses/addcourse">
                 <a>
                   <Menu.Item>
                     {({ active }) => (
