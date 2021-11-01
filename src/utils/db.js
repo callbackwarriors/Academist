@@ -37,5 +37,12 @@ function convertDocToObj(doc) {
   return doc;
 }
 
-const db = { connect, disconnect, convertDocToObj };
+function convertSubDocToObj(doc) {
+  doc.lessondatas._id = doc.lessondatas._id.toString();
+  doc.lessondatas.createdAt = doc.lessondatas.createdAt.toString();
+  doc.lessondatas.updatedAt = doc.lessondatas.updatedAt.toString();
+  return doc;
+}
+
+const db = { connect, disconnect, convertDocToObj, convertSubDocToObj };
 export default db;

@@ -10,20 +10,22 @@ interface IProps {
 
 
 const courseDetails = (props: IProps) => {
-
-  const { course } = props;
-  if (!course) {
-    return <Layout>
-      <div className="container py-20 text-center">
-        Loading...
-      </div>
-    </Layout>
-  }
+  console.log('props', props);
+  
+  // const { singleCourse } = props;
+  // if (!singleCourse) {
+  //   return <Layout>
+  //     <div className="container py-20 text-center">
+  //       Loading...
+  //     </div>
+  //   </Layout>
+  // }
 
   return (
-    <Layout title={course.title}>
-      <CourseDetails course={course}></CourseDetails>
-    </Layout>
+    <div>Safawat Vai</div>
+    // <Layout title={course.title}>
+    //   <CourseDetails course={course}></CourseDetails>
+    // </Layout>
   );
 };
 
@@ -34,10 +36,11 @@ export async function getServerSideProps(context: { params: any; }) {
   const { slug } = params;
   await db.connect();
   const course = await Courses.findOne({ slug }).lean();
+  const singleCourse = JSON.parse(JSON.stringify(course))
   await db.disconnect();
   return {
     props: {
-      course: db.convertDocToObj(course),
+      singleCourse,
     },
   };
 }

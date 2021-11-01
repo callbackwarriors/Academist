@@ -4,6 +4,8 @@ import React, { useContext, useReducer, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Swal from "sweetalert2";
 import { Store } from "utils/Store";
+import TextEditor from "./DraftEditor";
+
 function reducer(state, action) {
   switch (action.type) {
     case "FETCH_REQUEST":
@@ -35,8 +37,7 @@ function reducer(state, action) {
 
 const AddNewCourse = () => {
   const router = useRouter();
-  const [inputList, setInputList] = useState([{ link: "", name: "", isOpen: false }]);
-  console.log("inputList", inputList);
+  const [inputList, setInputList] = useState([{ link: "", title: "" }]);
   const [certificate, setCertificate] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   console.log('isOpen', isOpen);
@@ -72,7 +73,7 @@ const AddNewCourse = () => {
   };
 
   const handleAddClick = () => {
-    setInputList([...inputList, { link: "", name: "", isOpen }]);
+    setInputList([...inputList, { link: "", title: "" }]);
   };
 
   const uploadHandler = async (e) => {
@@ -137,6 +138,9 @@ const AddNewCourse = () => {
     }
   };
 
+  // render() {
+  //   const { editorState } = this.state;
+
   return (
     <div className="addNewCourse">
       <form action="" onSubmit={handleSubmit}>
@@ -175,47 +179,28 @@ const AddNewCourse = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="title">Enter Lesion</label>
+            <label htmlFor="title">Enter lecture title</label>
             {inputList.map((x, i) => {
               return (
                 <div>
                   <input
+                    required
                     className="w-full px-4 py-3 mb-4 text-lg border-1 focus:border-royal-blue"
-                    name="name"
+                    name="title"
                     type="text"
-                    placeholder="Enter Lesion Name"
-                    value={x.name}
+                    placeholder="Enter lecture title"
+                    value={x.title}
                     onChange={(e) => handleInputChange(e, i)}
                   />
                   <input
+                    required
                     className="w-full px-4 py-3 text-lg border-1 focus:border-royal-blue"
                     name="link"
                     type="text"
-                    placeholder="Enter Lesion Link"
+                    placeholder="Enter lecture link"
                     value={x.link}
                     onChange={(e) => handleInputChange(e, i)}
                   />
-                  {/* <div className="mb-4">
-                    <input
-                      id="isOpen"
-                      onChange={(e) => handleInputChange(e, i)}
-                      className="rounded focus:border-royal-blue "
-                      type="checkbox"
-                      value={x.isOpen}
-                      name="isOpen"
-                    />
-                    <label htmlFor="isOpen">open video</label>
-                  </div> */}
-                  <div className="mb-4">
-                    <input
-                      id="isOpen"
-                      onClick={(e) => setIsOpen(e.target.checked)}
-                      className="rounded focus:border-royal-blue "
-                      type="checkbox"
-                      name="isOpen"
-                    />
-                    <label htmlFor="isOpen">open video</label>
-                  </div>
 
                   <div className="btn-box">
                     {inputList.length !== 1 && (
@@ -234,9 +219,6 @@ const AddNewCourse = () => {
                         Add
                       </button>
                     )}
-                  </div>
-                  <div style={{ marginTop: 20 }}>
-                    {JSON.stringify(inputList)}
                   </div>
                 </div>
               );
@@ -294,6 +276,7 @@ const AddNewCourse = () => {
               placeholder="Write your course price here..."
             />
           </div>
+
           <div className="mb-4">
             <label htmlFor="desc">Course Overview</label>
             <textarea
@@ -304,6 +287,9 @@ const AddNewCourse = () => {
               name="desc"
             ></textarea>
           </div>
+          {/*  */}
+          <TextEditor />
+          {/*  */}
           <div className="mb-4">
             <input
               id="certificate"
@@ -364,5 +350,6 @@ const AddNewCourse = () => {
     </div>
   );
 };
+// };
 
 export default AddNewCourse;
