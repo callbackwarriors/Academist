@@ -44,7 +44,6 @@ const CourseDetails = ({ course }: IProps) => {
                                 <div className="px-10 py-10 mt-10 rounded-md shadow-lg tab1">
                                     <h6>Course Circullum</h6>
                                     {course.inputList.map((listItem) => <Curriculam listItem={listItem}></Curriculam>)}
-                                    {/* <Curriculam course={course.inputList}></Curriculam> */}
                                 </div>
                             </TabPanel>
                             <TabPanel>

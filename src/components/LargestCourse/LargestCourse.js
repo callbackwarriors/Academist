@@ -7,7 +7,6 @@ const LargestCourse = ({ course }) => {
     console.log(course);
     const { img, title, price, slug } = course;
     return (
-
         <>
             <div className="mb-6 md:mb-0 largestCourse__cardSection">
                 <div className="largestCourse__cardSection--imgSection">
