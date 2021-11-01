@@ -86,7 +86,20 @@ const SimpleCardForm = ({ handlePayment, err }) => {
         </button>
       </form>
       {paymentError && <p style={{ color: "red" }}>{paymentError}</p>}
-      {err && <p style={{ color: "red" }}>{err.message? 'Your course already added' : ''}</p>}
+      {err && (
+        <p style={{ color: "red" }}>
+          {err.message ? "Your course already added" : ""}
+        </p>
+      )}
+      <ul className="pt-8">
+        <li className="space-y-0.5 w-full lg:w-4/5 block mb-4 text-xl">
+          <strong>Payment  Info</strong>
+        </li>
+        <li className="space-y-0.5 w-full lg:w-4/5 block border-2 p-3 mb-2">
+          <strong>Card number: </strong>
+          4242 4242 4242 4242
+        </li>
+      </ul>
     </div>
   );
 };

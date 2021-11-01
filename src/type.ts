@@ -21,14 +21,21 @@ export interface ICourses {
   categories: string;
   level: string;
   price: number;
-  // courseProvider: string;
+  inputList: [
+    {
+      title: string;
+      link: string;
+    }
+  ];
   videoUrl: string;
   img: string;
   desc: string;
 }
 
 export interface IOrders {
-  filter(arg0: (order: { userInfo: string; }) => boolean): import("react").ReactNode;
+  filter(
+    arg0: (order: { userInfo: string }) => boolean
+  ): import("react").ReactNode;
   map(arg0: (order: IOrders) => JSX.Element): import("react").ReactNode;
   _id: string;
   address: string;
@@ -65,7 +72,6 @@ export interface IOrders {
     }
   ];
 }
-
 
 export interface IUser {
   name: string;
