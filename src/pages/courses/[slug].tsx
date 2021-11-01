@@ -1,7 +1,7 @@
 import CourseDetails from "components/CourseDetails/CourseDetails";
 import Layout from "components/utilities/Layout";
 import { ICourses } from "type";
-import Courses from '../../models/Courses';
+import Course from '../../models/postCourse';
 import db from '../../utils/db';
 
 interface IProps {
@@ -10,22 +10,20 @@ interface IProps {
 
 
 const courseDetails = (props: IProps) => {
-  console.log('props', props);
-  
-  // const { singleCourse } = props;
-  // if (!singleCourse) {
-  //   return <Layout>
-  //     <div className="container py-20 text-center">
-  //       Loading...
-  //     </div>
-  //   </Layout>
-  // }
+  const { singleCourse }: any = props;
+  console.log('singleCourse', singleCourse);
+  if (!singleCourse) {
+    return <Layout>
+      <div className="container py-20 text-center">
+        Loading...
+      </div>
+    </Layout>
+  }
 
   return (
-    <div>Safawat Vai</div>
-    // <Layout title={course.title}>
-    //   <CourseDetails course={course}></CourseDetails>
-    // </Layout>
+    <Layout title={singleCourse.title}>
+      <CourseDetails course={singleCourse}></CourseDetails>
+    </Layout>
   );
 };
 
@@ -35,7 +33,7 @@ export async function getServerSideProps(context: { params: any; }) {
   const { params } = context;
   const { slug } = params;
   await db.connect();
-  const course = await Courses.findOne({ slug }).lean();
+  const course = await Course.findOne({ slug }).lean();
   const singleCourse = JSON.parse(JSON.stringify(course))
   await db.disconnect();
   return {

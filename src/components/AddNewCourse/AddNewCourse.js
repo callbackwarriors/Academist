@@ -4,7 +4,6 @@ import React, { useContext, useReducer, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Swal from "sweetalert2";
 import { Store } from "utils/Store";
-import TextEditor from "./DraftEditor";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -36,7 +35,7 @@ function reducer(state, action) {
 }
 
 const AddNewCourse = () => {
-  const router = useRouter();
+const router = useRouter();
   const [inputList, setInputList] = useState([{ link: "", title: "" }]);
   const [certificate, setCertificate] = useState(false);
   const [title, setTitle] = useState("");
@@ -123,7 +122,6 @@ const AddNewCourse = () => {
       console.log("data", data);
       Swal.fire({
         icon: "success",
-        // title: 'Image',
         text: "Course uploaded successfully",
       });
 
@@ -135,9 +133,6 @@ const AddNewCourse = () => {
       });
     }
   };
-
-  // render() {
-  //   const { editorState } = this.state;
 
   return (
     <div className="addNewCourse">
@@ -285,9 +280,6 @@ const AddNewCourse = () => {
               name="desc"
             ></textarea>
           </div>
-          {/*  */}
-          <TextEditor />
-          {/*  */}
           <div className="mb-4">
             <input
               id="certificate"
@@ -348,6 +340,5 @@ const AddNewCourse = () => {
     </div>
   );
 };
-// };
 
 export default AddNewCourse;

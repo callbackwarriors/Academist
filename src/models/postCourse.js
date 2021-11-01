@@ -17,6 +17,7 @@ const PostCourseSchema = new mongoose.Schema(
     desc: { type: String, required: true },
     certificate: { type: Boolean, required: true },
     img: { type: String, required: true },
+    prichard: { type: Boolean, required: true, default: false },
   },
   { timestamps: true }
 );

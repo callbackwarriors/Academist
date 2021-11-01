@@ -3,10 +3,11 @@ import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Layout from "../../components/utilities/Layout";
 import PageTitle from "../../components/utilities/PageTitle";
-import Courses from "../../models/Courses";
+import Course from '../../models/postCourse';
 import db from "../../utils/db";
 const CoursesPage = (props) => {
-  const { courses } = props;
+  // const { courses } = props;
+  console.log('courses',props);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const [query, setQuery] = useState('')
@@ -199,7 +200,7 @@ const CoursesPage = (props) => {
 
                 
               {/* start courses items */}
-                <div className="flex flex-wrap page-content__body">
+                {/* <div className="flex flex-wrap page-content__body">
                   {courses.filter((course)=>{
                     if(query == ""){
                       return course
@@ -209,7 +210,7 @@ const CoursesPage = (props) => {
                   }).map((course) => (
                     <AllCourses key={course.title} course={course} />
                   ))}
-                </div>
+                </div> */}
                 {/* end courses items */}
                 
               </div>
@@ -224,13 +225,24 @@ const CoursesPage = (props) => {
 
 export default CoursesPage;
 
+// export async function getServerSideProps() {
+//   await db.connect();
+//   const courses = await Course.find({}).lean();
+//   await db.disconnect();
+//   return {
+//     props: {
+//       courses: courses.map(db.convertDocToObj),
+//     },
+//   };
+// }
 export async function getServerSideProps() {
   await db.connect();
-  const courses = await Courses.find({}).lean();
+  const courses = await Course.find({}).lean();
+  const data = JSON.parse(JSON.stringify(courses))
   await db.disconnect();
   return {
     props: {
-      courses: courses.map(db.convertDocToObj),
+      data,
     },
   };
 }
