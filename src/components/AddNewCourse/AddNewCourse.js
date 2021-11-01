@@ -4,6 +4,8 @@ import React, { useContext, useReducer, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Swal from "sweetalert2";
 import { Store } from "utils/Store";
+import TextEditor from "./DraftEditor";
+
 function reducer(state, action) {
   switch (action.type) {
     case "FETCH_REQUEST":
@@ -133,6 +135,9 @@ const AddNewCourse = () => {
       });
     }
   };
+
+  // render() {
+  //   const { editorState } = this.state;
 
   return (
     <div className="addNewCourse">
@@ -269,6 +274,7 @@ const AddNewCourse = () => {
               placeholder="Write your course price here..."
             />
           </div>
+
           <div className="mb-4">
             <label htmlFor="desc">Course Overview</label>
             <textarea
@@ -279,6 +285,9 @@ const AddNewCourse = () => {
               name="desc"
             ></textarea>
           </div>
+          {/*  */}
+          <TextEditor />
+          {/*  */}
           <div className="mb-4">
             <input
               id="certificate"
@@ -339,5 +348,6 @@ const AddNewCourse = () => {
     </div>
   );
 };
+// };
 
 export default AddNewCourse;

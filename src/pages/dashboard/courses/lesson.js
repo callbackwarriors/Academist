@@ -7,7 +7,8 @@ import LessonTest from "../../../components/LessonTest/LessonTest";
 import db from "../../../utils/db";
 
 const lesson = (props) => {
-  console.log("lessonData", props);
+
+  console.log('props', props);
   return (
     <Layout>
       <div className="flex items-stretch w-full bg-gray-200">
@@ -26,11 +27,12 @@ export default lesson;
 export async function getServerSideProps() {
   await db.connect();
   const lessonData = await LessonData.find({}).lean();
-  console.log("lessonData", lessonData);
+  const data = JSON.parse(JSON.stringify(lessonData))
+  console.log('data', data);
   await db.disconnect();
   return {
     props: {
-      lessonData: lessonData.map(db.convertDocToObj),
+      data,
     },
   };
 }
