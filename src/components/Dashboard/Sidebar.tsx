@@ -181,6 +181,11 @@ const Sidebar = () => {
                       elemBefore: () => <AiOutlineFundProjectionScreen name="project" />,
                     },
                     {
+                      title: 'Manage Courses',
+                      itemId: '/dashboard/admin/managecourse',
+                      elemBefore: () => <AiOutlineFundProjectionScreen name="project" />,
+                    },
+                    {
                       title: 'Add Admin',
                       itemId: '/dashboard/admin/addadmin',
                       elemBefore: () => <BiImageAdd name="teacher" />,
@@ -193,10 +198,10 @@ const Sidebar = () => {
 
           {/* Log out handler sidebar admin */}
 
-<div className="logout__wrapper justify-center mt-20 border-t-2 pt-20">
+<div className="justify-center pt-20 mt-20 border-t-2 logout__wrapper">
 
 <Link href="/">
-<button className="flex mb-4 mx-auto bg-royal-blue hover:to-gray-900 text-white py-2 px-8 rounded">
+<button className="flex px-8 py-2 mx-auto mb-4 text-white rounded bg-royal-blue hover:to-gray-900">
                   <BiHome
                       className="w-5 h-5 mr-2 text-violet-400"
                       aria-hidden="true"
@@ -205,7 +210,7 @@ const Sidebar = () => {
                 </button>
 </Link>
 
-<button className="flex bg-red-600 mx-auto hover:to-gray-900 text-white py-2 px-8 rounded" onClick={logoutClickHandler}>
+<button className="flex px-8 py-2 mx-auto text-white bg-red-600 rounded hover:to-gray-900" onClick={logoutClickHandler}>
                   <BiLogOutCircle
                       className="w-5 h-5 mr-2 text-violet-400"
                       aria-hidden="true"

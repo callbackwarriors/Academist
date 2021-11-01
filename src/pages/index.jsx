@@ -1,5 +1,5 @@
 import FeaturedTeacher from 'components/FeaturedTeacher/FeaturedTeacher';
-import LargestCourse from 'components/LargestCourse/LargestCourse';
+import LargestCourses from 'components/LargestCourses/LargestCourses';
 import LatestCourses from 'components/LatestCourses/LatestCourses';
 import Partner from 'components/Partner/Partner';
 import Testimonial from 'components/Testimonial/Testimonial';
@@ -15,7 +15,7 @@ const HomePage = (props) => {
       <LatestCourses data={data}/>
       <Testimonial />
       <FeaturedTeacher />
-      <LargestCourse/>
+      <LargestCourses data={data}/>
       <Partner/>
     </Layout>
   )

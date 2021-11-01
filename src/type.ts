@@ -21,6 +21,7 @@ export interface ICourses {
   categories: string;
   level: string;
   price: number;
+  prichard: Boolean;
   inputList: [
     {
       title: string;

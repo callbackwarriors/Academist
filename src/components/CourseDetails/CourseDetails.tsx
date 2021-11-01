@@ -1,5 +1,5 @@
 
-   
+
 import React from 'react';
 import 'react-accessible-accordion/dist/fancy-example.css';
 import "react-sweet-progress/lib/style.css";
@@ -16,8 +16,9 @@ interface IProps {
     course: ICourses
 }
 
-const CourseDetails = ({course}:IProps) => {
-    
+const CourseDetails = ({ course }: IProps) => {
+    console.log(course);
+
     return (
         <div className="CourseDetails">
             <div className="banner" style={{ backgroundImage: `linear-gradient(rgb(91 79 238), rgb(91 79 238 / 47%)), url(${course.img})` }}>
@@ -34,12 +35,17 @@ const CourseDetails = ({course}:IProps) => {
                                 <Tab>Reviews </Tab>
                             </TabList>
 
-                            <TabPanel  className="px-10 py-10 mt-10 rounded-md shadow-lg tab1">
+                            <TabPanel className="px-10 py-10 mt-10 rounded-md shadow-lg tab1">
                                 {course.desc}
                             </TabPanel>
 
+
                             <TabPanel>
-                                <Curriculam></Curriculam>
+                                <div className="px-10 py-10 mt-10 rounded-md shadow-lg tab1">
+                                    <h6>Course Circullum</h6>
+                                    {course.inputList.map((listItem) => <Curriculam listItem={listItem}></Curriculam>)}
+                                    {/* <Curriculam course={course.inputList}></Curriculam> */}
+                                </div>
                             </TabPanel>
                             <TabPanel>
                                 <Instructor></Instructor>

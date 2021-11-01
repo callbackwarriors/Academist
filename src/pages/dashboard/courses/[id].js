@@ -65,7 +65,7 @@ function CourseEdit({ params }) {
           const { data } = await axios.get(`/api/admin/courses/${productId}`, {
             headers: { authorization: `Bearer ${userInfo.token}` },
           });
-
+console.log(data);
           dispatch({ type: "FETCH_SUCCESS" });
           setValue("title", data.title);
           setValue("slug", data.slug);
@@ -73,7 +73,6 @@ function CourseEdit({ params }) {
           setValue("categories", data.categories);
           setValue("level", data.level);
           setValue("price", data.price);
-          // setValue("courseProvider", data.courseProvider);
           setValue("videoUrl", data.videoUrl);
           setValue("img", data.img);
           setValue("desc", data.desc);
@@ -134,7 +133,6 @@ function CourseEdit({ params }) {
           categories,
           level,
           price,
-          // courseProvider,
           videoUrl,
           img,
           desc,
@@ -320,31 +318,7 @@ function CourseEdit({ params }) {
                           </span>
                         </label>
                       </div>
-                      {/* <div className="py-2 form-element">
-                        <label className="space-y-0.5 w-full  block mx-auto">
-                          <span className="block text-lg tracking-wide text-gray-800">
-                            CourseProvider
-                          </span>
-                          <span className="block">
-                            <input
-                              type="text"
-                              name="courseProvider"
-                              // eslint-disable-next-line react/jsx-props-no-spreading
-                              {...register("courseProvider", {
-                                required: {
-                                  value: true,
-                                  message: "You most enter courseProvider",
-                                },
-                              })}
-                              className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
-               ${errors.name ? "ring-2 ring-red-500" : null}`}
-                            />
-                            <span className="py-2 text-sm text-red-400">
-                              {errors?.name?.message}
-                            </span>
-                          </span>
-                        </label>
-                      </div> */}
+                      
                       <div className="py-2 form-element">
                         <label className="space-y-0.5 w-full  block mx-auto">
                           <span className="block text-lg tracking-wide text-gray-800">

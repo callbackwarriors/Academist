@@ -2,17 +2,16 @@ import Sidebar from 'components/Dashboard/Sidebar';
 import Layout from 'components/utilities/Layout';
 import db from 'utils/db';
 import Course from 'models/postCourse';
-import ManageCourses from 'components/ManageCourses/ManageCourses';
+import AdminManageCourses from 'components/AdminManageCourses/AdminManageCourses';
 
 const managecourses = (props: any) => {
     const { allCourses } = props;
-
     return (
         <Layout>
             <div className="flex items-stretch w-full bg-gray-200">
                 <Sidebar />
                 <div className="w-full min-h-screen p-5 m-5 transition-all bg-white manageCourses__items section-padding page-content__body">
-                    <ManageCourses courses={allCourses} />
+                    <AdminManageCourses courses={allCourses} />
                 </div>
             </div>
         </Layout>
