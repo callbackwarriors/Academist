@@ -3,7 +3,7 @@
 import Title from "../utilities/Title";
 import LatestCourse from './LatestCourse';
 const LatestCourses = ({data}) => {
-
+console.log(data);
   return (
     <section className="latest__courses section-padding">
       <div className="container">
@@ -12,7 +12,7 @@ const LatestCourses = ({data}) => {
       </div>
       <div className="container">
         <div className="flex flex-wrap">
-          {data.slice(0, 3).map((course) => (
+          {data?.slice(0, 3).map((course) => (
             <LatestCourse key={course.title} course={course}></LatestCourse>
           ))}
         </div>

@@ -287,9 +287,6 @@ const AddNewCourse = () => {
               name="desc"
             ></textarea>
           </div>
-          {/*  */}
-          <TextEditor />
-          {/*  */}
           <div className="mb-4">
             <input
               id="certificate"

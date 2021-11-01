@@ -9,8 +9,8 @@ interface IProps {
 }
 
 
-const courseDetails = (props: IProps) => {
-  console.log('props', props);
+const courseDetails = () => {
+  // console.log('props', props);
   
   // const { singleCourse } = props;
   // if (!singleCourse) {
@@ -31,16 +31,16 @@ const courseDetails = (props: IProps) => {
 
 export default courseDetails;
 
-export async function getServerSideProps(context: { params: any; }) {
-  const { params } = context;
-  const { slug } = params;
-  await db.connect();
-  const course = await Courses.findOne({ slug }).lean();
-  const singleCourse = JSON.parse(JSON.stringify(course))
-  await db.disconnect();
-  return {
-    props: {
-      singleCourse,
-    },
-  };
-}
+// export async function getServerSideProps(context: { params: any; }) {
+//   const { params } = context;
+//   const { slug } = params;
+//   await db.connect();
+//   const course = await Courses.findOne({ slug }).lean();
+//   const singleCourse = JSON.parse(JSON.stringify(course))
+//   await db.disconnect();
+//   return {
+//     props: {
+//       singleCourse,
+//     },
+//   };
+// }
