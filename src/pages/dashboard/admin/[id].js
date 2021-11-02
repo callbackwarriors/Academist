@@ -4,9 +4,9 @@ import Title from "components/utilities/Title";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useReducer, useState } from "react";
-import { Store } from "utils/Store";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { Store } from "utils/Store";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -64,9 +64,12 @@ function CourseEdit({ params }) {
       const fetchData = async () => {
         try {
           dispatch({ type: "FETCH_REQUEST" });
-          const { data } = await axios.get(`/api/admin/admincourses/${productId}`, {
-            headers: { authorization: `Bearer ${userInfo.token}` },
-          });
+          const { data } = await axios.get(
+            `/api/admin/admincourses/${productId}`,
+            {
+              headers: { authorization: `Bearer ${userInfo.token}` },
+            }
+          );
           console.log(data);
           setPrichard(data.prichard);
           dispatch({ type: "FETCH_SUCCESS" });
@@ -74,7 +77,7 @@ function CourseEdit({ params }) {
         } catch (err) {
           Swal.fire({
             icon: "error",
-            text: err.message ? 'Profile updated failed' : '',
+            text: err.message ? "Course updated failed" : "",
           });
         }
       };
@@ -90,7 +93,6 @@ function CourseEdit({ params }) {
         {
           title,
           prichard,
-
         },
         { headers: { authorization: `Bearer ${userInfo.token}` } }
       );
