@@ -31,7 +31,7 @@ const Login = () => {
         email,
         password,
       });
-
+console.log(data);
       dispatch({ type: "USER_LOGIN", payload: data });
       Cookies.set("userInfo", JSON.stringify(data));
       Swal.fire(

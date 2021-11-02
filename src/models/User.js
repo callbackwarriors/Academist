@@ -6,11 +6,15 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     isAdmin: { type: Boolean, required: true, default: false },
-    user: { type: Boolean, required: true},
+    facebook: { type: String, default: "" },
+    linkedIn: { type: String, default: "" },
+    twitter: { type: String, default: "" },
+    img: { type: String, default: "https://cdn.pixabay.com/photo/2017/11/10/05/46/user-2935524_960_720.png" },
+    user: { type: Boolean, required: true },
     instructor: { type: Boolean, required: true },
   },
   { timestamps: true }
 );
 
-const User = mongoose.models.user || mongoose.model("user", userSchema);
+const User = mongoose.models.user01 || mongoose.model("user01", userSchema);
 export default User;
