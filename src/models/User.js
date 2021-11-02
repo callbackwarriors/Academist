@@ -9,7 +9,11 @@ const userSchema = new mongoose.Schema(
     facebook: { type: String, default: "" },
     linkedIn: { type: String, default: "" },
     twitter: { type: String, default: "" },
-    img: { type: String, default: "https://cdn.pixabay.com/photo/2017/11/10/05/46/user-2935524_960_720.png" },
+    img: {
+      type: String,
+      default:
+        "https://res.cloudinary.com/academist/image/upload/v1635867877/instagram-3814050_960_720_tuxecu.png",
+    },
     user: { type: Boolean, required: true },
     instructor: { type: Boolean, required: true },
   },
