@@ -1,13 +1,13 @@
 import img from "assets/images/cycle.png";
 import axios from "axios";
+import Cookies from "js-cookie";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
-import { Store } from "utils/Store";
-import Cookies from "js-cookie";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { Store } from "utils/Store";
 
 const Register = () => {
   const [user, setUser] = useState(false);
@@ -41,6 +41,10 @@ const Register = () => {
         name,
         email,
         password,
+        // img,
+        // facebook,
+        // linkedIn,
+        // twitter,
         user,
         instructor,
       });
