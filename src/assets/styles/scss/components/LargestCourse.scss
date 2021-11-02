@@ -1,69 +1,65 @@
-.largestCourse{
-    @apply py-20;
-    h4{ @apply text-center ;  color: #f16126;}
-    h3{ @apply text-center text-4xl mb-10;}
+.largestCourse {
+  @apply py-20;
+  h4 {
+    @apply text-center;
+    color: #f16126;
+  }
+  h3 {
+    @apply text-center text-4xl mb-10;
+  }
 
-    &__cardSection{
-        @apply flex bg-black-squeeze;
-        @apply py-5 px-5;
-        height: 235px;
+  &__cardSection {
+    @apply flex bg-black-squeeze;
+    @apply py-5 px-5;
+    height: 235px;
 
+    &--TextSection {
+      h5 {
+        @apply ml-5 mt-5 text-royal-blue;
+      }
+      h6:hover {
+        @apply text-royal-blue;
+      }
+      h6 {
+        @apply ml-5;
+      }
 
-        &--TextSection{
-            h5{
-                @apply ml-5 mt-5 text-royal-blue;
-               
-            }
-            h6:hover{ @apply text-royal-blue}
-            h6{ @apply ml-5;}
-             
-            .leftSide{
-                h6{
-                    @apply mt-1 ml-5 text-royal-blue;
-                 }
-                 p{
-                    color:#555555;
-                    @apply ml-2;
-                 }
-            }
+      .leftSide {
+        h6 {
+          @apply mt-1 ml-5 text-royal-blue;
         }
-        &--imgSection{
-            img{
-
-                border-radius: 100%;
-                object-fit: cover;
-                transition-duration: 0.3s;
-                transition-timing-function: ease-in-out;
-                 
-            }
+        p {
+          color: #555555;
+          @apply ml-2;
         }
-        
-        
+      }
     }
-
-    &__detailsButton{
-        @apply bg-royal-blue py-3 px-8;
-        display: block;
-        text-align: center;
-        margin: 0 auto;
-     
-        color: #fff;
-        font-weight: 600;
-        margin-top: 40px;
+    &--imgSection {
+      img {
+        border-radius: 100%;
+        object-fit: cover;
         transition-duration: 0.3s;
         transition-timing-function: ease-in-out;
+      }
     }
-    &__detailsButton:hover{
-        background-color: #000;
-    }
-    &__cardSection{
-        @apply shadow rounded transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105;
+  }
 
-    }
-    &__cardSection:hover{
-        @apply shadow-lg rounded;
-    }
+  &__detailsButton {
+    @apply bg-royal-blue py-3 px-8;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
 
-
-
+    color: #fff;
+    font-weight: 600;
+    margin-top: 40px;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+  }
+  &__detailsButton:hover {
+    background-color: #000;
+  }
+  &__cardSection {
+    @apply rounded transition transform;
+  }
 }
