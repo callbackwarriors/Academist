@@ -7,7 +7,6 @@ interface IProp {
 }
 
 const AdminManageCourses = ({ courses }: IProp) => {
-console.log(courses);
 
     return (
         <div className="manageCourse">

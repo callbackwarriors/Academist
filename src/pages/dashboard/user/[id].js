@@ -4,9 +4,9 @@ import Title from "components/utilities/Title";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useReducer, useState } from "react";
-import { Store } from "utils/Store";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { Store } from "utils/Store";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -118,7 +118,7 @@ function CourseEdit({ params }) {
           <div className="flex items-center justify-center min-h-screen py-12 overflow-x-hidden lg:overflow-x-auto lg:overflow-hidden">
             <div className="flex flex-col flex-wrap justify-between w-full login-container lg:flex-nowrap lg:flex-row group">
               <div className="order-1 w-full min-h-screen lg:order-2">
-                <div className="relative flex items-center min-h-screen px-10 pt-16 form-wrapper lg:pt-0">
+                <div className="relative flex min-h-screen px-10 pt-16 form-wrapper lg:pt-0">
                   <div className="w-full space-y-2">
                     <Title
                       title="Users update"
@@ -188,7 +188,7 @@ function CourseEdit({ params }) {
                           <input
                             type="submit"
                             className="flex px-6 py-3 text-lg text-white bg-indigo-700 border-0 rounded cursor-pointer focus:outline-none hover:bg-aquamarine-800"
-                            value="Update Course"
+                            value="Update user"
                           ></input>
                         </span>
                       </div>

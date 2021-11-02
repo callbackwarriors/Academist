@@ -17,8 +17,6 @@ const ViewAllOrder = ({ orderingData }) => {
           </tr>
         </thead>
         <tbody className="">
-          {console.log("ordering dat", orderingData)}
-
           {orderingData.map((data) => (
            
             <tr className="bg-gray-200 border-2 border-gray-300">

@@ -11,7 +11,7 @@ interface IProps {
 
 const courseDetails = (props: IProps) => {
   const { singleCourse }: any = props;
-  console.log('singleCourse', singleCourse);
+
   if (!singleCourse) {
     return <Layout>
       <div className="container py-20 text-center">

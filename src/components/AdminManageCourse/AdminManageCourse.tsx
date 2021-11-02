@@ -36,8 +36,6 @@ function reducer(state: any, action: any) {
 }
 
 const AdminManageCourse = ({ course }: IProp) => {
-  console.log('course', course);
-
   const { title, img, _id, slug } = course;
 
   const { state } = useContext(Store);

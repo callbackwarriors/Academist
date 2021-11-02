@@ -4,9 +4,9 @@ import db from "../../../utils/db";
 
 const handler = nc();
 handler.post(async (req, res) => {
-
   await db.connect();
   const newCourse = new Course({
+    userInfo: req.body.userInfo,
     inputList: req.body.inputList,
     title: req.body.title,
     slug: req.body.slug,
@@ -18,13 +18,13 @@ handler.post(async (req, res) => {
     desc: req.body.desc,
     certificate: req.body.certificate,
     img: req.body.img,
-    prichard: false
+    prichard: false,
   });
-console.log('newCourse', newCourse);
   const course = await newCourse.save();
   await db.disconnect();
 
   res.send({
+    userInfo: course.userInfo,
     inputList: course.inputList,
     title: course.title,
     slug: course.slug,

@@ -65,7 +65,7 @@ function CourseEdit({ params }) {
           const { data } = await axios.get(`/api/admin/courses/${productId}`, {
             headers: { authorization: `Bearer ${userInfo.token}` },
           });
-console.log(data);
+
           dispatch({ type: "FETCH_SUCCESS" });
           setValue("title", data.title);
           setValue("slug", data.slug);
