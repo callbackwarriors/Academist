@@ -107,6 +107,7 @@ const router = useRouter();
 
     try {
       const { data } = await axios.post("/api/postcourses/postCourse", {
+        userInfo,
         inputList,
         title,
         slug,

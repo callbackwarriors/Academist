@@ -18,7 +18,7 @@ const CoursesPage = (props) => {
     <Layout>
       <PageTitle
         background="bg-gray-50"
-        title="Courses"
+        title="All Courses"
         subtitle="Find your course"
       />
       <div className="sectionAllCourses">
