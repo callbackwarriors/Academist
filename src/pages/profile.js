@@ -22,7 +22,6 @@ function Profile() {
   const { redirect } = router.query;
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
-  console.log('userInfo', userInfo.img);
 
   useEffect(() => {
     if (!userInfo) {
@@ -67,13 +66,14 @@ function Profile() {
         },
         { headers: { authorization: `Bearer ${userInfo.token}` } }
       );
-      console.log('data', data);
+
       dispatch({ type: "USER_LOGIN", payload: data });
       Cookies.set("userInfo", JSON.stringify(data));
       Swal.fire({
         icon: "success",
         text: "Profile updated successfully",
       });
+      router.push("/")
     } catch (err) {
       Swal.fire({
         icon: "error",
@@ -114,7 +114,7 @@ function Profile() {
                   <div className="form-element">
                     <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
                       <span className="block text-lg tracking-wide text-gray-800">
-                        Name
+                        Name<span className="text-red-600"> *</span>
                       </span>
                       <span className="block">
                         <input
@@ -141,7 +141,7 @@ function Profile() {
                   <div className="form-element">
                     <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
                       <span className="block text-lg tracking-wide text-gray-800">
-                        Email
+                        Email<span className="text-red-600"> *</span>
                       </span>
                       <span className="block">
                         <input
@@ -180,7 +180,7 @@ function Profile() {
                   <div className="form-element">
                     <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
                       <span className="block text-lg tracking-wide text-gray-800">
-                        Password
+                        Password<span className="text-red-600"> *</span>
                       </span>
                       <span className="block">
                         <input
@@ -210,7 +210,7 @@ function Profile() {
                   <div className="form-element">
                     <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
                       <span className="block text-lg tracking-wide text-gray-800">
-                        Conform Password
+                        Conform Password<span className="text-red-600"> *</span>
                       </span>
                       <span className="block">
                         <input
@@ -248,12 +248,7 @@ function Profile() {
                           type="text"
                           name="img"
                           // eslint-disable-next-line react/jsx-props-no-spreading
-                          {...register("img", {
-                            required: {
-                              value: true,
-                              message: "You most enter image",
-                            },
-                          })}
+                          {...register("img", {})}
                           className={
                             "block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2"
                           }
@@ -274,12 +269,7 @@ function Profile() {
                           type="text"
                           name="facebook"
                           // eslint-disable-next-line react/jsx-props-no-spreading
-                          {...register("facebook", {
-                            required: {
-                              value: true,
-                              message: "You most enter facebook",
-                            },
-                          })}
+                          {...register("facebook", {})}
                           className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                `}
                           placeholder="Facebook URL"
@@ -299,12 +289,7 @@ function Profile() {
                           type="text"
                           name="linkedIn"
                           // eslint-disable-next-line react/jsx-props-no-spreading
-                          {...register("linkedIn", {
-                            required: {
-                              value: true,
-                              message: "You most enter linkedIn",
-                            },
-                          })}
+                          {...register("linkedIn", {})}
                           className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
                `}
                           placeholder="LinkedIn URL"
@@ -324,12 +309,7 @@ function Profile() {
                           type="text"
                           name="twitter"
                           // eslint-disable-next-line react/jsx-props-no-spreading
-                          {...register("twitter", {
-                            // required: {
-                            //   value: true,
-                            //   message: "You most enter twitter",
-                            // },
-                          })}
+                          {...register("twitter", {})}
                           className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
            `}
                           placeholder="Twitter URL"
@@ -338,18 +318,8 @@ function Profile() {
                       </span>
                     </label>
                   </div>
-                  <div className="form-element">
-                    <div className="flex items-center py-2 mx-auto lg:w-4/5">
-                      <label className="flex items-center space-x-2 tracking-wide text-gray-800 select-none">
-                        <input type="checkbox" name="" id="" />
-                        <span className="block tracking-wide text-gray-800">
-                          Remember me
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-
-                  <div className="form-element">
+                  
+                  <div className="mt-6 form-element">
                     <span className="block w-full mx-auto lg:w-4/5 ">
                       <input
                         type="submit"
