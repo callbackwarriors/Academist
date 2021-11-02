@@ -7,7 +7,6 @@ import Course from "../../models/postCourse";
 import db from "../../utils/db";
 const CoursesPage = (props) => {
   const { allCourses } = props;
-  console.log("allCourses", allCourses);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const [query, setQuery] = useState("");

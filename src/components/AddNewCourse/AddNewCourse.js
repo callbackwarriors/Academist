@@ -119,7 +119,6 @@ const router = useRouter();
         certificate,
         img,
       });
-      console.log("data", data);
       Swal.fire({
         icon: "success",
         text: "Course uploaded successfully",

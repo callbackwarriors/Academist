@@ -54,7 +54,6 @@ function CourseEdit({ params }) {
     setValue,
   } = useForm();
   const [prichard, setPrichard] = useState(false);
-  console.log(prichard);
   const router = useRouter();
   const { userInfo } = state;
   useEffect(() => {
@@ -70,7 +69,7 @@ function CourseEdit({ params }) {
               headers: { authorization: `Bearer ${userInfo.token}` },
             }
           );
-          console.log(data);
+
           setPrichard(data.prichard);
           dispatch({ type: "FETCH_SUCCESS" });
           setValue("title", data.title);

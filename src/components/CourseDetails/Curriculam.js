@@ -7,7 +7,6 @@ import {
   AccordionItemPanel,
 } from "react-accessible-accordion";
 const Curriculam = ({ listItem }) => {
-  console.log(listItem);
   return (
     <Accordion>
       <AccordionItem>

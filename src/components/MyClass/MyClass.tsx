@@ -8,11 +8,11 @@ import {
 } from "react-icons/ai";
 
 const MyClass = ({ order }: any) => {
-  const { title, img } = order.cartItems[0];
+  const { title, img, slug } = order.cartItems[0];
 
   return (
     <div className="w-full p-4 transition duration-100 ease-in-out transform xl:w-1/3 sm:w-1/2 hover:scale-105">
-      <Link href="/watchpage">
+      <Link href={`/watchpage/${slug}`}>
         <a>
           <div className="p-6 bg-gray-100 rounded-lg">
             <div className="relative">

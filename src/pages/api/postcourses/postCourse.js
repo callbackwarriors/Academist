@@ -20,7 +20,6 @@ handler.post(async (req, res) => {
     img: req.body.img,
     prichard: false
   });
-console.log('newCourse', newCourse);
   const course = await newCourse.save();
   await db.disconnect();
 
