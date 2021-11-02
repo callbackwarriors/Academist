@@ -28,6 +28,10 @@ export interface ICourses {
       link: string;
     }
   ];
+  userInfo: {
+    name: string;
+    email: string;
+  };
   videoUrl: string;
   img: string;
   desc: string;
