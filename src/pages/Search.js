@@ -1,11 +1,8 @@
 import { useRouter } from 'next/router';
-import react from 'react'
 import SearchCourse from '../components/SearchCourse/SearchCourse';
-import Layout from '../components/utilities/Layout'
+import Layout from '../components/utilities/Layout';
 import Course from '../models/postCourse';
 import db from '../utils/db';
-
-// const PAGE_SIZE = 3;
 
 const prices = [
   {
