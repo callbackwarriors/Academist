@@ -7,11 +7,11 @@ interface IProp {
 }
 
 const LatestCourse = ({ course }: IProp) => {
-    const { title, img, desc, slug } = course;
+    const { title, img, shortDesc, desc, slug } = course;
 
     return (
 
-        <div className="w-full p-4 transition duration-100 ease-in-out transform xl:w-1/3 md:w-1/2 hover:scale-105">
+        <div className="w-full px-2 transition duration-100 ease-in-out transform xl:w-1/3 md:w-1/2 hover:scale-105">
 
             <Link href={`/courses/${slug}`}>
                 <a>
@@ -31,8 +31,8 @@ const LatestCourse = ({ course }: IProp) => {
                                 <AiFillVideoCamera className="text-2xl text-green-400" /> 15
                             </div>
                         </div>
-                        <h4 className="mb-2 text-2xl">{title}</h4>
-                        <p className="text-base leading-relaxed">{desc?.slice(0, 140)}</p>
+                        <h4 className="mb-2 text-2xl">{title?.slice(0, 30)}</h4>
+                        <p className="text-base leading-relaxed">{desc?.slice(0, 100)}</p>
                     </div>
                 </a>
             </Link>
