@@ -160,63 +160,7 @@ const router = useRouter();
               placeholder="Write your course title here..."
             />
           </div>
-          <div className="mb-4">
-            <label htmlFor="intro">Intro video</label>
-            <input
-              onChange={(e) => setVideoUrl(e.target.value)}
-              id="intro"
-              className="w-full px-4 py-3 rounded focus:border-royal-blue"
-              type="text"
-              name="intro"
-              placeholder="Add intro video link"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="title">Enter lecture title</label>
-            {inputList.map((x, i) => {
-              return (
-                <div>
-                  <input
-                    required
-                    className="w-full px-4 py-3 mb-4 text-lg border-1 focus:border-royal-blue"
-                    name="title"
-                    type="text"
-                    placeholder="Enter lecture title"
-                    value={x.title}
-                    onChange={(e) => handleInputChange(e, i)}
-                  />
-                  <input
-                    required
-                    className="w-full px-4 py-3 text-lg border-1 focus:border-royal-blue"
-                    name="link"
-                    type="text"
-                    placeholder="Enter lecture link"
-                    value={x.link}
-                    onChange={(e) => handleInputChange(e, i)}
-                  />
 
-                  <div className="btn-box">
-                    {inputList.length !== 1 && (
-                      <button
-                        className="px-4 py-1 my-4 mr-4 text-lg text-white bg-red-600 border-0 cursor-pointer focus:outline-none hover:bg-red-400"
-                        onClick={() => handleRemoveClick(i)}
-                      >
-                        Remove
-                      </button>
-                    )}
-                    {inputList.length - 1 === i && (
-                      <button
-                        className="px-4 py-1 my-4 text-lg text-white border-0 cursor-pointer bg-royal-blue focus:outline-none hover:bg-indigo-600"
-                        onClick={handleAddClick}
-                      >
-                        Add
-                      </button>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
           <div className="mb-4">
             <label htmlFor="shortDesc">Short Description</label>
             <textarea
@@ -330,6 +274,64 @@ const router = useRouter();
                 </div>
               </div>
             </div>
+          </div>
+          <h3>Course materials</h3>
+          <div className="mb-4">
+            <label htmlFor="intro">Intro video</label>
+            <input
+              onChange={(e) => setVideoUrl(e.target.value)}
+              id="intro"
+              className="w-full px-4 py-3 rounded focus:border-royal-blue"
+              type="text"
+              name="intro"
+              placeholder="Add intro video link"
+            />
+          </div>
+          <div className="mb-4">
+            <label>Add course modules</label>
+            {inputList.map((x, i) => {
+              return (
+                <div>
+                  <input
+                    required
+                    className="w-full px-4 py-3 mb-4 text-lg border-1 focus:border-royal-blue"
+                    name="title"
+                    type="text"
+                    placeholder="Enter lecture title"
+                    value={x.title}
+                    onChange={(e) => handleInputChange(e, i)}
+                  />
+                  <input
+                    required
+                    className="w-full px-4 py-3 text-lg border-1 focus:border-royal-blue"
+                    name="link"
+                    type="text"
+                    placeholder="Enter lecture video link"
+                    value={x.link}
+                    onChange={(e) => handleInputChange(e, i)}
+                  />
+
+                  <div className="btn-box">
+                    {inputList.length !== 1 && (
+                      <button
+                        className="px-4 py-1 my-4 mr-4 text-lg text-white bg-red-600 border-0 cursor-pointer focus:outline-none hover:bg-red-400"
+                        onClick={() => handleRemoveClick(i)}
+                      >
+                        Remove
+                      </button>
+                    )}
+                    {inputList.length - 1 === i && (
+                      <button
+                        className="px-4 py-1 my-4 text-lg text-white border-0 cursor-pointer bg-royal-blue focus:outline-none hover:bg-indigo-600"
+                        onClick={handleAddClick}
+                      >
+                        Add
+                      </button>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
           <input
             className="px-12 py-3 text-lg text-white border-0 cursor-pointer bg-royal-blue focus:outline-none hover:bg-indigo-600"

@@ -121,8 +121,8 @@ function CourseEdit({ params }) {
                 <div className="relative flex min-h-screen px-10 pt-16 form-wrapper lg:pt-0">
                   <div className="w-full space-y-2">
                     <Title
-                      title="Users update"
-                      subtitle=""
+                      title="Update user"
+                      subtitle="UPDATE EXISTING USERS"
                       description=""
                     ></Title>
                     <form onSubmit={handleSubmit(submitHandler)}>
@@ -160,7 +160,7 @@ function CourseEdit({ params }) {
                             type="radio"
                             name="isAdmin"
                           />
-                          <label htmlFor="isAdmin">Is isAdmin</label>
+                          <label htmlFor="isAdmin">Make as admin</label>
                         </div>
                         <div className="mb-4">
                           <input
@@ -170,7 +170,7 @@ function CourseEdit({ params }) {
                             type="radio"
                             name="isAdmin"
                           />
-                          <label htmlFor="isAdmin">Is isAdmin</label>
+                          <label htmlFor="isAdmin">Make as user</label>
                         </div>
                         <div className="mb-4">
                           <input
@@ -180,7 +180,7 @@ function CourseEdit({ params }) {
                             type="radio"
                             name="isAdmin"
                           />
-                          <label htmlFor="instructor">Instructor</label>
+                          <label htmlFor="instructor">Make as Instructor</label>
                         </div>
                       </div>
                       <div className="py-4 form-element">
