@@ -68,6 +68,7 @@ function CourseEdit({ params }) {
           const { data } = await axios.get(`/api/admin/users/${userId}`, {
             headers: { authorization: `Bearer ${userInfo.token}` },
           });
+          console.log('data', data);
           setIsAdmin(data.isAdmin);
           setUser(data.user);
           setInstructor(data.instructor);
@@ -102,6 +103,7 @@ function CourseEdit({ params }) {
         icon: "success",
         text: "User updated successfully",
       });
+      router.push("/dashboard/admin/manageadmin")
     } catch (err) {
       Swal.fire({
         icon: "error",
@@ -160,7 +162,7 @@ function CourseEdit({ params }) {
                             type="radio"
                             name="isAdmin"
                           />
-                          <label htmlFor="isAdmin">Is isAdmin</label>
+                          <label htmlFor="isAdmin">Admin</label>
                         </div>
                         <div className="mb-4">
                           <input
@@ -170,7 +172,7 @@ function CourseEdit({ params }) {
                             type="radio"
                             name="isAdmin"
                           />
-                          <label htmlFor="isAdmin">Is isAdmin</label>
+                          <label htmlFor="user">User</label>
                         </div>
                         <div className="mb-4">
                           <input

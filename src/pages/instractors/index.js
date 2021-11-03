@@ -16,7 +16,7 @@ const instructor = (props) => {
 
         <Title subtitle="Our all instractors" title="Instructors" description="" />
         <div className="container">
-          <div className="grid gap-4 lg:grid-cols-4 sm:grid-cols-2">
+          <div className="grid gap-4 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
             {instructors.map((instructor) => (
               <InstractorCard key={instructor._id} instructor={instructor} />
             ))}
