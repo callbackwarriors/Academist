@@ -30,5 +30,5 @@ const PostCourseSchema = new mongoose.Schema(
   { timestamps: true }
 );
 const Course =
-  mongoose.models.Course || mongoose.model("Course", PostCourseSchema);
+  mongoose.models.Course01 || mongoose.model("Course01", PostCourseSchema);
 export default Course;
