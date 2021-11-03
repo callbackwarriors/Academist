@@ -12,6 +12,10 @@
     @apply flex bg-black-squeeze;
     @apply py-5 px-5;
     height: 235px;
+    &__image {
+      @apply inline-flex p-2 bg-white rounded-full shadow;
+      height: 150px;
+    }
 
     &--TextSection {
       h5 {
@@ -35,11 +39,13 @@
       }
     }
     &--imgSection {
+ 
       img {
-        border-radius: 100%;
-        object-fit: cover;
-        transition-duration: 0.3s;
-        transition-timing-function: ease-in-out;
+        @apply inline-flex p-2 align-middle bg-white rounded-full shadow;
+        // border-radius: 100%;
+        // object-fit: cover;
+        // transition-duration: 0.3s;
+        // transition-timing-function: ease-in-out;
       }
     }
   }

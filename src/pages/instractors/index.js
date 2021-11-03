@@ -1,4 +1,5 @@
 import InstractorCard from "components/InstractorCard/InstractorCard";
+import Title from "components/utilities/Title";
 import User from "models/User";
 import React from "react";
 import db from "utils/db";
@@ -6,19 +7,22 @@ import Layout from "../../components/utilities/Layout";
 import PageTitle from "../../components/utilities/PageTitle";
 const instructor = (props) => {
   const { user } = props;
+
+  const instructors = user.filter((instructor) => instructor.instructor === true);
+
   return (
     <Layout>
-      <PageTitle background="bg-gray-50" title="Instructors" subtitle="Our all instractors" />
-      <div className="instractorsWrapper section-padding">
-        <div className="container ">
+      <section className="FeaturedTeacher">
 
-          <div className="flex flex-wrap page-content__body">
-            {user.map((ur) => (
-              <InstractorCard key={ur._id} ur={ur} />
+        <Title subtitle="Our all instractors" title="Instructors" description="" />
+        <div className="container">
+          <div className="grid gap-4 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
+            {instructors.map((instructor) => (
+              <InstractorCard key={instructor._id} instructor={instructor} />
             ))}
           </div>
         </div>
-      </div>
+      </section>
     </Layout>
   );
 };
