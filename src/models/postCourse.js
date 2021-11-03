@@ -1,6 +1,14 @@
 import mongoose from "mongoose";
 const PostCourseSchema = new mongoose.Schema(
   {
+    userInfo: {
+      name: { type: String, required: true },
+      email: { type: String, required: true, unique: true },
+      img: {type: String},
+      facebook: {type: String},
+      linkedIn: {type: String},
+      twitter: {type: String},
+    },
     inputList: [
       {
         title: { type: String, required: true },

@@ -7,7 +7,6 @@ import Course from "../../models/postCourse";
 import db from "../../utils/db";
 const CoursesPage = (props) => {
   const { allCourses } = props;
-  console.log("allCourses", allCourses);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const [query, setQuery] = useState("");
@@ -19,7 +18,7 @@ const CoursesPage = (props) => {
     <Layout>
       <PageTitle
         background="bg-gray-50"
-        title="Courses"
+        title="All Courses"
         subtitle="Find your course"
       />
       <div className="sectionAllCourses">

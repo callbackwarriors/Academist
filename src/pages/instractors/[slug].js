@@ -1,5 +1,5 @@
 import InstractorDetail from 'components/InstractorDetail/InstractorDetail';
-import LargestCourse from 'components/LargestCourse/LargestCourse';
+import LargestCourses from 'components/LargestCourses/LargestCourses';
 import Footer from 'components/utilities/Footer';
 import Header from 'components/utilities/Header';
 import React from 'react';
@@ -8,8 +8,8 @@ const instractorDetail = () => {
     return (
         <div>
             <Header/>
-            <InstractorDetail/>
-            <LargestCourse />
+            {/* <InstractorDetail/>
+            <LargestCourses /> */}
             <Footer/>
         </div>
     );

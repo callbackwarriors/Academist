@@ -107,6 +107,7 @@ const router = useRouter();
 
     try {
       const { data } = await axios.post("/api/postcourses/postCourse", {
+        userInfo,
         inputList,
         title,
         slug,
@@ -119,7 +120,6 @@ const router = useRouter();
         certificate,
         img,
       });
-      console.log("data", data);
       Swal.fire({
         icon: "success",
         text: "Course uploaded successfully",
