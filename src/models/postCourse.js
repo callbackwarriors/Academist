@@ -3,7 +3,7 @@ const PostCourseSchema = new mongoose.Schema(
   {
     userInfo: {
       name: { type: String, required: true },
-      email: { type: String, required: true, unique: true },
+      email: { type: String, required: true },
       img: {type: String},
       facebook: {type: String},
       linkedIn: {type: String},
