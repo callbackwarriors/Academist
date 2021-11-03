@@ -1,12 +1,10 @@
-import img from "assets/images/cycle.png";
 import axios from "axios";
+import Layout from "components/utilities/Layout";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useReducer } from "react";
-import { Store } from "utils/Store";
 import { useForm } from "react-hook-form";
-import Layout from "components/utilities/Layout";
+import { Store } from "utils/Store";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -71,33 +69,17 @@ function CourseEdit({ params }) {
           setValue("img", data.img);
           setValue("desc", data.desc);
         } catch (err) {
-          console.log(err.message);
+
+          Swal.fire({
+            icon: "error",
+            text: err.message,
+          });
         }
       };
       fetchData();
     }
   }, []);
 
-  const uploadHandler = async (e) => {
-    // const file = e.target.files[0];
-    // const bodyFormData = new FormData();
-    // bodyFormData.append("file", file);
-    // try {
-    //   dispatch({ type: "UPLOAD_REQUEST" });
-    //   const { data } = await axios.post("/api/admin/upload", bodyFormData, {
-    //     headers: {
-    //       "Content-Type": "multipart/form-data",
-    //       authorization: `Bearer ${userInfo.token}`,
-    //     },
-    //   });
-    //   dispatch({ type: "UPLOAD_SUCCESS" });
-    //   setValue("image", data.secure_url);
-    //   enqueueSnackbar("File uploaded successfully", { variant: "success" });
-    // } catch (err) {
-    //   dispatch({ type: "UPLOAD_FAIL", payload: getError(err) });
-    //   enqueueSnackbar(getError(err), { variant: "error" });
-    // }
-  };
 
   const submitHandler = async ({
     title,
