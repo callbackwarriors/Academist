@@ -1,156 +1,153 @@
-.CourseDetails{
+.CourseDetails {
+  p,
+  h2,
+  h6 {
+    color: #fff;
+  }
+  .banner {
+    @apply py-20 bg-woodsmoke-400;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-   p,h2, h6{color: #fff;}
-    .banner{
-        @apply py-20 bg-woodsmoke-400;
-        width: 100%;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        
-
-        .pText{
-            width: 60%;
-            @apply pt-5;
-            
-        }
-        .box2{
-            @apply pt-5;
-            h6{
-
-                @apply text-yellow-600;
-            }
-        }
-
-
+    .pText {
+      width: 60%;
+      @apply pt-5;
     }
-    .body{
-        background-color: #f7f8f9;
-        .leftSide{
-            .react-tabs__tab-list {
-                 border-bottom: 0px solid #aaa; 
-                margin: 0 0 10px;
-                padding: 0;
-            }
-            .react-tabs__tab {
-                display: inline-block;
-                /* border: 1px solid transparent; */
-                border-bottom: none;
-                bottom: -1px;
-                position: relative;
-                list-style: none;
-                padding: 6px 12px;
-                cursor: pointer;
-                border: 1px solid;
-                @apply border-royal-blue hover:border-aquamarine-800 bg-royal-blue hover:bg-aquamarine-800;
-                color: #fff;
-                margin: 8px 4px;
-                border-radius: 5px;
-
-            }
-            .tab1{
-                background-color: #fff;
-              h6,p{
-                color: #000;
-              }
-              .imgSection{
-                  img{
-                      height: 150px;
-                      width: 150px;
-                      border-radius: 50%;
-                  }
-              }
-
-              .giveReview{
-               .div1 [type='text'],[type='email']{
-                   width: 350px;
-                   height: 50px;
-                   padding: 0px 10px;
-                   border-radius: 4px;
-                   border: 1px solid;
-                   @apply border-royal-blue;
-               }
-               textarea{
-                   width: 90%;
-                   height: 100px;
-                   margin-top: 10px;
-                   padding: 5px 10px;
-                   border-radius: 4px;
-                   border: 1px solid;
-                   @apply border-royal-blue focus:border-aquamarine-800;
-               }
-               button{
-                margin-top: 20px;
-                @apply bg-royal-blue;
-                color: #fff;
-                padding: 9px 44px;
-                font-size: 23px;
-                border-radius: 5px;
-                &:hover{
-                    @apply bg-aquamarine-800
-                }
-               }
-              }
-            }
+    .box2 {
+      @apply pt-5;
+      h6 {
+        @apply text-yellow-600;
+      }
+    }
+  }
+  .body {
+    background-color: #f7f8f9;
+    .leftSide {
+      .react-tabs__tab-list {
+        border-bottom: 0px solid #aaa;
+        margin: 0 0 10px;
+        padding: 0;
+      }
+      .react-tabs__tab {
+        display: inline-block;
+        /* border: 1px solid transparent; */
+        border-bottom: none;
+        bottom: -1px;
+        position: relative;
+        list-style: none;
+        padding: 6px 12px;
+        cursor: pointer;
+        border: 1px solid;
+        @apply border-royal-blue hover:border-aquamarine-800 bg-royal-blue hover:bg-aquamarine-800;
+        color: #fff;
+        margin: 8px 4px;
+        border-radius: 5px;
+      }
+      .tab1 {
+        background-color: #fff;
+        h6,
+        p {
+          color: #000;
         }
-        .rightSide{
-            margin-top: -120px;
-            margin-left: 20px;
-            padding: 10px;
+        .imgSection {
+          img {
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+          }
+        }
+
+        .giveReview {
+          .div1 [type="text"],
+          [type="email"] {
+            width: 350px;
+            height: 50px;
+            padding: 0px 10px;
+            border-radius: 4px;
+            border: 1px solid;
+            @apply border-royal-blue;
+          }
+          textarea {
+            width: 90%;
+            height: 100px;
+            margin-top: 10px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: 1px solid;
+            @apply border-royal-blue focus:border-aquamarine-800;
+          }
+          button {
+            margin-top: 20px;
+            @apply bg-royal-blue;
+            color: #fff;
+            padding: 9px 44px;
+            font-size: 23px;
             border-radius: 5px;
-            .courseCard{
-                background-color: #fff;
-                border-radius: 6px;
-               p{
-                   color: #000;
-                   margin-bottom: 2px;
-               }
-               h3{
-                   @apply text-royal-blue;
-               }
-               h6{
-                   color: #000;
-               }
-               .imgCard{
-                height: 330px;
-                width: 100%;
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                border-radius: 5px;
-                   .overley{
-                       background-color: rgba(0, 0, 0, 0.5);
-                       height: 330px;
-                       width: 100%;
-                       border-radius: 5px;
-                   }
-               }
-
-               .member_ship{
-                background-color: #0dad28;
-                margin: 0 auto;
-                display: block;
-                width: 80%;
-                padding: 10px 10px;
-                color: #fff;
-                font-weight: 700;
-                border-radius: 5px;
-                margin-top: 13px;
-               }
-               .enroll_now{
-                @apply bg-royal-blue hover:bg-aquamarine-800;
-                margin: 0 auto;
-                display: block;
-                width: 80%;
-                padding: 10px 10px;
-                color: #fff;
-                font-weight: 700;
-                border-radius: 5px;
-                margin-top: 13px;
-               }
+            &:hover {
+              @apply bg-aquamarine-800;
             }
+          }
         }
+      }
     }
+    .rightSide {
+      margin-top: -120px;
+      margin-left: 20px;
+      padding: 10px;
+      border-radius: 5px;
+      .courseCard {
+        background-color: #fff;
+        border-radius: 6px;
+        p {
+          color: #000;
+          margin-bottom: 2px;
+        }
+        h3 {
+          @apply text-royal-blue;
+        }
+        h6 {
+          color: #000;
+        }
+        .imgCard {
+          height: 330px;
+          width: 100%;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          border-radius: 5px;
+          .overley {
+            background-color: rgba(0, 0, 0, 0.5);
+            height: 330px;
+            width: 100%;
+            border-radius: 5px;
+          }
+        }
 
-
+        .member_ship {
+          background-color: #0dad28;
+          margin: 0 auto;
+          display: block;
+          width: 80%;
+          padding: 10px 10px;
+          color: #fff;
+          font-weight: 700;
+          border-radius: 5px;
+          margin-top: 13px;
+        }
+        .enroll_now {
+          @apply bg-royal-blue hover:bg-aquamarine-800;
+          margin: 0 auto;
+          display: block;
+          width: 80%;
+          padding: 10px 10px;
+          color: #fff;
+          font-weight: 700;
+          border-radius: 5px;
+          margin-top: 13px;
+        }
+      }
+    }
+  }
 }

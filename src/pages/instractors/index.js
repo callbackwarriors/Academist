@@ -1,4 +1,5 @@
 import InstractorCard from "components/InstractorCard/InstractorCard";
+import Title from "components/utilities/Title";
 import User from "models/User";
 import React from "react";
 import db from "utils/db";
@@ -11,17 +12,17 @@ const instructor = (props) => {
 
   return (
     <Layout>
-      <PageTitle background="bg-gray-50" title="Instructors" subtitle="Our all instractors" />
-      <div className="instractorsWrapper section-padding">
-        <div className="container ">
+      <section className="FeaturedTeacher">
 
-          <div className="flex flex-wrap page-content__body">
+        <Title subtitle="Our all instractors" title="Instructors" description="" />
+        <div className="container">
+          <div className="grid gap-4 lg:grid-cols-4 sm:grid-cols-2">
             {instructors.map((instructor) => (
               <InstractorCard key={instructor._id} instructor={instructor} />
             ))}
           </div>
         </div>
-      </div>
+      </section>
     </Layout>
   );
 };
