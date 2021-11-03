@@ -10,14 +10,14 @@ const Hero = () => {
   const [open, setOpen] = useState(false);
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
+  
   const [query, setQuery] = useState('')
-
   const handleChange = (e:any) =>{
-    e.target.value
     setQuery(e.target.value)
   }
-  const handlesubmit = () => {
-        router.push(`/${query}`)       
+  const handlesubmit = (e:any) => {
+        e.preventDefault()
+        router.push(`/search?query=${query}`)       
   } 
 
 
@@ -42,7 +42,7 @@ const Hero = () => {
                 type="text"
                 placeholder="Search for new course..."
                 id="email"
-                name="search"
+                name="query"
                 onChange={handleChange}
                 className="font-1 text-lg w-full bg-gray-100 bg-opacity-50 h-14  border border-gray-300 focus:border-royal-blue focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
