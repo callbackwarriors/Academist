@@ -85,8 +85,8 @@ function Profile() {
   return (
     <Layout>
       <div className="flex items-center justify-center overflow-x-hidden bg-yellow-100 lg:overflow-x-auto lg:overflow-hidden">
-        <div className="flex flex-col flex-wrap justify-between w-full border-gray-300 login-container lg:w-4/5 lg:bg-white lg:h-screen lg:border lg:flex-nowrap lg:flex-row group">
-          <div className="relative flex order-2 w-full mt-32 lg:w-1/2 h-28 lg:h-full lg:mt-0 lg:bg-theme-yellow-dark lg:order-1">
+        <div className="flex flex-col flex-wrap justify-between w-full border-gray-300 login-container lg:w-4/5 lg:bg-white lg:border lg:flex-nowrap lg:flex-row group">
+          <div className="relative flex order-2 w-full mt-32 lg:w-1/2 h-28 lg:h-auto lg:mt-0 lg:bg-theme-yellow-dark lg:order-1">
             <div className="items-center justify-start hidden w-full h-full text-center select-none lg:flex">
               <span className="transform block whitespace-nowrap h-full -rotate-90 text-[55px] 2xl:text-[70px] font-black uppercase text-yellow-300 opacity-0 transition-all group-hover:opacity-100 ml-10 2xl:ml-12 group-hover:-ml-20 2xl:group-hover:ml-26 lg:group-hover:ml-20 duration-1000 lg:duration-700 ease-in-out">
                 Academist
@@ -102,7 +102,7 @@ function Profile() {
             </div>
             <div className="hidden w-1/3 ml-auto bg-white lg:block"></div>
           </div>
-          <div className="order-1 w-full lg:w-1/2 lg:order-2">
+          <div className="order-1 w-full my-6 lg:w-1/2 lg:order-2">
             <div className="relative flex items-center px-10 pt-16 form-wrapper lg:h-full lg:pt-0">
               <div className="w-full space-y-2">
                 <div className="flex items-end justify-center mb-8 space-x-3 text-center form-caption">

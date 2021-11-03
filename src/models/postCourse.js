@@ -3,7 +3,7 @@ const PostCourseSchema = new mongoose.Schema(
   {
     userInfo: {
       name: { type: String, required: true },
-      email: { type: String, required: true, unique: true },
+      email: { type: String, required: true },
       img: {type: String},
       facebook: {type: String},
       linkedIn: {type: String},
@@ -30,5 +30,5 @@ const PostCourseSchema = new mongoose.Schema(
   { timestamps: true }
 );
 const Course =
-  mongoose.models.Course || mongoose.model("Course", PostCourseSchema);
+  mongoose.models.Course01 || mongoose.model("Course01", PostCourseSchema);
 export default Course;

@@ -27,8 +27,8 @@ const ordersSchema = new mongoose.Schema(
             link: { type: String, required: true },
           }
         ],
-        title: { type: String, required: true }, // unique: true
-        slug: { type: String, required: true, unique: true },
+        title: { type: String, required: true },
+        slug: { type: String, required: true},
         shortDesc: { type: String, required: true },
         categories: { type: String, required: true },
         level: { type: String, required: true },

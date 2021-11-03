@@ -1,16 +1,16 @@
-import React from 'react';
-import Image from 'next/image'
 import Link from 'next/link';
-import { AiFillEye, AiFillVideoCamera, AiOutlineHeart, AiOutlineStar } from 'react-icons/ai';
+import Image from 'next/image'
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import { AiFillEye, AiFillVideoCamera, AiOutlineHeart, AiOutlineStar } from 'react-icons/ai';
 
-const InstractorCard = ({ instructor }: any) => {
+const FeaturedInstructors = ({ instructor }) => {
 
     return (
-        <div className="relative FeaturedTeacher__card">
+
+        <div className=" FeaturedTeacher__card">
             <div className="inline-flex p-2 align-middle bg-white rounded-full shadow ">
-                <Image width="150px" className="rounded-full" height="150px" src={instructor?.img} alt={instructor.name} />
-                <AiOutlineHeart className="absolute text-2xl top-3 right-3" />
+                <Image width="150px" className="object-cover rounded-full" height="150px" src={instructor?.img} alt={instructor.name} />
+
             </div>
             <div className="flex justify-between gap-3 py-3 border-b border-gray-300">
                 <div className="flex items-center justify-center gap-1">
@@ -61,9 +61,8 @@ const InstractorCard = ({ instructor }: any) => {
             </div>
         </div>
 
+
     );
 };
 
-export default InstractorCard;
-
-
+export default FeaturedInstructors;
