@@ -4,7 +4,6 @@ import Layout from "../components/utilities/Layout";
 import PageTitle from "../components/utilities/PageTitle";
 import Course from "../models/postCourse";
 import db from "../utils/db";
-
 const prices = [
   {
     name: "$1 to $50",
