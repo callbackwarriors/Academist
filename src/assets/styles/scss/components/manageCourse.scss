@@ -1,5 +1,12 @@
-.manageCourse {
-    Image {
-        width: 500px;
+.single__course {
+    @apply mb-5 rounded-lg md:flex;
+    &__image{
+        @apply grid gap-4 items-center mb-3 lg:mb-0;
+        img {
+            @apply w-40 mx-4 object-cover rounded;
+            width: 100%!important;
+            height: auto!important;
+            object-fit: cover;
+        }
     }
 }

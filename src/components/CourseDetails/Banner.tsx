@@ -6,7 +6,7 @@ interface IProps {
 }
 
 const Banner = ({course}:IProps) => {
-    const { title,desc } = course;
+    const { shortDesc, title,desc } = course;
 
     return (
         <div className="container">
@@ -28,7 +28,7 @@ const Banner = ({course}:IProps) => {
                 </div>
             </div>
 
-            <p className="pText">{desc}</p>
+            <p className="pText">{shortDesc}</p>
 
             <div className="flex box2 ">
                 <h6 className="px-2"> <FaStar /></h6>

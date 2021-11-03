@@ -1,12 +1,10 @@
-import img from "assets/images/cycle.png";
 import axios from "axios";
+import Layout from "components/utilities/Layout";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useReducer } from "react";
-import { Store } from "utils/Store";
 import { useForm } from "react-hook-form";
-import Layout from "components/utilities/Layout";
+import { Store } from "utils/Store";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -16,25 +14,29 @@ function reducer(state, action) {
       return { ...state, loading: false, error: "" };
     case "FETCH_FAIL":
       return { ...state, loading: false, error: action.payload };
-    case "UPDATE_REQUEST":
-      return { ...state, loadingUpdate: true, errorUpdate: "" };
-    case "UPDATE_SUCCESS":
-      return { ...state, loadingUpdate: false, errorUpdate: "" };
-    case "UPDATE_FAIL":
-      return { ...state, loadingUpdate: false, errorUpdate: action.payload };
+    case "UPLOAD_REQUEST":
+      return { ...state, loadingUpload: true, errorUpload: "" };
+    case "UPLOAD_SUCCESS":
+      return {
+        ...state,
+        loadingUpload: false,
+        errorUpload: "",
+      };
+    case "UPLOAD_FAIL":
+      return { ...state, loadingUpload: false, errorUpload: action.payload };
     default:
       return state;
   }
 }
 
 function CourseEdit({ params }) {
-  // console.log('params', params);
   const productId = params.id;
   const { state } = useContext(Store);
-  const [{ loading, error, loadingUpdate }, dispatch] = useReducer(reducer, {
-    loading: true,
-    error: "",
-  });
+  const [{ loading, error, loadingUpdate, loadingUpload }, dispatch] =
+    useReducer(reducer, {
+      loading: true,
+      error: "",
+    });
 
   const {
     handleSubmit,
@@ -55,7 +57,6 @@ function CourseEdit({ params }) {
           const { data } = await axios.get(`/api/admin/courses/${productId}`, {
             headers: { authorization: `Bearer ${userInfo.token}` },
           });
-          console.log(data);
           dispatch({ type: "FETCH_SUCCESS" });
           setValue("title", data.title);
           setValue("slug", data.slug);
@@ -68,13 +69,17 @@ function CourseEdit({ params }) {
           setValue("img", data.img);
           setValue("desc", data.desc);
         } catch (err) {
-          console.log(err.message);
-          // dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
+
+          Swal.fire({
+            icon: "error",
+            text: err.message,
+          });
         }
       };
       fetchData();
     }
   }, []);
+
 
   const submitHandler = async ({
     title,
@@ -351,6 +356,10 @@ function CourseEdit({ params }) {
                       </span>
                     </label>
                   </div>
+                  <button>
+                    Upload File
+                    <input type="file" onChange={uploadHandler} hidden />
+                  </button>
                   <div className="form-element">
                     <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
                       <span className="block text-lg tracking-wide text-gray-800">

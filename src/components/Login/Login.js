@@ -4,17 +4,12 @@ import Cookies from "js-cookie";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 import { Store } from "utils/Store";
 
 const Login = () => {
-  const [user, setUser] = useState();
-  useEffect(() => {
-    const value = localStorage.getItem("userInfo");
-    const user = !!value ? JSON.parse(value) : undefined;
-    setUser(user);
-  }, []);
   const {
     handleSubmit,
     register,
@@ -25,7 +20,7 @@ const Login = () => {
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
   useEffect(() => {
-    if (user) {
+    if (userInfo) {
       router.push("/");
     }
   }, []);
@@ -36,22 +31,28 @@ const Login = () => {
         email,
         password,
       });
-      console.log("login", data);
+
       dispatch({ type: "USER_LOGIN", payload: data });
-      localStorage.setItem("userInfo", JSON.stringify(data));
-      // localStorage.setItem("password", password);
+      Cookies.set("userInfo", JSON.stringify(data));
+      Swal.fire(
+        `Welcome` ,
+        'You logged in successfully!',
+        'success'
+      )
       router.push(redirect || "/");
     } catch (err) {
-      console.log(err);
-      alert(err.response.data ? err.response.data.message : err.message);
+      Swal.fire({
+        icon: "error",
+        text: err.message? 'Your email or password is not valid.': '',
+      });
     }
   };
 
   return (
     <div>
       <div className="flex items-center justify-center overflow-x-hidden bg-chateau-green-50 lg:overflow-x-auto lg:overflow-hidden">
-        <div className="flex flex-col flex-wrap justify-between w-full border-gray-300 login-container lg:w-4/5 lg:bg-white lg:h-screen lg:border lg:flex-nowrap lg:flex-row group">
-          <div className="relative flex order-2 w-full mt-32 lg:w-1/2 h-28 lg:h-full lg:mt-0 lg:bg-royal-blue lg:order-1">
+        <div className="flex flex-col flex-wrap justify-between w-full border-gray-300 login-container lg:w-4/5 lg:bg-white lg:border lg:flex-nowrap lg:flex-row group">
+          <div className="relative flex order-2 w-full mt-32 lg:w-1/2 h-28 lg:h-auto lg:mt-0 lg:bg-royal-blue lg:order-1">
             <div className="items-center justify-start hidden w-full h-full text-center select-none lg:flex">
               <span className="transform block whitespace-nowrap h-full -rotate-90 text-[55px] 2xl:text-[70px] font-black uppercase text-yellow-300 opacity-0 transition-all group-hover:opacity-100 ml-10 2xl:ml-12 group-hover:-ml-20 2xl:group-hover:ml-26 lg:group-hover:ml-20 duration-1000 lg:duration-700 ease-in-out">
                 Academist
@@ -67,7 +68,7 @@ const Login = () => {
             </div>
             <div className="hidden w-1/3 ml-auto bg-white lg:block"></div>
           </div>
-          <div className="order-1 w-full lg:w-1/2 lg:order-2">
+          <div className="order-1 w-full my-6 lg:w-1/2 lg:order-2">
             <div className="relative flex items-center px-10 pt-16 form-wrapper lg:h-full lg:pt-0">
               <div className="w-full space-y-2">
                 <div className="flex items-end justify-center mb-8 space-x-3 text-center form-caption">
@@ -176,6 +177,24 @@ const Login = () => {
                     <a className="text-royal-blue">Create an account</a>
                   </Link>
                 </p>
+
+                <ul className="pt-8">
+                  <li className="space-y-0.5 w-full lg:w-4/5 block mx-auto mb-4 text-xl">
+                    <strong>Login Infos</strong>
+                  </li>
+                  <li className="space-y-0.5 w-full lg:w-4/5 block mx-auto border-2 p-3 mb-2">
+                    <strong>Admin: </strong>
+                    admin@gmail.com <span>(123456)</span>
+                  </li>
+                  <li className="space-y-0.5 w-full lg:w-4/5 block mx-auto border-2 p-3 mb-2">
+                    <strong>Instructor: </strong>
+                    instructor@gmail.com <span>(123456)</span>
+                  </li>
+                  <li className="space-y-0.5 w-full lg:w-4/5 block mx-auto border-2 p-3">
+                    <strong>User: </strong>
+                    student@gmail.com <span>(123456)</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

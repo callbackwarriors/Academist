@@ -1,4 +1,6 @@
+import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
+// import { useRouter } from 'next/router';
 import React from 'react';
 import Footer from './Footer';
 import Header from './Header';
@@ -6,11 +8,15 @@ import Header from './Header';
 interface ILayout {
   title: string;
   keywords: string;
-  description:string;
+  description: string;
   children: any,
 }
 
-export default function Layout({ title, keywords, description, children }:ILayout) {
+export default function Layout({ title, keywords, description, children }: ILayout) {
+
+  const router = useRouter();
+
+  const isDashboard = router.asPath.startsWith('/dashboard');
   return (
     <>
       <Head>
@@ -18,9 +24,10 @@ export default function Layout({ title, keywords, description, children }:ILayou
         <meta name='description' content={description} />
         <meta name='keywords' content={keywords} />
       </Head>
-      <Header/>
+      {!isDashboard && <Header />}
       {children}
-      <Footer/>
+
+      {!isDashboard && <Footer />}
     </>
   )
 }
