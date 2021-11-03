@@ -1,12 +1,14 @@
 import img from "assets/images/cycle.png";
 import axios from "axios";
+import Layout from "components/utilities/Layout";
+import Cookies from "js-cookie";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
-import { Store } from "utils/Store";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import Layout from "components/utilities/Layout";
+import Swal from "sweetalert2";
+import { Store } from "utils/Store";
 
 function Profile() {
   const {
@@ -21,24 +23,33 @@ function Profile() {
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
 
-  //   const [userInfo, setUserInfo] = useState();
-
-  //   useEffect(() => {
-  //     const value = localStorage.getItem("userInfo");
-  //     const user = !!value ? JSON.parse(value) : undefined;
-  //     setUserInfo(user);
-  //   }, []);
   useEffect(() => {
     if (!userInfo) {
       return router.push("/login");
     }
     setValue("name", userInfo?.name);
     setValue("email", userInfo?.email);
+    setValue("img", userInfo?.img);
+    setValue("facebook", userInfo?.facebook);
+    setValue("linkedIn", userInfo?.linkedIn);
+    setValue("twitter", userInfo?.twitter);
   }, []);
 
-  const submitHandler = async ({ name, email, password, confirmPassword }) => {
+  const submitHandler = async ({
+    name,
+    email,
+    img,
+    facebook,
+    twitter,
+    linkedIn,
+    password,
+    confirmPassword,
+  }) => {
     if (password !== confirmPassword) {
-      alert("Password don't match");
+      Swal.fire({
+        icon: "error",
+        text: "Password don't match",
+      });
       return;
     }
     try {
@@ -48,23 +59,34 @@ function Profile() {
           name,
           email,
           password,
+          img,
+          facebook,
+          linkedIn,
+          twitter,
         },
         { headers: { authorization: `Bearer ${userInfo.token}` } }
       );
-      //   console.log("data", data);
+
       dispatch({ type: "USER_LOGIN", payload: data });
-      localStorage.setItem("userInfo", JSON.stringify(data));
-      alert("Profile updated successfully");
+      Cookies.set("userInfo", JSON.stringify(data));
+      Swal.fire({
+        icon: "success",
+        text: "Profile updated successfully",
+      });
+      router.push("/")
     } catch (err) {
-      alert(err.message);
+      Swal.fire({
+        icon: "error",
+        text: err.message ? "Profile updated failed" : "",
+      });
     }
   };
 
   return (
     <Layout>
       <div className="flex items-center justify-center overflow-x-hidden bg-yellow-100 lg:overflow-x-auto lg:overflow-hidden">
-        <div className="flex flex-col flex-wrap justify-between w-full border-gray-300 login-container lg:w-4/5 lg:bg-white lg:h-screen lg:border lg:flex-nowrap lg:flex-row group">
-          <div className="relative flex order-2 w-full mt-32 lg:w-1/2 h-28 lg:h-full lg:mt-0 lg:bg-theme-yellow-dark lg:order-1">
+        <div className="flex flex-col flex-wrap justify-between w-full border-gray-300 login-container lg:w-4/5 lg:bg-white lg:border lg:flex-nowrap lg:flex-row group">
+          <div className="relative flex order-2 w-full mt-32 lg:w-1/2 h-28 lg:h-auto lg:mt-0 lg:bg-theme-yellow-dark lg:order-1">
             <div className="items-center justify-start hidden w-full h-full text-center select-none lg:flex">
               <span className="transform block whitespace-nowrap h-full -rotate-90 text-[55px] 2xl:text-[70px] font-black uppercase text-yellow-300 opacity-0 transition-all group-hover:opacity-100 ml-10 2xl:ml-12 group-hover:-ml-20 2xl:group-hover:ml-26 lg:group-hover:ml-20 duration-1000 lg:duration-700 ease-in-out">
                 Academist
@@ -80,7 +102,7 @@ function Profile() {
             </div>
             <div className="hidden w-1/3 ml-auto bg-white lg:block"></div>
           </div>
-          <div className="order-1 w-full lg:w-1/2 lg:order-2">
+          <div className="order-1 w-full my-6 lg:w-1/2 lg:order-2">
             <div className="relative flex items-center px-10 pt-16 form-wrapper lg:h-full lg:pt-0">
               <div className="w-full space-y-2">
                 <div className="flex items-end justify-center mb-8 space-x-3 text-center form-caption">
@@ -92,10 +114,11 @@ function Profile() {
                   <div className="form-element">
                     <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
                       <span className="block text-lg tracking-wide text-gray-800">
-                        Name
+                        Name<span className="text-red-600"> *</span>
                       </span>
                       <span className="block">
                         <input
+                          onChange={() => {}}
                           type="text"
                           name="name"
                           // eslint-disable-next-line react/jsx-props-no-spreading
@@ -118,10 +141,11 @@ function Profile() {
                   <div className="form-element">
                     <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
                       <span className="block text-lg tracking-wide text-gray-800">
-                        Email
+                        Email<span className="text-red-600"> *</span>
                       </span>
                       <span className="block">
                         <input
+                          onChange={() => {}}
                           type="email"
                           name="Email"
                           {...register("email", {
@@ -152,10 +176,11 @@ function Profile() {
                       </span>
                     </label>
                   </div>
+
                   <div className="form-element">
                     <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
                       <span className="block text-lg tracking-wide text-gray-800">
-                        Password
+                        Password<span className="text-red-600"> *</span>
                       </span>
                       <span className="block">
                         <input
@@ -185,7 +210,7 @@ function Profile() {
                   <div className="form-element">
                     <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
                       <span className="block text-lg tracking-wide text-gray-800">
-                        Conform Password
+                        Conform Password<span className="text-red-600"> *</span>
                       </span>
                       <span className="block">
                         <input
@@ -213,17 +238,88 @@ function Profile() {
                     </label>
                   </div>
                   <div className="form-element">
-                    <div className="flex items-center py-2 mx-auto lg:w-4/5">
-                      <label className="flex items-center space-x-2 tracking-wide text-gray-800 select-none">
-                        <input type="checkbox" name="" id="" />
-                        <span className="block tracking-wide text-gray-800">
-                          Remember me
-                        </span>
-                      </label>
-                    </div>
+                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
+                      <span className="block text-lg tracking-wide text-gray-800">
+                        Image
+                      </span>
+                      <span className="block">
+                        <input
+                          onChange={() => {}}
+                          type="text"
+                          name="img"
+                          // eslint-disable-next-line react/jsx-props-no-spreading
+                          {...register("img", {})}
+                          className={
+                            "block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2"
+                          }
+                          placeholder="Image URL"
+                        />
+                        <span className="py-2 text-sm text-red-400"></span>
+                      </span>
+                    </label>
                   </div>
-
                   <div className="form-element">
+                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
+                      <span className="block text-lg tracking-wide text-gray-800">
+                        Facebook
+                      </span>
+                      <span className="block">
+                        <input
+                          onChange={() => {}}
+                          type="text"
+                          name="facebook"
+                          // eslint-disable-next-line react/jsx-props-no-spreading
+                          {...register("facebook", {})}
+                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+               `}
+                          placeholder="Facebook URL"
+                        />
+                        <span className="py-2 text-sm text-red-400"></span>
+                      </span>
+                    </label>
+                  </div>
+                  <div className="form-element">
+                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
+                      <span className="block text-lg tracking-wide text-gray-800">
+                        LinkedIn
+                      </span>
+                      <span className="block">
+                        <input
+                          onChange={() => {}}
+                          type="text"
+                          name="linkedIn"
+                          // eslint-disable-next-line react/jsx-props-no-spreading
+                          {...register("linkedIn", {})}
+                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+               `}
+                          placeholder="LinkedIn URL"
+                        />
+                        <span className="py-2 text-sm text-red-400"></span>
+                      </span>
+                    </label>
+                  </div>
+                  <div className="form-element">
+                    <label className="space-y-0.5 w-full lg:w-4/5 block mx-auto">
+                      <span className="block text-lg tracking-wide text-gray-800">
+                        Twitter
+                      </span>
+                      <span className="block">
+                        <input
+                          onChange={() => {}}
+                          type="text"
+                          name="twitter"
+                          // eslint-disable-next-line react/jsx-props-no-spreading
+                          {...register("twitter", {})}
+                          className={`block w-full px-4 py-3 placeholder-gray-500 border-gray-300 rounded-md shadow focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2
+           `}
+                          placeholder="Twitter URL"
+                        />
+                        <span className="py-2 text-sm text-red-400"></span>
+                      </span>
+                    </label>
+                  </div>
+                  
+                  <div className="mt-6 form-element">
                     <span className="block w-full mx-auto lg:w-4/5 ">
                       <input
                         type="submit"

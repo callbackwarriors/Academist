@@ -7,10 +7,11 @@ import React from 'react';
 const addNewCourse = () => {
     return (
         <Layout>
+
             <div className="flex items-stretch w-full bg-gray-200">
                 <Sidebar />
                 <div className="w-full min-h-screen p-5 transition-all bg-white section-padding">
-                    <Title title="Course category" subtitle="" description="Dear admin, Welcome to your course category page. You may add new course by filling below form and start selling from now."></Title>
+                    <Title title="Add new course" subtitle="" description="Dear Instractor, Welcome to your Add course page. You may add new course by filling below form and start your earning instantly."></Title>
                     <AddNewCourse />
                 </div>
             </div>

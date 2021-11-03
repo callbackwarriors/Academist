@@ -13,15 +13,13 @@ interface IProps {
   course: ICourses;
 }
 
-
-
-
 const courseCard = ({course}:IProps) => {
   const router = useRouter()
   const [open, setOpen] = useState(false);
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
   const { price,img,_id } = course;
+
   const {dispatch} = useContext(Store)
   
   const enrollCourseHandler = async () => {
@@ -66,10 +64,7 @@ const courseCard = ({course}:IProps) => {
             <h3 className="p-0 m-0"><sup>$</sup>{price}</h3>
           </div>
           <button onClick={enrollCourseHandler} className="enroll_now"> Enroll Now </button>
-          <p className="mt-3">
-            Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore.
-          </p>
+
           <h6>Course Features</h6>
         </div>
 

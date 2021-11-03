@@ -7,14 +7,14 @@ import { Fragment, useContext, useState } from "react";
 import {
   BiBookReader,
   BiCart,
-  BiCog,
-  BiListCheck,
-  BiLogOutCircle,
-  BiUserCheck,
+  BiCog, BiLogOutCircle, BiMessageAltAdd, BiUserCheck
 } from "react-icons/bi";
+import { GrDocumentUpdate } from "react-icons/gr";
 import { Store } from "utils/Store";
 
-export default function Example({ user }) {
+
+
+export default function Example({ userInfo }) {
   const router = useRouter();
   const { dispatch } = useContext(Store);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -22,11 +22,9 @@ export default function Example({ user }) {
     setAnchorEl(null);
     dispatch({ type: "USER_LOGOUT" });
     Cookies.remove("cartItems");
-    localStorage.clear();
-    window.location.reload();
+    Cookies.remove("userInfo");
     router.push("/");
-    localStorage.clear();
-
+    Cookies.remove();
   };
 
   const loginMenuCloseHandler = (e, redirect) => {
@@ -38,9 +36,9 @@ export default function Example({ user }) {
 
   return (
     <Menu as="div" className="relative inline-block text-left">
-      {user && (
+      {userInfo && (
         <Menu.Button className="inline-flex justify-center w-full px-4 py-2 ml-3 text-sm font-medium text-white rounded-md bg-royal-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-          {user?.name}
+          {userInfo?.name}
           <ChevronDownIcon
             className="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
             aria-hidden="true"
@@ -57,68 +55,10 @@ export default function Example({ user }) {
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items className="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <div className="px-1 py-1 ">
-            <Link href="/dashboard">
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={`${
-                      active ? "bg-royal-blue text-white" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                  >
-                    {active ? (
-                      <BiBookReader
-                        className="w-5 h-5 mr-2"
-                        aria-hidden="true"
-                      />
-                    ) : (
-                      <BiBookReader
-                        className="w-5 h-5 mr-2"
-                        aria-hidden="true"
-                      />
-                    )}
-                    My learning
-                  </button>
-                )}
-              </Menu.Item>
-            </Link>
-            <Link href="/cart">
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={`${
-                      active ? "bg-royal-blue text-white" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                  >
-                    {active ? (
-                      <BiCart className="w-5 h-5 mr-2" aria-hidden="true" />
-                    ) : (
-                      <BiCart className="w-5 h-5 mr-2" aria-hidden="true" />
-                    )}
-                    My cart
-                  </button>
-                )}
-              </Menu.Item>
-            </Link>
-          </div>
           <div className="px-1 py-1">
-            <Menu.Item>
-              {({ active }) => (
-                <button
-                  className={`${
-                    active ? "bg-royal-blue text-white" : "text-gray-900"
-                  } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                >
-                  {active ? (
-                    <BiListCheck className="w-5 h-5 mr-2" aria-hidden="true" />
-                  ) : (
-                    <BiListCheck className="w-5 h-5 mr-2" aria-hidden="true" />
-                  )}
-                  Wish list
-                </button>
-              )}
-            </Menu.Item>
-            <Link href="/dashboard">
+
+          {(userInfo.user) && (
+            <Link href="/enrollcourse">
               <a>
                 <Menu.Item>
                   {({ active }) => (
@@ -128,23 +68,163 @@ export default function Example({ user }) {
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                     >
                       {active ? (
-                        <BiUserCheck
+                        <BiBookReader
                           className="w-5 h-5 mr-2"
                           aria-hidden="true"
                         />
                       ) : (
-                        <BiUserCheck
+                        <BiBookReader
                           className="w-5 h-5 mr-2"
                           aria-hidden="true"
                         />
                       )}
-                      Instructor dashboard
+                      My learning
                     </button>
                   )}
                 </Menu.Item>
               </a>
             </Link>
+)}
+{userInfo.user && (
+            <Link href="/cart">
+              <a>
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      className={`${
+                        active ? "bg-royal-blue text-white" : "text-gray-900"
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    >
+                      {active ? (
+                        <BiCart className="w-5 h-5 mr-2" aria-hidden="true" />
+                      ) : (
+                        <BiCart className="w-5 h-5 mr-2" aria-hidden="true" />
+                      )}
+                      My cart
+                    </button>
+                  )}
+                </Menu.Item>
+              </a>
+            </Link>
+)}
+
           </div>
+
+            {(userInfo.isAdmin) && (
+              <Link href="/dashboard">
+                <a>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`${
+                          active ? "bg-royal-blue text-white" : "text-gray-900"
+                        } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                      >
+                        {active ? (
+                          <BiUserCheck
+                            className="w-5 h-5 mr-2"
+                            aria-hidden="true"
+                          />
+                        ) : (
+                          <BiUserCheck
+                            className="w-5 h-5 mr-2"
+                            aria-hidden="true"
+                          />
+                        )}
+                        Admin dashboard
+                      </button>
+                    )}
+                  </Menu.Item>
+                </a>
+              </Link>
+            )}
+            {(userInfo.instructor) && (<>
+              <Link href="/dashboard">
+                <a>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`${
+                          active ? "bg-royal-blue text-white" : "text-gray-900"
+                        } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                      >
+                        {active ? (
+                          <BiUserCheck
+                            className="w-5 h-5 mr-2"
+                            aria-hidden="true"
+                          />
+                        ) : (
+                          <BiUserCheck
+                            className="w-5 h-5 mr-2"
+                            aria-hidden="true"
+                          />
+                        )}
+                        Instructor dashboard
+                      </button>
+                    )}
+                  </Menu.Item>
+                </a>
+              </Link>
+
+              <Link href="/dashboard/courses/addcourse">
+                <a>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`${
+                          active ? "bg-royal-blue text-white" : "text-gray-900"
+                        } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                      >
+                        {active ? (
+                          <BiMessageAltAdd
+                            className="w-5 h-5 mr-2"
+                            aria-hidden="true"
+                          />
+                        ) : (
+                          <BiMessageAltAdd
+                            className="w-5 h-5 mr-2"
+                            aria-hidden="true"
+                          />
+                        )}
+                        Add new course
+                      </button>
+                    )}
+                  </Menu.Item>
+                </a>
+              </Link>
+
+              <Link href="/dashboard/courses/managecourses">
+                <a>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`${
+                          active ? "bg-royal-blue text-white" : "text-gray-900"
+                        } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                      >
+                        {active ? (
+                          <GrDocumentUpdate
+                            className="w-5 h-5 mr-2"
+                            aria-hidden="true"
+                          />
+                        ) : (
+                          <GrDocumentUpdate
+                            className="w-5 h-5 mr-2"
+                            aria-hidden="true"
+                          />
+                        )}
+                        Manage courses
+                      </button>
+                    )}
+                  </Menu.Item>
+                </a>
+              </Link>
+
+
+              
+              </>
+            )}
+
           <div className="px-1 py-1">
             <Menu.Item onClick={(e) => loginMenuCloseHandler(e, "/profile")}>
               {({ active }) => (

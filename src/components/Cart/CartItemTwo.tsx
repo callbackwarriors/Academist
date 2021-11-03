@@ -9,7 +9,7 @@ interface IProp {
 
 function CartItem({ item }: IProp) {
   const { state, dispatch } = useContext(Store);
-  const { title, img, price, slug, desc, courseProvider } = item;
+  const { title, img, price, slug, desc } = item;
   const removeItemHandler = (item: ICourses) => {
     dispatch({ type: 'CART_REMOVE_ITEM', payload: item })
   }

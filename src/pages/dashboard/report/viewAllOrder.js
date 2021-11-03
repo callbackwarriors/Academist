@@ -1,31 +1,26 @@
-import React, { useEffect, useState } from 'react';
 import Sidebar from "components/Dashboard/Sidebar";
 import Layout from "components/utilities/Layout";
-import ViewAllOrder from 'components/ViewAllOrder/ViewAllOrder';
+import ViewAllOrder from "components/ViewAllOrder/ViewAllOrder";
+import React from "react";
 // import type { NextPage } from 'next';
-import db from 'utils/db';
-import Orders from '../../../models/Orders';
-
+import db from "utils/db";
+import Orders from "../../../models/Orders";
 
 const viewAllOrder = (props) => {
-  console.log('this is order props', props.order)
-      
-      const orderingData = props.order;
-      console.log('ordering data',orderingData)
+  const orderingData = props.order;
 
-    return (
-        <Layout>
-        <div className="flex w-full items-stretch bg-gray-200">
-          <Sidebar />
-         <div className="w-full py-20 h-screen transition-all">
-            <ViewAllOrder orderingData={orderingData} ></ViewAllOrder>
-          </div>
+  return (
+    <Layout>
+      <div className="flex items-stretch w-full h-full bg-gray-100">
+        <Sidebar />
+        <div className="w-full min-h-screen p-5 transition-all bg-white py-4">
+          <ViewAllOrder orderingData={orderingData}></ViewAllOrder>
         </div>
-      </Layout>
-    );
+      </div>
+    </Layout>
+  );
 };
 export default viewAllOrder;
-
 
 export async function getServerSideProps() {
   await db.connect();
@@ -36,5 +31,4 @@ export async function getServerSideProps() {
       order: order.map(db.convertDocToObj),
     },
   };
-
 }
