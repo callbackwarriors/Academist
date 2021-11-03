@@ -8,7 +8,7 @@ const LatestCourses = ({data}) => {
     <section className="latest__courses section-padding">
       <div className="container">
 
-        <Title subtitle="ROOF PARTY POLAROID" title="Master Cleanse Reliac Heirloom" description="Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table." />
+        <Title subtitle="NEWLY ADDED COURSES AT ACADEMIST" title="Latest courses" description="" />
       </div>
       <div className="container">
         <div className="flex flex-wrap">

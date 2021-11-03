@@ -60,7 +60,7 @@ const search = (props) => {
     <Layout>
       <PageTitle
         background="bg-gray-50"
-        title="Your Search result"
+        title="Your search result"
         subtitle=""
       />
       <div className="section-padding">
