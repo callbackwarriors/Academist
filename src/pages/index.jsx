@@ -15,9 +15,9 @@ const HomePage = (props) => {
     <Layout>
       <Hero/>
       <LatestCourses data={data}/>
-      <Testimonial />
       <FeaturedInstructors user={user} />
       <LargestCourses data={data}/>
+      <Testimonial />
       <Partner/>
     </Layout>
   )
