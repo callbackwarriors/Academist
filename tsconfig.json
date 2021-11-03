@@ -39,5 +39,5 @@
     "src/components/Payment/Payment.js",
     "src/components/Payment/SimpleCardForm.js",
     "src/components/utilities/Header.js"
-, "src/components/AddNewCourse/AddNewCourse.js", "src/components/EnrollCourse/EnrollCourse.tsx", "src/components/ManageAdmin/ManageTable.js", "src/pages/checkout.js", "src/pages/instractors/[slug].js", "src/components/LargestCourse/LargestCourse.js", "src/components/LargestCourses/LargestCourses.js", "src/pages/watchpage/[slug].js"  ]
+, "src/components/AddNewCourse/AddNewCourse.js", "src/components/EnrollCourse/EnrollCourse.tsx", "src/components/ManageAdmin/ManageTable.js", "src/pages/checkout.js", "src/pages/instractors/[slug].js", "src/components/LargestCourse/LargestCourse.js", "src/components/LargestCourses/LargestCourses.js", "src/pages/watchpage/[slug].js", "src/pages/feturedinstractors.js"  ]
 }
