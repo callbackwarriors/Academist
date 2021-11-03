@@ -186,7 +186,7 @@ export default function Example({ userInfo }) {
                             aria-hidden="true"
                           />
                         )}
-                        Add new lesson
+                        Add new course
                       </button>
                     )}
                   </Menu.Item>

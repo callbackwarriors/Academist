@@ -1,8 +1,8 @@
 import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useReducer } from "react";
 import { Store } from "utils/Store";
-import Link from "next/link";
 // import Image from 'next/image'
 
 function reducer(state, action) {
@@ -52,7 +52,11 @@ const ManageTable = (user) => {
         });
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (err) {
-        console.log(err);
+        Swal.fire({
+          icon: "error",
+          text: err.message,
+        });
+
       }
     };
     if (successDelete) {
@@ -75,7 +79,10 @@ const ManageTable = (user) => {
       dispatch({ type: "DELETE_SUCCESS" });
     } catch (err) {
       dispatch({ type: "DELETE_FAIL" });
-      console.log(err);
+      Swal.fire({
+        icon: "error",
+        text: err.message,
+      });
     }
   };
 
