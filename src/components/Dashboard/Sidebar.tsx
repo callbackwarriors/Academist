@@ -6,7 +6,7 @@ import Link from "next/link";
 import React, { useContext, useState } from "react";
 import {
   AiOutlineFundProjectionScreen,
-  AiOutlineUserAdd,
+  AiOutlineUserAdd
 } from "react-icons/ai";
 import { BiHome, BiImageAdd, BiLogOutCircle } from "react-icons/bi";
 import { BsBook, BsFillInboxesFill } from "react-icons/bs";
@@ -63,7 +63,9 @@ const Sidebar = () => {
               </a>
             </Link>
           </div>
-          <Navigation
+          
+{userInfo?.admin && (
+<Navigation
             activeItemId={router.pathname}
             onSelect={({ itemId }) => {
               router.push({ pathname: itemId });
@@ -100,6 +102,10 @@ const Sidebar = () => {
               },
             ]}
           />
+
+)}
+
+
           {userInfo?.instructor && (
             <Navigation
               activeItemId={router.pathname}
@@ -108,33 +114,32 @@ const Sidebar = () => {
               }}
               items={[
                 {
-                  title: "Courses",
-                  itemId: "",
+                  title: "Dashboard",
+                  itemId: "/dashboard",
+                  elemBefore: () => <BsFillInboxesFill name="inbox" />,
+                },
+                {
+                  title: "Manage Courses",
+                  itemId: "/dashboard/courses/managecourses",
                   elemBefore: () => <FaDiscourse name="courses" />,
-                  subNav: [
-                    {
-                      title: "Manage courses",
-                      itemId: "/dashboard/courses/managecourses",
-                      elemBefore: () => (
-                        <AiOutlineFundProjectionScreen name="project" />
-                      ),
-                    },
-                    {
-                      title: "Add New Course",
-                      itemId: "/dashboard/courses/addcourse",
-                      elemBefore: () => <BiImageAdd name="teacher" />,
-                    },
-                    {
-                      title: "Course Catagory",
-                      itemId: "/dashboard/courses/addcategories",
-                      elemBefore: () => <BsBook name="book" />,
-                    },
-                    {
-                      title: "Coupons",
-                      itemId: "",
-                      elemBefore: () => <BsBook name="book" />,
-                    },
-                  ],
+                },
+
+                {
+                  title: "Add new course",
+                  itemId: "/dashboard/courses/addcourse",
+                  elemBefore: () => <BiImageAdd name="courses" />,
+                },
+                
+                {
+                  title: "Course Catagory",
+                  itemId: "/dashboard/courses/addcategories",
+                  elemBefore: () => <BsBook name="book" />,
+                },
+
+                {
+                  title: "All orders",
+                  itemId: "/dashboard/report/viewAllOrder",
+                  elemBefore: () => <BsBook name="book" />,
                 },
               ]}
             />

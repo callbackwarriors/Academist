@@ -1,4 +1,4 @@
-import AdminRevenue from "components/AdminRevenue/AdminRevenue";
+import AdminRevenues from "components/AdminRevenue/AdminRevenues";
 import Sidebar from "components/Dashboard/Sidebar";
 import Layout from "components/utilities/Layout";
 import db from "utils/db";
@@ -13,7 +13,7 @@ const adminRevenue = (props: any) => {
       <div className="flex items-stretch w-full h-full bg-gray-100">
         <Sidebar />
         <div className="w-full min-h-screen p-5 py-4 transition-all bg-white">
-          <AdminRevenue data={orderCourses} />
+          <AdminRevenues data={orderCourses} />
         </div>
       </div>
     </Layout>

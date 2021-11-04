@@ -137,7 +137,8 @@ const router = useRouter();
   return (
     <div className="addNewCourse">
       <form action="" onSubmit={handleSubmit}>
-        <div className="container">
+        <div className="flex flex-col md:flex-row ">
+          <div className="flex flex-col lg:flex-grow md:w-1/2 px-4">
           <div className="mb-4">
             <label htmlFor="title">Title</label>
             <input
@@ -234,8 +235,14 @@ const router = useRouter();
             />
             <label htmlFor="certificate"> Is certificate include?</label>
           </div>
+
+          
+          </div>
+          <div className="flex flex-col lg:flex-grow md:w-1/2 px-4">
+
+
           <div>
-            <div className="flex mt-8 mb-8">
+            <div className="flex mt-6 mb-8">
               <div className="max-w-2xl rounded-lg shadow-xl bg-gray-50">
                 <div className="m-4 ">
                   <label className="inline-block mb-2 text-gray-500">
@@ -275,7 +282,6 @@ const router = useRouter();
               </div>
             </div>
           </div>
-          <h3>Course materials</h3>
           <div className="mb-4">
             <label htmlFor="intro">Intro video</label>
             <input
@@ -306,7 +312,7 @@ const router = useRouter();
                     className="w-full px-4 py-3 text-lg border-1 focus:border-royal-blue"
                     name="link"
                     type="text"
-                    placeholder="Enter lecture video link"
+                    placeholder="Enter lecture video ID from youtube"
                     value={x.link}
                     onChange={(e) => handleInputChange(e, i)}
                   />
@@ -337,6 +343,7 @@ const router = useRouter();
             className="px-12 py-3 text-lg text-white border-0 cursor-pointer bg-royal-blue focus:outline-none hover:bg-indigo-600"
             type="submit"
           />
+        </div>
         </div>
       </form>
     </div>

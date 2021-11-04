@@ -24,7 +24,7 @@ const CoursesPage = (props) => {
       <div className="sectionAllCourses">
         <div className="allCourses">
           <div className="container">
-            <div class="flex flex-wrap overflow-hidden">
+            <div className="flex flex-wrap overflow-hidden">
               <div className="w-full overflow-hidden lg:w-1/4 xl:w-1/4 allCourses__page-sidebar ">
                 <div
                   onClick={() => setIsSidebarOpen(false)}
