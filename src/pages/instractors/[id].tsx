@@ -1,22 +1,46 @@
-import Footer from 'components/utilities/Footer';
-import Header from 'components/utilities/Header';
-import React from 'react';
-import { ICourses } from "type";
+import Layout from "components/utilities/Layout";
+import User from "models/User";
+import { IUser } from "type";
+import db from '../../utils/db';
+
 interface IProps {
-    course: ICourses;
+  User: IUser;
+}
+
+
+const instructorDetail = (props: IProps) => {
+  const { singleInstructor }: any = props;
+
+  if (!singleInstructor) {
+    return <Layout>
+      <div className="container py-20 text-center">
+        Loading...
+      </div>
+    </Layout>
   }
 
-const instractorDetail = (props: IProps) => {
-
-    return (
-        <div>
-            <Header/>
-            {/* <InstractorDetail/>
-            <LargestCourses /> */}
-            <Footer/>
-        </div>
-    );
+  return (
+    <Layout>
+      <h2>Hello World</h2>
+    </Layout>
+  );
 };
 
-export default instractorDetail;
+export default instructorDetail;
 
+export async function getServerSideProps(context: { params: any; }) {
+  
+  const { params } = context;
+  const { id } = params;
+
+
+  await db.connect();
+  const course = await User.findOne({ id }).lean();
+  const singleInstructor = JSON.parse(JSON.stringify(course))
+  await db.disconnect();
+  return {
+    props: {
+      singleInstructor,
+    },
+  };
+}

@@ -1,6 +1,8 @@
 import React from "react";
 
 const ViewAllOrder = ({ orderingData }) => {
+  const {orderCourses } = orderingData;
+
   return (
     <div>
       <h5> All orders</h5>
@@ -17,7 +19,7 @@ const ViewAllOrder = ({ orderingData }) => {
           </tr>
         </thead>
         <tbody className="">
-          {orderingData.map((data) => (
+          {orderCourses.map((data) => (
            
             <tr className="bg-gray-200 border-2 border-gray-300">
               <td className="px-4 py-2">{data.userInfo.name}</td>
