@@ -1,4 +1,6 @@
 export interface ICourses {
+  filter: any;
+
   map(
     arg0: (course: ICourses) => JSX.Element
   ):

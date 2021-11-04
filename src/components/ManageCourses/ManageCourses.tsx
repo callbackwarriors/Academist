@@ -1,12 +1,18 @@
 import ManageCourse from 'components/ManageCourse/ManageCourse';
-import React from 'react';
+import React, { useContext } from "react";
 import { ICourses } from 'type';
+import { Store } from "utils/Store";
 
 interface IProp {
   courses: ICourses;
 }
 
 const ManageCourses = ({ courses }: IProp) => {
+  const { state, dispatch } = useContext(Store);
+  const { userInfo } = state;
+  const instructorCourse = courses.filter(
+    (course: ICourses) => course?.userInfo.email === userInfo?.email
+  );
 
   return (
     <div className="manageCourse">
@@ -16,9 +22,15 @@ const ManageCourses = ({ courses }: IProp) => {
         <p>Dear instractor, Welcome to your manage courses page. You can manage your existing courses below.</p>
       </div>
       <div className="flex flex-wrap overflow-hidden">
-        {courses.map((course: ICourses) => (
+
+        {userInfo?.isAdmin && courses.map((course: ICourses) => (
           <ManageCourse key={course._id} course={course}></ManageCourse>
         ))}
+
+        {userInfo?.instructor && instructorCourse.map((course: ICourses) => (
+          <ManageCourse key={course._id} course={course}></ManageCourse>
+        ))}
+
       </div>
     </div>
   );

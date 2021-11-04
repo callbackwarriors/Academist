@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Accordion,
   AccordionItem,
   AccordionItemButton,
   AccordionItemHeading,
@@ -9,13 +8,13 @@ import {
 const Curriculam = ({ listItem }) => {
 
   return (
-    <Accordion >
+
       <AccordionItem key={listItem.title}>
         <AccordionItemHeading>
           <AccordionItemButton>{listItem.title}</AccordionItemButton>
         </AccordionItemHeading>
         <AccordionItemPanel>
-          <div class="aspect-w-16 aspect-h-9">
+          <div className="aspect-w-16 aspect-h-9">
             <iframe
               src={`https://www.youtube.com/embed/${listItem.link}`}
               frameborder="0"
@@ -27,7 +26,7 @@ const Curriculam = ({ listItem }) => {
           </div>
         </AccordionItemPanel>
       </AccordionItem>
-    </Accordion>
+
   );
 };
 

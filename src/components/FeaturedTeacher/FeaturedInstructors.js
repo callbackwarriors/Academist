@@ -10,7 +10,7 @@ const FeaturedInstructors = ({ user }) => {
             <Title subtitle="WORLD-CLASS INSTRUCTORS" title="Taught By Real Creators" description="" />
             <div className="container">
                 <div className="grid gap-4 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
-                    {instructors.map((instructor) => (
+                    {instructors?.slice(0, 4).map((instructor) => (
                         <FeaturedInstructor key={instructor._id} instructor={instructor} />
                     ))}
                 </div>

@@ -1,9 +1,16 @@
 import React from "react";
-
+import { AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel } from "react-accessible-accordion";
 const WatchLesson = ({ watchVideo }) => {
   return (
+    <AccordionItem key={watchVideo.title}>
+
+<AccordionItemHeading>
+      
+      <AccordionItemButton>{watchVideo.title}</AccordionItemButton>
+      </AccordionItemHeading>
+      <AccordionItemPanel>
     <div className="py-10">
-      <h3 className="pb-6">{watchVideo.title}</h3>
+
       <div class="aspect-w-16 aspect-h-9">
         <iframe
           src={`https://www.youtube.com/embed/${watchVideo.link}`}
@@ -15,6 +22,8 @@ const WatchLesson = ({ watchVideo }) => {
         ></iframe>
       </div>
     </div>
+    </AccordionItemPanel>
+    </AccordionItem>
   );
 };
 

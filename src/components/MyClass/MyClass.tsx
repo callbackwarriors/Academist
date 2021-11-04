@@ -4,7 +4,7 @@ import {
   AiFillEye,
   AiFillVideoCamera,
   AiOutlineHeart,
-  AiOutlineStar,
+  AiOutlineStar
 } from "react-icons/ai";
 
 const MyClass = ({ order }: any) => {

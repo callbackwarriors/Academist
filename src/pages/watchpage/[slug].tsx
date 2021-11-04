@@ -1,6 +1,9 @@
 import Layout from "components/utilities/Layout";
+import PageTitle from "components/utilities/PageTitle";
 import WatchLesson from "components/WatchLesson/WatchLesson";
 import Order from "models/Orders";
+import { Accordion } from "react-accessible-accordion";
+import "react-accessible-accordion/dist/fancy-example.css";
 import { ICourses } from "type";
 import db from "../../utils/db";
 
@@ -23,11 +26,15 @@ const courseDetails = (props: IProps) => {
 
   return (
     <Layout title={orderCourse.cartItems[0].title}>
+      <PageTitle background="bg-gray-50" title={orderCourse.cartItems[0].title} subtitle="MY LEARNING" />
+      <div className="section-padding">
       <div className="container">
-        <h3 className="pt-6">{watchCourse.title}</h3>
-        {watchCourse.inputList.map((watchVideo: any) => (
-          <WatchLesson key={watchVideo._id} watchVideo={watchVideo} />
-        ))}
+        <Accordion>
+          {watchCourse.inputList.map((watchVideo: any) => (
+            <WatchLesson key={watchVideo._id} watchVideo={watchVideo} />
+          ))}
+        </Accordion>
+      </div>
       </div>
     </Layout>
   );

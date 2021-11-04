@@ -4,6 +4,7 @@ import Order from 'models/Orders';
 import React from 'react';
 import db from 'utils/db';
 import PageTitle from "../components/utilities/PageTitle";
+
 const enrollcourse = (props: any) => {
   const { orderCourses } = props;
 
@@ -21,7 +22,9 @@ const enrollcourse = (props: any) => {
 
           :
           <div className="section-padding">
-            <EnrollCourse key={orderCourses._id} orders={orderCourses} />
+
+              <EnrollCourse key={orderCourses._id} orders={orderCourses} />
+   
           </div>
       }
 
