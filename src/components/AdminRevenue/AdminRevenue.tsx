@@ -1,10 +1,5 @@
 import { IOrders } from "type";
 import AdminRevenueCart from "./AdminRevenueCart";
-import fakeData from "./AdminRevenueData";
-
-
-const AdminRevenue = () => {
-
     interface IAdminRevenue {
         id:number;
         enrolledCourse:string;
@@ -17,7 +12,7 @@ interface IProp {
   data: IOrders;
 }
 
-const AdminRevenue = ({ data }: IProp) => {
+const AdminRevenuePage = ({ data }: IProp) => {
 
 
   return (
@@ -61,6 +56,5 @@ const AdminRevenue = ({ data }: IProp) => {
       </div>
     </div>
   );
-};
-
-export default AdminRevenue;
+}
+export default AdminRevenuePage;
