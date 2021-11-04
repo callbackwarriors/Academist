@@ -22,7 +22,7 @@ const Curriculam = ({ listItem }) => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
             ></iframe>
-          </p>
+            </div>
         </AccordionItemPanel>
       </AccordionItem>
 
