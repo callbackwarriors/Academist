@@ -2,3 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.allTestimonialButton {
+  @apply px-8 py-3 bg-royal-blue;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  color: #fff;
+  font-weight: 600;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+.allTestimonialButton:hover {
+  background-color: #000;
+}

@@ -84,3 +84,13 @@ export interface IUser {
   isAdmin: boolean;
   _id: string;
 }
+
+export interface IContact {
+  map(arg0: (fd: any) => JSX.Element): import("react").ReactNode;
+  name: string;
+  email: string;
+  message: string;
+  img: string;
+}
+
+

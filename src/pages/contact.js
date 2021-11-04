@@ -251,95 +251,99 @@ const ContactPage = () => {
     <Layout>
       <PageTitle background="bg-gray-50" title="Contact us" subtitle="" />
       <div className="addNewCourse">
-        <form action="" onSubmit={handleSubmit}>
-          <div className="container">
-            <div className="mb-4">
-              <label htmlFor="title">Name</label>
-              <input
-                onChange={(e) => setName(e.target.value)}
-                id="title"
-                className="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"
+        <div className="mx-auto my-6 lg:w-1/2 md:w-2/3">
+          <form action="" onSubmit={handleSubmit}>
+            <div className="container">
+              <div className="flex justify-between">
+                <div className="mb-4">
+                  <label htmlFor="title">Name</label>
+                  <input
+                    onChange={(e) => setName(e.target.value)}
+                    id="title"
+                    className="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"
 
-                type="text"
-                name="title"
-                placeholder="Write your course title here..."
-              />
-            </div>
-            <div className="mb-4">
-              <label htmlFor="title">Email</label>
-              <input
-                onChange={(e) => setEmail(e.target.value)}
-                id="title"
-                className="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"
+                    type="text"
+                    name="title"
+                    placeholder="Write your name"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label htmlFor="title">Email</label>
+                  <input
+                    onChange={(e) => setEmail(e.target.value)}
+                    id="title"
+                    className="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"
 
-                type="text"
-                name="title"
-                placeholder="Write your course title here..."
-              />
-            </div>
+                    type="text"
+                    name="title"
+                    placeholder="Write your email"
+                  />
+                </div>
+              </div>
 
 
-            <div className="mb-4">
-              <label htmlFor="message">Course Overview</label>
-              <textarea
-                onChange={(e) => setMessage(e.target.value)}
-                className="w-full h-32 px-3 py-1 text-base leading-6 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none resize-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"
+              <div className="mb-4">
+                <label htmlFor="message">Course Overview</label>
+                <textarea
+                  onChange={(e) => setMessage(e.target.value)}
+                  className="w-full h-32 px-3 py-1 text-base leading-6 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none resize-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"
 
-                placeholder="Write your message..."
-                id="message"
-                name="message"
-              ></textarea>
-            </div>
+                  placeholder="Write your message..."
+                  id="message"
+                  name="message"
+                ></textarea>
+              </div>
 
-            <div>
-              <div className="flex mt-8 mb-8">
-                <div className="max-w-2xl rounded-lg shadow-xl bg-gray-50">
-                  <div className="m-4 ">
-                    <label className="inline-block mb-2 text-gray-500">
-                      Upload thumbnail
-                    </label>
-                    <div className="flex items-center justify-center w-full">
-                      <label className="flex flex-col w-full h-32 border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
-                        <div className="flex flex-col items-center justify-center cursor-pointer pt-7">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-8 h-8 text-gray-400 group-hover:text-gray-600"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                            />
-                          </svg>
-                          <p className="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
-                            Attach a file
-                          </p>
-                        </div>
-                        <input
-                          disabled={!setImg}
-                          onChange={uploadHandler}
-                          accept=".jpg, .jpeg, .png"
-                          type="file"
-                          className="opacity-0"
-                        />
+              <div>
+                <div className="flex mt-8 mb-8">
+                  <div className="max-w-2xl rounded-lg shadow-xl bg-gray-50">
+                    <div className="m-4 ">
+                      <label className="inline-block mb-2 text-gray-500">
+                        Upload thumbnail
                       </label>
+                      <div className="flex items-center justify-center w-full">
+                        <label className="flex flex-col w-full h-32 border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
+                          <div className="flex flex-col items-center justify-center cursor-pointer pt-7">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="w-8 h-8 text-gray-400 group-hover:text-gray-600"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                              />
+                            </svg>
+                            <p className="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
+                              Attach a file
+                            </p>
+                          </div>
+                          <input
+                            disabled={!setImg}
+                            onChange={uploadHandler}
+                            accept=".jpg, .jpeg, .png"
+                            type="file"
+                            className="opacity-0"
+                          />
+                        </label>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+
+
+              <input
+                className="px-12 py-3 text-lg text-white border-0 cursor-pointer bg-royal-blue focus:outline-none hover:bg-indigo-600"
+                type="submit"
+              />
             </div>
-
-
-            <input
-              className="px-12 py-3 text-lg text-white border-0 cursor-pointer bg-royal-blue focus:outline-none hover:bg-indigo-600"
-              type="submit"
-            />
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </Layout>
   );
