@@ -10,8 +10,6 @@ const AdminRevenue = () => {
         adminRevenue:number;
         enrolledDate:string;
     }
-
-
   return (
     <div>
       <div className="container py-10  min-h-screen bg-white">

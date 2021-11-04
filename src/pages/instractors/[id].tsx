@@ -1,8 +1,13 @@
 import Footer from 'components/utilities/Footer';
 import Header from 'components/utilities/Header';
 import React from 'react';
+import { ICourses } from "type";
+interface IProps {
+    course: ICourses;
+  }
 
-const instractorDetail = () => {
+const instractorDetail = (props: IProps) => {
+
     return (
         <div>
             <Header/>
@@ -14,3 +19,4 @@ const instractorDetail = () => {
 };
 
 export default instractorDetail;
+
