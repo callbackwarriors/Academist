@@ -7,7 +7,7 @@ import Orders from "../../../models/Orders";
 
 const viewAllOrder = (props) => {
   const orderingData = props;
-  console.log('orderingData', orderingData);
+
 
   return (
     <Layout>
