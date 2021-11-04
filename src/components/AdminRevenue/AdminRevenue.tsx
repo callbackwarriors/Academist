@@ -49,8 +49,10 @@ const AdminRevenuePage = ({ data }: IProp) => {
                 {
                   data?.map((revenueData) => (<AdminRevenueCart key={revenueData._id} revenueData={revenueData} />))
                 }
+
               </tbody>
             </table>
+
           </div>
         </div>
       </div>

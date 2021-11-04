@@ -2,14 +2,14 @@ import React from "react";
 
 const ViewAllOrder = ({ orderingData }) => {
   const {orderCourses } = orderingData;
-  console.log(orderCourses)
-
   const totalOrder = orderCourses.map(order => order.cartItems[0]?.price).reduce((order, acc) => order + acc);
 
   return (
     <div>
-      <h5> All orders</h5>
-      <table className="table-auto">
+
+      <h3 className="my-6">All sales report</h3>
+      
+      <table className="table-auto w-full">
         <thead className="text-white bg-gray-900 border-gray-300">
           <tr>
             <th className="px-4 py-4">Student name</th>
