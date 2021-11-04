@@ -8,7 +8,7 @@ interface IPtitle {
       <section className={`text-center section-padding ${background}`}>
           <div className="container">
               <div className="row">
-                <h1>{title}</h1>
+                <h2>{title}</h2>
                 {subtitle && <p>{subtitle}</p>}
               </div>
           </div>
@@ -21,7 +21,7 @@ interface IPtitle {
   
   PageTitle.defaultProps = {
     title: 'Master Cleanse Reliac Heirloom',
-      subtitle: 'ROOF PARTY POLAROID',
-      background: 'bg-gray-50',
+    subtitle: 'ROOF PARTY POLAROID',
+    background: 'bg-gray-50',
 }
     

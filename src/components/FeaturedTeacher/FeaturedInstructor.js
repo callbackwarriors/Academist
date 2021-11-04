@@ -1,7 +1,7 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import Image from 'next/image'
+import { AiFillEye, AiFillVideoCamera, AiOutlineStar } from 'react-icons/ai';
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa";
-import { AiFillEye, AiFillVideoCamera, AiOutlineHeart, AiOutlineStar } from 'react-icons/ai';
 
 const FeaturedInstructors = ({ instructor }) => {
 

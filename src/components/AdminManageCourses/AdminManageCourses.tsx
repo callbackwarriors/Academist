@@ -12,7 +12,7 @@ const AdminManageCourses = ({ courses }: IProp) => {
         <div className="manageCourse">
             <div className="title">
                 <h2 className="title__subtitle"></h2>
-                <h2 className="mb-4">Manage Course</h2>
+                <h2 className="mb-4">Manage Courses</h2>
                 <p>Dear Admin, Welcome to your manage courses page. You can manage your existing courses below.</p>
             </div>
             <div className="flex flex-wrap overflow-hidden">
