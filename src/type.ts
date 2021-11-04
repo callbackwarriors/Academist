@@ -1,3 +1,5 @@
+import { Key } from "react";
+
 export interface ICourses {
   map(
     arg0: (course: ICourses) => JSX.Element
@@ -86,6 +88,8 @@ export interface IUser {
 }
 
 export interface IContact {
+  private _id: Key | null | undefined;
+  slice(arg0: number, arg1: number): any;
   map(arg0: (fd: any) => JSX.Element): import("react").ReactNode;
   name: string;
   email: string;

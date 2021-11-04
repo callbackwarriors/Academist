@@ -5,7 +5,7 @@ import Testimonial from "components/Testimonial/Testimonial";
 import FeaturedInstructors from "../components/FeaturedTeacher/FeaturedInstructors";
 import Hero from "../components/Home/Hero";
 import Layout from "../components/utilities/Layout";
-import Contact from "../models/Contact";
+import Contact from "../models/Review";
 import Course from "../models/postCourse";
 import User from "../models/User";
 import db from "../utils/db";

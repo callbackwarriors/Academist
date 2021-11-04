@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { FaQuoteLeft } from "react-icons/fa";
 import { IContact } from 'type';
-import Link from 'next/link';
+
 
 interface IProp {
   contactInfo: IContact
@@ -25,15 +25,8 @@ const TestimonialCart = ({ contactInfo }: IProp) => {
               <span className="text-sm">{email}</span>
             </span>
           </div>
-         
+
         </div>
-        <Link href="#">
-            <a>
-              <button className="allTestimonialButton ">
-                View All Testimonial
-              </button>
-            </a>
-          </Link>
       </div>
     </>
   );

@@ -30,10 +30,8 @@ export default instructorDetail;
 
 export async function getServerSideProps(context: { params: any; }) {
   const { params } = context;
-
-  console.log(params);
   const { id } = params;
-  console.log(id);
+
 
   await db.connect();
   const course = await User.findOne({ id }).lean();
