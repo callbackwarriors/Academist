@@ -2,7 +2,6 @@ import React from 'react';
 import FeaturedInstructor from './FeaturedInstructor'
 import Title from 'components/utilities/Title'
 const FeaturedInstructors = ({ user }) => {
-    console.log('user', user);
 
     const instructors = user.filter((instructor) => instructor.instructor === true);
 
