@@ -8,7 +8,7 @@ const ViewAllOrder = ({ orderingData }) => {
     <div>
 
       <h3 className="my-6">All sales report</h3>
-      <div className="p-3 border bg-yellow-200"></div>
+      
       <table className="table-auto w-full">
         <thead className="text-white bg-gray-900 border-gray-300">
           <tr>

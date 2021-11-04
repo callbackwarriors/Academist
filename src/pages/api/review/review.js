@@ -12,7 +12,7 @@ handler.post(async (req, res) => {
     message: req.body.message,
     img: req.body.img,
   });
-console.log('newContact', newContact);
+
   const user = await newContact.save();
   await db.disconnect();
 
