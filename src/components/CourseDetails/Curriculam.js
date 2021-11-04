@@ -3,14 +3,8 @@ import {
   Accordion,
   AccordionItem,
   AccordionItemHeading,
-<<<<<<< HEAD
-  AccordionItemButton,
-  AccordionItemPanel,
-} from 'react-accessible-accordion';
-=======
   AccordionItemPanel
 } from "react-accessible-accordion";
->>>>>>> develop
 const Curriculam = ({ listItem }) => {
 
   return (
