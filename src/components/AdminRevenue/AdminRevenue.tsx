@@ -2,11 +2,23 @@ import { IOrders } from "type";
 import AdminRevenueCart from "./AdminRevenueCart";
 import fakeData from "./AdminRevenueData";
 
+
+const AdminRevenue = () => {
+
+    interface IAdminRevenue {
+        id:number;
+        enrolledCourse:string;
+        totalAmount:number;
+        adminRevenue:number;
+        enrolledDate:string;
+    }
+
 interface IProp {
   data: IOrders;
 }
 
 const AdminRevenue = ({ data }: IProp) => {
+
 
   return (
     <div>

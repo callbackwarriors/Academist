@@ -16,6 +16,7 @@ interface IProps {
 
 const CourseDetails = ({ course }: IProps) => {
 
+
   return (
     <div className="CourseDetails">
       <div

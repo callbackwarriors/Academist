@@ -4,12 +4,13 @@ import {
   AccordionItem,
   AccordionItemButton,
   AccordionItemHeading,
-  AccordionItemPanel,
+  AccordionItemPanel
 } from "react-accessible-accordion";
 const Curriculam = ({ listItem }) => {
+
   return (
-    <Accordion>
-      <AccordionItem>
+    <Accordion >
+      <AccordionItem key={listItem.title}>
         <AccordionItemHeading>
           <AccordionItemButton>{listItem.title}</AccordionItemButton>
         </AccordionItemHeading>
