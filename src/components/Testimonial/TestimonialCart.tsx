@@ -1,30 +1,35 @@
 import Image from 'next/image';
 import { FaQuoteLeft } from "react-icons/fa";
-const TestimonialCart = ({fd}:any) => {
+import { IContact } from 'type';
 
-    return (
-        
-<>
 
-      <div className="p-4 md:w-1/2 w-full">
-        <div className="h-full bg-gray-100 p-8 rounded">
-          <FaQuoteLeft className="block w-5 h-5 text-gray-400 mb-4"/>
-          
-          <p className="leading-relaxed mb-6">{fd.compliment}</p>
+interface IProp {
+  contactInfo: IContact
+}
+
+const TestimonialCart = ({ contactInfo }: IProp) => {
+  const { name, email, img, message } = contactInfo;
+
+  return (
+    <>
+      <div className="w-full p-4 md:w-1/2">
+        <div className="h-full p-8 bg-gray-100 rounded">
+          <FaQuoteLeft className="block w-5 h-5 mb-4 text-gray-400" />
+
+          <p className="mb-6 leading-relaxed">{message}</p>
           <div className="inline-flex items-center">
-            
-            <Image alt="testimonial" src={fd.image} height="50px" width="50px" className=" rounded-full flex-shrink-0 object-cover object-center"></Image>
-            <span className="flex-grow flex flex-col pl-4">
-              <span className="title-font font-medium">{fd.name}</span>
-              <span className="text-sm">{fd.position}</span>
+
+            <Image alt="testimonial" src={img} height="50px" width="50px" className="flex-shrink-0 object-cover object-center rounded-full "></Image>
+            <span className="flex flex-col flex-grow pl-4">
+              <span className="font-medium title-font">{name}</span>
+              <span className="text-sm">{email}</span>
             </span>
           </div>
+
         </div>
       </div>
- 
-
-</>
-    );
+    </>
+  );
 };
 
 export default TestimonialCart;

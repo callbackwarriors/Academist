@@ -10,11 +10,11 @@ const ContactPage = () => {
         <div className="container">
           <section className="relative">
             <div className="">
-              <div className="lg:w-1/2 md:w-2/3 mx-auto">
+              <div className="mx-auto lg:w-1/2 md:w-2/3">
                 <div className="flex flex-wrap -m-2">
-                  <div className="p-2 w-1/2">
+                  <div className="w-1/2 p-2">
                     <div className="relative">
-                      <label className="leading-7 text-sm ">
+                      <label className="text-sm leading-7 ">
                         Name
                       </label>
                       <input
@@ -22,13 +22,13 @@ const ContactPage = () => {
                         id="name"
                         name="name"
                         placeholder="Enter your name"
-                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                        className="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"
                       />
                     </div>
                   </div>
-                  <div className="p-2 w-1/2">
+                  <div className="w-1/2 p-2">
                     <div className="relative">
-                      <label className="leading-7 text-sm">
+                      <label className="text-sm leading-7">
                         Email
                       </label>
                       <input
@@ -36,15 +36,15 @@ const ContactPage = () => {
                         id="email"
                         placeholder="Enter your email"
                         name="email"
-                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                        className="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"
                       />
                     </div>
                   </div>
-                  <div className="p-2 w-full">
+                  <div className="w-full p-2">
                     <div className="relative">
                       <label
     
-                        className="leading-7 text-sm "
+                        className="text-sm leading-7 "
                       >
                         Message
                       </label>
@@ -52,20 +52,20 @@ const ContactPage = () => {
                       placeholder="Write your message..."
                         id="message"
                         name="message"
-                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                        className="w-full h-32 px-3 py-1 text-base leading-6 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none resize-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"
                       ></textarea>
                     </div>
                   </div>
-                  <div className="p-2 w-full">
-                    <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                  <div className="w-full p-2">
+                    <button className="flex px-8 py-2 mx-auto text-lg text-white bg-indigo-500 border-0 rounded focus:outline-none hover:bg-indigo-600">
                       SUBMIT
                     </button>
                   </div>
-                  <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
+                  <div className="w-full p-2 pt-8 mt-8 text-center border-t border-gray-200">
                     <a className="text-indigo-500">
                       callbackwarriors@email.com
                     </a>
-                    <p className="leading-normal my-5">
+                    <p className="my-5 leading-normal">
                       15/E Lake circus
                       <br />
                       Kalabagan, Dhaka

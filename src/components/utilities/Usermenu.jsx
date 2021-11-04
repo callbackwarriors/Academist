@@ -7,12 +7,14 @@ import { Fragment, useContext, useState } from "react";
 import {
   BiBookReader,
   BiCart,
-  BiCog, BiLogOutCircle, BiMessageAltAdd, BiUserCheck
+  BiCog,
+  BiLogOutCircle,
+  BiMessageAltAdd,
+  BiUserCheck,
 } from "react-icons/bi";
+import { MdOutlineRateReview } from "react-icons/md";
 import { GrDocumentUpdate } from "react-icons/gr";
 import { Store } from "utils/Store";
-
-
 
 export default function Example({ userInfo }) {
   const router = useRouter();
@@ -56,62 +58,68 @@ export default function Example({ userInfo }) {
       >
         <Menu.Items className="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="px-1 py-1">
-
-          {(userInfo.user) && (
-            <Link href="/enrollcourse">
-              <a>
-                <Menu.Item>
-                  {({ active }) => (
-                    <button
-                      className={`${
-                        active ? "bg-royal-blue text-white" : "text-gray-900"
-                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                    >
-                      {active ? (
-                        <BiBookReader
-                          className="w-5 h-5 mr-2"
-                          aria-hidden="true"
-                        />
-                      ) : (
-                        <BiBookReader
-                          className="w-5 h-5 mr-2"
-                          aria-hidden="true"
-                        />
+            {userInfo.user && (
+              <>
+                <Link href="/enrollcourse">
+                  <a>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={`${
+                            active
+                              ? "bg-royal-blue text-white"
+                              : "text-gray-900"
+                          } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                        >
+                          {active ? (
+                            <BiBookReader
+                              className="w-5 h-5 mr-2"
+                              aria-hidden="true"
+                            />
+                          ) : (
+                            <BiBookReader
+                              className="w-5 h-5 mr-2"
+                              aria-hidden="true"
+                            />
+                          )}
+                          My learning
+                        </button>
                       )}
-                      My learning
-                    </button>
-                  )}
-                </Menu.Item>
-              </a>
-            </Link>
-)}
-{userInfo.user && (
-            <Link href="/cart">
-              <a>
-                <Menu.Item>
-                  {({ active }) => (
-                    <button
-                      className={`${
-                        active ? "bg-royal-blue text-white" : "text-gray-900"
-                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                    >
-                      {active ? (
-                        <BiCart className="w-5 h-5 mr-2" aria-hidden="true" />
-                      ) : (
-                        <BiCart className="w-5 h-5 mr-2" aria-hidden="true" />
+                    </Menu.Item>
+                  </a>
+                </Link>
+                <Link href="/review">
+                  <a>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={`${
+                            active
+                              ? "bg-royal-blue text-white"
+                              : "text-gray-900"
+                          } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                        >
+                          {active ? (
+                            <MdOutlineRateReview
+                              className="w-5 h-5 mr-2"
+                              aria-hidden="true"
+                            />
+                          ) : (
+                            <MdOutlineRateReview
+                              className="w-5 h-5 mr-2"
+                              aria-hidden="true"
+                            />
+                          )}
+                          Review
+                        </button>
                       )}
-                      My cart
-                    </button>
-                  )}
-                </Menu.Item>
-              </a>
-            </Link>
-)}
-
-          </div>
-
-            {(userInfo.isAdmin) && (
-              <Link href="/dashboard">
+                    </Menu.Item>
+                  </a>
+                </Link>
+              </>
+            )}
+            {userInfo.user && (
+              <Link href="/cart">
                 <a>
                   <Menu.Item>
                     {({ active }) => (
@@ -121,24 +129,49 @@ export default function Example({ userInfo }) {
                         } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                       >
                         {active ? (
-                          <BiUserCheck
-                            className="w-5 h-5 mr-2"
-                            aria-hidden="true"
-                          />
+                          <BiCart className="w-5 h-5 mr-2" aria-hidden="true" />
                         ) : (
-                          <BiUserCheck
-                            className="w-5 h-5 mr-2"
-                            aria-hidden="true"
-                          />
+                          <BiCart className="w-5 h-5 mr-2" aria-hidden="true" />
                         )}
-                        Admin dashboard
+                        My cart
                       </button>
                     )}
                   </Menu.Item>
                 </a>
               </Link>
             )}
-            {(userInfo.instructor) && (<>
+          </div>
+
+          {userInfo.isAdmin && (
+            <Link href="/dashboard">
+              <a>
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      className={`${
+                        active ? "bg-royal-blue text-white" : "text-gray-900"
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    >
+                      {active ? (
+                        <BiUserCheck
+                          className="w-5 h-5 mr-2"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        <BiUserCheck
+                          className="w-5 h-5 mr-2"
+                          aria-hidden="true"
+                        />
+                      )}
+                      Admin dashboard
+                    </button>
+                  )}
+                </Menu.Item>
+              </a>
+            </Link>
+          )}
+          {userInfo.instructor && (
+            <>
               <Link href="/dashboard">
                 <a>
                   <Menu.Item>
@@ -219,11 +252,8 @@ export default function Example({ userInfo }) {
                   </Menu.Item>
                 </a>
               </Link>
-
-
-              
-              </>
-            )}
+            </>
+          )}
 
           <div className="px-1 py-1">
             <Menu.Item onClick={(e) => loginMenuCloseHandler(e, "/profile")}>

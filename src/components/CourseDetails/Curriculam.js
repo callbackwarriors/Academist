@@ -1,20 +1,19 @@
 import React from "react";
 import {
-  Accordion,
   AccordionItem,
-  AccordionItemButton,
   AccordionItemHeading,
-  AccordionItemPanel,
+  AccordionItemPanel
 } from "react-accessible-accordion";
 const Curriculam = ({ listItem }) => {
+
   return (
-    <Accordion>
-      <AccordionItem>
+
+      <AccordionItem key={listItem.title}>
         <AccordionItemHeading>
           <AccordionItemButton>{listItem.title}</AccordionItemButton>
         </AccordionItemHeading>
         <AccordionItemPanel>
-          <div class="aspect-w-16 aspect-h-9">
+          <div className="aspect-w-16 aspect-h-9">
             <iframe
               src={`https://www.youtube.com/embed/${listItem.link}`}
               frameborder="0"
@@ -23,10 +22,10 @@ const Curriculam = ({ listItem }) => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
             ></iframe>
-          </div>
+            </div>
         </AccordionItemPanel>
       </AccordionItem>
-    </Accordion>
+
   );
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Accordion } from "react-accessible-accordion";
 import "react-accessible-accordion/dist/fancy-example.css";
 import "react-sweet-progress/lib/style.css";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
@@ -15,6 +16,7 @@ interface IProps {
 }
 
 const CourseDetails = ({ course }: IProps) => {
+
 
   return (
     <div className="CourseDetails">
@@ -46,9 +48,11 @@ const CourseDetails = ({ course }: IProps) => {
               <TabPanel>
                 <div className="px-10 py-10 mt-10 rounded-md shadow-lg tab1">
                   <h6>Course Circullum</h6>
+                  <Accordion>
                   {course.inputList.map((listItem) => (
                     <Curriculam listItem={listItem}></Curriculam>
                   ))}
+ </Accordion>
                 </div>
               </TabPanel>
               <TabPanel>

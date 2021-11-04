@@ -5,13 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useContext, useState } from "react";
 import {
-  AiOutlineFundProjectionScreen,
-  AiOutlineUserAdd,
+  AiOutlineFundProjectionScreen
 } from "react-icons/ai";
 import { BiHome, BiImageAdd, BiLogOutCircle } from "react-icons/bi";
 import { BsBook, BsFillInboxesFill } from "react-icons/bs";
 import { FaDiscourse } from "react-icons/fa";
-import { GiHamburgerMenu, GiTeacher } from "react-icons/gi";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { GoReport } from "react-icons/go";
 import { Navigation } from "react-minimal-side-navigation";
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
@@ -63,7 +62,11 @@ const Sidebar = () => {
               </a>
             </Link>
           </div>
-          <Navigation
+          
+{userInfo?.isAdmin && (
+
+  <>
+<Navigation
             activeItemId={router.pathname}
             onSelect={({ itemId }) => {
               router.push({ pathname: itemId });
@@ -74,34 +77,52 @@ const Sidebar = () => {
                 itemId: "/dashboard",
                 elemBefore: () => <BsFillInboxesFill name="inbox" />,
               },
+
+
               {
                 title: "Users",
                 itemId: "",
-                elemBefore: () => <AiOutlineUserAdd name="users" />,
+                elemBefore: () => <FaDiscourse name="courses" />,
                 subNav: [
                   {
-                    title: "Admin",
-                    itemId: "/",
+                    title: "Manage Users",
+                    itemId: "/dashboard/admin/manageadmin",
                     elemBefore: () => (
                       <AiOutlineFundProjectionScreen name="project" />
                     ),
                   },
+
                   {
-                    title: "Teacher",
-                    itemId: "/",
-                    elemBefore: () => <GiTeacher name="teacher" />,
+                    title: "Add Admin",
+                    itemId: "/dashboard/admin/addadmin",
+                    elemBefore: () => <BiImageAdd name="teacher" />,
                   },
                   {
-                    title: "Student",
-                    itemId: "/",
-                    elemBefore: () => <BsBook name="book" />,
+                    title: "Report",
+                    itemId: "",
+                    elemBefore: () => <GoReport name="inbox" />,
+                    subNav: [
+                      {
+                        title: "Admin Revenue",
+                        itemId: "/dashboard/report/admin-revenue",
+                      },
+                      {
+                        title: "Instructor Revenue",
+                        itemId: "/dashboard/report/instructor-revenue",
+                      },
+    
+                      {
+                        title: "View All Order",
+                        itemId: "/dashboard/report/viewAllOrder",
+                      },
+                    ],
                   },
                 ],
               },
             ]}
           />
-          {userInfo?.instructor && (
-            <Navigation
+
+<Navigation
               activeItemId={router.pathname}
               onSelect={({ itemId }) => {
                 router.push({ pathname: itemId });
@@ -119,28 +140,20 @@ const Sidebar = () => {
                         <AiOutlineFundProjectionScreen name="project" />
                       ),
                     },
-                    {
-                      title: "Add New Course",
-                      itemId: "/dashboard/courses/addcourse",
-                      elemBefore: () => <BiImageAdd name="teacher" />,
-                    },
+
                     {
                       title: "Course Catagory",
                       itemId: "/dashboard/courses/addcategories",
                       elemBefore: () => <BsBook name="book" />,
                     },
-                    {
-                      title: "Coupons",
-                      itemId: "",
-                      elemBefore: () => <BsBook name="book" />,
-                    },
+
                   ],
                 },
               ]}
             />
-          )}
 
-          <Navigation
+
+<Navigation
             activeItemId={router.pathname}
             onSelect={({ itemId }) => {
               router.push({ pathname: itemId });
@@ -169,7 +182,14 @@ const Sidebar = () => {
             ]}
           />
 
-          {userInfo?.isAdmin && (
+
+
+
+</>
+)}
+
+
+          {userInfo?.instructor && (
             <Navigation
               activeItemId={router.pathname}
               onSelect={({ itemId }) => {
@@ -177,36 +197,32 @@ const Sidebar = () => {
               }}
               items={[
                 {
-                  title: "Admins",
-                  itemId: "",
-                  elemBefore: () => <FaDiscourse name="courses" />,
-                  subNav: [
-                    {
-                      title: "Admin Manage",
-                      itemId: "/dashboard/admin/manageadmin",
-                      elemBefore: () => (
-                        <AiOutlineFundProjectionScreen name="project" />
-                      ),
-                    },
-                    {
-                      title: "Manage Courses",
-                      itemId: "/dashboard/admin/managecourse",
-                      elemBefore: () => (
-                        <AiOutlineFundProjectionScreen name="project" />
-                      ),
-                    },
-                    {
-                      title: "Add Admin",
-                      itemId: "/dashboard/admin/addadmin",
-                      elemBefore: () => <BiImageAdd name="teacher" />,
-                    },
-                  ],
+                  title: "Dashboard",
+                  itemId: "/dashboard",
+                  elemBefore: () => <BsFillInboxesFill name="inbox" />,
                 },
+                {
+                  title: "Manage Courses",
+                  itemId: "/dashboard/courses/managecourses",
+                  elemBefore: () => <FaDiscourse name="courses" />,
+                },
+
+                {
+                  title: "Add new course",
+                  itemId: "/dashboard/courses/addcourse",
+                  elemBefore: () => <BiImageAdd name="courses" />,
+                },
+              
+                {
+                  title: "All orders",
+                  itemId: "/dashboard/report/viewAllOrder",
+                  elemBefore: () => <BsBook name="book" />,
+                },
+
               ]}
             />
           )}
 
-          {/* Log out handler sidebar admin */}
 
           <div className="justify-center pt-20 mt-20 border-t-2 logout__wrapper">
             <Link href="/">

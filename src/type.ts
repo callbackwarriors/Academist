@@ -1,4 +1,8 @@
+import { Key } from "react";
+
 export interface ICourses {
+  filter: any;
+
   map(
     arg0: (course: ICourses) => JSX.Element
   ):
@@ -84,3 +88,15 @@ export interface IUser {
   isAdmin: boolean;
   _id: string;
 }
+
+export interface IContact {
+  _id: Key | null | undefined;
+  slice(arg0: number, arg1: number): any;
+  map(arg0: (fd: any) => JSX.Element): import("react").ReactNode;
+  name: string;
+  email: string;
+  message: string;
+  img: string;
+}
+
+
