@@ -242,7 +242,7 @@ const router = useRouter();
 
 
           <div>
-            <div className="flex mt-8 mb-8">
+            <div className="flex mt-6 mb-8">
               <div className="max-w-2xl rounded-lg shadow-xl bg-gray-50">
                 <div className="m-4 ">
                   <label className="inline-block mb-2 text-gray-500">
@@ -312,7 +312,7 @@ const router = useRouter();
                     className="w-full px-4 py-3 text-lg border-1 focus:border-royal-blue"
                     name="link"
                     type="text"
-                    placeholder="Enter lecture video link"
+                    placeholder="Enter lecture video ID from youtube"
                     value={x.link}
                     onChange={(e) => handleInputChange(e, i)}
                   />
