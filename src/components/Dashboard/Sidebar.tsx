@@ -8,7 +8,7 @@ import {
   AiOutlineFundProjectionScreen
 } from "react-icons/ai";
 import { BiHome, BiImageAdd, BiLogOutCircle } from "react-icons/bi";
-import { BsBook, BsFillInboxesFill } from "react-icons/bs";
+import { BsBook, BsCurrencyDollar, BsFillInboxesFill } from "react-icons/bs";
 import { FaDiscourse } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GoReport } from "react-icons/go";
@@ -209,6 +209,8 @@ const Sidebar = () => {
                 {
                   title: "My Revenue",
                   itemId: "/dashboard/report/instructor-revenue",
+                  elemBefore: () => <BsCurrencyDollar name="courses" />,
+                  
                 },
 
               ]}
