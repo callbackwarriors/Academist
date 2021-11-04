@@ -10,7 +10,6 @@ handler.use(isAuth);
 handler.put(async (req, res) => {
   await db.connect();
   const user = await User.findById(req.user._id);
-
   user.name = req.body.name;
   user.email = req.body.email;
   user.img = req.body.img;

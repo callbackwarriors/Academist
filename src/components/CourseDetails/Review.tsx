@@ -187,8 +187,7 @@ const Review = () => {
           </div>
         </div>
       </div>
-      hello i am sakhawat hossain i am a frontend web developer in bangladesh. i
-      love web development. react is my cursh lunguage
+
       <div className="px-5 py-5 my-10 tab1">
         <h5>Your Reviews</h5>
         <div className="giveReview">

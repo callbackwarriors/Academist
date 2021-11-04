@@ -37,8 +37,10 @@ const CourseDetails = ({ course }: IProps) => {
                 <Tab>Reviews </Tab>
               </TabList>
 
-              <TabPanel className="px-10 py-10 mt-10 rounded-md shadow-lg tab1">
+              <TabPanel>
+                <div className="px-10 py-10 mt-10 rounded-md shadow-lg tab1">
                 {course.desc}
+                </div>
               </TabPanel>
 
               <TabPanel>

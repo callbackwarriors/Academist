@@ -8,7 +8,7 @@ const Category = () => {
     title: string;
     description: string;
     logo: string;
-    courseDetails: string;
+    link: string;
   }
 
   return (
@@ -19,7 +19,7 @@ const Category = () => {
 
       <div className="bg-white-100 py-20">
        <div className="container">
-       <div className="md:grid grid-cols-4" >
+       <div className="md:grid grid-cols-4 gap-6" >
        {
               fakeData?.map((fd: ICategory) => (<CategoryCart fd={fd} />))  
             }

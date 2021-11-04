@@ -1,16 +1,15 @@
-
-
+import Link from 'next/link';
 const CategoryCart = ({fd}:any) => {
   return (
-    <div>
-      <div className="p-2 container w-full">
-        <div className="h-full bg-white-100 shadow-lg p-8 rounded hover:bg-green-500 hover:text-white ">
+<Link href={fd.link}>
+<a>
+        <div className="h-full  bg-white-100 shadow-lg p-8 rounded hover:bg-green-500 hover:text-white ">
+          <img className="p-1 shadow w-36 h-36 object-cover rounded-full mb-4" src={fd.logo} alt="" />
           <h6>{fd.title}</h6>  
-          <p className="mb-6">{fd.description}</p>
-
+          <p>{fd.description}</p>
         </div>
-      </div>
-    </div>
+        </a>
+        </Link>
   );
 };
 
