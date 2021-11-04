@@ -42,6 +42,8 @@ export interface ICourses {
 }
 
 export interface IOrders {
+  cartItem: any;
+  slice: any;
   filter(
     arg0: (order: { userInfo: string }) => boolean
   ): import("react").ReactNode;

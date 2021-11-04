@@ -103,14 +103,10 @@ const Sidebar = () => {
                     elemBefore: () => <GoReport name="inbox" />,
                     subNav: [
                       {
-                        title: "Admin Revenue",
+                        title: "Your Revenue",
                         itemId: "/dashboard/report/admin-revenue",
                       },
-                      {
-                        title: "Instructor Revenue",
-                        itemId: "/dashboard/report/instructor-revenue",
-                      },
-    
+
                       {
                         title: "View All Order",
                         itemId: "/dashboard/report/viewAllOrder",
@@ -165,12 +161,8 @@ const Sidebar = () => {
                 elemBefore: () => <GoReport name="inbox" />,
                 subNav: [
                   {
-                    title: "Admin Revenue",
+                    title: "Site Revenue",
                     itemId: "/dashboard/report/admin-revenue",
-                  },
-                  {
-                    title: "Instructor Revenue",
-                    itemId: "/dashboard/report/instructor-revenue",
                   },
 
                   {
@@ -212,11 +204,11 @@ const Sidebar = () => {
                   itemId: "/dashboard/courses/addcourse",
                   elemBefore: () => <BiImageAdd name="courses" />,
                 },
-              
+
+
                 {
-                  title: "All orders",
-                  itemId: "/dashboard/report/viewAllOrder",
-                  elemBefore: () => <BsBook name="book" />,
+                  title: "My Revenue",
+                  itemId: "/dashboard/report/instructor-revenue",
                 },
 
               ]}

@@ -7,8 +7,6 @@ import db from "utils/db";
 const instructorRevenue = (props: any) => {
   const { orderCourses } = props;
 
-
-
   return (
     <Layout>
       <div className="flex items-stretch w-full h-full bg-gray-100">
