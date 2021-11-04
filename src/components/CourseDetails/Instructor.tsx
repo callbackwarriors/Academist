@@ -15,9 +15,6 @@ const Instructor = ({ instructor }: any) => {
         <div className="largestCourse__cardSection__image">
           <Image width="150" className="rounded-full" height="150" src={img} alt={name} />
         </div>
-        {/* <div className="largestCourse__cardSection--imgSection ">
-          <Image src={img} width="100" height="100" />
-        </div> */}
         <div className="largestCourse__cardSection--TextSection">
           <h5>{name}</h5>
           <div className="flex justify-between details">

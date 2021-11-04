@@ -1,7 +1,6 @@
-import AdminRevenue from "components/AdminRevenue/AdminRevenue";
+import AdminRevenues from "components/AdminRevenue/AdminRevenues";
 import Sidebar from "components/Dashboard/Sidebar";
 import Layout from "components/utilities/Layout";
-import { IOrders } from "type";
 import db from "utils/db";
 import Order from "../../../models/Orders";
 
@@ -11,10 +10,10 @@ const adminRevenue = (props: any) => {
 
   return (
     <Layout>
-      <div className="flex items-stretch w-full bg-gray-200">
+      <div className="flex items-stretch w-full h-full bg-gray-100">
         <Sidebar />
-        <div className="w-full h-screen py-20 transition-all">
-          <AdminRevenue data={orderCourses} />
+        <div className="w-full min-h-screen p-5 py-4 transition-all bg-white">
+          <AdminRevenues data={orderCourses} />
         </div>
       </div>
     </Layout>

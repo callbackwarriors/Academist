@@ -1,12 +1,18 @@
-const InstructorRevenueCart = ({fakeData}:any) => {
+const InstructorRevenueCart = ({ orderCourse }: any) => {
+  const { userInfo, cartItems } = orderCourse;
+  
+  const cartItem  = cartItems[0];
+  console.log(cartItem);
+  
+
   return (
     <>
-      <tr className="bg-blue-200 lg:text-black">
-        <td className="p-3">{fakeData.enrolledCourse}</td>
-        <td className="p-3">{fakeData.instructorName}</td>
-        <td className="p-3">$ {fakeData.totalAmount}</td>
-        <td className="p-3">$ {fakeData.instructorRevenue}</td>
-        <td className="p-3">{fakeData.enrolledDate}</td>
+      <tr className="bg-gray-200 border-2 border-gray-300">
+        <td className="p-3">{cartItem.title}</td>
+        <td className="p-3">{userInfo.name}</td>
+        <td className="p-3">$ {cartItem.price}</td>
+        <td className="p-3">$ {cartItem.price/2}</td>
+        <td className="p-3">{cartItem.createdAt}</td>
       </tr>
     </>
   );
